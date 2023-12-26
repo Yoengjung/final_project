@@ -20,7 +20,7 @@
           </div>
           <button @click="submit" id="submit-btn">로그인</button>
           <div class="login-search-box">
-            <a href="/searchId">아이디 찾기</a>
+            <a href="#">아이디 찾기</a>
             <a href="#">비밀번호 찾기</a>
           </div>
         </div>

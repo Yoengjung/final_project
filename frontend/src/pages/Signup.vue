@@ -91,7 +91,7 @@ export default {
   name: "SignUp",
   data() {
     return {
-      userId: "",
+      userid: "",
       pwd: "",
       nickname: "",
       email: "",
@@ -133,14 +133,14 @@ export default {
   methods: {
     idCheck() {
       var idRegex = /^[a-zA-Z0-9_]+$/;
-      const userId = document.getElementById("userId").value;
-      if (userId === "") {
+      const userid = document.getElementById("userId").value;
+      if (userid === "") {
         document.getElementById("idCheck-msg").innerText =
           "아이디는 필수 입력 사항입니다.";
         document.getElementById("idCheck-msg").style.display = "block";
         document.getElementById("userId").focus();
         return false;
-      } else if (!idRegex.test(userId)) {
+      } else if (!idRegex.test(userid)) {
         document.getElementById("idCheck-msg").innerText =
           "아이디는 영문 대소문자와 숫자, _만 사용 가능합니다.";
         document.getElementById("idCheck-msg").style.display = "block";
@@ -148,12 +148,13 @@ export default {
         return false;
       }
       axios
-        .get("http://localhost:8090/api/user/idCheck", {
+        .get("http://localhost:8082/api/user/idCheck", {
           params: {
-            userId: userId,
+            userid: userid,
           },
         })
         .then((res) => {
+          console.log(res);
           if (res.data) {
             document.getElementById("idCheck-msg").innerText =
               "이미 사용중인 아이디입니다.";

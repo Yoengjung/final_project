@@ -1,6 +1,8 @@
 <template>
-  <Header />
-  <RouterView />
+  <div class="header-router">
+    <Header />
+    <RouterView />
+  </div>
   <Footer />
 </template>
 
@@ -17,4 +19,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+html {
+  margin: 0px;
+  padding: 0px;
+}
+@font-face {
+  font-family: "custom-font";
+  src: url("./assets/font/SUITE-SemiBold.ttf") format("woff");
+}
+
+.header-router {
+  font-family: "custom-font", sans-serif;
+}
+</style>

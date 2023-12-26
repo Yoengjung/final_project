@@ -1,125 +1,217 @@
 <template>
-  <div class="container">
-    <header
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
-    >
-      <div class="col-md-3 mb-2 mb-md-0">
-        <a
-          href="/"
-          class="d-inline-flex link-body-emphasis text-decoration-none"
-        >
-          <svg
-            class="bi"
-            width="40"
-            height="32"
-            role="img"
-            aria-label="Bootstrap"
-          >
-            <use xlink:href="#bootstrap" />
-          </svg>
-        </a>
+  <div class="container1">
+    <h1 class="logo">ㅎㄹㅇㅇ</h1>
+    <header>
+      <div class="dropdown">
+        <button class="dropbtn dropbtn-1">나의 스트레스</button>
+        <div class="dropdown-content dropdown-1">
+          <a href="#">나의 스트레스 분석하기</a>
+          <a href="#">나의 스트레스 종합 보고서</a>
+        </div>
       </div>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2">Features</a></li>
-        <li><a href="#" class="nav-link px-2">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2">About</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">
-          <a href="/login">Login</a>
-        </button>
-        <button type="button" class="btn btn-primary">
-          <a href="/signup">Sign-up</a>
-        </button>
+      <div class="dropdown">
+        <button class="dropbtn">내 장소</button>
+        <div class="dropdown-content">
+          <a href="#">추천 리스트</a>
+          <a href="#">찜한 장소</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">피드</button>
+        <div class="dropdown-content">
+          <a href="#">피드</a>
+          <a href="#">내 피드</a>
+        </div>
+      </div>
+      <div>
+        <div class="login-ul-box">
+          <ul>
+            <li>
+              <a
+                ><button @click="showModal = true" id="showModel-btn">
+                  로그인
+                </button></a
+              >
+            </li>
+            <div class="modal" v-if="showModal">
+              <div class="modal-content">
+                <span class="close" @click="closeModal">&times;</span>
+                <Login />
+              </div>
+            </div>
+            <li><a href="#">회원가입</a></li>
+          </ul>
+        </div>
       </div>
     </header>
   </div>
 </template>
 <script>
+import Login from "../pages/Login.vue";
+
 export default {
   name: "Header",
+  components: {
+    Login,
+  },
+  data() {
+    return {
+      showModal: false,
+    };
+  },
+  methods: {
+    closeModal() {
+      this.showModal = false;
+    },
+  },
 };
 </script>
 <style scoped>
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
-.b-example-divider {
-  width: 100%;
-  height: 3rem;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: solid rgba(0, 0, 0, 0.15);
-  border-width: 1px 0;
-  box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
-    inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
-}
-
-.b-example-vr {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-}
-
-.bi {
-  vertical-align: -0.125em;
-  fill: currentColor;
-}
-
-.nav-scroller {
+.container1 {
+  margin: 0px;
+  padding: 0px;
   position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
-.nav-scroller .nav {
+  width: 100vw;
   display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
+  flex-direction: row;
+}
+
+.logo {
+  width: 100px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  padding: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  width: 160px;
+  justify-content: center;
+  background-color: transparent;
+  font-size: 20px;
+  color: white;
+}
+
+.dropbtn-1 {
+  width: 210px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 30px 10px;
+}
+
+.dropdown:first-child {
+  margin-left: 100px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black rgba(0, 0, 0, 0.5);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.dropdown-1 {
+  min-width: 210px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
   text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+  background-color: rgba(36, 36, 36, 0.6);
 }
 
-.btn-bd-primary {
-  --bd-violet-bg: #712cf9;
-  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-  --bs-btn-font-weight: 600;
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet-bg);
-  --bs-btn-border-color: var(--bd-violet-bg);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #6528e0;
-  --bs-btn-hover-border-color: #6528e0;
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-  --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #5a23c8;
-  --bs-btn-active-border-color: #5a23c8;
+.dropdown-content a:hover {
+  background-color: #adadad;
 }
 
-.bd-mode-toggle {
-  z-index: 1500;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-.bd-mode-toggle .dropdown-menu .active .bi {
-  display: block !important;
+.dropdown:hover .dropbtn {
+  background-color: rgba(36, 36, 36, 0.6);
+}
+
+/* 로그인 회원가입 */
+.login-ul-box {
+  position: absolute;
+  display: flex;
+  float: right;
+  width: 350px;
+  right: 5%;
+  top: 30px;
+}
+
+.login-ul-box ul {
+  display: flex;
+  position: absolute;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 15px;
+}
+
+#showModel-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#showModel-btn:hover {
+  color: black;
+}
+
+.login-ul-box ul li {
+  margin: 0 40px;
+}
+
+.login-ul-box ul li a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+}
+
+.login-ul-box ul li a:hover {
+  color: black;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-content {
+  width: 30%;
+  height: 60%;
+  padding: 20px;
+}
+
+.close {
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  cursor: pointer;
 }
 </style>
