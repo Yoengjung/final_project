@@ -320,6 +320,18 @@ export default {
 </script>
 
 <style scoped>
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 form {
   display: flex;
   flex-direction: column;

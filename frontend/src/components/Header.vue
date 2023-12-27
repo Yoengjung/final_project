@@ -46,14 +46,23 @@ export default {
   margin: 0px;
   padding: 0px;
   position: relative;
-  width: 100vw;
+  width: 60%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: row;
 }
 
 .logo {
+  position: relative;
+  top: 30px;
+  left: 80px;
   width: 100px;
   height: 100px;
+}
+
+img {
+  width: 130px;
 }
 
 /* Dropdown Button */
@@ -68,6 +77,12 @@ export default {
   background-color: transparent;
   font-size: 20px;
   color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.dropbtn:hover {
+  color: white;
 }
 
 .dropbtn-1 {
@@ -81,7 +96,7 @@ export default {
 }
 
 .dropdown:first-child {
-  margin-left: 100px;
+  margin-left: 150px;
 }
 
 .dropdown-content {
@@ -89,7 +104,6 @@ export default {
   position: absolute;
   background-color: black rgba(0, 0, 0, 0.5);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
@@ -104,6 +118,11 @@ export default {
   display: block;
   text-align: center;
   background-color: rgba(36, 36, 36, 0.6);
+}
+
+.dropdown-content a:last-child {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .dropdown-content a:hover {
@@ -135,18 +154,6 @@ export default {
   align-items: center;
   padding: 0;
   margin: 15px;
-}
-
-#showModel-btn {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-#showModel-btn:hover {
-  color: black;
 }
 
 .login-ul-box ul li {

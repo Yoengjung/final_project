@@ -1,32 +1,44 @@
 <template>
-  <div class="login-container">
-    <div class="white-box"></div>
-    <div class="login-box">
-      <form method="POST" autocomplete="off">
-        <h1>로그인</h1>
-        <div class="form-input-box">
-          <div class="form-input">
-            <label for="userId">아이디</label>
-            <input type="text" name="userId" id="userId" />
-          </div>
-          <div class="form-input">
-            <label for="password">비밀번호</label>
-            <input type="password" name="password" id="password" />
-          </div>
-          <div class="form-check">
-            <div class="remember-checkbox">
-              <input type="checkbox" name="remember" id="remember" />
-              <label for="remember">로그인 상태 유지</label>
+  <div class="container-1">
+    <div class="login-container">
+      <div class="white-box">
+        <div class="left-box">
+          <h2>하루의 여울</h2>
+          <img src="../assets/login_icon.png" />
+          <p>장소...추천 받으실래요?</p>
+          <a href="/signup">회원가입</a>
+        </div>
+        <div class="login-box">
+          <form method="POST" autocomplete="off">
+            <h1>로그인</h1>
+            <div class="form-input-box">
+              <div class="form-input">
+                <label for="userId">아이디</label>
+                <input type="text" name="userId" id="userId" />
+              </div>
+              <div class="form-input">
+                <label for="password">비밀번호</label>
+                <input type="password" name="password" id="password" />
+              </div>
+              <div class="form-check">
+                <div class="remember-checkbox">
+                  <input type="checkbox" name="remember" id="remember" />
+                  <label for="remember">로그인 상태 유지</label>
+                </div>
+              </div>
+              <button @click="submit" id="submit-btn">로그인</button>
+              <div class="login-search-box">
+                <a href="/searchId">아이디 찾기</a>
+                <a href="#">비밀번호 찾기</a>
+              </div>
             </div>
-          </div>
-          <button @click="submit" id="submit-btn">로그인</button>
-          <div class="login-search-box">
-            <a href="/searchId">아이디 찾기</a>
-            <a href="#">비밀번호 찾기</a>
+          </form>
+          <div class="social-login-box">
+            <a href="#"><img src="../assets/kakao_login_icon.png" /></a>
+            <a href="#"><img src="../assets/naver_login_icon.png" /></a>
           </div>
         </div>
-      </form>
-      <div class="social-login-box"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,23 +55,69 @@ export default {
   width: 100%;
   height: 100vh;
   position: absolute;
+  background-image: url("../assets/main_image.png");
   background-repeat: no-repeat;
-  top: -50px;
   background-size: cover;
-  background-image: url("../assets/login_bg.png");
+  top: -1px;
   z-index: -1;
 }
 
 .white-box {
   display: flex;
   position: absolute;
-  width: 65%;
+  width: 40%;
   height: 50%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 25px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.8);
+}
+
+.left-box {
+  position: relative;
+  width: 50%;
+  left: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-box h2 {
+  position: relative;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.left-box img {
+  position: relative;
+  margin-top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+}
+
+.left-box p {
+  position: relative;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
+  color: #879090;
+}
+
+.left-box a {
+  position: relative;
+  margin-top: 5px;
+  width: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .login-box {
@@ -67,18 +125,16 @@ export default {
   position: absolute;
   flex-direction: column;
   align-items: center;
-  width: 25%;
-  height: 60%;
-  left: 65%;
-  background-color: rgba(207, 147, 147, 0.3);
-  transform: translateX(-50%);
+  width: 50%;
+  height: 100%;
+  right: 0px;
+  background-color: rgba(236, 184, 163, 0.9);
   border-radius: 15px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.8);
 }
 
 .login-box h1 {
-  margin-top: 70px;
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
   text-align: center;
   padding: 0px;
   font-size: 30px;
@@ -103,7 +159,7 @@ export default {
   width: 100%;
   height: 40px;
   border: none;
-  border-bottom: 3px solid black;
+  border-bottom: 2px solid black;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   padding: 0px 10px;
@@ -113,7 +169,7 @@ export default {
 .form-check {
   display: flex;
   width: 100%;
-  margin: 20px 0;
+  margin: 10px 0;
   padding: 0px;
 }
 
@@ -140,5 +196,39 @@ export default {
   text-decoration: none;
   color: black;
   font-size: 15px;
+}
+
+#submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 27px;
+  background-color: #f5f5f5;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.social-login-box {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-login-box a {
+  display: flex;
+  position: relative;
+  bottom: 30px;
+  width: 40px;
+  height: 40px;
+  margin: 0px 10px;
+  border-radius: 50%;
+  background-color: white;
 }
 </style>
