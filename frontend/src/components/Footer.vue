@@ -40,6 +40,13 @@ export default {
 };
 </script>
 <style scoped>
+.container {
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;

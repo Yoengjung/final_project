@@ -13,8 +13,8 @@ export default {
 };
 </script>
 
-<style>
-.header-router {
+<style scoped>
+.home {
   display: block;
   position: absolute;
   width: 100vw;
@@ -23,6 +23,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../assets/main_image.png");
+  z-index: -1;
 }
 
 .screen-1 {

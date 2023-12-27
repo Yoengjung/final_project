@@ -1,11 +1,13 @@
 <template>
   <div class="container1">
-    <h1 class="logo">ㅎㄹㅇㅇ</h1>
+    <h1 class="logo">
+      <a href="/"><img src="../assets/logo.png" /></a>
+    </h1>
     <header>
       <div class="dropdown">
         <button class="dropbtn dropbtn-1">나의 스트레스</button>
         <div class="dropdown-content dropdown-1">
-          <a href="#">나의 스트레스 분석하기</a>
+          <a href="/UploadImage">나의 스트레스 분석하기</a>
           <a href="#">나의 스트레스 종합 보고서</a>
         </div>
       </div>
@@ -26,20 +28,8 @@
       <div>
         <div class="login-ul-box">
           <ul>
-            <li>
-              <a
-                ><button @click="showModal = true" id="showModel-btn">
-                  로그인
-                </button></a
-              >
-            </li>
-            <div class="modal" v-if="showModal">
-              <div class="modal-content">
-                <span class="close" @click="closeModal">&times;</span>
-                <Login />
-              </div>
-            </div>
-            <li><a href="#">회원가입</a></li>
+            <li><a href="/login">로그인</a></li>
+            <li><a href="/signup">회원가입</a></li>
           </ul>
         </div>
       </div>
@@ -47,23 +37,8 @@
   </div>
 </template>
 <script>
-import Login from "../pages/Login.vue";
-
 export default {
   name: "Header",
-  components: {
-    Login,
-  },
-  data() {
-    return {
-      showModal: false,
-    };
-  },
-  methods: {
-    closeModal() {
-      this.showModal = false;
-    },
-  },
 };
 </script>
 <style scoped>
@@ -78,6 +53,7 @@ export default {
 
 .logo {
   width: 100px;
+  height: 100px;
 }
 
 /* Dropdown Button */
@@ -185,33 +161,5 @@ export default {
 
 .login-ul-box ul li a:hover {
   color: black;
-}
-
-.modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.modal-content {
-  width: 30%;
-  height: 60%;
-  padding: 20px;
-}
-
-.close {
-  font-size: 40px;
-  font-weight: bold;
-  position: absolute;
-  top: 10px;
-  right: 30px;
-  cursor: pointer;
 }
 </style>

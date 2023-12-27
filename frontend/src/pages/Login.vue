@@ -1,5 +1,6 @@
 <template>
   <div class="login-container">
+    <div class="white-box"></div>
     <div class="login-box">
       <form method="POST" autocomplete="off">
         <h1>로그인</h1>
@@ -34,13 +35,31 @@ export default {
   name: "Login",
 };
 </script>
-<style>
+<style scoped>
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80%;
+  height: 100vh;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: -50px;
+  background-size: cover;
+  background-image: url("../assets/login_bg.png");
+  z-index: -1;
+}
+
+.white-box {
+  display: flex;
+  position: absolute;
+  width: 65%;
+  height: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.8);
 }
 
 .login-box {
@@ -48,14 +67,18 @@ export default {
   position: absolute;
   flex-direction: column;
   align-items: center;
-  width: 400px;
-  height: 400px;
-  left: 50%;
+  width: 25%;
+  height: 60%;
+  left: 65%;
+  background-color: rgba(207, 147, 147, 0.3);
   transform: translateX(-50%);
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.8);
 }
 
 .login-box h1 {
-  margin: 30px 0;
+  margin-top: 70px;
+  margin-bottom: 30px;
   text-align: center;
   padding: 0px;
   font-size: 30px;
@@ -79,8 +102,10 @@ export default {
 .form-input-box .form-input input {
   width: 100%;
   height: 40px;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: none;
+  border-bottom: 3px solid black;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   padding: 0px 10px;
   font-size: 20px;
 }
