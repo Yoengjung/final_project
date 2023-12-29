@@ -17,7 +17,7 @@ public class IdCheckController {
     }
 
     @GetMapping("/idCheck")
-    public boolean checkUserId(@RequestParam String userId) {
+    public boolean checkUserId(@RequestParam("userId") String userId) {
         System.out.println(userId);
         return idCheckService.getUserByUserId(userId);
     }

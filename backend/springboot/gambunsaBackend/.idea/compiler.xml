@@ -10,5 +10,9 @@
         <module name="gambunsaBackend.gambunsaBackend.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gambunsaBackend.gambunsaBackend.main~1" target="17" />
+      <module name="gambunsaBackend.gambunsaBackend.test~1" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -4,9 +4,9 @@ import jakarta.persistence.Column;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class idcheck {
+public class IdCheck {
     @Column
-    private String userid;
+    private String userId;
     @Column
     private String password;
 }

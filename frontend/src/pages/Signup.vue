@@ -1,86 +1,72 @@
 <template>
   <div class="signup-container">
     <form method="POST" autocomplete="off" @submit.prevent="onSubmit">
+      <h2>회원가입</h2>
       <div class="label-box">
         <label for="userId">아이디</label>
         <span>*</span>
       </div>
-      <input
-        type="text"
-        name="userId"
-        id="userId"
-        @keydown.enter.prevent="handleEnter"
-      />
+      <div class="input-group-box">
+        <input type="text" @keydown.enter.prevent="handleEnter" id="userId" />
+        <button id="id-check" @click="idCheck">Button</button>
+      </div>
       <p style="display: none" id="idCheck-msg"></p>
-      <button id="id-check" @click="idCheck">아이디 중복 확인</button>
       <div class="label-box">
         <label for="pwd">비밀번호</label><span>*</span>
       </div>
-      <input type="password" name="pwd" id="pwd" />
+      <div class="input-group-box-1">
+        <input type="password" name="pwd" id="pwd" />
+      </div>
+
       <p style="display: none" id="pwd-msg"></p>
 
       <div class="label-box">
         <label for="pwd_check">비밀번호 확인</label><span>*</span>
       </div>
-      <input type="password" name="pwd_chk" id="pwd_chk" />
+      <div class="input-group-box-1">
+        <input type="password" name="pwd_chk" id="pwd_chk" />
+      </div>
       <p style="display: none" id="pwd-chk-msg"></p>
 
       <div class="label-box">
         <label for="nickname">닉네임</label>
         <span>*</span>
       </div>
-      <input type="text" name="nickname" id="nickname" />
-
+      <div class="input-group-box-1">
+        <input type="text" name="nickname" id="nickname" />
+      </div>
+      <p style="display: none" id="nicknameCheck-msg"></p>
+      <div class="label-box">
+        <label for="name">이름</label>
+        <span>*</span>
+      </div>
+      <div class="input-group-box-1">
+        <input type="text" name="name" id="name" />
+      </div>
+      <p style="display: none" id="nameCheck-msg"></p>
       <div class="label-box">
         <label for="email">이메일</label>
         <span>*</span>
       </div>
-      <input type="text" name="email" id="email" />
+
+      <div class="input-group-box">
+        <input type="text" @keydown.enter.prevent="handleEnter" id="email" />
+        <button id="email-ckeck">Button</button>
+      </div>
       <p style="display: none" id="emailCheck-msg"></p>
-      <button id="email-ckeck">이메일 체크</button>
 
       <div class="label-box">
-        <label for="name">이름</label>
+        <label for="profile">프로필 사진</label>
       </div>
-      <input type="text" name="name" id="name" />
-
-      <div class="label-box">
-        <label for="birth">생년월일</label>
+      <div class="profile-box">
+        <img src="../assets/camera_image.png" id="preview-img" />
+        <p>사진 끌어다 올리기</p>
+        <label for="profile">
+          <div class="btn-upload">파일 업로드하기</div>
+        </label>
+        <input type="file" name="profile" id="profile" />
       </div>
-      <div class="birth-info">
-        <select class="box" id="birth-year">
-          <option selected>출생 연도</option>
-        </select>
-        <select class="box" id="birth-month">
-          <option selected>월</option>
-        </select>
-        <select class="box" id="birth-day">
-          <option selected>일</option>
-        </select>
-      </div>
-
-      <div class="label-box">
-        <label for="address">주소</label>
-      </div>
-      <input type="text" name="address" id="address" />
-
-      <div class="label-box">
-        <label for="phone">전화번호</label>
-      </div>
-      <input type="text" name="phone" id="phone" />
-
-      <div class="label-box">
-        <label for="profile">프로필</label>
-      </div>
-      <input
-        type="file"
-        name="profile"
-        id="profile"
-        hidden
-        @change="previewImage($event)"
-      />
-      <img :src="profile" />
-      <button @click="submit">회원가입</button>
+      <button id="submit-btn" @click="submit">회원가입</button>
     </form>
   </div>
 </template>
@@ -91,45 +77,15 @@ export default {
   name: "SignUp",
   data() {
     return {
-      userid: "",
+      userId: "",
       pwd: "",
       nickname: "",
       email: "",
       name: "",
-      birth_year: "",
-      birth_month: "",
-      birth_day: "",
-      address: "",
-      phone: "",
       profile: "",
     };
   },
-  mounted() {
-    const year = document.getElementById("birth-year");
-    const month = document.getElementById("birth-month");
-    const day = document.getElementById("birth-day");
-
-    for (let i = 2021; i >= 1900; i--) {
-      const option = document.createElement("option");
-      option.value = i;
-      option.innerText = i;
-      year.appendChild(option);
-    }
-
-    for (let i = 1; i <= 12; i++) {
-      const option = document.createElement("option");
-      option.value = i;
-      option.innerText = i;
-      month.appendChild(option);
-    }
-
-    for (let i = 1; i <= 31; i++) {
-      const option = document.createElement("option");
-      option.value = i;
-      option.innerText = i;
-      day.appendChild(option);
-    }
-  },
+  mounted() {},
   methods: {
     idCheck() {
       var idRegex = /^[a-zA-Z0-9_]+$/;
@@ -148,9 +104,9 @@ export default {
         return false;
       }
       axios
-        .get("http://localhost:8082/api/user/idCheck", {
+        .get("http://localhost:8090/api/user/idCheck", {
           params: {
-            userid: userid,
+            userId: userid,
           },
         })
         .then((res) => {
@@ -183,11 +139,6 @@ export default {
       const nickname = document.getElementById("nickname").value;
       const email = document.getElementById("email").value;
       const name = document.getElementById("name").value;
-      const birth_year = document.getElementById("birth-year").value;
-      const birth_month = document.getElementById("birth-month").value;
-      const birth_day = document.getElementById("birth-day").value;
-      const address = document.getElementById("address").value;
-      const phone = document.getElementById("phone").value;
 
       var idRegex = /^[a-zA-Z0-9_]+$/;
       var pwdRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
@@ -195,27 +146,55 @@ export default {
       var emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,5}$/;
 
       if (userId === "") {
-        document.getElementById("userId").focus();
         document.getElementById("idCheck-msg").innerText =
           "아이디는 필수 입력 사항입니다.";
         document.getElementById("idCheck-msg").style.display = "block";
       }
       if (pwd === "") {
-        document.getElementById("pwd").focus();
         document.getElementById("pwd-msg").innerHTML =
           "비밀번호는 영문 대문자와 숫자, 특수문자를 포함한 8자리 이상이어야 합니다.";
         document.getElementById("pwd-msg").style.display = "block";
+      } else {
+        document.getElementById("pwd-msg").style.display = "none";
       }
-      if (pwd_chk === pwd) {
-        document.getElementById("pwd-chk-msg").focus();
+      if (pwd_chk !== pwd || pwd_chk === "") {
         document.getElementById("pwd-chk-msg").innerHTML =
           "비밀번호가 일치하지 않습니다.";
         document.getElementById("pwd-chk-msg").style.display = "block";
+      } else {
+        document.getElementById("pwd-chk-msg").style.display = "none";
+      }
+      if (nickname === "") {
+        document.getElementById("nicknameCheck-msg").innerHTML =
+          "닉네임은 필수 입력 사항입니다.";
+        document.getElementById("nicknameCheck-msg").style.display = "block";
+      } else {
+        document.getElementById("nicknameCheck-msg").style.display = "none";
+      }
+      if (name === "") {
+        document.getElementById("nameCheck-msg").innerHTML =
+          "이름은 필수 입력 사항입니다.";
+        document.getElementById("nameCheck-msg").style.display = "block";
+      } else {
+        document.getElementById("nameCheck-msg").style.display = "none";
       }
       if (email === "") {
-        document.getElementById("email").focus();
         document.getElementById("emailCheck-msg").innerHTML =
           "이메일은 필수 입력 사항입니다.";
+        document.getElementById("emailCheck-msg").style.display = "block";
+      } else {
+        document.getElementById("emailCheck-msg").style.display = "none";
+      }
+
+      if (
+        userId === "" ||
+        pwd === "" ||
+        pwd_chk === "" ||
+        email === "" ||
+        name === "" ||
+        nickname === ""
+      ) {
+        return false;
       }
 
       if (idRegex.test(userId) === false) {
@@ -223,64 +202,21 @@ export default {
         document.getElementById("idCheck-msg").innerText =
           "아이디는 영문 대소문자와 숫자, _만 사용 가능합니다.";
         document.getElementById("idCheck-msg").style.display = "block";
-        return false;
-      }
-      if (pwd === "") {
-        document.getElementById("pwdCheck-msg").innerHTML =
-          "비밀번호는 영문 대문자와 숫자, 특수문자를 포함한 8자리 이상이어야 합니다.";
-        document.getElementById("pwdCheck-msg").style.display = "block";
-        return false;
       } else if (pwdRegex.test(pwd) == false) {
         document.getElementById("pwdCheck-msg").innerHTML =
           "비밀번호는 영문 대문자와 숫자, 특수문자를 포함한 8자리 이상이어야 합니다.";
         document.getElementById("pwdCheck-msg").style.display = "block";
         document.getElementById("pwd").focus();
-        return false;
       } else if (pwd !== pwd_chk) {
         alert("비밀번호가 일치하지 않습니다.");
         document.getElementById("pwd_chk").focus();
-        return false;
-      } else if (pwd_chk === "") {
-        alert("비밀번호 확인을 입력해주세요.");
-        document.getElementById("pwd_chk").focus();
-        return false;
-      } else if (nickname === "") {
-        alert("닉네임을 입력해주세요.");
-        document.getElementById("nickname").focus();
-        return false;
       } else if (nicknameRegex.test(nickname) === false) {
         alert("닉네임은 한글, 영문 대소문자, 숫자만 사용 가능합니다.");
         document.getElementById("nickname").focus();
-        return false;
-      } else if (email === "") {
-        alert("이메일을 입력해주세요.");
-        document.getElementById("email").focus();
-        return false;
       } else if (emailRegex.test(email) === false) {
         alert("이메일 형식이 올바르지 않습니다.");
         document.getElementById("email").focus();
-        return false;
-      } else if (name === "") {
-        alert("이름을 입력해주세요.");
-        document.getElementById("name").focus();
-        return false;
-      } else if (
-        birth_year === "출생 연도" ||
-        birth_month === "월" ||
-        birth_day === "일"
-      ) {
-        alert("생년월일을 입력해주세요.");
-        return false;
-      } else if (address === "") {
-        alert("주소를 입력해주세요.");
-        document.getElementById("address").focus();
-        return false;
-      } else if (phone === "") {
-        alert("전화번호를 입력해주세요.");
-        document.getElementById("phone").focus();
-        return false;
       } else {
-        const birth = `${birth_year}-${birth_month}-${birth_day}`;
         axios
           .post("http://localhost:8090/api/user/signup", {
             userId: userId,
@@ -288,9 +224,6 @@ export default {
             nickname: nickname,
             email: email,
             name: name,
-            birth: birth,
-            address: address,
-            phone: phone,
           })
           .then((res) => {
             if (res.data === 1) {
@@ -320,35 +253,160 @@ export default {
 </script>
 
 <style scoped>
+body {
+  background-image: url("../assets/login_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .signup-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
   position: absolute;
-  background-image: url("");
-  background-repeat: no-repeat;
-  background-size: cover;
+  top: -1px;
+  z-index: -1;
 }
 
 form {
   display: flex;
+  position: relative;
   flex-direction: column;
-  justify-content: center;
+  width: 600px;
+  padding: 70px;
+  top: 100px;
+  border-radius: 21px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+form h2 {
+  text-align: center;
+  color: #efab90;
+}
+form .label-box {
+  display: flex;
+  flex-direction: row;
+}
+
+form .label-box label {
+  color: #efab90;
+}
+
+form .input-group-box {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  height: 40px;
+  border-radius: 49px;
+  justify-content: space-between;
   align-items: center;
 }
+
+form .input-group-box-1 {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  height: 40px;
+  border-radius: 49px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form .input-group-box-1 input {
+  width: 95%;
+  background-color: white;
+  border: none;
+  border-radius: 49px;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+form .input-group-box button {
+  position: relative;
+  width: 100px;
+  height: 80%;
+  border-radius: 49px;
+  right: 3px;
+  background-color: white;
+  border: 1px solid #cfcfcf;
+}
+
+form input {
+  width: 70%;
+  background-color: white;
+  border: none;
+  border-radius: 49px;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+form button {
+  position: relative;
+  border-radius: 49px;
+}
+
 label {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-form .label-box {
-  display: flex;
-  flex-direction: row;
-}
+
 span {
   color: red;
+}
+
+.profile-box {
+  width: 250px;
+  height: 250px;
+  border: 3px dotted #e99571;
+  border-radius: 49px;
+}
+
+.profile-box #preview-img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30px;
+}
+
+.profile-box p {
+  position: relative;
+  text-align: center;
+  top: 30px;
+  font-size: 20px;
+  color: #747474;
+  margin: 0px;
+}
+
+.btn-upload {
+  position: relative;
+  width: 150px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid rgb(77, 77, 77);
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30px;
+}
+
+#profile {
+  display: none;
+}
+
+#submit-btn {
+  width: 100px;
+  background-color: #83aeee;
+  color: white;
+  border: none;
+  height: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 30px;
 }
 </style>

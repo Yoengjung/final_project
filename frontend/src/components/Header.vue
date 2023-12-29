@@ -1,7 +1,7 @@
 <template>
   <div class="container1">
     <h1 class="logo">
-      <a href="/"><img src="../assets/logo.png" /></a>
+      <a href="/"><img src="../assets/logo_검정.png" /></a>
     </h1>
     <header>
       <div class="dropdown">
@@ -29,7 +29,7 @@
         <div class="login-ul-box">
           <ul>
             <li><a href="/login">로그인</a></li>
-            <li><a href="/signup">회원가입</a></li>
+            <li><a href="/agreeAddress">회원가입</a></li>
           </ul>
         </div>
       </div>

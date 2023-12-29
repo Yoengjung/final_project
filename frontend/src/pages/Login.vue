@@ -6,7 +6,7 @@
           <h2>하루의 여울</h2>
           <img src="../assets/login_icon.png" />
           <p>장소...추천 받으실래요?</p>
-          <a href="/signup">회원가입</a>
+          <a href="/agreeAddress">회원가입</a>
         </div>
         <div class="login-box">
           <form method="POST" autocomplete="off">
@@ -27,9 +27,41 @@
                 </div>
               </div>
               <button @click="submit" id="submit-btn">로그인</button>
+
               <div class="login-search-box">
-                <a href="/searchId">아이디 찾기</a>
-                <a href="#">비밀번호 찾기</a>
+                <button @click="openIdModal" @submit.prevent>
+                  아이디 찾기
+                </button>
+                <button @click="openPasswordModal">비밀번호 찾기</button>
+
+                <!-- 아이디 찾기 모달 -->
+                <div v-if="isIdModalOpen" class="modal">
+                  <div class="modal-content">
+                    <h2>아이디 찾기</h2>
+                    <form @submit.prevent>
+                      <div>
+                        <label for="name">이름:</label>
+                        <input type="text" id="name" v-model="name" />
+                      </div>
+                      <div>
+                        <label for="email">이메일:</label>
+                        <input type="email" id="email" v-model="email" />
+                      </div>
+                      <button @click="findUserId">아이디 찾기</button>
+                    </form>
+                    <button @click="closeIdModal">닫기</button>
+                  </div>
+                  <!-- 비밀번호 찾기 모달 -->
+                  <div v-if="isPasswordModalOpen" class="modal">
+                    <div class="modal-content">
+                      <h2>비밀번호 찾기</h2>
+                      <form @submit.prevent>
+                        <!-- 비밀번호 찾기에 해당하는 폼 구성 -->
+                      </form>
+                      <button @click="closePasswordModal">닫기</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </form>
@@ -45,6 +77,28 @@
 <script>
 export default {
   name: "Login",
+  data() {
+    return {
+      isIdModalOpen: false,
+      isPasswordModalOpen: false,
+      name: "",
+      email: "",
+    };
+  },
+  methods: {
+    openIdModal() {
+      this.isIdModalOpen = true;
+    },
+    closeIdModal() {
+      this.isIdModalOpen = false;
+    },
+    openPasswordModal() {
+      this.isPasswordModalOpen = true;
+    },
+    closePasswordModal() {
+      this.isPasswordModalOpen = false;
+    },
+  },
 };
 </script>
 <style scoped>
@@ -188,7 +242,7 @@ export default {
   padding: 0px;
 }
 
-.login-search-box a {
+.login-search-box button {
   display: flex;
   width: 50%;
   justify-content: center;
@@ -196,6 +250,8 @@ export default {
   text-decoration: none;
   color: black;
   font-size: 15px;
+  border: none;
+  background-color: transparent;
 }
 
 #submit-btn {
