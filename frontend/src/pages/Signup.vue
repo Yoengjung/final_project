@@ -1,5 +1,5 @@
 <template>
-  <div class="signup-container">
+  <div class="container">
     <form method="POST" autocomplete="off" @submit.prevent="onSubmit">
       <h2>회원가입</h2>
       <div class="label-box">
@@ -66,7 +66,32 @@
         </label>
         <input type="file" name="profile" id="profile" />
       </div>
-      <button id="submit-btn" @click="submit">회원가입</button>
+      <div class="termsOfUse-container">
+        <p>이용약관 및 개인정보처리방침</p>
+        <div class="termsOfUse-box">
+          <input type="checkbox" name="termsOfUse" id="termsOfUse" />
+          <label for="termsOfUse">[필수]이용약관에 동의</label>
+          <button>></button>
+        </div>
+        <div class="termsOfUse-box">
+          <input type="checkbox" name="privacyPolicy" id="privacyPolicy" />
+          <label for="privacyPolicy">[필수]개인정보처리방침에 동의</label>
+          <button @click="privacyPolicyModal">></button>
+        </div>
+        <div class="btn-group">
+          <div class="btn-group-1">
+            <button id="back-btn" @click="back">뒤로가기</button>
+            <button id="submit-btn" @click="submit">회원가입</button>
+          </div>
+        </div>
+        <!-- 개인정보처리방침 모달 -->
+        <div class="modal" v-show="modalOpen">
+          <div class="modal-content">
+            <span class="close" @click="closeModal">&times;</span>
+            <p>개인정보처리방침</p>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </template>
@@ -83,10 +108,20 @@ export default {
       email: "",
       name: "",
       profile: "",
+      modalOpen: false,
     };
   },
   mounted() {},
   methods: {
+    back() {
+      this.$router.push("/login");
+    },
+    privacyPolicyModal() {
+      this.modalOpen = true;
+    },
+    closeModal() {
+      this.modalOpen = false;
+    },
     idCheck() {
       var idRegex = /^[a-zA-Z0-9_]+$/;
       const userid = document.getElementById("userId").value;
@@ -251,162 +286,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
-body {
-  background-image: url("../assets/login_bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.signup-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  top: -1px;
-  z-index: -1;
-}
-
-form {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  width: 600px;
-  padding: 70px;
-  top: 100px;
-  border-radius: 21px;
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-form h2 {
-  text-align: center;
-  color: #efab90;
-}
-form .label-box {
-  display: flex;
-  flex-direction: row;
-}
-
-form .label-box label {
-  color: #efab90;
-}
-
-form .input-group-box {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  height: 40px;
-  border-radius: 49px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-form .input-group-box-1 {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  height: 40px;
-  border-radius: 49px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-form .input-group-box-1 input {
-  width: 95%;
-  background-color: white;
-  border: none;
-  border-radius: 49px;
-  padding-left: 20px;
-  margin-left: 10px;
-}
-
-form .input-group-box button {
-  position: relative;
-  width: 100px;
-  height: 80%;
-  border-radius: 49px;
-  right: 3px;
-  background-color: white;
-  border: 1px solid #cfcfcf;
-}
-
-form input {
-  width: 70%;
-  background-color: white;
-  border: none;
-  border-radius: 49px;
-  padding-left: 20px;
-  margin-left: 10px;
-}
-
-form button {
-  position: relative;
-  border-radius: 49px;
-}
-
-label {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-span {
-  color: red;
-}
-
-.profile-box {
-  width: 250px;
-  height: 250px;
-  border: 3px dotted #e99571;
-  border-radius: 49px;
-}
-
-.profile-box #preview-img {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 30px;
-}
-
-.profile-box p {
-  position: relative;
-  text-align: center;
-  top: 30px;
-  font-size: 20px;
-  color: #747474;
-  margin: 0px;
-}
-
-.btn-upload {
-  position: relative;
-  width: 150px;
-  height: 30px;
-  background: #fff;
-  border: 1px solid rgb(77, 77, 77);
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 30px;
-}
-
-#profile {
-  display: none;
-}
-
-#submit-btn {
-  width: 100px;
-  background-color: #83aeee;
-  color: white;
-  border: none;
-  height: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 30px;
-}
+@import url("../css/signup.css");
 </style>

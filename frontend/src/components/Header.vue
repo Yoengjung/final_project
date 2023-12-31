@@ -7,7 +7,7 @@
       <div class="dropdown">
         <button class="dropbtn dropbtn-1">나의 스트레스</button>
         <div class="dropdown-content dropdown-1">
-          <a href="/UploadImage">나의 스트레스 분석하기</a>
+          <a href="/FaceRegistration">나의 스트레스 분석하기</a>
           <a href="#">나의 스트레스 종합 보고서</a>
         </div>
       </div>
@@ -21,15 +21,15 @@
       <div class="dropdown">
         <button class="dropbtn">피드</button>
         <div class="dropdown-content">
-          <a href="#">피드</a>
+          <a href="/Feed">피드</a>
           <a href="#">내 피드</a>
         </div>
       </div>
       <div>
         <div class="login-ul-box">
           <ul>
-            <li><a href="/login">로그인</a></li>
-            <li><a href="/agreeAddress">회원가입</a></li>
+            <li><a href="/Login">로그인</a></li>
+            <li><a href="/Signup">회원가입</a></li>
           </ul>
         </div>
       </div>

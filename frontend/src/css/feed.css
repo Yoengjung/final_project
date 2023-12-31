@@ -1,0 +1,180 @@
+/* container1 안에 전체 카드 영역 */
+.feed-card-area {
+  width: 1463px;
+  margin: 0 auto 4rem;
+}
+
+/* 카드 하나 */
+.feed-card {
+  border-radius: 20px;
+  background: #fff2f2;
+  box-shadow: 0px 4px 9px -3px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  height: fit-content;
+  padding: 1.5rem 1.4rem;
+  display: inline-block;
+  margin: 0 43px 60px;
+  vertical-align: top;
+  transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+}
+
+.feed-card:hover {
+  transform: translateY(-3px);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 20px 0px;
+}
+
+/* 프로필, 닉네임, 카테고리 */
+.feed-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 프로필, 닉네임 */
+.profile-area {
+  display: flex;
+  align-items: center;
+}
+
+/* 프로필 사진 */
+.profile-img > a > img {
+  display: inline-block;
+  border-radius: 55px;
+  width: 55px;
+  height: 55px;
+}
+
+/* 닉네임 */
+.nickname {
+  margin-left: 1rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+/* 카테고리 */
+.main-category {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.1rem 0.8rem;
+  border-radius: 1.25rem;
+  background: #94e5ff;
+  font-weight: 600;
+}
+
+/* 본문 */
+.feed-card-body {
+  margin-top: 0.75rem;
+}
+
+/* .image-area {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #ededed;
+} */
+
+/* 본문 게시글 */
+.card-content {
+  line-height: 1.3rem;
+  height: fit-content;
+  margin-top: 20px;
+}
+
+/* 더보기 */
+.more {
+  color: #9a9a9a;
+}
+
+/* 좋아요, 댓글 버튼 */
+.card-btn {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.card-btn > div {
+  display: flex;
+  align-items: center;
+}
+
+/* 좋아요 */
+.heart {
+  margin-right: 3.25rem;
+}
+
+.heart > img {
+  margin-right: 0.5rem;
+  width: 2rem;
+}
+
+/* 댓글 */
+.comment > img {
+  margin-right: 0.5rem;
+  width: 1.75rem;
+}
+
+/* 캐러셀 - 인디케이터 가로 너비 */
+.carousel-indicators > button {
+  width: 15px !important;
+}
+
+p {
+  margin: 0;
+}
+
+/* 모달---------------------------------------------- */
+/* dimmed */
+.modal-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* modal or popup */
+.modal-container {
+  position: relative;
+  width: 561px;
+  height: 479px;
+  border-radius: 20px;
+  background: #dadada;
+  top: 341px;
+  left: 696px;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#modal_btn {
+  width: 150px;
+  height: 51px;
+  top: 384px;
+  left: 400px;
+  position: absolute;
+  border-radius: 20px;
+  background: #81c4ee;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-family: SUIT-Regular;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 50px;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+
+#modal_close {
+  width: 39px;
+  height: 36px;
+  top: 15px;
+  left: 507px;
+  position: absolute;
+  background: url("../img/Feed/image-74.png");
+  flex-shrink: 0;
+  border: none;
+}

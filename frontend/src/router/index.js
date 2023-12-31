@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../pages/Home.vue";
 import Login from "../pages/Login.vue";
-import agreeAddress from "../pages/AgreeAddress.vue";
 import Signup from "../pages/Signup.vue";
 import UploadedImage from "../pages/UploadedImage.vue";
+import FaceRegistration from "../pages/FaceRegistration.vue";
+import Feed from "../pages/Feed.vue";
 const routes = [
   {
     path: "/",
@@ -11,17 +12,12 @@ const routes = [
     component: Home,
   },
   {
-    path: "/login",
+    path: "/Login",
     name: "Login",
     component: Login,
   },
   {
-    path: "/agreeAddress",
-    name: "agreeAddress",
-    component: agreeAddress,
-  },
-  {
-    path: "/signup",
+    path: "/Signup",
     name: "Signup",
     component: Signup,
   },
@@ -29,6 +25,16 @@ const routes = [
     path: "/UploadedImage",
     name: "UploadedImage",
     component: UploadedImage,
+  },
+  {
+    path: "/FaceRegistration",
+    name: "FaceRegistration",
+    component: FaceRegistration,
+  },
+  {
+    path: "/Feed",
+    name: "Feed",
+    component: Feed,
   },
 ];
 
