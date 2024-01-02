@@ -212,7 +212,7 @@ span {
 .modal {
   display: block;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
@@ -223,7 +223,7 @@ span {
 /* 모달 콘텐츠 스타일 */
 .modal-content {
   background-color: #fff;
-  margin: 15% auto;
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
