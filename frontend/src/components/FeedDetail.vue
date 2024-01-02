@@ -1,9 +1,9 @@
 <template>
   <!-- --------------------- modal Start ------------------------->
-  <div class="modal-wrap" id="modal-wrap">
-    <div class="modal-container" @click.stop="">
+  <div class="modal-wrap" id="modal-wrap" @click="$emit('close-modal')">
+    <div class="modal-container" @click.stop>
       <div class="modal-btn">
-        <button id="modal_close" @click="modal_click"></button>
+        <button id="modal_close" @click="$emit('close-modal')"></button>
       </div>
       <div class="card-content-area">
         <div class="feed-card-header">
@@ -251,11 +251,7 @@ export default {
       modal_Check: false,
     };
   },
-  methods: {
-    modal_click() {
-      this.modal_Check = !this.modal_Check;
-    },
-  },
+  methods: {},
 };
 </script>
 

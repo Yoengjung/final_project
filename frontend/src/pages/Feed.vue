@@ -1,6 +1,6 @@
 <template>
   <div class="container1">
-    <FeedDetail v-show="modal_Check" />
+    <FeedDetail v-if="modal_Check" @close-modal="closeModal" />
     <div class="feed-card-area" id="card-area">
       <form action="" id="search-form">
         <div class="search-area">
@@ -109,7 +109,7 @@
                 v-if="i.content.length > 100"
                 class="more cursor-p"
                 id="more"
-                @click="modal_click"
+                @click="openModal"
                 >... 더보기</span
               >
             </p>
@@ -127,9 +127,9 @@
                   class="cursor-p"
                   src="../img/Feed/comment.png"
                   id="comment"
-                  @click="modal_click"
+                  @click="openModal"
                 />
-                <span @click="modal_click" class="cursor-p">{{
+                <span @click="openModal" class="cursor-p">{{
                   i.comments
                 }}</span>
               </div>
@@ -235,8 +235,11 @@ export default {
     };
   },
   methods: {
-    modal_click() {
+    openModal() {
       this.modal_Check = !this.modal_Check;
+    },
+    closeModal() {
+      this.modal_Check = false;
     },
   },
   components: {
