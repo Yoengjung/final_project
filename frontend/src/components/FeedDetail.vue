@@ -183,7 +183,7 @@
 
 <script>
 export default {
-  name: "feedMain",
+  name: "feedDetail",
   data() {
     return {
       card: {
@@ -260,5 +260,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../css/feed.css";
+@import "../css/feedDetail.css";
 </style>
