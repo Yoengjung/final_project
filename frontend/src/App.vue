@@ -68,4 +68,8 @@ html {
 a {
   text-decoration: none;
 }
+
+.cursor-p {
+  cursor: pointer;
+}
 </style>
