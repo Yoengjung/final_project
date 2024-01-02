@@ -10,7 +10,7 @@
             placeholder="# 해시태그로 피드를 검색하세요"
           />
           <button class="hashtag-search-btn">
-            <img src="image/search_btn.png" alt="" />
+            <img src="../img/Feed/search_btn.png" alt="" />
           </button>
         </div>
       </form>
