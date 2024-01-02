@@ -59,6 +59,8 @@ html {
   font-family: "SUITE";
   color: #333333;
   font-size: 16px;
+  z-index: -1;
+  position: relative;
 }
 
 .container {
