@@ -7,7 +7,7 @@
         @submit.prevent="onSubmit"
         class="login-form"
       >
-        <h2>회원가입</h2>
+        <h2>가입하기</h2>
         <div class="label-box">
           <label for="userId">아이디</label>
           <span>*</span>
@@ -87,7 +87,7 @@
           <div class="btn-group">
             <div class="btn-group-1">
               <button id="back-btn" @click="back">뒤로가기</button>
-              <button id="submit-btn" @click="submit">회원가입</button>
+              <button id="submit-btn" @click="submit">가입하기</button>
             </div>
           </div>
 
