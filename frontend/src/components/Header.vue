@@ -7,7 +7,7 @@
       <div class="dropdown">
         <button class="dropbtn dropbtn-1">나의 스트레스</button>
         <div class="dropdown-content dropdown-1">
-          <a href="/FaceRegistration">나의 스트레스 분석하기</a>
+          <a href="/faceregistration">나의 스트레스 분석하기</a>
           <a href="#">나의 스트레스 종합 보고서</a>
         </div>
       </div>
@@ -21,17 +21,16 @@
       <div class="dropdown">
         <button class="dropbtn">피드</button>
         <div class="dropdown-content">
-          <a href="/Feed">피드</a>
+          <a href="/feed">피드</a>
           <a href="#">내 피드</a>
+          <a href="insertFeed">피드 작성하기</a>
         </div>
       </div>
-      <div>
-        <div class="login-ul-box">
-          <ul>
-            <li><a href="/Login">로그인</a></li>
-            <li><a href="/Signup">회원가입</a></li>
-          </ul>
-        </div>
+      <div class="login-ul-box">
+        <ul>
+          <li><a href="/login">로그인</a></li>
+          <li><a href="/signup">회원가입</a></li>
+        </ul>
       </div>
     </header>
   </div>
@@ -51,6 +50,11 @@ export default {
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;
+  z-index: 10;
+}
+
+header {
+  width: 100%;
 }
 
 .logo {
@@ -92,7 +96,8 @@ img {
 .dropdown {
   position: relative;
   display: inline-block;
-  margin: 30px 10px;
+  margin: 30px -15px;
+  z-index: 1;
 }
 
 .dropdown:first-child {
@@ -139,11 +144,11 @@ img {
 
 /* 로그인 회원가입 */
 .login-ul-box {
-  position: absolute;
+  position: relative;
   display: flex;
   float: right;
   width: 350px;
-  right: 5%;
+  right: 0;
   top: 30px;
 }
 

@@ -1,10 +1,14 @@
-body {
-  background-image: url("../assets/signup_bg.png");
+.background-container {
+  background-image: url("../assets/signup_bg.png") !important;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 300px;
+  top: -200px;
+  position: relative;
+  z-index: -1;
 }
 
-form {
+.login-form {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -16,20 +20,21 @@ form {
   transform: translateX(-50%);
 }
 
-form h2 {
+.login-form h2 {
   text-align: center;
   color: #efab90;
 }
-form .label-box {
+
+.login-form .label-box {
   display: flex;
   flex-direction: row;
 }
 
-form .label-box label {
+.login-form .label-box label {
   color: #efab90;
 }
 
-form .input-group-box {
+.login-form .input-group-box {
   display: flex;
   flex-direction: row;
   background-color: white;
@@ -40,7 +45,7 @@ form .input-group-box {
   margin-bottom: 30px;
 }
 
-form .input-group-box-1 {
+.login-form .input-group-box-1 {
   display: flex;
   flex-direction: row;
   background-color: white;
@@ -51,7 +56,7 @@ form .input-group-box-1 {
   margin-bottom: 30px;
 }
 
-form .input-group-box-1 input {
+.login-form .input-group-box-1 input {
   width: 95%;
   background-color: white;
   border: none;
@@ -60,7 +65,7 @@ form .input-group-box-1 input {
   margin-left: 10px;
 }
 
-form .input-group-box button {
+.login-form .input-group-box button {
   position: relative;
   width: 100px;
   height: 80%;
@@ -70,7 +75,7 @@ form .input-group-box button {
   border: 1px solid #cfcfcf;
 }
 
-form input {
+.login-form input {
   width: 70%;
   background-color: white;
   border: none;
@@ -79,7 +84,7 @@ form input {
   margin-left: 10px;
 }
 
-form button {
+.login-form button {
   position: relative;
   border-radius: 49px;
 }

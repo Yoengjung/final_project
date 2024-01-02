@@ -5,6 +5,10 @@ import Signup from "../pages/Signup.vue";
 import UploadedImage from "../pages/UploadedImage.vue";
 import FaceRegistration from "../pages/FaceRegistration.vue";
 import Feed from "../pages/Feed.vue";
+import DiaryRegistration from "../pages/DiaryRegistration.vue";
+import InsertFeed from "../pages/InsertFeed.vue";
+import WriteDiary from "../pages/WriteDiary.vue";
+
 const routes = [
   {
     path: "/",
@@ -35,6 +39,21 @@ const routes = [
     path: "/Feed",
     name: "Feed",
     component: Feed,
+  },
+  {
+    path: "/DiaryRegistration",
+    name: "DiaryRegistration",
+    component: DiaryRegistration,
+  },
+  {
+    path: "/InsertFeed",
+    name: "InsertFeed",
+    component: InsertFeed,
+  },
+  {
+    path: "/WriteDiary",
+    name: "WriteDiary",
+    component: WriteDiary,
   },
 ];
 

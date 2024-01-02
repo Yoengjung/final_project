@@ -44,31 +44,37 @@
         <div class="reg-box-card">
           <div class="reg-info">
             <div class="reg-info-box">
-              <img
-                src="../img/FaceRegistration/image3-unscreen.gif"
-                width="200"
-              />
+              <img src="../img/writeDiary/darily--unscreen.gif" width="300" />
               <div class="reg-title">
-                <h3>지금의 나를 남겨주세요!</h3>
+                <h3>지금의 나를 기록해 주세요!</h3>
               </div>
               <div class="reg-desc">
-                <p>Tip: 얼굴은 정면이 보여야</p>
-                <p>인식 확률이 올라갑니다!</p>
+                <p>Tip: 자신의 기분을 자세하게</p>
+                <p>기록 할수록 정확도가 올라가요!</p>
               </div>
             </div>
           </div>
           <div class="input-area">
-            <div class="upload-area">
-              <div class="upload-area-container">
-                <div class="upload-area-box1">
-                  <img src="../img/FaceRegistration/camera.png" />
-                </div>
-                <div class="upload-area-box2">
-                  <span>끌어서 사진 올려 놓기!</span>
-                </div>
-                <div class="upload-area-box3">
-                  <button id="upload-btn">얼굴 등록하기</button>
-                </div>
+            <div class="input-area-box">
+              <div class="darily-date">
+                <h2 id="darily-date-h1"></h2>
+              </div>
+              <div class="diary-title-box">
+                <input
+                  type="text"
+                  name="diary-title"
+                  id="diary-title"
+                  placeholder="제목"
+                  maxlength="30"
+                />
+              </div>
+              <div class="diary-content">
+                <textarea
+                  name="diary-content"
+                  id="diary-content"
+                  placeholder="어떤 일이 있었나요?"
+                  maxlength="1000"
+                ></textarea>
               </div>
             </div>
           </div>
@@ -76,31 +82,20 @@
       </div>
       <!-- 다음단계 버튼 필요시 활성화 -->
       <div class="next-button">
-        <!-- <button id="analyze" type="submit">다음단계</button> -->
-        <a id="analyze" href="/DiaryRegistration">다음단계</a>
+        <button id="preStep" onclick="">이전으로</button>
+        <button id="analyze" type="submit">분석하기</button>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "Faceregistration",
+  name: "WriteDiary",
   data() {
-    return {
-      file_name: "",
-      model_Check: false,
-    };
-  },
-  methods: {
-    getFileName(event) {
-      this.file_name = event.target.files[0].name;
-    },
-    modal_click() {
-      this.modal_Check = !this.model_Check;
-    },
+    return {};
   },
 };
 </script>
 <style scoped>
-@import "../css/faceRegistration.css";
+@import url("../css/writeDiary.css");
 </style>

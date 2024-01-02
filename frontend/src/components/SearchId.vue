@@ -34,7 +34,7 @@ export default {
   name: "Login",
 };
 </script>
-<style>
+<style scoped>
 .login-container {
   display: flex;
   justify-content: center;

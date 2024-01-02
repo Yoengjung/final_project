@@ -26,7 +26,7 @@
                   <label for="remember">로그인 상태 유지</label>
                 </div>
               </div>
-              <button @click="submit" id="submit-btn">로그인</button>
+              <button @click="submit" id="login-submit-btn">로그인</button>
 
               <div class="login-search-box">
                 <button @click="openIdModal" @submit.prevent>
