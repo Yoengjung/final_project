@@ -1,44 +1,8 @@
 <template>
-  <div class="container-1">
+  <div class="container-2">
     <div class="reg-card">
       <div class="pro-bar">
-        <!-- 진행바 시작-->
-        <ul>
-          <li>
-            <i class="icons awesome fa-solid fa-user active"></i>
-            <div class="step first">
-              <p>1</p>
-              <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">사진올리기</p>
-          </li>
-          <li>
-            <i class="icons awesome fa-solid fa-coins"></i>
-            <div class="step second">
-              <p>2</p>
-              <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">내 기분 쓰기</p>
-          </li>
-          <li>
-            <i class="icons awesome fa-solid fa-house"></i>
-            <div class="step third">
-              <p>3</p>
-              <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">내 스트레스 분석</p>
-          </li>
-          <li>
-            <i class="icons awesome fa-regular fa-star-half-stroke"></i>
-            <div class="step fourth">
-              <p>4</p>
-              s
-              <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">완료!</p>
-          </li>
-        </ul>
-        <!-- 진행바 끝-->
+        <stress-bar />
       </div>
       <div class="fake-div">
         <div class="reg-box-card">
@@ -67,7 +31,7 @@
                   <span>끌어서 사진 올려 놓기!</span>
                 </div>
                 <div class="upload-area-box3">
-                  <button id="upload-btn">얼굴 등록하기</button>
+                  <button id="upload-btn">다시 등록하기</button>
                 </div>
               </div>
             </div>
@@ -76,21 +40,25 @@
       </div>
       <!-- 다음단계 버튼 필요시 활성화 -->
       <div class="next-button">
-        <!-- <button id="analyze" type="submit">다음단계</button> -->
-        <a id="analyze" href="/DiaryRegistration">다음단계</a>
+        <button id="analyze" type="submit">다음단계</button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import StressBar from "@/components/StressBar.vue";
 export default {
   name: "Faceregistration",
+  components: {
+    StressBar,
+  },
   data() {
     return {
       file_name: "",
       model_Check: false,
     };
   },
+
   methods: {
     getFileName(event) {
       this.file_name = event.target.files[0].name;
