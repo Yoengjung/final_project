@@ -2,6 +2,10 @@
   <div class="container1">
     <form>
       <div class="bg">
+        <div>
+          <h1 class="feed-upload-title">피드 작성하기</h1>
+        </div>
+
         <!-- 사진 올리기 Area -->
         <div class="part-area">
           <p class="part-title">사진 올리기</p>

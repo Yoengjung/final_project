@@ -37,8 +37,10 @@
           <div class="card-body-image">
             <!-- 본인 게시글인 경우 수정 dim 처리 -->
             <div class="update-area" v-if="i.uid === 'abc'">
-              <img class="cursor-p" src="../img/Feed/update.png" alt="" />
-              <p class="cursor-p">수정하기</p>
+              <a href="/UpdateFeed">
+                <img class="cursor-p" src="../img/Feed/update.png" alt="" />
+                <p class="cursor-p">수정하기</p>
+              </a>
             </div>
 
             <div

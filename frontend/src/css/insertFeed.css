@@ -14,6 +14,12 @@
   /* box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15); */
 }
 
+.feed-upload-title {
+  font-size: 1.5rem;
+  color: #efab90;
+  margin-bottom: 30px;
+}
+
 .part-area {
   margin-bottom: 30px;
 }
