@@ -8,6 +8,7 @@ import Feed from "../pages/Feed.vue";
 import DiaryRegistration from "../pages/DiaryRegistration.vue";
 import InsertFeed from "../pages/InsertFeed.vue";
 import WriteDiary from "../pages/WriteDiary.vue";
+import UpdateFeed from "../pages/UpdateFeed.vue";
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: "/WriteDiary",
     name: "WriteDiary",
     component: WriteDiary,
+  },
+  {
+    path: "/UpdateFeed",
+    name: "UpdateFeed",
+    component: UpdateFeed,
   },
 ];
 

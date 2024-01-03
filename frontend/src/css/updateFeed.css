@@ -64,18 +64,16 @@
 }
 
 .hashtag-area {
+  margin-top: -10px;
   line-height: 40px;
 }
 
 .hashtag {
   background-color: #fff;
-  display: inline-block;
-  padding: 0 15px;
-  margin-top: 5px;
+  padding: 5px 15px;
   margin-right: 10px;
   border-radius: 32px;
   border: 1px solid #ffd1d1;
-  color: #ff6600;
 }
 
 .hash-active {
@@ -88,7 +86,7 @@
 }
 
 .btn-area {
-  width: fit-content;
+  width: 660px;
   height: fit-content;
   margin: 30px auto;
   text-align: center;
@@ -98,7 +96,7 @@
 #uploadFeed {
   font-size: 1.3rem;
   font-weight: 500;
-  background-color: #b0d8ff;
+  background-color: #ffdbb0;
   width: fit-content;
   padding: 0px 50px;
   height: 60px;
@@ -110,5 +108,5 @@
 
 #uploadFeed:hover {
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
-  background-color: #5eb0ff;
+  background-color: #ffa83f;
 }
