@@ -16,7 +16,8 @@
       </form>
 
       <!-- 피드 Start -->
-      <FeedList v-for="(i, idx) in cardList" :key="idx" :cardData="cardData" />
+      <!-- v-for="(i, idx) in cardList" :key="idx" -->
+      <FeedList :cardData="cardList" />
     </div>
   </div>
 </template>
@@ -43,7 +44,7 @@ export default {
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다",
           likes: 22,
-          rDate: "2023-12-26",
+          rDate: "2023-12-31",
           comments: 5,
         },
         {
@@ -56,7 +57,7 @@ export default {
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다 오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다 꼭 또가고 싶어졌다",
           likes: 22,
-          rDate: "2023-12-26",
+          rDate: "2023-12-30",
           comments: 5,
         },
         {
@@ -72,7 +73,7 @@ export default {
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다",
           likes: 22,
-          rDate: "2023-12-26",
+          rDate: "2023-12-29",
           comments: 5,
         },
         {
@@ -89,7 +90,7 @@ export default {
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다",
           likes: 22,
-          rDate: "2023-12-26",
+          rDate: "2023-12-28",
           comments: 5,
         },
         {
@@ -106,7 +107,7 @@ export default {
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다",
           likes: 22,
-          rDate: "2023-12-26",
+          rDate: "2023-12-27",
           comments: 5,
         },
       ],
