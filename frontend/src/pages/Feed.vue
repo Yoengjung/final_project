@@ -17,7 +17,7 @@
 
       <!-- 피드 Start -->
       <!-- v-for="(i, idx) in cardList" :key="idx" -->
-      <FeedList :cardData="cardList" />
+      <FeedList :cardData="cardList" @open-modal="openModal"/>
     </div>
   </div>
 </template>
