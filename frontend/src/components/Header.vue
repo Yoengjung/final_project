@@ -63,6 +63,7 @@ header {
   left: 80px;
   width: 100px;
   height: 100px;
+  z-index: 3;
 }
 
 img {
