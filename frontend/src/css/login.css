@@ -8,8 +8,6 @@
   background-image: url("../assets/main_image.png");
   background-repeat: no-repeat;
   background-size: cover;
-  top: -1px;
-  z-index: -1;
 }
 
 .white-box {
