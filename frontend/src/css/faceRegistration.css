@@ -1,12 +1,12 @@
-/* 컨테이너 */
 .container-2 {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
-  top: 600px;
+  top: 400px;
 }
+
 .fake-div {
   border-radius: 20px;
   box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.25);
@@ -224,7 +224,8 @@ ul li .active .awesome {
 
 /* 모달---------------------------------------------- */
 /* dimmed */
-.modal-wrap {
+
+.warn-modal-wrap {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -240,7 +241,7 @@ ul li .active .awesome {
 }
 
 /* modal or popup */
-.modal-container {
+.modal-container1 {
   position: relative;
   width: 660px;
   height: 690px;
@@ -250,12 +251,22 @@ ul li .active .awesome {
   box-sizing: border-box;
 }
 /* X 버튼 */
-#modal_close {
+#warn_modal_close {
+  position: relative;
+  display: block;
   width: 39px;
   height: 36px;
   float: right;
   background: url("../img/FaceRegistration/image-74.png");
   border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.warn-info {
+  width: 100%;
+  height: 100%;
+  z-index: -2;
 }
 
 /* 모달 내용 */
