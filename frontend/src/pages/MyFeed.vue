@@ -2,8 +2,8 @@
   <div class="container1">
     <FeedDetail v-if="modal_Check" @close-modal="closeModal" />
     <div class="feed-card-area" id="card-area">
-      <div class="myfeed-title-area">
-        <h1 class="feed-upload-title">{{ cardList[0].nickname }} 님의 피드</h1>
+      <div class="page-title-area">
+        <h1 class="page-upload-title">{{ cardList[0].nickname }} 님의 피드</h1>
       </div>
 
       <!-- 피드 Start -->
@@ -16,7 +16,7 @@ import FeedList from "../components/FeedList.vue";
 import FeedDetail from "../components/FeedDetail.vue";
 
 export default {
-  name: "feedMain",
+  name: "MyFeed",
   data() {
     return {
       cardList: [

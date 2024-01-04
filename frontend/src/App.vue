@@ -65,6 +65,11 @@ html {
   margin: 0 auto;
 }
 
+.container1 {
+  padding: 80px 228px 228px;
+  margin: 0 auto;
+}
+
 a {
   text-decoration: none;
 }

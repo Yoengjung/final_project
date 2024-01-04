@@ -14,7 +14,7 @@
       <div class="dropdown">
         <button class="dropbtn">내 장소</button>
         <div class="dropdown-content">
-          <a href="#">추천 리스트</a>
+          <a href="MyPlaceDiary">추천 리스트</a>
           <a href="#">찜한 장소</a>
         </div>
       </div>
@@ -45,7 +45,8 @@ export default {
   margin: 0px;
   padding: 0px;
   position: relative;
-  width: 60%;
+  /* width: 60%; */
+  width: fit-content;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
