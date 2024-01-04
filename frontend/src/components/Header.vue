@@ -22,7 +22,7 @@
         <button class="dropbtn">피드</button>
         <div class="dropdown-content">
           <a href="/feed">피드</a>
-          <a href="#">내 피드</a>
+          <a href="/MyFeed">내 피드</a>
           <a href="insertFeed">피드 작성하기</a>
         </div>
       </div>
