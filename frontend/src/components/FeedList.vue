@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div class="feed-card" v-for="(i, idx) in cardData" :key="idx">
+    <div class="feed-card" v-for="(i, idx) in cardList" :key="idx">
       <div class="feed-card-header">
         <!-- 프로필 사진, 닉네임 -->
         <div class="profile-area">
           <div class="profile-img">
-            <a href="#"><img :src="i.profileImage"/></a>
+            <a href="#"><img :src="i.profileImage" /></a>
           </div>
-          <a href="#"><span class="nickname">{{ i.nickname }}</span></a>
+          <a href="#"
+            ><span class="nickname">{{ i.nickname }}</span></a
+          >
         </div>
 
         <!-- 큰 카테고리 -->
@@ -27,34 +29,47 @@
             </a>
           </div>
 
-          <div :id="'carousel' + idx" class="carousel slide" data-bs-interval="false">
+          <div
+            :id="'carousel' + idx"
+            class="carousel slide"
+            data-bs-interval="false"
+          >
             <!-- 인디케이터 -->
             <div class="carousel-indicators" v-if="i.images.length > 1">
               <button
                 v-for="(indi, indiIdx) in i.images"
-                :key="indiIdx" type="button"
+                :key="indiIdx"
+                type="button"
                 :data-bs-target="'#carousel' + idx"
                 :data-bs-slide-to="indiIdx"
-                :class="{ active: indiIdx === 0 }">
-              </button>
+                :class="{ active: indiIdx === 0 }"
+              ></button>
             </div>
 
             <!-- 이미지 -->
             <div class="carousel-inner">
-              <div v-for="(image, imgIdx) in i.images"
+              <div
+                v-for="(image, imgIdx) in i.images"
                 :key="imgIdx"
                 class="carousel-item"
-                :class="{ active: imgIdx === 0 }">
+                :class="{ active: imgIdx === 0 }"
+              >
                 <img :src="image" class="d-block w-100" />
               </div>
             </div>
 
             <!-- 이전, 다음 버튼 -->
-            <button class="carousel-control-prev" type="button"
+            <button
+              class="carousel-control-prev"
+              type="button"
               :data-bs-target="'#carousel' + idx"
               data-bs-slide="prev"
-              v-if="i.images.length > 1">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              v-if="i.images.length > 1"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
               <span class="visually-hidden">Previous</span>
             </button>
             <button
@@ -62,8 +77,12 @@
               type="button"
               :data-bs-target="'#carousel' + idx"
               data-bs-slide="next"
-              v-if="i.images.length > 1">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              v-if="i.images.length > 1"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
               <span class="visually-hidden">Next</span>
             </button>
           </div>
@@ -72,8 +91,14 @@
         <!-- 본문 contents -->
         <!-- 이미지 여러개면 margin-top 조금 올리기 -->
         <div class="card-content">
-          <p> {{ i.content.slice(0, 90) }}
-            <span v-if="i.content.length > 100" class="more cursor-p" id="more" @click="$emit('open-modal')">
+          <p>
+            {{ i.content.slice(0, 90) }}
+            <span
+              v-if="i.content.length > 100"
+              class="more cursor-p"
+              id="more"
+              @click="$emit('open-modal')"
+            >
               ... 더보기
             </span>
           </p>
@@ -88,8 +113,15 @@
             </div>
 
             <div class="comment">
-              <img class="cursor-p" src="../img/Feed/comment.png" id="comment" @click="$emit('open-modal')"/>
-              <span  @click="$emit('open-modal')" class="cursor-p">{{ i.comments }}</span>
+              <img
+                class="cursor-p"
+                src="../img/Feed/comment.png"
+                id="comment"
+                @click="$emit('open-modal')"
+              />
+              <span @click="$emit('open-modal')" class="cursor-p">{{
+                i.comments
+              }}</span>
             </div>
           </div>
 
@@ -103,7 +135,7 @@
 <script>
 export default {
   props: {
-    cardData: Object, // 부모로부터 받은 데이터
+    cardList: Object, // 부모로부터 받은 데이터
   },
 };
 </script>

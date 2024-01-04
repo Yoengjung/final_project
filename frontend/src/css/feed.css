@@ -13,6 +13,10 @@
   z-index: 1;
 }
 
+.myfeed-title-area {
+  margin: 40px 0 40px 43px;
+}
+
 #search-form {
   margin-bottom: 40px;
 }
