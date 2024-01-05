@@ -10,7 +10,12 @@ import InsertFeed from "../pages/InsertFeed.vue";
 import WriteDiary from "../pages/WriteDiary.vue";
 import UpdateFeed from "../pages/UpdateFeed.vue";
 import MyFeed from "../pages/MyFeed.vue";
+<<<<<<< HEAD
 import MyPlaceDiary from "../pages/MyPlaceDiary.vue"; // 내 장소 - 추천리스트/일기 화면
+=======
+import MyPage from "../pages/MyPage.vue";
+import UpdateMyPage from "../pages/UpdateMyPage.vue";
+>>>>>>> YoungJung
 
 const routes = [
   {
@@ -69,9 +74,20 @@ const routes = [
     component: MyFeed,
   },
   {
+<<<<<<< HEAD
     path: "/MyPlaceDiary",
     name: "MyPlaceDiary",
     component: MyPlaceDiary,
+=======
+    path: "/MyPage",
+    name: "MyPage",
+    component: MyPage,
+  },
+  {
+    path: "/UpdateMyPage",
+    name: "UpdateMyPage",
+    component: UpdateMyPage,
+>>>>>>> YoungJung
   },
 ];
 

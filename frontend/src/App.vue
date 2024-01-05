@@ -59,6 +59,7 @@ html {
   font-family: "SUITE";
   color: #333333;
   font-size: 16px;
+  position: relative;
 }
 
 .container {
