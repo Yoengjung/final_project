@@ -26,6 +26,13 @@
           <a href="insertFeed">피드 작성하기</a>
         </div>
       </div>
+      <div class="dropdown">
+        <button class="dropbtn">마이페이지</button>
+        <div class="dropdown-content">
+          <a href="/MyPage">마이페이지</a>
+          <a href="/">회원정보 수정</a>
+        </div>
+      </div>
       <div class="login-ul-box">
         <ul>
           <li><a href="/login">로그인</a></li>
