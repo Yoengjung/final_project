@@ -2,6 +2,10 @@
   <div class="container1">
     <form>
       <div class="bg">
+        <div>
+          <h1 class="page-upload-title">피드 작성하기</h1>
+        </div>
+
         <!-- 사진 올리기 Area -->
         <div class="part-area">
           <p class="part-title">사진 올리기</p>
@@ -27,7 +31,7 @@
           <p class="part-title">피드 작성</p>
           <textarea
             id="contents"
-            cols="64"
+            cols="68"
             rows="7"
             placeholder="피드 내용을 작성하세요."
           ></textarea>
@@ -47,7 +51,6 @@
               @click="toggleActive(hidx)"
               v-for="(hash, hidx) in hashtag"
               :key="hidx"
-              class="hashtag cursor-p"
               :class="getTagClasses(hidx)"
             >
               #{{ hash }}

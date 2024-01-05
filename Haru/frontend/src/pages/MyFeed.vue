@@ -2,18 +2,9 @@
   <div class="container1">
     <FeedDetail v-if="modal_Check" @close-modal="closeModal" />
     <div class="feed-card-area" id="card-area">
-      <form action="" id="search-form">
-        <div class="search-area">
-          <input
-            class="hashtag-search-input"
-            type="text"
-            placeholder="# 해시태그로 피드를 검색하세요"
-          />
-          <button class="hashtag-search-btn">
-            <img src="../img/Feed/search_btn.png" alt="" />
-          </button>
-        </div>
-      </form>
+      <div class="page-title-area">
+        <h1 class="page-upload-title">{{ cardList[0].nickname }} 님의 피드</h1>
+      </div>
 
       <!-- 피드 Start -->
       <FeedList :cardList="cardList" @open-modal="openModal" />
@@ -25,7 +16,7 @@ import FeedList from "../components/FeedList.vue";
 import FeedDetail from "../components/FeedDetail.vue";
 
 export default {
-  name: "feedMain",
+  name: "MyFeed",
   data() {
     return {
       cardList: [
