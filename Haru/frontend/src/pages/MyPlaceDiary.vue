@@ -114,7 +114,11 @@
 
         <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트) -->
         <div class="tab-content-area">
-          <FeedList :RecommendList="RecommendList" />
+          <p>{{ rDate }}</p>
+          <RecommendList
+            :RecommendList="RecommendList"
+            class="rlist-container"
+          />
         </div>
       </div>
     </div>
@@ -122,40 +126,58 @@
 </template>
 
 <script>
-import FeedList from "../components/RecommendList.vue";
+import RecommendList from "../components/RecommendList.vue";
 
 export default {
   data() {
     return {
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
+      rDate: "9월 23일",
       RecommendList: [
         {
           storeName: "신논현역 딸부자네 불백",
           stAddress: "서울시 강남구 꼬마빌딩 1층",
+          img: require("../img/Feed/bul.png"),
+          link: "#",
           hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
           heartOnOff: "on",
         },
         {
           storeName: "신논현역 버거킹",
           stAddress: "서울시 강남구 꼬마빌딩 2층",
+          img: require("../img/Feed/bul.png"),
+          link: "#",
           hashtag: ["패스트푸드", "맛집", "와퍼"],
           heartOnOff: "off",
         },
         {
           storeName: "신논현역 와플대학",
           stAddress: "서울시 강남구 꼬마빌딩 3층",
-          hashtag: ["카페", "맛집", "와플", "애플시나몬", "레몬에이드"],
+          img: require("../img/Feed/bul.png"),
+          link: "#",
+          hashtag: [
+            "카페",
+            "맛집",
+            "와플",
+            "애플시나몬",
+            "레몬에이드",
+            "레몬에이드",
+            "레몬에이드",
+          ],
           heartOnOff: "on",
         },
         {
           storeName: "신논현역 딸부자네 불백",
           stAddress: "서울시 강남구 꼬마빌딩 1층",
-          hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
+          img: require("../img/Feed/bul.png"),
+          link: "#",
+          hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살", "갈매기살"],
           heartOnOff: "on",
         },
         {
           storeName: "신논현역 버거킹",
           stAddress: "서울시 강남구 꼬마빌딩 2층",
+          img: require("../img/Feed/bul.png"),
           hashtag: ["패스트푸드", "맛집", "와퍼"],
           heartOnOff: "off",
         },
@@ -168,7 +190,7 @@ export default {
     },
   },
   components: {
-    FeedList,
+    RecommendList,
   },
 };
 </script>

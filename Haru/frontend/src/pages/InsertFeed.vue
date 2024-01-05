@@ -60,7 +60,12 @@
 
         <!-- 추천 장소 선택 -->
         <div class="part-area">
-          <p class="part-title">추천 장소 선택</p>
+          <button
+            class="part-title recommend-modal-open-btn"
+            @click="recommendModal"
+          >
+            추천 장소 선택
+          </button>
         </div>
 
         <div class="btn-area">
@@ -73,6 +78,7 @@
 <script>
 export default {
   name: "InsertFeed",
+  recommendModalStatus: false,
   data() {
     return {
       uid: "abc",
@@ -106,6 +112,8 @@ export default {
         "hash-active": this.activeTags.includes(index),
       };
     },
+
+    recommendModal() {},
   },
 };
 </script>
