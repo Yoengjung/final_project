@@ -147,16 +147,16 @@ export default {
       this.modalOpen = false;
     },
 
-    idCheck() {
+    async idCheck() {
       var idRegex = /^[a-zA-Z0-9_]+$/;
-      const userid = document.getElementById("userId").value;
-      if (userid === "") {
+      const userId = document.getElementById("userId").value;
+      if (userId === "") {
         document.getElementById("idCheck-msg").innerText =
           "아이디는 필수 입력 사항입니다.";
         document.getElementById("idCheck-msg").style.display = "block";
         document.getElementById("userId").focus();
         return false;
-      } else if (!idRegex.test(userid)) {
+      } else if (!idRegex.test(userId)) {
         document.getElementById("idCheck-msg").innerText =
           "아이디는 영문 대소문자와 숫자, _만 사용 가능합니다.";
         document.getElementById("idCheck-msg").style.display = "block";
@@ -164,11 +164,7 @@ export default {
         return false;
       }
       axios
-        .get("http://localhost:8090/api/user/idCheck", {
-          params: {
-            userId: userid,
-          },
-        })
+        .get(`http://localhost/Haru/${userId}/userId`)
         .then((res) => {
           console.log(res);
           if (res.data) {
@@ -181,7 +177,6 @@ export default {
             document.getElementById("idCheck-msg").innerText =
               "사용 가능한 아이디입니다.";
             document.getElementById("idCheck-msg").style.display = "block";
-            return true;
           }
         })
         .catch((error) => {
