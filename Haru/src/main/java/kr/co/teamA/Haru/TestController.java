@@ -10,6 +10,6 @@ public class TestController {
 
     @GetMapping("/hello")
     public String hello(){
-        return "hello";
+        return "깃허브 변경되는지 확인";
     }
 }

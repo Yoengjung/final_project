@@ -59,9 +59,15 @@ html {
   font-family: "SUITE";
   color: #333333;
   font-size: 16px;
+  position: relative;
 }
 
 .container {
+  margin: 0 auto;
+}
+
+.container1 {
+  padding: 80px 228px 228px;
   margin: 0 auto;
 }
 

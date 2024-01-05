@@ -29,39 +29,12 @@
               <button @click="submit" id="login-submit-btn">로그인</button>
 
               <div class="login-search-box">
-                <button @click="openIdModal" @submit.prevent>
+                <button @click="findIdToggleModal" @click.prevent="submit">
                   아이디 찾기
                 </button>
-                <button @click="openPasswordModal">비밀번호 찾기</button>
-
-                <!-- 아이디 찾기 모달 -->
-                <div v-if="isIdModalOpen" class="modal">
-                  <div class="modal-content">
-                    <h2>아이디 찾기</h2>
-                    <form @submit.prevent>
-                      <div>
-                        <label for="name">이름:</label>
-                        <input type="text" id="name" v-model="name" />
-                      </div>
-                      <div>
-                        <label for="email">이메일:</label>
-                        <input type="email" id="email" v-model="email" />
-                      </div>
-                      <button @click="findUserId">아이디 찾기</button>
-                    </form>
-                    <button @click="closeIdModal">닫기</button>
-                  </div>
-                  <!-- 비밀번호 찾기 모달 -->
-                  <div v-if="isPasswordModalOpen" class="modal">
-                    <div class="modal-content">
-                      <h2>비밀번호 찾기</h2>
-                      <form @submit.prevent>
-                        <!-- 비밀번호 찾기에 해당하는 폼 구성 -->
-                      </form>
-                      <button @click="closePasswordModal">닫기</button>
-                    </div>
-                  </div>
-                </div>
+                <button @click="findPwdToggleModal" @click.prevent="submit">
+                  비밀번호 찾기
+                </button>
               </div>
             </div>
           </form>
@@ -73,30 +46,37 @@
       </div>
     </div>
   </div>
+  <FindByIdModal :modalOpen="isIdModalOpen" @modalClose="findIdToggleModal" />
+  <FindByPwdModal
+    :modalOpen="isPwdModalOpen"
+    @modalClose="findPwdToggleModal"
+  />
 </template>
 <script>
+import FindByIdModal from "../components/FindByIdModal.vue";
+import FindByPwdModal from "../components/FindByPwdModal.vue";
+
 export default {
   name: "Login",
   data() {
     return {
       isIdModalOpen: false,
-      isPasswordModalOpen: false,
+      isPwdModalOpen: false,
       name: "",
       email: "",
     };
   },
+  components: {
+    FindByIdModal,
+    FindByPwdModal,
+  },
   methods: {
-    openIdModal() {
-      this.isIdModalOpen = true;
+    findIdToggleModal() {
+      this.isIdModalOpen = !this.isIdModalOpen;
     },
-    closeIdModal() {
-      this.isIdModalOpen = false;
-    },
-    openPasswordModal() {
-      this.isPasswordModalOpen = true;
-    },
-    closePasswordModal() {
-      this.isPasswordModalOpen = false;
+    findPwdToggleModal() {
+      console.log("비밀번호 찾기 모달");
+      this.isPwdModalOpen = !this.isPwdModalOpen;
     },
   },
 };
