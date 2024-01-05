@@ -11,6 +11,7 @@ import WriteDiary from "../pages/WriteDiary.vue";
 import UpdateFeed from "../pages/UpdateFeed.vue";
 import MyFeed from "../pages/MyFeed.vue";
 import MyPage from "../pages/MyPage.vue";
+import UpdateMyPage from "../pages/UpdateMyPage.vue";
 
 const routes = [
   {
@@ -72,6 +73,11 @@ const routes = [
     path: "/MyPage",
     name: "MyPage",
     component: MyPage,
+  },
+  {
+    path: "/UpdateMyPage",
+    name: "UpdateMyPage",
+    component: UpdateMyPage,
   },
 ];
 

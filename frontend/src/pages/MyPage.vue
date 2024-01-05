@@ -28,6 +28,7 @@
               </li>
               <li>
                 <div class="commentCnt-box">
+                  ]p
                   <ul>
                     <div>누적 좋아요 갯수</div>
                     <div class="div-tag">
