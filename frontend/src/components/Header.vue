@@ -14,7 +14,7 @@
       <div class="dropdown">
         <button class="dropbtn">내 장소</button>
         <div class="dropdown-content">
-          <a href="#">추천 리스트</a>
+          <a href="MyPlaceDiary">추천 리스트</a>
           <a href="#">찜한 장소</a>
         </div>
       </div>
@@ -22,8 +22,15 @@
         <button class="dropbtn">피드</button>
         <div class="dropdown-content">
           <a href="/feed">피드</a>
-          <a href="#">내 피드</a>
+          <a href="/MyFeed">내 피드</a>
           <a href="insertFeed">피드 작성하기</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">마이페이지</button>
+        <div class="dropdown-content">
+          <a href="/MyPage">마이페이지</a>
+          <a href="/">회원정보 수정</a>
         </div>
       </div>
       <div class="login-ul-box">
@@ -45,7 +52,8 @@ export default {
   margin: 0px;
   padding: 0px;
   position: relative;
-  width: 60%;
+  /* width: 60%; */
+  width: fit-content;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -63,6 +71,7 @@ header {
   left: 80px;
   width: 100px;
   height: 100px;
+  z-index: 3;
 }
 
 img {
