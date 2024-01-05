@@ -1,5 +1,6 @@
 <template>
   <div class="container1">
+    <RecommendList v-show="recommendModalStatus" />
     <form>
       <div class="bg">
         <div>
@@ -76,6 +77,8 @@
   </div>
 </template>
 <script>
+import RecommendList from "../components/RecommendList.vue";
+
 export default {
   name: "InsertFeed",
   recommendModalStatus: false,
@@ -112,9 +115,14 @@ export default {
         "hash-active": this.activeTags.includes(index),
       };
     },
-
-    recommendModal() {},
+    openModal() {
+      this.recommendModalStatus = !this.recommendModalStatus;
+    },
+    closeModal() {
+      this.recommendModalStatus = false;
+    },
   },
+  components: { RecommendList },
 };
 </script>
 <style scoped>
