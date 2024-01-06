@@ -18,6 +18,9 @@ public class Member {
     @Column(length = 30, nullable = false)
     private String nickname;
 
+    @Column(length = 30, nullable = false)
+    private String name;
+
     @Column(length = 100, nullable = false)
     private String email;
 

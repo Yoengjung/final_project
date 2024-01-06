@@ -57,9 +57,20 @@
 
         <div class="input-group-box">
           <input type="text" @keydown.enter.prevent="handleEnter" id="email" />
-          <button id="email-ckeck">Button</button>
+          <button id="email-ckeck" @click="emailCheck">Button</button>
         </div>
         <p style="display: none" id="emailCheck-msg"></p>
+
+        <div class="label-box">
+          <label for="code">인증번호</label>
+          <span>*</span>
+        </div>
+
+        <div class="input-group-box-1">
+          <input type="text" @keydown.enter.prevent="handleEnter" id="code" />
+        </div>
+        <p style="display: none" id="Code-msg"></p>
+
 
         <div class="label-box">
           <label for="profile">프로필 사진</label>
@@ -184,6 +195,28 @@ export default {
           return false;
         });
     },
+
+    async emailCheck() {
+      const email = document.getElementById("email").value;
+      axios.post("http://localhost/Haru/emailCheck", {
+        email : email,
+      })
+      .then((res) => {
+          if(res == 1) {
+            alert("인증 번호가 발송되었습니다.")
+          }
+          else {
+            alert("이미 등록된 이메일입니다.")
+          }
+      })
+      .catch((error) => {
+        alert("인증 번호 발송에 오류가 발생했습니다.")
+        console.error("API 호출 에러", error);
+        return false;
+      })
+    },
+
+
     handleEnter(event) {
       event.preventDefault();
     },
