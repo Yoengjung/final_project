@@ -1,11 +1,11 @@
 <template>
   <!-- --------------------- modal Start ------------------------->
-  <div class="modal-wrap" id="modal-wrap" @click="$emit('close-modal')">
-    <div class="modal-container" @click.stop>
-      <div class="modal-btn">
-        <button id="modal_close" @click="$emit('close-modal')"></button>
+  <div class="feed-modal-wrap" id="modal-wrap" @click="$emit('close-modal')">
+    <div class="feed-modal-container feed-detail" @click.stop>
+      <div class="feed-modal-btn">
+        <button id="feed-modal-close" @click="$emit('close-modal')"></button>
       </div>
-      <div class="card-content-area">
+      <div class="feed-card-content-area">
         <div class="feed-card-header">
           <div class="left-header">
             <!-- 프로필 사진, 닉네임 -->

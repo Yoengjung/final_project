@@ -1,6 +1,6 @@
 /* 모달---------------------------------------------- */
 /* dimmed */
-.modal-wrap {
+.feed-modal-wrap {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -16,26 +16,30 @@
 }
 
 /* modal or popup */
-.modal-container {
+.feed-modal-container {
   position: relative;
   width: 1130px;
   height: 94vh;
-  background: #fff2f2;
   border-radius: 10px;
   padding: 40px;
   box-sizing: border-box;
+}
+
+/* 위에 모달 컨테이너 상세 속성 -> 피드 디테일 화면 */
+.feed-detail {
+  background: #fff2f2;
   overflow: scroll;
   overflow-x: hidden;
 }
 
 /* X 버튼 영역 */
-.modal-btn {
+.feed-modal-btn {
   width: 1050px;
   /* margin-bottom: 10px; */
 }
 
 /* X 버튼 */
-#modal_close {
+#feed-modal-close {
   width: 39px;
   height: 36px;
   float: right;
@@ -44,7 +48,7 @@
 }
 
 /* 헤더(프로필, 닉네임, 카테고리) */
-.card-content-area {
+.feed-card-content-area {
   width: 740px;
 }
 

@@ -116,6 +116,7 @@
         <div class="tab-content-area">
           <RecommendList
             :RecommendList="RecommendList"
+            :isBtnHeartNone="isBtnHeartNone"
             class="rlist-container"
           />
         </div>
@@ -132,6 +133,7 @@ export default {
     return {
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
       rDate: "9월 23일",
+      isBtnHeartNone: false, // 하트버튼이 안보여야되는지
       RecommendList: [
         {
           rdate: "9월 23일",
@@ -143,6 +145,14 @@ export default {
               link: "#",
               hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
               heartOnOff: "on",
+            },
+            {
+              storeName: "신논현역 버거킹",
+              stAddress: "서울시 강남구 꼬마빌딩 2층",
+              img: require("../img/Feed/bul.png"),
+              link: "#",
+              hashtag: ["패스트푸드", "맛집", "와퍼"],
+              heartOnOff: "off",
             },
             {
               storeName: "신논현역 버거킹",

@@ -1,0 +1,43 @@
+/* 모달 컨테이너 상세 속성 -> 피드 insert - 추천 리스트 모달 */
+.feed-rec-modal {
+  background-color: #fff;
+}
+
+.feed-rec-area {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* 제목 */
+.feed-rec-area-title {
+  margin-bottom: 10px;
+}
+
+/* 장소 선택 안함 안내 div */
+.feed-rec-noplace {
+  height: 140px;
+  width: 600px;
+  background-color: #eee;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 140px;
+  font-size: 18px;
+}
+
+/* 선택한 장소 전체 영역 */
+.feed-rec-selected-area {
+  margin-bottom: 40px;
+}
+
+.feed-rec-selected-area > .contents {
+  padding-left: 10px;
+}
+
+.feed-rec-recList {
+  width: 690px;
+  padding: 20px 30px;
+  height: 360px;
+  overflow: auto;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+}
