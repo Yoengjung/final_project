@@ -30,6 +30,7 @@
         <button class="dropbtn">마이페이지</button>
         <div class="dropdown-content">
           <a href="/MyPage">마이페이지</a>
+          <a href="/SelectHobby">취미 및 관심사</a>
           <a href="/userConfirmation">회원정보 수정</a>
         </div>
       </div>
