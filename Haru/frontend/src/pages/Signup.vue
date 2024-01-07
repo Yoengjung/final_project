@@ -69,7 +69,7 @@
           <span>*</span>
         </div>
         <div class="input-group-box-1">
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" placeholder="이름 입력" />
         </div>
         <p style="display: none" id="nameCheck-msg" class="msg"></p>
         <div class="label-box">
@@ -78,7 +78,12 @@
         </div>
 
         <div class="input-group-box">
-          <input type="text" @keydown.enter.prevent="handleEnter" id="email" />
+          <input
+            type="email"
+            @keydown.enter.prevent="handleEnter"
+            id="email"
+            placeholder="이메일 입력"
+          />
           <button id="email-ckeck" @click="emailCheck">Button</button>
         </div>
         <p style="display: none" id="emailCheck-msg" class="msg"></p>
@@ -89,7 +94,12 @@
         </div>
 
         <div class="input-group-box-1">
-          <input type="text" @keydown.enter.prevent="handleEnter" id="code" />
+          <input
+            type="text"
+            @keydown.enter.prevent="handleEnter"
+            id="code"
+            placeholder="인증번호 입력"
+          />
         </div>
         <p style="display: none" id="Code-msg" class="msg"></p>
 

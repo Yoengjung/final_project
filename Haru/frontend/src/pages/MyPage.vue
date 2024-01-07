@@ -28,7 +28,6 @@
               </li>
               <li>
                 <div class="commentCnt-box">
-                  ]p
                   <ul>
                     <div>누적 좋아요 갯수</div>
                     <div class="div-tag">
@@ -41,7 +40,7 @@
             </ul>
           </li>
           <div class="update-mydata-box">
-            <a href="/updateMyPage" id="updateMyDataBtn">내 정보 수정</a>
+            <a href="/userConfirmation" id="updateMyDataBtn">내 정보 수정</a>
           </div>
         </ul>
       </div>

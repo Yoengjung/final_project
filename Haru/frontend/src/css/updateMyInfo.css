@@ -1,0 +1,282 @@
+.background-container {
+  background-image: url("../assets/signup_bg.png") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 300px;
+  top: -200px;
+  position: relative;
+}
+
+.login-form {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 800px;
+  padding: 70px;
+  border-radius: 21px;
+  background-color: rgba(255, 255, 255, 0.3);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.login-form h2 {
+  text-align: center;
+  color: #efab90;
+}
+
+.login-form .label-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-form .label-box label {
+  color: #efab90;
+}
+
+.login-form .label-box span {
+  color: red;
+}
+
+.login-form .update-input-group-box {
+  display: flex;
+  flex-direction: row;
+  background-color: #e4e4e4;
+  height: 40px;
+  border-radius: 49px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.login-form .update-input-group-box p {
+  margin-left: 30px;
+  font-size: 16px;
+}
+
+.login-form .input-group-box-1 {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  height: 40px;
+  border-radius: 49px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.login-form .input-group-box-1 input {
+  width: 95%;
+  background-color: white;
+  border: none;
+  border-radius: 49px;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.login-form .input-group-box button {
+  position: relative;
+  width: 100px;
+  height: 80%;
+  border-radius: 49px;
+  right: 3px;
+  background-color: white;
+  border: 1px solid #cfcfcf;
+}
+
+.login-form input {
+  width: 70%;
+  background-color: white;
+  border: none;
+  border-radius: 49px;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.msg {
+  color: red;
+  font-size: 15px;
+}
+
+.login-form button {
+  position: relative;
+  border-radius: 49px;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#profile {
+  display: none;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-group-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.update-button-group-container {
+  width: 100%;
+  height: 40px;
+}
+
+.update-button-group-container .update-button-group-box {
+  width: 60%;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.update-button-group-container .update-button-group-box input {
+  width: 30%;
+  text-align: center;
+  height: 100%;
+  border-radius: 49px;
+  border: none;
+  font-size: 16px;
+  padding: 0px;
+}
+
+.update-button-group-container .update-button-group-box #backbtn {
+  background-color: #cfcfcf;
+  color: #757575;
+  cursor: pointer;
+}
+
+.update-button-group-container .update-button-group-box #update-my-info {
+  background-color: #83aeee;
+  color: white;
+  cursor: pointer;
+}
+
+.update-button-group-container .update-button-group-box #delete-my-info {
+  background-color: #e18585;
+  color: white;
+  cursor: pointer;
+}
+
+/* 모달 */
+.deleteMyInfo-wrap {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.deleteMyInfo-modal {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 600px;
+  background-color: #dddddd;
+  border-radius: 10px;
+  padding: 30px;
+  z-index: 8;
+}
+
+.deleteMyInfo-modal .deleteMyInfo-modal-content .deleteMyInfo-modal-header h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.deleteMyInfo-modal
+  .deleteMyInfo-modal-content
+  .deleteMyInfo-modal-header
+  .close {
+  z-index: 10;
+  top: -10px;
+  color: black;
+  font-size: 30px;
+}
+
+.deleteMyInfo-modal
+  .deleteMyInfo-modal-content
+  .deleteMyInfo-modal-body
+  .delete-text-commend {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.deleteMyInfo-modal
+  .deleteMyInfo-modal-content
+  .deleteMyInfo-modal-body
+  .delete-commend-input-box {
+  margin-bottom: 10px;
+}
+
+.deleteMyInfo-modal
+  .deleteMyInfo-modal-content
+  .deleteMyInfo-modal-body
+  .delete-commend-input-box
+  #delete-id {
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.deleteMyInfo-modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  margin-top: 30px;
+}
+
+.deleteMyInfo-modal-footer .deleteMyInfo-modal-footer-box {
+  width: 60%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteMyInfo-modal-footer .deleteMyInfo-modal-footer-box button {
+  width: 40%;
+  text-align: center;
+  height: 100%;
+  border-radius: 49px;
+  border: none;
+  font-size: 16px;
+  padding: 0px;
+}
+
+.deleteMyInfo-modal-footer .deleteMyInfo-modal-footer-box #deleteMyInfo-cancel {
+  background-color: #aeaeae;
+  color: black;
+  cursor: pointer;
+}
+
+.deleteMyInfo-modal-footer .deleteMyInfo-modal-footer-box #deleteMyInfo-submit {
+  background-color: #fa9d9d;
+  color: white;
+  cursor: pointer;
+}
