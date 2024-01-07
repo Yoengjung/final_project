@@ -11,6 +11,7 @@ import MyFeed from "../pages/MyFeed.vue";
 import MyPlaceDiary from "../pages/MyPlaceDiary.vue"; // 내 장소 - 추천리스트/일기 화면
 import MyPage from "../pages/MyPage.vue";
 import UpdateMyPage from "../pages/UpdateMyPage.vue";
+import Total_stress from "../pages/total_stress.vue";
 
 const routes = [
   {
@@ -72,6 +73,11 @@ const routes = [
     path: "/UpdateMyPage",
     name: "UpdateMyPage",
     component: UpdateMyPage,
+  },
+  {
+      path: "/Total_stress",
+      name: "Total_stress",
+      component: Total_stress,
   },
 ];
 

@@ -1,0 +1,351 @@
+body {
+    background-size: cover;
+    /* 추후 수정 */
+    height: 1080px;
+}
+.result-container{
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.result-card-container {
+    width: 100%;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.result-card-box{
+    background-color: #F8F8F8;
+    border-radius: 10px;
+    width: 1200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 수치 영역 시작 */
+
+.slider {
+    position: relative;
+    padding: 120px 0 60px 0;
+    font-weight: bold;
+    color: #aaa;
+    text-align: center;
+}
+.slider-bar {
+    background: #ddd;
+    padding: 3px;
+    height: 30px;
+    border-radius: 30px;
+}
+.slider .rate-ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+.slider .rate-li {
+    position: relative;
+    float: left;
+    width: 12.5%;
+    height: 24px;
+    white-space: nowrap;
+}
+.slider-scroll {
+    position: absolute;
+    left: 5px;
+    top: 123px;
+    width: 0;
+    height: 24px;
+    border-radius: 30px;
+    background: #eb9fb9;
+    background: -moz-linear-gradient(left, #eb9fb9 0%, #d0014f 100%);
+    background: -webkit-linear-gradient(left, #eb9fb9 0%,#d0014f 100%);
+    background: linear-gradient(to right,  #eb9fb9 0%,#d0014f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb9fb9', endColorstr='#d0014f',GradientType=1 );
+    min-width: 24px;
+}
+.slider-scroll div {
+    position: absolute;
+    top: -110px;
+    right: 0;
+    transform: translate(50%,0) rotate(180deg);
+    transition: all .5s cubic-bezier(0.855, 0.055, 0.520, 1.505);
+    transform-origin: center 72px;
+    padding:10px;
+    border-radius: 5px;
+    background: #cf024f;
+    color: #fff;
+    opacity: 0;
+}
+.slider-scroll .reveal {
+    opacity: 1;
+    transform: translate(50%,0) rotate(0);
+}
+.slider-scroll .stop {
+    animation-name: bascule;
+    animation-timing-function: cubic-bezier(0.000, 0.930, 0.265, 1.550);
+    animation-duration: .8s;
+}
+@keyframes bascule {
+    0 {
+        transform: translate(50%,0) rotate(0);
+    }
+    50% {
+        transform: translate(50%,0) rotate(40deg);
+    }
+    100% {
+        transform: translate(50%,0) rotate(0);
+    }
+}
+.slider-scroll span:before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 8px 0 8px;
+    border-color: #cf0250 transparent transparent transparent;
+}
+.slider-scroll span {
+    display: block;
+    font-size: 18px;
+    line-height: 24px;
+}
+.pourcentage,
+.fourchette {
+    position: absolute;
+    left: -35px;
+    transform: translate(-50%,0);
+}
+.pourcentage {
+    top: -30px;
+    font-size: 16px;
+}
+.fourchette {
+    padding-top: 40px;
+    top: 100%;
+    font-size: 12px;
+}
+.fourchette:before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 30px;
+    top: 0;
+    left: 50%;
+    background: #ddd;
+}
+.fourchette:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    top: 29px;
+    left: 56%;
+    transform: translateX(-50%);
+}
+.txt-pink {
+    color: #cf024f;
+}
+.pourcentage.txt-pink {
+    animation: scale .3s ease-out;
+}
+@keyframes scale {
+    0 {
+        transform: translate(-50%,0) scale(1);
+    }
+    50% {
+        transform: translate(-50%,0) scale(1.5);
+    }
+    100% {
+        transform: translate(-50%,0) scale(1);
+    }
+}
+/* 수치 영역 끝 */
+
+/* 스트레스 수치 뱃지 */
+.custom-bedge {
+    font-size: 25px!important;
+    background-color: #B8D9A3!important;
+}
+.result-comment{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+/* 스트레스 수치 지표 */
+.stress-nomal {
+    color: #B8D9A3;
+    font-size: 20px;
+    font-weight: bold;
+}
+.stress-warning {
+    color: #F8D800;
+    font-size: 20px;
+    font-weight: bold;
+}
+.stress-danger {
+    color: #FF0000;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* 스트레스 수치 지표 끝 */
+
+.stress-area{
+    margin-top: 55px;
+}
+
+
+/* 장소 추천 영역 시작 */
+.recomend-area{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.recomend-area-box{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+.recomend-button {
+    margin-left: auto;
+}
+/* 장소 추천 멘트 */
+.recomend-comment > span {
+    font-size: 25px;
+}
+
+/* 장소 카드 영역 */
+.recomend-place {
+    background-color: #F8F8F8;
+    overflow-x: auto;
+    margin-top: 20px;
+    width: 90%;
+    height: 310px;
+    display: flex;
+    overflow-x: hidden;
+    /* white-space: nowrap; */
+}
+
+
+/* 장소 추천 카드 시작 */
+/* 장소 카드 */
+.place-card {
+    position: relative;
+    flex: 0 0 auto;
+    width: 280px;
+    height: 280px;
+    /* background-color: #3b3b3b; */
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+/* 장소 이미지 */
+.food-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 장소 세부정보 애니메이션 */
+/* 장소 설명 */
+.food-desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    color: white;
+    overflow: hidden;
+    height: 120px; /* 초기 높이 설정 */
+    transition: height 0.3s;
+    .food-detail {
+        display: none;
+    }
+}
+.food-desc:hover {
+    height: 210px; /* 호버 시 높이 변경 */
+    .food-detail {
+        display: block;
+    }
+}
+.food-desc-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+/* 해시태그 */
+.hash-tag-bedge{
+    font-size: 15px!important;
+    background-color: #ffffff00!important;
+    border: 1px solid #ffffff!important;
+}
+
+/* 장소 주소 */
+.food-address {
+    font-size: 16px;
+    color: white;
+}
+.food-detail{
+    margin-top: 20px;
+}
+
+/* 하트 버튼 */
+.heart-img {
+    width: 30px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+.recomend-btn-el {
+    width: 50px;
+    cursor: pointer;
+}
+
+/* 하단 버튼 */
+.step-btn{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    margin-right: 5px;
+    border-radius: 60px;
+    color: white;
+    font-size: 20px;
+    border: none;
+    align-items: center;
+    height: 50px;
+}
+.step-btn > span {
+    padding: 5px 20px;
+}
+#prev-button{
+    background-color: #CACACA;
+}
+#next-button{
+    background-color: #8FC9FF;
+}
+#main-button{
+    background-color: #FFA34E;
+}

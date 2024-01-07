@@ -158,6 +158,7 @@
       <div class="next-button">
         <button @click="returnCard">이전단계</button>
         <button  @click="slideCard">분석하기</button>
+        <a href="/Total_stress">분석 임시 페이지 버튼</a>
 
         <button @click="loadingOpen()">로딩 임시버튼</button>
         <button @click="modal_click">모달 임시버튼</button>
