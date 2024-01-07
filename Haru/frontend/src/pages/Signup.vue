@@ -13,35 +13,57 @@
           <span>*</span>
         </div>
         <div class="input-group-box">
-          <input type="text" @keydown.enter.prevent="handleEnter" id="userId" />
+          <input
+            type="text"
+            @keydown.enter.prevent="handleEnter"
+            id="userId"
+            placeholder="아이디 입력"
+          />
           <button id="id-check" @click="idCheck">Button</button>
         </div>
-        <p style="display: none" id="idCheck-msg"></p>
+        <p style="display: none" id="idCheck-msg" class="msg"></p>
         <div class="label-box">
           <label for="pwd">비밀번호</label><span>*</span>
         </div>
         <div class="input-group-box-1">
-          <input type="password" name="pwd" id="pwd" />
+          <input
+            type="password"
+            name="pwd"
+            id="pwd"
+            placeholder="영문 대문자와 숫자, 특수문자를 포함한 8자리 이상"
+          />
         </div>
 
-        <p style="display: none" id="pwd-msg"></p>
+        <p style="display: none" id="pwd-msg" class="msg"></p>
 
         <div class="label-box">
           <label for="pwd_check">비밀번호 확인</label><span>*</span>
         </div>
         <div class="input-group-box-1">
-          <input type="password" name="pwd_chk" id="pwd_chk" />
+          <input
+            type="password"
+            name="pwd_chk"
+            id="pwd_chk"
+            placeholder="비밀번호 확인"
+          />
         </div>
-        <p style="display: none" id="pwd-chk-msg"></p>
+        <p style="display: none" id="pwd-chk-msg" class="msg"></p>
 
         <div class="label-box">
           <label for="nickname">닉네임</label>
           <span>*</span>
         </div>
-        <div class="input-group-box-1">
-          <input type="text" name="nickname" id="nickname" />
+        <div class="input-group-box">
+          <input
+            type="text"
+            name="nickname"
+            id="nickname"
+            placeholder="한글, 영문 대소문자, 숫자만 사용 가능"
+          />
+          <button id="nickname-check" @click="nicknameCheck">button</button>
         </div>
-        <p style="display: none" id="nicknameCheck-msg"></p>
+
+        <p style="display: none" id="nicknameCheck-msg" class="msg"></p>
         <div class="label-box">
           <label for="name">이름</label>
           <span>*</span>
@@ -49,7 +71,7 @@
         <div class="input-group-box-1">
           <input type="text" name="name" id="name" />
         </div>
-        <p style="display: none" id="nameCheck-msg"></p>
+        <p style="display: none" id="nameCheck-msg" class="msg"></p>
         <div class="label-box">
           <label for="email">이메일</label>
           <span>*</span>
@@ -57,9 +79,19 @@
 
         <div class="input-group-box">
           <input type="text" @keydown.enter.prevent="handleEnter" id="email" />
-          <button id="email-ckeck">Button</button>
+          <button id="email-ckeck" @click="emailCheck">Button</button>
         </div>
-        <p style="display: none" id="emailCheck-msg"></p>
+        <p style="display: none" id="emailCheck-msg" class="msg"></p>
+
+        <div class="label-box">
+          <label for="code">인증번호</label>
+          <span>*</span>
+        </div>
+
+        <div class="input-group-box-1">
+          <input type="text" @keydown.enter.prevent="handleEnter" id="code" />
+        </div>
+        <p style="display: none" id="Code-msg" class="msg"></p>
 
         <div class="label-box">
           <label for="profile">프로필 사진</label>
@@ -147,16 +179,16 @@ export default {
       this.modalOpen = false;
     },
 
-    idCheck() {
+    async idCheck() {
       var idRegex = /^[a-zA-Z0-9_]+$/;
-      const userid = document.getElementById("userId").value;
-      if (userid === "") {
+      const userId = document.getElementById("userId").value;
+      if (userId === "") {
         document.getElementById("idCheck-msg").innerText =
           "아이디는 필수 입력 사항입니다.";
         document.getElementById("idCheck-msg").style.display = "block";
         document.getElementById("userId").focus();
         return false;
-      } else if (!idRegex.test(userid)) {
+      } else if (!idRegex.test(userId)) {
         document.getElementById("idCheck-msg").innerText =
           "아이디는 영문 대소문자와 숫자, _만 사용 가능합니다.";
         document.getElementById("idCheck-msg").style.display = "block";
@@ -164,11 +196,7 @@ export default {
         return false;
       }
       axios
-        .get("http://localhost:8090/api/user/idCheck", {
-          params: {
-            userId: userid,
-          },
-        })
+        .get(`http://localhost/Haru/${userId}/userId`)
         .then((res) => {
           console.log(res);
           if (res.data) {
@@ -181,7 +209,6 @@ export default {
             document.getElementById("idCheck-msg").innerText =
               "사용 가능한 아이디입니다.";
             document.getElementById("idCheck-msg").style.display = "block";
-            return true;
           }
         })
         .catch((error) => {
@@ -189,6 +216,55 @@ export default {
           return false;
         });
     },
+
+    nicknameCheck() {
+      const nickname = document.getElementById("nickname").value;
+
+      if (nickname === "") {
+        document.getElementById("nicknameCheck-msg").innerHTML =
+          "닉네임은 필수 입력 사항입니다.";
+        document.getElementById("nicknameCheck-msg").style.display = "block";
+        return false;
+      }
+
+      axios
+        .post(`http://${process.env.BACK_END_URL}/Haru/nicknameCheck`, {
+          nickname: nickname,
+        })
+        .then((res) => {
+          if (res.data) {
+            alert("사용 가능한 닉네임입니다.");
+          } else {
+            alert("이미 사용중인 닉네임입니다.");
+          }
+        })
+        .catch((error) => {
+          console.error("API 호출 에러:", error);
+          return false;
+        });
+    },
+
+    async emailCheck() {
+      const email = document.getElementById("email").value;
+      console.log(process.env);
+      axios
+        .post(`${process.env.VUE_APP_BACK_END_URL}/emailCheck`, {
+          email: email,
+        })
+        .then((res) => {
+          if (res == 1) {
+            alert("인증 번호가 발송되었습니다.");
+          } else {
+            alert("이미 등록된 이메일입니다.");
+          }
+        })
+        .catch((error) => {
+          alert("인증 번호 발송에 오류가 발생했습니다.");
+          console.error("API 호출 에러", error);
+          return false;
+        });
+    },
+
     handleEnter(event) {
       event.preventDefault();
     },
