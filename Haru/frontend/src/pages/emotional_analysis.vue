@@ -77,9 +77,8 @@
               <div class="mood-scale-1">
                 나의 기분은 지금
                 <span
-                    class="badge rounded-pill mood-bedge"
+                    class="badge rounded-pill"
                     :class="moodColor"
-                    ref="moodColor"
                     id="mood"
                 >{{ moodText }}</span>이에요.
               </div>
@@ -92,7 +91,7 @@
                     step="1"
                     class="slider"
                     id="myRange"
-                    @input="updateMood"/>
+                    @change="updateMood" v-model="changeMood"/>
               </div>
             </div>
           </div>
@@ -259,6 +258,9 @@ export default {
       modal_Check:  false,
       fileName: '끌어서 사진 올려놓기!',
       currentIndex : 0,
+      changeMood : 3,
+      moodText : '보통',
+      moodColor : 'mood-normal'
     }
   },
   methods : {
@@ -286,7 +288,25 @@ export default {
       cards.forEach((card) => {
         card.style.transform = `translateX(-${100 * this.currentIndex}%)`;
       });
-    }
+    },
+    updateMood() {
+      if(this.changeMood === '1') {
+        this.moodText = '매우 나쁨';
+        this.moodColor = 'mood-very-bad';
+      } else if(this.changeMood === '2') {
+        this.moodText = '나쁨';
+        this.moodColor = 'mood-bad';
+      } else if(this.changeMood === '3') {
+        this.moodText = '보통';
+        this.moodColor = 'mood-normal';
+      } else if(this.changeMood === '4') {
+        this.moodText = '좋음';
+        this.moodColor = 'mood-good';
+      } else if(this.changeMood === '5') {
+        this.moodText = '매우 좋음';
+        this.moodColor = 'mood-very-good';
+      }
+    },
   }
 }
 </script>

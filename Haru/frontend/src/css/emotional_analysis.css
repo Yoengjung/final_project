@@ -182,8 +182,20 @@ a {
 */
 
 /* 기분 뱃지 */
-.mood-bedge{
+.mood-bad {
+    background-color: #D27373;
+}
+.mood-little-bad {
+    background-color: #ED8220;
+}
+.mood-normal {
     background-color: #73AAD2;
+}
+.mood-good {
+    background-color: #73C6D2;
+}
+.mood-very-good {
+    background-color: #73D282;
 }
 
 
