@@ -1,5 +1,10 @@
 <template>
   <div class="container1">
+    <FeedRecommend
+      v-if="modal_Check"
+      @close-modal="closeModal"
+      :RecommendList="RecommendList"
+    />
     <form>
       <div class="bg">
         <div>
@@ -60,7 +65,13 @@
 
         <!-- 추천 장소 선택 -->
         <div class="part-area">
-          <p class="part-title">추천 장소 선택</p>
+          <button
+            type="button"
+            class="part-title recommend-modal-open-btn else_bigbtn"
+            @click="openModal"
+          >
+            추천 장소 선택
+          </button>
         </div>
 
         <div class="btn-area">
@@ -71,6 +82,8 @@
   </div>
 </template>
 <script>
+import FeedRecommend from "../components/FeedRecommendModal.vue";
+
 export default {
   name: "InsertFeed",
   data() {
@@ -86,6 +99,86 @@ export default {
         "생고기",
       ],
       activeTags: [],
+      RecommendList: [
+        {
+          rdate: "9월 23일",
+          recList: [
+            {
+              storeName: "신논현역 딸부자네 불백",
+              stAddress: "서울시 강남구 꼬마빌딩 1층",
+              img: require("../img/Feed/bul.png"),
+              link: "#",
+              hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
+              heartOnOff: "on",
+            },
+            {
+              storeName: "신논현역 버거킹",
+              stAddress: "서울시 강남구 꼬마빌딩 2층",
+              img: require("../img/Feed/bul.png"),
+              link: "#",
+              hashtag: ["패스트푸드", "맛집", "와퍼"],
+              heartOnOff: "off",
+            },
+            {
+              storeName: "신논현역 버거킹",
+              stAddress: "서울시 강남구 꼬마빌딩 2층",
+              img: require("../img/Feed/bul.png"),
+              link: "#",
+              hashtag: ["패스트푸드", "맛집", "와퍼"],
+              heartOnOff: "off",
+            },
+          ],
+        },
+        {
+          rdate: "9월 22일",
+          recList: [
+            {
+              storeName: "신논현역 와플대학",
+              stAddress: "서울시 강남구 꼬마빌딩 3층",
+              img: require("../img/Feed/bul.png"),
+              link: "#",
+              hashtag: [
+                "카페",
+                "맛집",
+                "와플",
+                "애플시나몬",
+                "레몬에이드",
+                "레몬에이드",
+                "레몬에이드",
+              ],
+              heartOnOff: "on",
+            },
+            {
+              storeName: "신논현역 딸부자네 불백",
+              stAddress: "서울시 강남구 꼬마빌딩 1층",
+              img: require("../img/Feed/bul.png"),
+              link: "#",
+              hashtag: [
+                "푸드",
+                "맛집",
+                "고기",
+                "돼지고기",
+                "갈매기살",
+                "갈매기살",
+              ],
+              heartOnOff: "on",
+            },
+          ],
+        },
+        {
+          rdate: "9월 21일",
+          recList: [
+            {
+              storeName: "신논현역 버거킹",
+              stAddress: "서울시 강남구 꼬마빌딩 2층",
+              img: require("../img/Feed/bul.png"),
+              hashtag: ["패스트푸드", "맛집", "와퍼"],
+              heartOnOff: "off",
+            },
+          ],
+        },
+      ],
+      modal_Check: false,
     };
   },
   methods: {
@@ -106,7 +199,16 @@ export default {
         "hash-active": this.activeTags.includes(index),
       };
     },
+
+    openModal() {
+      this.modal_Check = !this.modal_Check;
+    },
+
+    closeModal() {
+      this.modal_Check = false;
+    },
   },
+  components: { FeedRecommend },
 };
 </script>
 <style scoped>

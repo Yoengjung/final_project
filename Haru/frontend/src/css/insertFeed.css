@@ -93,6 +93,12 @@
   background-color: #ffeee7;
 }
 
+.recommend-modal-open-btn {
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
 .btn-area {
   width: fit-content;
   height: fit-content;
