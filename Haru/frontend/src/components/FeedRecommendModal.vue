@@ -30,7 +30,7 @@
 
         <!-- 버튼 영역 -->
         <div class="feed-rec-btn-area">
-          <button>취소하기</button>
+          <button class="btn-cancle">취소하기</button>
           <button>선택하기</button>
         </div>
       </div>

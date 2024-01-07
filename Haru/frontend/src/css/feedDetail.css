@@ -19,7 +19,8 @@
 .feed-modal-container {
   position: relative;
   width: 1130px;
-  height: 94vh;
+  height: 850px;
+  /* height: 94vh; */
   border-radius: 10px;
   padding: 40px;
   box-sizing: border-box;

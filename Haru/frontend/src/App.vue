@@ -67,7 +67,7 @@ html {
 }
 
 .container1 {
-  padding: 80px 228px 228px;
+  padding: 80px 228px;
   margin: 0 auto;
 }
 
