@@ -44,16 +44,26 @@
 
 /* 버튼 클릭 됐을 때 */
 .myplace-tab-btn-area > .tab-btn-active {
+<<<<<<< HEAD
   background: #f9ccbe;
+=======
+  background: #d7d7d7;
+>>>>>>> origin/Li-Yj
   font-weight: 700;
 }
 
 /* 탭 컨텐츠 영역 */
 .tab-content-area {
+<<<<<<< HEAD
   width: 848px;
   max-height: 650px;
   min-height: fit-content;
   padding: 20px 50px 50px;
+=======
+  width: fit-content;
+  height: 720px;
+  padding: 20px 50px;
+>>>>>>> origin/Li-Yj
   background: #f8f8f8;
   border-radius: 0 0 10px 10px;
   overflow: auto;
@@ -63,6 +73,7 @@
 .rlist-container {
   margin-top: 20px;
 }
+<<<<<<< HEAD
 
 /* ----------------- 일기 ----------------- */
 /* 날짜 area */
@@ -131,3 +142,5 @@
   border: 0;
   background-size: 27px;
 }
+=======
+>>>>>>> origin/Li-Yj

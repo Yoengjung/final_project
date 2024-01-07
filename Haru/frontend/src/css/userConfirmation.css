@@ -1,0 +1,57 @@
+.userConfirm-container {
+  width: 100%;
+  height: 80vh;
+  background-image: url("../assets/signup_bg.png") !important;
+}
+
+.userConfirm-box {
+  width: 300px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.userConfirm-box h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.userConfirm-box form {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgba(190, 183, 183, 0.3);
+}
+
+.userConfirm-box label {
+  margin-left: 10px;
+}
+
+.userConfirm-box input {
+  width: 95%;
+  background-color: white;
+  border: none;
+  border-radius: 49px;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.userConfirm-box button {
+  width: 200px;
+  border-radius: 10px;
+  background-color: #f0bba4;
+  border: none;
+  font-size: 15px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 30px;
+  cursor: pointer;
+  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+}

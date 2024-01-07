@@ -8,6 +8,15 @@
   padding-top: 250px;
 }
 
+<<<<<<< HEAD
+=======
+.mypage-container h2 {
+  max-width: 1463px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+>>>>>>> origin/Li-Yj
 .mypage-container .mypage-box {
   max-width: 1463px;
   height: 90%;
@@ -146,8 +155,13 @@
 .mypage-right-box .alarm-container {
   width: 100%;
   height: 90%;
+<<<<<<< HEAD
   max-height: 600px;
   overflow-y: auto;
+=======
+  max-height: 400px;
+  overflow-y: scroll;
+>>>>>>> origin/Li-Yj
 }
 
 .mypage-right-box .alarm-container ul {

@@ -12,7 +12,12 @@ import UpdateFeed from "../pages/UpdateFeed.vue";
 import MyFeed from "../pages/MyFeed.vue";
 import MyPlaceDiary from "../pages/MyPlaceDiary.vue"; // 내 장소 - 추천리스트/일기 화면
 import MyPage from "../pages/MyPage.vue";
+<<<<<<< HEAD
 import UpdateMyPage from "../pages/UpdateMyPage.vue";
+=======
+import UpdateMyInfo from "../pages/UpdateMyInfo.vue";
+import UserConfirmation from "../pages/UserConfirmation.vue";
+>>>>>>> origin/Li-Yj
 
 const routes = [
   {
@@ -81,9 +86,20 @@ const routes = [
     component: MyPage,
   },
   {
+<<<<<<< HEAD
     path: "/UpdateMyPage",
     name: "UpdateMyPage",
     component: UpdateMyPage,
+=======
+    path: "/UpdateMyInfo",
+    name: "UpdateMyInfo",
+    component: UpdateMyInfo,
+  },
+  {
+    path: "/UserConfirmation",
+    name: "UserConfirmation",
+    component: UserConfirmation,
+>>>>>>> origin/Li-Yj
   },
 ];
 

@@ -33,6 +33,10 @@
   color: #efab90;
 }
 
+.login-form .label-box span {
+  color: red;
+}
+
 .login-form .input-group-box {
   display: flex;
   flex-direction: row;
@@ -41,7 +45,7 @@
   border-radius: 49px;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .login-form .input-group-box-1 {
@@ -81,6 +85,11 @@
   border-radius: 49px;
   padding-left: 20px;
   margin-left: 10px;
+}
+
+.msg {
+  color: red;
+  font-size: 15px;
 }
 
 .login-form button {
