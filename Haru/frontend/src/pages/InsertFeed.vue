@@ -1,6 +1,10 @@
 <template>
   <div class="container1">
-    <FeedRecommend v-if="modal_Check" @close-modal="closeModal" />
+    <FeedRecommend
+      v-if="modal_Check"
+      @close-modal="closeModal"
+      :RecommendList="RecommendList"
+    />
     <form>
       <div class="bg">
         <div>
@@ -68,9 +72,6 @@
           >
             추천 장소 선택
           </button>
-          <div>
-            <RecList :RecommendList="RecommendList" />
-          </div>
         </div>
 
         <div class="btn-area">
