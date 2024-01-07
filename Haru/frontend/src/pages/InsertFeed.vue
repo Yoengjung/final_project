@@ -201,11 +201,7 @@ export default {
     },
 
     openModal() {
-<<<<<<< HEAD
       this.modal_Check = true;
-=======
-      this.modal_Check = !this.modal_Check;
->>>>>>> origin/Li-Yj
     },
 
     closeModal() {

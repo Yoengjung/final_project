@@ -189,11 +189,7 @@ export default {
       this.modalOpen = false;
     },
 
-<<<<<<< HEAD
-    idCheck() {
-=======
     async idCheck() {
->>>>>>> origin/Li-Yj
       var idRegex = /^[a-zA-Z0-9_]+$/;
       const userId = document.getElementById("userId").value;
       if (userId === "") {

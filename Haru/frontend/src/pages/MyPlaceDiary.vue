@@ -98,22 +98,14 @@
         <div class="myplace-tab-btn-area">
           <div
             class="tab-btn-left cursor-p"
-<<<<<<< HEAD
             :class="{ 'tab-btn-active': isTabRecList === true }"
-=======
-            :class="{ 'tab-btn-active': activeTab === 'recommend' }"
->>>>>>> origin/Li-Yj
             @click="changeTab('recommend')"
           >
             추천 리스트
           </div>
           <div
             class="tab-btn-right cursor-p"
-<<<<<<< HEAD
             :class="{ 'tab-btn-active': isTabRecList === false }"
-=======
-            :class="{ 'tab-btn-active': activeTab === 'diary' }"
->>>>>>> origin/Li-Yj
             @click="changeTab('diary')"
           >
             일기
@@ -126,7 +118,6 @@
             :RecommendList="RecommendList"
             :isBtnHeartNone="isBtnHeartNone"
             class="rlist-container"
-<<<<<<< HEAD
             v-if="isTabRecList === true"
           />
           <MyDiaryList
@@ -135,9 +126,6 @@
             v-if="isTabRecList === false"
           />
           <!-- {{ diaryList }} -->
-=======
-          />
->>>>>>> origin/Li-Yj
         </div>
       </div>
     </div>
@@ -146,10 +134,7 @@
 
 <script>
 import RecommendList from "../components/RecommendList.vue";
-<<<<<<< HEAD
 import MyDiaryList from "../components/MyDiaryList.vue";
-=======
->>>>>>> origin/Li-Yj
 
 export default {
   data() {
@@ -157,13 +142,9 @@ export default {
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
       rDate: "9월 23일",
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
-<<<<<<< HEAD
       isTabRecList: true, // 추천 리스트 탭 활성화
       RecommendList: [
         // 추천 받았던 리스트 (날짜별)
-=======
-      RecommendList: [
->>>>>>> origin/Li-Yj
         {
           rdate: "9월 23일",
           recList: [
@@ -242,7 +223,6 @@ export default {
           ],
         },
       ],
-<<<<<<< HEAD
       // 일기 리스트
       diaryList: {
         rdate: "2023년 03월 23일(수)",
@@ -266,29 +246,21 @@ export default {
           },
         ],
       },
-=======
->>>>>>> origin/Li-Yj
     };
   },
   methods: {
     changeTab(tab) {
       this.activeTab = tab;
-<<<<<<< HEAD
       if (tab === "recommend") {
         this.isTabRecList = true;
       } else {
         this.isTabRecList = false;
       }
-=======
->>>>>>> origin/Li-Yj
     },
   },
   components: {
     RecommendList,
-<<<<<<< HEAD
     MyDiaryList,
-=======
->>>>>>> origin/Li-Yj
   },
 };
 </script>

@@ -30,11 +30,7 @@
         <button class="dropbtn">마이페이지</button>
         <div class="dropdown-content">
           <a href="/MyPage">마이페이지</a>
-<<<<<<< HEAD
-          <a href="/">회원정보 수정</a>
-=======
           <a href="/userConfirmation">회원정보 수정</a>
->>>>>>> origin/Li-Yj
         </div>
       </div>
       <div class="login-ul-box">
