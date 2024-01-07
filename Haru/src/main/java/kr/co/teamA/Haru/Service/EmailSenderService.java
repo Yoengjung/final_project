@@ -2,6 +2,7 @@ package kr.co.teamA.Haru.Service;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import kr.co.teamA.Haru.CertificationNumberDAO;
 import kr.co.teamA.Haru.Repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -18,7 +19,8 @@ public class EmailSenderService {
     private JavaMailSender mailSender;
     @Autowired
     private MemberRepository memberRepository;
-
+    @Autowired
+    private CertificationNumberDAO certificationNumberDAO;
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
@@ -56,6 +58,7 @@ public class EmailSenderService {
     }
 
     public void sendEmail(String toEmail) {
+        createAuthCode();
         MimeMessage message = mailSender.createMimeMessage();
 
         try {
@@ -75,10 +78,15 @@ public class EmailSenderService {
 
             helper.setText(body, true);
             mailSender.send(message);
+            certificationNumberDAO.saveCertificationNumber(toEmail, authCode);
             
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+     }
 
+     public boolean isVerify(String email, String code) {
+        return !(certificationNumberDAO.hasKey(email) && certificationNumberDAO
+                .getCertificationNumber(email).equals(code));
      }
 }

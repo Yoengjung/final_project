@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class MailSenderController {
+public class MailCertificationController {
 
     @Autowired
     private EmailSenderService emailSenderService;
@@ -24,5 +24,10 @@ public class MailSenderController {
         else {
             return 1;
         }
+    }
+
+    @PostMapping("/emailCheck/certification")
+    public boolean verifyCertificationNumber(@RequestBody EmailCheckDTO email, String authCode) {
+        return emailSenderService.isVerify(email.getEmail(), authCode);
     }
 }
