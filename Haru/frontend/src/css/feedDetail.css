@@ -18,7 +18,6 @@
 /* modal or popup */
 .feed-modal-container {
   position: relative;
-  width: 1130px;
   height: 850px;
   /* height: 94vh; */
   border-radius: 10px;
@@ -31,16 +30,16 @@
   background: #fff2f2;
   overflow: scroll;
   overflow-x: hidden;
+  width: 1130px;
 }
 
 /* X 버튼 영역 */
-.feed-modal-btn {
+.feed-detail-modal-close {
   width: 1050px;
-  /* margin-bottom: 10px; */
 }
 
 /* X 버튼 */
-#feed-modal-close {
+#feed-detail-modal-close {
   width: 39px;
   height: 36px;
   float: right;

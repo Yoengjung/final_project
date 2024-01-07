@@ -63,7 +63,7 @@
         <div class="part-area">
           <button
             type="button"
-            class="part-title recommend-modal-open-btn"
+            class="part-title recommend-modal-open-btn else_bigbtn"
             @click="openModal"
           >
             추천 장소 선택

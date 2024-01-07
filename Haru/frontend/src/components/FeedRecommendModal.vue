@@ -4,12 +4,19 @@
     <!-- 모달창 영역 -->
     <div class="feed-modal-container feed-rec-modal" @click.stop>
       <!-- x 버튼 -->
-      <div class="feed-modal-btn">
-        <button id="feed-modal-close" @click="$emit('close-modal')"></button>
+      <div class="feed-rec-modal-btn">
+        <button
+          id="feed-detail-modal-close"
+          @click="$emit('close-modal')"
+        ></button>
       </div>
 
       <!-------------------------- 컨텐츠 시작 -------------------------->
       <div class="feed-rec-area">
+        <!-- 제목 -->
+        <div data-v-f00aebca="">
+          <h1 data-v-f00aebca="" class="page-upload-title">추천 장소 선택</h1>
+        </div>
         <!-- 선택한 장소 전체 영역 -->
         <div class="feed-rec-selected-area">
           <p class="feed-rec-area-title">선택한 장소</p>
@@ -30,8 +37,13 @@
 
         <!-- 버튼 영역 -->
         <div class="feed-rec-btn-area">
-          <button class="btn-cancle">취소하기</button>
-          <button>선택하기</button>
+          <button
+            @click="$emit('close-modal')"
+            class="big_ctlbtn cancle_bigbtn"
+          >
+            취소하기
+          </button>
+          <button class="big_ctlbtn insert_bigbtn">선택하기</button>
         </div>
       </div>
     </div>

@@ -2,8 +2,12 @@
   <!-- --------------------- modal Start ------------------------->
   <div class="feed-modal-wrap" id="modal-wrap" @click="$emit('close-modal')">
     <div class="feed-modal-container feed-detail" @click.stop>
-      <div class="feed-modal-btn">
-        <button id="feed-modal-close" @click="$emit('close-modal')"></button>
+      <div class="feed-detail-modal-btn">
+        <!-- X 버튼 -->
+        <button
+          id="feed-detail-modal-close"
+          @click="$emit('close-modal')"
+        ></button>
       </div>
       <div class="feed-card-content-area">
         <div class="feed-card-header">
