@@ -1,36 +1,24 @@
 <template>
-  <div class="container">
-    <footer
+  <div class="footer-container">
+    <!-- <footer
       class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
-    >
-      <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Company, Inc</p>
+    > -->
+    <footer class="footer-area">
+      <!-- 로고 이미지 -->
+      <div class="img-area">
+        <img src="@/img/logo_white.png" alt="">
+      </div>
 
-      <a
-        href="/"
-        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-      >
-        <svg class="bi me-2" width="40" height="32">
-          <use xlink:href="#bootstrap" />
-        </svg>
-      </a>
+      <div class="info-area">
+        <p>사업자 번호: 120910-30-230923</p>
+        <p>주소: 서울시 강남구 테헤란로</p>
+        <p>전화번호: 02-1234-1234</p>
+      </div>
 
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">Features</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">About</a>
-        </li>
-      </ul>
+      <div class="coperation-info-area">
+        <p>BEOMSEOK coperation</p>
+        <p>Copyright © 하루의 여울  2024</p>
+      </div>
     </footer>
   </div>
 </template>
@@ -40,88 +28,48 @@ export default {
 };
 </script>
 <style scoped>
-.container {
-  position: absolute;
-  width: 100vw;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
+  /* footer 전체 컨테이너 */
+  .footer-container {
+    background-color: #333;
+    margin-bottom: 0;
+    padding: 40px 228px 40px;
   }
-}
 
-.b-example-divider {
-  width: 100%;
-  height: 3rem;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: solid rgba(0, 0, 0, 0.15);
-  border-width: 1px 0;
-  box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
-    inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
-}
+  .footer-area {
+    display: flex;
+    width: 700px;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-.b-example-vr {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-}
+  .info-area {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
-.bi {
-  vertical-align: -0.125em;
-  fill: currentColor;
-}
+  .coperation-info-area {
+    top: -3px;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
+  .coperation-info-area > p:nth-child(1) {
+    font-size: 24px;
+  }
 
-.nav-scroller .nav {
-  display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
+  /* 로고 이미지 */
+  .img-area > img {
+    width: 130px;
+  }
 
-.btn-bd-primary {
-  --bd-violet-bg: #712cf9;
-  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-  --bs-btn-font-weight: 600;
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet-bg);
-  --bs-btn-border-color: var(--bd-violet-bg);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #6528e0;
-  --bs-btn-hover-border-color: #6528e0;
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-  --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #5a23c8;
-  --bs-btn-active-border-color: #5a23c8;
-}
-
-.bd-mode-toggle {
-  z-index: 1500;
-}
-
-.bd-mode-toggle .dropdown-menu .active .bi {
-  display: block !important;
-}
+  /* 전체 내용 p태그 */
+  p {
+    color: #BDBDBD;
+    font-size: 13px;
+    font-weight: 300;
+  }
 </style>
