@@ -201,7 +201,7 @@ export default {
     },
 
     openModal() {
-      this.modal_Check = !this.modal_Check;
+      this.modal_Check = true;
     },
 
     closeModal() {

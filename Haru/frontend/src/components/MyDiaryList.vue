@@ -1,6 +1,12 @@
 <template>
   <!-- 내 장소 - 일기 리스트 -->
   <div class="">
+    <DiaryUpdate
+      @close-modal="closeModal"
+      v-if="modal_Check"
+      :selectedDiary="selectedDiary"
+      :rDate="diaryList.rdate"
+    />
     <!-- 날짜 -->
     <div class="myplace-diary-date">
       <p>{{ diaryList.rdate }}</p>
@@ -21,16 +27,17 @@
       <div class="myplace-diary-title-area">
         <a href=""
           ><p>
-            {{ diary.diaryName.slice(0, 40) }}
-            <!-- 38 글자 넘으면 ...처리 -->
-            <span v-if="diary.diaryName.length > 38">...</span>
+            {{ diary.diaryName }}
           </p></a
         >
       </div>
 
       <!-- 버튼 (수정, 삭제) -->
       <div class="myplace-diary-btn-area">
-        <button class="diary-update-btn"></button>
+        <button
+          @click="openDiaryUpdate(diary), openModal()"
+          class="diary-update-btn"
+        ></button>
         <button class="diary-delete-btn"></button>
       </div>
     </div>
@@ -38,12 +45,31 @@
 </template>
 
 <script>
+import DiaryUpdate from "@/components/MyDiaryUpdate.vue";
+
 export default {
   data() {
-    return {};
+    return {
+      selectedDiary: null,
+      modal_Check: false,
+    };
   },
   props: {
     diaryList: Object,
+  },
+  components: { DiaryUpdate },
+  methods: {
+    openModal() {
+      this.modal_Check = true;
+    },
+
+    closeModal() {
+      this.modal_Check = false;
+    },
+
+    openDiaryUpdate(diary) {
+      this.selectedDiary = diary;
+    },
   },
 };
 </script>
