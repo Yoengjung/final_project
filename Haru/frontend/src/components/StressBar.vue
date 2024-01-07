@@ -29,7 +29,6 @@
         <i class="icons awesome fa-regular fa-star-half-stroke"></i>
         <div class="step fourth">
           <p>4</p>
-          s
           <i class="awesome fa-solid fa-check"></i>
         </div>
         <p class="label">완료!</p>
@@ -43,7 +42,7 @@ export default {
   name: "stressbar",
 };
 </script>
-<style scope>
+<style scoped>
 * {
   margin: 0;
   padding: 0;

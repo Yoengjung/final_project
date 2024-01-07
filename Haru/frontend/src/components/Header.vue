@@ -7,7 +7,7 @@
       <div class="dropdown">
         <button class="dropbtn dropbtn-1">나의 스트레스</button>
         <div class="dropdown-content dropdown-1">
-          <a href="/faceregistration">나의 스트레스 분석하기</a>
+          <a href="/Emotional_analysis">나의 스트레스 분석하기</a>
           <a href="#">나의 스트레스 종합 보고서</a>
         </div>
       </div>
