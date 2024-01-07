@@ -69,6 +69,7 @@ html {
 .container1 {
   padding: 80px 228px;
   margin: 0 auto;
+  min-height: calc(100vh - 267px); /* footer 계산용 */
 }
 
 a {

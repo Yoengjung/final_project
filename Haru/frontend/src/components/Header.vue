@@ -1,5 +1,5 @@
 <template>
-  <div class="container1">
+  <div class="container-header">
     <h1 class="logo">
       <a href="/"><img src="../assets/logo_검정.png" /></a>
     </h1>
@@ -48,7 +48,7 @@ export default {
 };
 </script>
 <style scoped>
-.container1 {
+.container-header {
   margin: 0px;
   padding: 0px;
   position: relative;
