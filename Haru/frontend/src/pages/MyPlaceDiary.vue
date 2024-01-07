@@ -142,7 +142,7 @@ export default {
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
       rDate: "9월 23일",
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
-      isTabRecList: false, // 추천 리스트 탭 활성화
+      isTabRecList: true, // 추천 리스트 탭 활성화
       RecommendList: [
         // 추천 받았던 리스트 (날짜별)
         {
