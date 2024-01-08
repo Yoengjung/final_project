@@ -51,6 +51,23 @@
   width: 150px;
 }
 
+.hobby-check-img {
+  position: absolute;
+  width: 50px !important;
+  height: 50px;
+  right: 0px;
+  float: right;
+  z-index: 5;
+}
+
+.selectHobby-container .hobby-body img:active {
+  transform: scale(0.9);
+}
+
+.selectHobby-container .hobby-body .hobby-check-img:active {
+  transform: none;
+}
+
 .hobby-setting-container {
   width: 100%;
 }
