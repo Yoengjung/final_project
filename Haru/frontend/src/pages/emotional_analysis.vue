@@ -2,6 +2,18 @@
   <!-- 진행바 영역 시작 -->
   <div class="pro-bar" style="background-color: rebeccapurple;">
     진행바 영역
+    <div class="pro-bar-box">
+      <div class="row">
+        <div class="col">
+          <ul id="progress-bar" class="progressbar">
+            <li class="active">Details</li>
+            <li>Address</li>
+            <li>add friends</li>
+            <li>Confirm</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- 진행바 영역 끝 -->
 
@@ -89,9 +101,10 @@
                     max="5"
                     value="3"
                     step="1"
-                    class="slider"
                     id="myRange"
-                    @change="updateMood" v-model="changeMood"/>
+                    @change="updateMood" v-model="changeMood"
+                    :class="'facebgicon' + changeMood"
+                />
               </div>
             </div>
           </div>
@@ -293,10 +306,10 @@ export default {
     updateMood() {
       if(this.changeMood === '1') {
         this.moodText = '매우 나쁨';
-        this.moodColor = 'mood-very-bad';
+        this.moodColor = 'mood-bad';
       } else if(this.changeMood === '2') {
         this.moodText = '나쁨';
-        this.moodColor = 'mood-bad';
+        this.moodColor = 'mood-little-bad';
       } else if(this.changeMood === '3') {
         this.moodText = '보통';
         this.moodColor = 'mood-normal';
