@@ -1,15 +1,11 @@
 <template>
   <!-- 진행바 영역 시작 -->
-  <div class="pro-bar" style="background-color: rebeccapurple;">
-    진행바 영역
+  <div class="pro-bar">
     <div class="pro-bar-box">
       <div class="row">
         <div class="col">
           <ul id="progress-bar" class="progressbar">
-            <li class="active">Details</li>
-            <li>Address</li>
-            <li>add friends</li>
-            <li>Confirm</li>
+            <li v-for="(item, index) in steps" :key="index" :class="{'active' : index < activeStep}"><span :class="{'span-bold' : index+1 === activeStep, 'span-thin': index !== activeStep}">{{ item }}</span></li>
           </ul>
         </div>
       </div>
@@ -274,10 +270,26 @@ export default {
       currentIndex : 0,
       changeMood : 3,
       moodText : '보통',
-      moodColor : 'mood-normal'
+      moodColor : 'mood-normal',
+
+      //진행바
+      steps: ['얼굴 등록하기', '척도 등록하기', '일기 쓰기', '완료!'],
+      activeStep: 1,
     }
   },
   methods : {
+    // 진행바 다음 단계로 이동
+    next(){
+      if(this.activeStep < this.steps.length - 1) {
+        this.activeStep++;
+      }
+    },
+    // 진행바 이전 단계로 이동
+    back(){
+      if(this.activeStep > 0) {
+        this.activeStep--;
+      }
+    },
     modal_click() {
       this.modal_Check = !this.modal_Check;
     },
@@ -289,12 +301,14 @@ export default {
       if(this.currentIndex < cards.length - 1) {
         this.currentIndex++; // 다음 카드로 이동
         this.updateCardsPosition();
+        this.next();
       }
     },
     returnCard() {
       if(this.currentIndex > 0) {
         this.currentIndex--; // 이전 카드로 이동
         this.updateCardsPosition();
+        this.back();
       }
     },
     updateCardsPosition(){
