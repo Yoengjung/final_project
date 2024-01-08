@@ -6,7 +6,7 @@
     <footer class="footer-area">
       <!-- 로고 이미지 -->
       <div class="img-area">
-        <img src="@/img/logo_white.png" alt="">
+        <img src="@/assets/logo_white.png" alt="" />
       </div>
 
       <div class="info-area">
@@ -16,8 +16,8 @@
       </div>
 
       <div class="coperation-info-area">
-        <p>BEOMSEOK coperation</p>
-        <p>Copyright © 하루의 여울  2024</p>
+        <p>Haru Coperation</p>
+        <p>Copyright © 하루의 여울 2024</p>
       </div>
     </footer>
   </div>
@@ -28,48 +28,48 @@ export default {
 };
 </script>
 <style scoped>
-  /* footer 전체 컨테이너 */
-  .footer-container {
-    background-color: #333;
-    margin-bottom: 0;
-    padding: 40px 228px 40px;
-  }
+/* footer 전체 컨테이너 */
+.footer-container {
+  background-color: #333;
+  margin-bottom: 0;
+  padding: 40px 228px 40px;
+}
 
-  .footer-area {
-    display: flex;
-    width: 700px;
-    align-items: center;
-    justify-content: space-between;
-  }
+.footer-area {
+  display: flex;
+  width: 700px;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .info-area {
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
+.info-area {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
 
-  .coperation-info-area {
-    top: -3px;
-    height: 65px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
+.coperation-info-area {
+  top: -3px;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
 
-  .coperation-info-area > p:nth-child(1) {
-    font-size: 24px;
-  }
+.coperation-info-area p:first-child {
+  font-size: 24px;
+}
 
-  /* 로고 이미지 */
-  .img-area > img {
-    width: 130px;
-  }
+/* 로고 이미지 */
+.img-area > img {
+  width: 130px;
+}
 
-  /* 전체 내용 p태그 */
-  p {
-    color: #BDBDBD;
-    font-size: 13px;
-    font-weight: 300;
-  }
+/* 전체 내용 p태그 */
+p {
+  color: #bdbdbd;
+  font-size: 13px;
+  font-weight: 300;
+}
 </style>

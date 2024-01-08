@@ -1,7 +1,10 @@
 <template>
-  <Header class="custom-header" />
-  <RouterView />
-  <Footer />
+  <div class="app">
+    <!-- :style="bgImageStyle" -->
+    <Header class="custom-header" />
+    <RouterView @bgImage="updateBgImage" />
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -10,14 +13,36 @@ import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      bgImageStyle: {
+        backgroundImage: `url(${process.env.BASE_URL}assets/img/)`,
+      },
+    };
+  },
   components: {
     Header,
     Footer,
+  },
+  methods: {
+    updateBgImage(newImage) {
+      console.log(`${process.env.BASE_URL}assets/${newImage}`);
+      // this.bgImageStyle.backgroundImage = `url('${newImage}')`;
+      // return `${process.env.BASE_URL}assets/${newImage}`;
+      this.bgImageStyle.backgroundImage = `url(${process.env.BASE_URL}assets/img/${newImage})`;
+    },
   },
 };
 </script>
 
 <style>
+.app {
+  /* 다른 스타일들 */
+  height: 100vh;
+  background-image: url("./assets/signup_bg.png");
+  background-size: cover;
+  /* 다른 스타일들 */
+}
 html {
   margin: 0px;
   padding: 0px;
@@ -69,11 +94,15 @@ html {
 .container1 {
   padding: 80px 228px;
   margin: 0 auto;
-  min-height: calc(100vh - 267px); /* footer 계산용 */
+  min-height: calc(100vh - 249px); /* footer 계산용 */
 }
 
 a {
   text-decoration: none;
+}
+
+ul {
+  margin: 0;
 }
 
 .cursor-p {

@@ -248,6 +248,10 @@ export default {
       },
     };
   },
+  created() {
+    // 페이지가 로드될 때 초기 이미지 설정
+    this.bgImage();
+  },
   methods: {
     changeTab(tab) {
       this.activeTab = tab;
@@ -256,6 +260,11 @@ export default {
       } else {
         this.isTabRecList = false;
       }
+    },
+
+    bgImage() {
+      var newImage = "signup_bg.b001d76f.png";
+      this.$emit("bgImage", newImage);
     },
   },
   components: {

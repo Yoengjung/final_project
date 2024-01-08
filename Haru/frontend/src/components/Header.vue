@@ -1,40 +1,43 @@
 <template>
   <div class="container-header">
-    <h1 class="logo">
-      <a href="/"><img src="../assets/logo_검정.png" /></a>
-    </h1>
+    <!-- 로고, 메인 GNB -->
     <header>
-      <div class="dropdown">
-        <button class="dropbtn dropbtn-1">나의 스트레스</button>
-        <div class="dropdown-content dropdown-1">
-          <a href="/faceregistration">나의 스트레스 분석하기</a>
-          <a href="#">나의 스트레스 종합 보고서</a>
+      <div class="left-side-area">
+        <div class="logo">
+          <a href="/"><img src="../assets/logo_검정.png" /></a>
         </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">내 장소</button>
-        <div class="dropdown-content">
-          <a href="MyPlaceDiary">추천 리스트</a>
-          <a href="#">찜한 장소</a>
+        <div class="dropdown">
+          <button class="dropbtn dropbtn-1">나의 스트레스</button>
+          <div class="dropdown-content dropdown-1">
+            <a href="/faceregistration">나의 스트레스 분석하기</a>
+            <a href="#">나의 스트레스 종합 보고서</a>
+          </div>
         </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">피드</button>
-        <div class="dropdown-content">
-          <a href="/feed">피드</a>
-          <a href="/MyFeed">내 피드</a>
-          <a href="insertFeed">피드 작성하기</a>
+        <div class="dropdown">
+          <button class="dropbtn">내 장소</button>
+          <div class="dropdown-content">
+            <a href="MyPlaceDiary">추천 리스트</a>
+            <a href="#">찜한 장소</a>
+          </div>
         </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">마이페이지</button>
-        <div class="dropdown-content">
-          <a href="/MyPage">마이페이지</a>
-          <a href="/userConfirmation">회원정보 수정</a>
+        <div class="dropdown">
+          <button class="dropbtn">피드</button>
+          <div class="dropdown-content">
+            <a href="/feed">피드</a>
+            <a href="/MyFeed">내 피드</a>
+            <a href="insertFeed">피드 작성하기</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">마이페이지</button>
+          <div class="dropdown-content">
+            <a href="/MyPage">마이페이지</a>
+            <a href="/userConfirmation">회원정보 수정</a>
+          </div>
         </div>
       </div>
       <div class="login-ul-box">
-        <ul>
+        <ul class="login-ul">
           <li><a href="/login">로그인</a></li>
           <li><a href="/signup">회원가입</a></li>
         </ul>
@@ -50,28 +53,23 @@ export default {
 <style scoped>
 .container-header {
   margin: 0px;
-  padding: 0px;
-  position: relative;
-  /* width: 60%; */
-  width: fit-content;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: row;
+  padding: 20px 228px;
   z-index: 10;
 }
 
 header {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-side-area {
+  display: flex;
 }
 
 .logo {
-  position: relative;
-  top: 30px;
-  left: 80px;
-  width: 100px;
-  height: 100px;
   z-index: 3;
+  margin-right: 60px;
 }
 
 img {
@@ -103,14 +101,8 @@ img {
 }
 
 .dropdown {
-  position: relative;
   display: inline-block;
-  margin: 30px -15px;
   z-index: 1;
-}
-
-.dropdown:first-child {
-  margin-left: 150px;
 }
 
 .dropdown-content {
@@ -153,34 +145,23 @@ img {
 
 /* 로그인 회원가입 */
 .login-ul-box {
-  position: relative;
+  display: inline-flex;
+}
+
+.login-ul-box > .login-ul {
   display: flex;
-  float: right;
-  width: 350px;
-  right: 0;
-  top: 30px;
 }
 
-.login-ul-box ul {
-  display: flex;
-  position: absolute;
-  list-style: none;
-  align-items: center;
-  padding: 0;
-  margin: 15px;
+.login-ul-box > .login-ul > li {
 }
 
-.login-ul-box ul li {
-  margin: 0 40px;
-}
-
-.login-ul-box ul li a {
-  text-decoration: none;
+.login-ul-box > .login-ul > li > a {
   font-size: 20px;
-  color: white;
+  color: black;
+  white-space: nowrap;
 }
 
 .login-ul-box ul li a:hover {
-  color: black;
+  color: white;
 }
 </style>
