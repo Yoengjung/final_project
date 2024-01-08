@@ -1,6 +1,7 @@
 <template>
-  <div class="app">
-    <!-- :style="bgImageStyle" -->
+  <div
+    :class="{ 'bg-type1': bgType === 'type1', 'bg-type2': bgType === 'type2' }"
+  >
     <Header class="custom-header" />
     <RouterView @bgImage="updateBgImage" />
     <Footer />
@@ -15,9 +16,7 @@ export default {
   name: "App",
   data() {
     return {
-      bgImageStyle: {
-        backgroundImage: `url(${process.env.BASE_URL}assets/img/)`,
-      },
+      bgType: "",
     };
   },
   components: {
@@ -25,23 +24,25 @@ export default {
     Footer,
   },
   methods: {
-    updateBgImage(newImage) {
-      console.log(`${process.env.BASE_URL}assets/${newImage}`);
-      // this.bgImageStyle.backgroundImage = `url('${newImage}')`;
-      // return `${process.env.BASE_URL}assets/${newImage}`;
-      this.bgImageStyle.backgroundImage = `url(${process.env.BASE_URL}assets/img/${newImage})`;
+    updateBgImage(bg) {
+      this.bgType = bg;
     },
   },
 };
 </script>
 
 <style>
-.app {
-  /* 다른 스타일들 */
-  height: 100vh;
+.bg-type1 {
   background-image: url("./assets/signup_bg.png");
   background-size: cover;
-  /* 다른 스타일들 */
+}
+.bg-type2 {
+  background-image: url("./assets/image_63.png");
+  background-size: cover;
+}
+.bg-type3 {
+  background-image: url("./assets/signup_bg.png");
+  background-size: cover;
 }
 html {
   margin: 0px;

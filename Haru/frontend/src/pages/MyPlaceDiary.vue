@@ -263,7 +263,7 @@ export default {
     },
 
     bgImage() {
-      var newImage = "signup_bg.b001d76f.png";
+      var newImage = "type1";
       this.$emit("bgImage", newImage);
     },
   },
