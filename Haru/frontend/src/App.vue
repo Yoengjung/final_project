@@ -32,6 +32,7 @@ export default {
 </script>
 
 <style>
+/* body에 배경 이미지 설정 */
 .bg-type1 {
   background-image: url("./assets/signup_bg.png");
   background-size: cover;
@@ -48,6 +49,7 @@ html {
   margin: 0px;
   padding: 0px;
 }
+/* 폰트 설정 */
 @font-face {
   font-family: "SUITE-SemiBold";
   src: url("./assets/font/SUITE-SemiBold.ttf") format("woff");
@@ -81,6 +83,7 @@ html {
   src: url("./assets/font/휴먼범석체.ttf") format("woff");
 }
 
+/* 전체 기본 텍스트 설정 */
 * {
   font-family: "SUITE";
   color: #333333;
@@ -88,9 +91,9 @@ html {
   position: relative;
 }
 
-.container {
+/* .container {
   margin: 0 auto;
-}
+} */
 
 .container1 {
   padding: 80px 228px;
@@ -108,6 +111,16 @@ ul {
 
 .cursor-p {
   cursor: pointer;
+}
+
+.main-title-left {
+  margin-bottom: 20px;
+}
+
+.main-title-left > h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f39f7e;
 }
 
 /*small button 크기 (추가, 수정, 삭제)*/

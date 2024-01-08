@@ -253,6 +253,13 @@ export default {
     this.bgImage();
   },
   methods: {
+    // 해당 화면 Background 이미지 설정
+    bgImage() {
+      var newImage = "type1";
+      this.$emit("bgImage", newImage);
+    },
+
+    // 탭 전환하기
     changeTab(tab) {
       this.activeTab = tab;
       if (tab === "recommend") {
@@ -260,11 +267,6 @@ export default {
       } else {
         this.isTabRecList = false;
       }
-    },
-
-    bgImage() {
-      var newImage = "type1";
-      this.$emit("bgImage", newImage);
     },
   },
   components: {

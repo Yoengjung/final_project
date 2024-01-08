@@ -113,7 +113,16 @@ export default {
       modal_Check: false,
     };
   },
+  created() {
+    // 페이지가 로드될 때 초기 이미지 설정
+    this.bgImage();
+  },
   methods: {
+    // 해당 화면 Background 이미지 설정
+    bgImage() {
+      var newImage = "type2";
+      this.$emit("bgImage", newImage);
+    },
     openModal() {
       this.modal_Check = !this.modal_Check;
     },

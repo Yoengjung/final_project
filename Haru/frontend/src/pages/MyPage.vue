@@ -1,6 +1,10 @@
 <template>
-  <div class="mypage-container">
-    <h2>마이페이지</h2>
+  <div class="container1">
+    <!-- title -->
+    <div class="main-title-left">
+      <h2>마이페이지</h2>
+    </div>
+    <!-- 컨텐츠 -->
     <div class="mypage-box">
       <div class="mypage-left-box">
         <ul>
@@ -45,50 +49,67 @@
         </ul>
       </div>
       <div class="mypage-right-box">
-        <div>
+        <div class="alarm-area">
           <h3>알림</h3>
           <div class="alarm-container">
             <ul>
               <li>
                 <div>
-                  <img class="alarm-img" src="../assets/kakao_login_icon.png" />
+                  <img class="alarm-img" src="../assets/alarm_heart_icon.png" />
                   <span id="comment-content">댓글 내용</span>
+                  <span class="alarm-time"
+                    ><img src="@/assets/time_icon.png" alt="" />10분전</span
+                  >
                 </div>
               </li>
               <li>
                 <div>
                   <img class="alarm-img" src="../assets/kakao_login_icon.png" />
                   <span id="comment-content">댓글 내용</span>
+                  <span class="alarm-time"
+                    ><img src="@/assets/time_icon.png" alt="" />40분전</span
+                  >
                 </div>
               </li>
               <li>
                 <div>
-                  <img class="alarm-img" src="../assets/kakao_login_icon.png" />
+                  <img class="alarm-img" src="../assets/alarm_basic_icon.png" />
                   <span id="comment-content">댓글 내용</span>
+                  <span class="alarm-time">23.12.27 1:03</span>
                 </div>
               </li>
               <li>
                 <div>
-                  <img class="alarm-img" src="../assets/kakao_login_icon.png" />
+                  <img class="alarm-img" src="../assets/alarm_heart_icon.png" />
                   <span id="comment-content">댓글 내용</span>
+                  <span class="alarm-time">23.12.26 1:03</span>
                 </div>
               </li>
               <li>
                 <div>
-                  <img class="alarm-img" src="../assets/kakao_login_icon.png" />
+                  <img
+                    class="alarm-img"
+                    src="../assets/alarm_comment_icon.png"
+                  />
                   <span id="comment-content">댓글 내용</span>
+                  <span class="alarm-time">23.12.25 1:03</span>
                 </div>
               </li>
               <li>
                 <div>
-                  <img class="alarm-img" src="../assets/kakao_login_icon.png" />
+                  <img
+                    class="alarm-img"
+                    src="../assets/alarm_comment_icon.png"
+                  />
                   <span id="comment-content">댓글 내용</span>
+                  <span class="alarm-time">23.12.24 1:03</span>
                 </div>
               </li>
               <li>
                 <div>
-                  <img class="alarm-img" src="../assets/kakao_login_icon.png" />
+                  <img class="alarm-img" src="../assets/alarm_basic_icon.png" />
                   <span id="comment-content">댓글 내용</span>
+                  <span class="alarm-time">23.12.23 1:03</span>
                 </div>
               </li>
             </ul>
@@ -103,6 +124,17 @@ export default {
   name: "MyPage",
   data() {
     return {};
+  },
+  created() {
+    // 페이지가 로드될 때 초기 이미지 설정
+    this.bgImage();
+  },
+  methods: {
+    // 해당 화면 Background 이미지 설정
+    bgImage() {
+      var newImage = "type1";
+      this.$emit("bgImage", newImage);
+    },
   },
 };
 </script>
