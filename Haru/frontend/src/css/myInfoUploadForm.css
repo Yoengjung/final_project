@@ -38,6 +38,11 @@
   position: relative;
 }
 
+/* 읽기 전용 */
+.readonly-input {
+  background-color: #f3f3f3 !important;
+}
+
 /* input 태그 */
 .input-text {
   position: relative;
@@ -249,18 +254,21 @@
   font-weight: 700;
 }
 
+/* 약관 내용 */
 .terms-contents-area {
   height: 620px;
   overflow: auto;
   overflow-x: hidden;
 }
 
+/* 내용 p 태그 각각 */
 .terms-contents-area > p {
   font-size: 0.9rem;
   line-height: 1.2rem;
   margin-bottom: 15px;
 }
 
+/* 약관 내용 - b태그 */
 .terms-contents-area b {
   font-size: 0.97rem;
 }

@@ -1,60 +1,128 @@
 <template>
-  <div class="background-container">
+  <div class="container1">
     <div>
       <DeleteMyInfoModal
         :deleteMyInfoModal="deleteMyInfoModal"
         @modalClose="toggleDeleteMyInfoModal"
       />
     </div>
-    <div class="container">
+    <div>
       <form
         method="POST"
         autocomplete="off"
         @submit.prevent="onSubmit"
-        class="login-form"
+        class="myInfo-form"
       >
-        <h2>내 정보 수정</h2>
-        <div class="label-box">
-          <label for="userId">아이디</label>
-          <span>*</span>
-        </div>
-        <div class="update-input-group-box">
-          <p type="text" id="userId">rhdudwnd82</p>
+        <!-- 타이틀 -->
+        <div class="main-title-center">
+          <h2>내 정보 수정</h2>
         </div>
 
-        <div class="label-box">
-          <label for="nickname">닉네임</label>
-          <span>*</span>
-        </div>
-        <div class="input-group-box">
-          <input type="text" name="nickname" id="nickname" value="개구쟁이" />
-          <button id="nickname-check" @click="nicknameCheck">button</button>
-        </div>
-
-        <p style="display: none" id="nicknameCheck-msg" class="msg"></p>
-        <div class="label-box">
-          <label for="name">이름</label>
-          <span>*</span>
-        </div>
-        <div class="input-group-box-1">
-          <input type="text" name="name" id="name" value="고영중" />
-        </div>
-        <p style="display: none" id="nameCheck-msg" class="msg"></p>
-        <div class="label-box">
-          <label for="email">이메일</label>
-          <span>*</span>
+        <!-- 아이디 -->
+        <div class="info-input-container">
+          <!-- label -->
+          <div class="label-area">
+            <label for="userId" class="mustInput">아이디</label>
+          </div>
+          <div class="input-area">
+            <input
+              class="input-text readonly-input"
+              type="text"
+              id="userId"
+              readonly
+              value="rhdudwnd82"
+            />
+          </div>
         </div>
 
-        <div class="input-group-box">
-          <input
-            type="email"
-            @keydown.enter.prevent="handleEnter"
-            id="email"
-            value="rhdudwnd82@naver.com"
-          />
-          <button id="email-ckeck" @click="emailCheck">Button</button>
+        <!-- 닉네임 확인 -->
+        <div class="info-input-container">
+          <div class="label-area">
+            <label for="nickname" class="mustInput">닉네임</label>
+          </div>
+          <div class="input-area">
+            <input
+              class="input-text"
+              type="text"
+              name="nickname"
+              id="nickname"
+              placeholder="한글, 영문 대소문자, 숫자만 사용 가능"
+              value="개구쟁이"
+            />
+            <button
+              class="input-in-btn"
+              id="nickname-check"
+              @click="nicknameCheck"
+            >
+              중복확인
+            </button>
+            <div class="error-msg-area">
+              <p style="display: none" id="nicknameCheck-msg" class="msg"></p>
+            </div>
+          </div>
         </div>
-        <p style="display: none" id="emailCheck-msg" class="msg"></p>
+
+        <!-- 이름 -->
+        <div class="info-input-container">
+          <div class="label-area">
+            <label for="name" class="mustInput">이름</label>
+          </div>
+          <div class="input-area">
+            <input
+              class="input-text"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="이름 입력"
+              value="고영중"
+            />
+          </div>
+          <div class="error-msg-area">
+            <p style="display: none" id="nameCheck-msg" class="msg"></p>
+          </div>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="info-input-container">
+          <div class="label-area">
+            <label for="email" class="mustInput">이메일</label>
+          </div>
+          <div class="input-area">
+            <input
+              class="input-text"
+              type="email"
+              @keydown.enter.prevent="handleEnter"
+              id="email"
+              placeholder="이메일 입력"
+              value="rhdudwnd82@naver.com"
+            />
+            <button class="input-in-btn" id="email-ckeck" @click="emailCheck">
+              중복확인
+            </button>
+            <div class="error-msg-area">
+              <p style="display: none" id="emailCheck-msg" class="msg"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 이메일 인증 번호 -->
+        <div class="info-input-container">
+          <div class="label-area">
+            <label for="code" class="mustInput">인증번호</label>
+          </div>
+          <div class="input-area">
+            <input
+              class="input-text"
+              type="text"
+              @keydown.enter.prevent="handleEnter"
+              id="code"
+              placeholder="인증번호 입력"
+            />
+          </div>
+          <div class="error-msg-area">
+            <p style="display: none" id="Code-msg" class="msg"></p>
+          </div>
+        </div>
 
         <div class="label-box">
           <label for="code">인증번호</label>
@@ -252,16 +320,8 @@ export default {
 };
 </script>
 
-<style>
-.custom-header .dropbtn {
-  color: black;
-}
-
-.custom-header .login-ul-box ul li a {
-  color: black;
-}
-</style>
+<style></style>
 
 <style scoped>
-/* @import url("../css/updateMyInfo.css"); */
+@import url("../css/updateMyInfo.css");
 </style>

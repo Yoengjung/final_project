@@ -490,15 +490,7 @@ export default {
 };
 </script>
 
-<style>
-/* .custom-header .dropbtn {
-  color: black;
-}
-
-.custom-header .login-ul-box ul li a {
-  color: black;
-} */
-</style>
+<style></style>
 
 <style scoped>
 @import url("../css/myInfoUploadForm.css");
