@@ -115,43 +115,13 @@ ul {
 
 .main-title-left {
   margin-bottom: 20px;
+  width: fit-content;
 }
 
 .main-title-left > h2 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #f39f7e;
-}
-
-/*small button 크기 (추가, 수정, 삭제)*/
-.sm_ctlbtn {
-  /*div - a*/
-  min-width: 60px;
-  height: fit-content;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 10px;
-  padding: 0 7px;
-}
-
-/*small button 색상 (추가, 수정, 삭제)*/
-.insert_smbtn {
-  border: 1px solid #008dff;
-}
-.insert_smbtn > a {
-  color: #008dff;
-}
-.update_smbtn {
-  border: 1px solid #00ad07;
-}
-.update_smbtn > a {
-  color: #00ad07;
-}
-.delete_smbtn {
-  border: 1px solid #ff1414;
-}
-.delete_smbtn > a {
-  color: #ff1414 !important;
 }
 
 /*big button 크기 (추가, 수정, 삭제)*/
@@ -165,85 +135,85 @@ ul {
 }
 
 /*big button 색상 (추가, 수정, 삭제)*/
-.insert_bigbtn {
+.insert_btn {
   background-color: #f7a27e;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
-.insert_bigbtn:hover {
+.insert_btn:hover {
   background-color: #eb7543;
   color: #fff;
 }
-.update_bigbtn {
-  background-color: #ffa559;
+.update_btn {
+  background-color: #f0bba4;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
-.update_bigbtn:hover {
-  background-color: #df8b43;
+.update_btn:hover {
+  background-color: #ed956f;
   color: #fff;
 }
-.delete_bigbtn {
+.delete_btn {
   background-color: #ff2e00;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
-.delete_bigbtn:hover {
+.delete_btn:hover {
   background-color: #c32300;
   color: #fff;
 }
-.select_bigbtn {
+.select_btn {
   background-color: #ffffff;
   border: 1px solid #0143ff;
   color: #0143ff;
   border-radius: 25px;
 }
-.select_bigbtn:hover {
+.select_btn:hover {
   background-color: #f0f4ff;
   border: 1px solid #0143ff;
   color: #0143ff;
 }
-.reset_bigbtn {
+.reset_btn {
   background-color: #ffe6c7;
   color: #000000;
   border: 0;
   border-radius: 25px;
 }
-.reset_bigbtn:hover {
+.reset_btn:hover {
   background-color: #ffd49f;
   color: #000000;
 }
-.normal_bigbtn {
+.normal_btn {
   background-color: #ffffff;
   border: 1px solid #252525;
   color: #252525;
   border-radius: 25px;
 }
-.normal_bigbtn:hover {
+.normal_btn:hover {
   background-color: rgb(235, 235, 235);
   border: 1px solid #252525;
   color: #252525;
 }
-.else_bigbtn {
+.else_btn {
   background-color: #6d6d6d;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
-.else_bigbtn:hover {
+.else_btn:hover {
   background-color: #454545;
   color: #fff;
 }
-.cancle_bigbtn {
+.cancle_btn {
   background-color: #e9e9e9;
   color: #000000;
   border: 0;
   border-radius: 25px;
 }
-.cancle_bigbtn:hover {
+.cancle_btn:hover {
   background-color: #c5c5c5;
   color: #000000;
 }

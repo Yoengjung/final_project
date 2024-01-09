@@ -37,13 +37,10 @@
 
         <!-- 버튼 영역 -->
         <div class="feed-rec-btn-area">
-          <button
-            @click="$emit('close-modal')"
-            class="big_ctlbtn cancle_bigbtn"
-          >
+          <button @click="$emit('close-modal')" class="big_ctlbtn cancle_btn">
             취소하기
           </button>
-          <button class="big_ctlbtn insert_bigbtn">선택하기</button>
+          <button class="big_ctlbtn insert_btn">선택하기</button>
         </div>
       </div>
     </div>
