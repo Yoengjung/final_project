@@ -16,6 +16,10 @@ import UpdateMyPage from "../pages/UpdateMyPage.vue";
 import UpdateMyInfo from "../pages/UpdateMyInfo.vue";
 import UserConfirmation from "../pages/UserConfirmation.vue";
 import SelectHobby from "../pages/SelectHobby.vue";
+import QnA from "../pages/QnA.vue";
+import MyQnA from "../components/MyQnA.vue";
+import WriteQnAForm from "../pages/WriteQnAForm.vue";
+import QnADetail from "../pages/QnADetail.vue";
 
 const routes = [
   {
@@ -101,8 +105,28 @@ const routes = [
   {
     path: "/SelectHobby",
     name: "SelectHobby",
-    component: SelectHobby
-  }
+    component: SelectHobby,
+  },
+  {
+    path: "/QnA",
+    name: "QnA",
+    component: QnA,
+  },
+  {
+    path: "/MyQnA",
+    name: "MyQnA",
+    component: MyQnA,
+  },
+  {
+    path: "/WriteQnAForm",
+    name: "WriteQnAForm",
+    component: WriteQnAForm,
+  },
+  {
+    path: "/QnADetail",
+    name: "QnADetail",
+    component: QnADetail,
+  },
 ];
 
 const router = createRouter({
