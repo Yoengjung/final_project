@@ -543,23 +543,3 @@ a {
     font-weight: 300;
     transition: 0.8s;
 }
-
-.btn {
-    background-color: #55b776;
-    margin: 5px;
-    width: 75px;
-    color: white;
-}
-.btn:hover {
-    color: white;
-}
-.btn:focus {
-    color: white;
-}
-.btn-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-}

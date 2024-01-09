@@ -1,4 +1,20 @@
 <template>
+<!--  진행바 영역 시작-->
+  <div class="pro-bar">
+    <div class="pro-bar-box">
+      <div class="row">
+        <div class="col">
+          <ul id="progress-bar" class="progressbar">
+            <li class="active"><span class="span-thin">얼굴 등록하기</span></li>
+            <li class="active"><span class="span-thin">척도 등록하기</span></li>
+            <li class="active"><span class="span-thin">일기쓰기</span></li>
+            <li class="active"><span class="span-bold">완료!</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  진행바 영역 끝-->
 <div class="container1">
   <div class="result-card-container">
     <div class="result-card-box">
@@ -74,9 +90,7 @@
                   <h4>버거킹 신논현역점</h4>
                 </div>
                 <div class="hash-tag">
-                  <span class="badge rounded-pill bg-success hash-tag-bedge">#푸드</span>
-                  <span class="badge rounded-pill bg-success hash-tag-bedge">#맛집</span>
-                  <span class="badge rounded-pill bg-success hash-tag-bedge">#불고기</span>
+                  <span class="review-score">★ 4.58</span>
                 </div>
                 <div class="food-detail">
                   <span class="food-address">주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)</span>
@@ -85,7 +99,23 @@
             </div>
           </div>
           <div class="place-card">
-            <img src="../img/Total_stress/food/duck.jpg" alt="버거킹" class="place-card">
+            <div class="'food-img">
+              <img class="heart-img"  src="../img/Total_stress/img/image 47.png">
+              <img src="../img/Total_stress/food/duck.jpg" alt="버거킹" class="place-card">
+            </div>
+            <div class="food-desc">
+              <div class="food-desc-box">
+                <div class="food-title">
+                  <h4>버거킹 신논현역점</h4>
+                </div>
+                <div class="hash-tag">
+                  <span class="review-score">★ 별점없음</span>
+                </div>
+                <div class="food-detail">
+                  <span class="food-address">주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)</span>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="place-card">
             <img src="../img/Total_stress/food/mega.jpg" alt="버거킹" class="place-card">
