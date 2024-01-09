@@ -7,6 +7,7 @@
   padding: 70px;
   border-radius: 21px;
   background-color: rgba(255, 255, 255, 0.3);
+  margin: 0 auto;
 }
 
 /* 필수 사항 * 표시 */
@@ -167,18 +168,21 @@
   justify-content: space-between;
 }
 
+/* 각각 이용약관 항목 area */
 .termsOfUse-box > div {
   display: flex;
   align-items: center;
   width: fit-content;
 }
 
+/* 약관 동의 체크박스 */
 .termsOfUse-box > div > input {
   margin-right: 20px;
   width: 30px;
   height: 30px;
 }
 
+/* 모달창 여는 버튼 '>' */
 .termsOfUse-container .termsOfUse-box button {
   width: 40px;
   height: 40px;
@@ -188,12 +192,14 @@
   font-weight: 100;
 }
 
+/* 뒤로가기, 가입하기 버튼 영역 */
 .myinfo-btn-area {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+/* 뒤로가기, 가입하기 버튼 */
 .myinfo-btn-area button {
   width: 300px;
 }
@@ -212,14 +218,14 @@
 }
 
 /* 모달 콘텐츠 스타일 */
-.modal-content {
+.terms-modal-content {
   background-color: #fff;
-  margin: 5% auto;
-  padding: 20px;
+  margin: 3% auto;
+  padding: 40px;
   border: 1px solid #888;
-  width: 80%;
+  border-radius: 40px;
+  width: fit-content;
   max-width: 600px;
-  position: relative;
 }
 
 /* 모달 닫기 버튼 스타일 */
@@ -230,9 +236,31 @@
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+/* 약관 명 area */
+.terms-title-area {
+  margin: 10px 0 30px;
+  width: fit-content;
+}
+
+/* 약관 명 텍스트 */
+.terms-title-area > p {
+  width: fit-content;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.terms-contents-area {
+  height: 620px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.terms-contents-area > p {
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.terms-contents-area b {
+  font-size: 0.97rem;
 }

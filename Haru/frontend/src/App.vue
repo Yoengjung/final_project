@@ -107,6 +107,7 @@ a {
 
 ul {
   margin: 0;
+  padding-left: 0;
 }
 
 ul,
@@ -142,6 +143,7 @@ li {
   font-size: 1rem;
   border: 0;
   border-radius: 25px;
+  transition: background-color 0.2s;
 }
 
 /*big button 색상 (추가, 수정, 삭제)*/
