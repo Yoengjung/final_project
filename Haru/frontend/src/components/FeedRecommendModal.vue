@@ -65,6 +65,6 @@ export default {
 };
 </script>
 <style scoped>
-@import "../css/insertFeed.css";
+@import "../css/uploadFeed.css";
 @import "../css/feedRecommend.css";
 </style>

@@ -240,5 +240,21 @@ export default {
 };
 </script>
 <style scoped>
-@import url("../css/updateFeed.css");
+@import url("../css/uploadFeed.css");
+.hashtag-area {
+  margin-top: -10px;
+}
+
+.btn-area {
+  width: 660px;
+}
+
+/* 전송 버튼 */
+#uploadFeed {
+  background-color: #ffdbb0;
+}
+
+#uploadFeed:hover {
+  background-color: #ffa83f;
+}
 </style>

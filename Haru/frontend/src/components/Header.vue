@@ -152,8 +152,8 @@ img {
   display: flex;
 }
 
-.login-ul-box > .login-ul > li {
-}
+/* .login-ul-box > .login-ul > li {
+} */
 
 .login-ul-box > .login-ul > li > a {
   font-size: 20px;
@@ -162,6 +162,6 @@ img {
 }
 
 .login-ul-box ul li a:hover {
-  color: white;
+  color: #fba883;
 }
 </style>
