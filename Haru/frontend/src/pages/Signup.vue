@@ -10,7 +10,7 @@
       >
         <!-- 타이틀 -->
         <div class="main-title-center">
-          <h2>가입하기</h2>
+          <h2>회원가입</h2>
         </div>
 
         <!-- 입력 항목 input -->
