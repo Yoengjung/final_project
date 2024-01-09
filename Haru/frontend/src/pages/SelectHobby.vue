@@ -1,157 +1,161 @@
 <template>
-  <div class="selectHobby-container">
-    <div class="selectHobby-header-box">
-      <h3>관심 카테고리를 선택해보세요!</h3>
-    </div>
-    <div class="hobby-container">
-      <div class="hobby-header-box">
-        <h4>엑티비티</h4>
+  <div class="container1">
+    <div class="selectHobby-container">
+      <div class="selectHobby-header-box">
+        <h3>관심 카테고리를 선택해보세요!</h3>
       </div>
-      <div class="hobby-body">
-        <div
-          class="hobby-img-box"
-          v-for="(activity, index) in activity"
-          :key="index"
-          @click="selectActivity(index)"
-        >
-          <img :src="activity.image" />
-          <img
-            v-if="selectedActivity.includes(index)"
-            src="../img/selectHobbyImg/Group_208.png"
-            class="hobby-check-img"
-          />
-          <span>{{ activity.name }}</span>
+      <div class="hobby-container">
+        <div class="hobby-header-box">
+          <h4>엑티비티</h4>
+        </div>
+        <div class="hobby-body">
+          <div
+            class="hobby-img-box"
+            v-for="(activity, index) in activity"
+            :key="index"
+            @click="selectActivity(index)"
+          >
+            <img :src="activity.image" />
+            <img
+              v-if="selectedActivity.includes(index)"
+              src="../img/selectHobbyImg/Group_208.png"
+              class="hobby-check-img"
+            />
+            <span>{{ activity.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hobby-container">
-      <div class="hobby-header-box">
-        <h4>문화 예술</h4>
-      </div>
-      <div class="hobby-body">
-        <div
-          class="hobby-img-box"
-          v-for="(culture, index) in culture"
-          :key="index"
-          @click="selectCulture(index)"
-        >
-          <img
-            v-if="selectedCulture.includes(index)"
-            src="../img/selectHobbyImg/Group_208.png"
-            class="hobby-check-img"
-          />
-          <img :src="culture.image" />
-          <span>{{ culture.name }}</span>
+      <div class="hobby-container">
+        <div class="hobby-header-box">
+          <h4>문화 예술</h4>
+        </div>
+        <div class="hobby-body">
+          <div
+            class="hobby-img-box"
+            v-for="(culture, index) in culture"
+            :key="index"
+            @click="selectCulture(index)"
+          >
+            <img
+              v-if="selectedCulture.includes(index)"
+              src="../img/selectHobbyImg/Group_208.png"
+              class="hobby-check-img"
+            />
+            <img :src="culture.image" />
+            <span>{{ culture.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hobby-container">
-      <div class="hobby-header-box">
-        <h4>여행</h4>
-      </div>
-      <div class="hobby-body">
-        <div
-          class="hobby-img-box"
-          v-for="(travel, index) in travel"
-          :key="index"
-          @click="selectTravel(index)"
-        >
-          <img
-            v-if="selectedTravel.includes(index)"
-            src="../img/selectHobbyImg/Group_208.png"
-            class="hobby-check-img"
-          />
-          <img :src="travel.image" />
-          <span>{{ travel.name }}</span>
+      <div class="hobby-container">
+        <div class="hobby-header-box">
+          <h4>여행</h4>
+        </div>
+        <div class="hobby-body">
+          <div
+            class="hobby-img-box"
+            v-for="(travel, index) in travel"
+            :key="index"
+            @click="selectTravel(index)"
+          >
+            <img
+              v-if="selectedTravel.includes(index)"
+              src="../img/selectHobbyImg/Group_208.png"
+              class="hobby-check-img"
+            />
+            <img :src="travel.image" />
+            <span>{{ travel.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hobby-container">
-      <div class="hobby-header-box">
-        <h4>취미</h4>
-      </div>
-      <div class="hobby-body">
-        <div
-          class="hobby-img-box"
-          v-for="(hobby, index) in hobby"
-          :key="index"
-          @click="selectHobby(index)"
-        >
-          <img
-            v-if="selectedHobby.includes(index)"
-            src="../img/selectHobbyImg/Group_208.png"
-            class="hobby-check-img"
-          />
-          <img :src="hobby.image" />
-          <span>{{ hobby.name }}</span>
+      <div class="hobby-container">
+        <div class="hobby-header-box">
+          <h4>취미</h4>
+        </div>
+        <div class="hobby-body">
+          <div
+            class="hobby-img-box"
+            v-for="(hobby, index) in hobby"
+            :key="index"
+            @click="selectHobby(index)"
+          >
+            <img
+              v-if="selectedHobby.includes(index)"
+              src="../img/selectHobbyImg/Group_208.png"
+              class="hobby-check-img"
+            />
+            <img :src="hobby.image" />
+            <span>{{ hobby.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hobby-container">
-      <div class="hobby-header-box">
-        <h4>푸드</h4>
-      </div>
-      <div class="hobby-body">
-        <div
-          class="hobby-img-box"
-          v-for="(food, index) in food"
-          :key="index"
-          @click="selectFood(index)"
-        >
-          <img
-            v-if="selectedFood.includes(index)"
-            src="../img/selectHobbyImg/Group_208.png"
-            class="hobby-check-img"
-          />
-          <img :src="food.image" />
-          <span>{{ food.name }}</span>
+      <div class="hobby-container">
+        <div class="hobby-header-box">
+          <h4>푸드</h4>
+        </div>
+        <div class="hobby-body">
+          <div
+            class="hobby-img-box"
+            v-for="(food, index) in food"
+            :key="index"
+            @click="selectFood(index)"
+          >
+            <img
+              v-if="selectedFood.includes(index)"
+              src="../img/selectHobbyImg/Group_208.png"
+              class="hobby-check-img"
+            />
+            <img :src="food.image" />
+            <span>{{ food.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hobby-container">
-      <div class="hobby-header-box">
-        <h4>자기계발</h4>
-      </div>
-      <div class="hobby-body">
-        <div
-          class="hobby-img-box"
-          v-for="(selfDevelopment, index) in selfDevelopment"
-          :key="index"
-          @click="selectSelfDevelopment(index)"
-        >
-          <img
-            v-if="selectedSelfDevelopment.includes(index)"
-            src="../img/selectHobbyImg/Group_208.png"
-            class="hobby-check-img"
-          />
-          <img :src="selfDevelopment.image" />
-          <span>{{ selfDevelopment.name }}</span>
+      <div class="hobby-container">
+        <div class="hobby-header-box">
+          <h4>자기계발</h4>
+        </div>
+        <div class="hobby-body">
+          <div
+            class="hobby-img-box"
+            v-for="(selfDevelopment, index) in selfDevelopment"
+            :key="index"
+            @click="selectSelfDevelopment(index)"
+          >
+            <img
+              v-if="selectedSelfDevelopment.includes(index)"
+              src="../img/selectHobbyImg/Group_208.png"
+              class="hobby-check-img"
+            />
+            <img :src="selfDevelopment.image" />
+            <span>{{ selfDevelopment.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hobby-container">
-      <div class="hobby-header-box">
-        <h4>쇼핑</h4>
-      </div>
-      <div class="hobby-body">
-        <div
-          class="hobby-img-box"
-          v-for="(shopping, index) in shopping"
-          :key="index"
-          @click="selectShopping(index)"
-        >
-          <img
-            v-if="selectedShopping.includes(index)"
-            src="../img/selectHobbyImg/Group_208.png"
-            class="hobby-check-img"
-          />
-          <img :src="shopping.image" />
-          <span>{{ shopping.name }}</span>
+      <div class="hobby-container">
+        <div class="hobby-header-box">
+          <h4>쇼핑</h4>
+        </div>
+        <div class="hobby-body">
+          <div
+            class="hobby-img-box"
+            v-for="(shopping, index) in shopping"
+            :key="index"
+            @click="selectShopping(index)"
+          >
+            <img
+              v-if="selectedShopping.includes(index)"
+              src="../img/selectHobbyImg/Group_208.png"
+              class="hobby-check-img"
+            />
+            <img :src="shopping.image" />
+            <span>{{ shopping.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hobby-setting-container">
-      <button id="bobby-setting-btn">설정 완료</button>
+      <div class="hobby-setting-container">
+        <button id="bobby-setting-btn" class="big-ctlbtn select-btn">
+          설정 완료
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -279,7 +283,14 @@ export default {
       ],
     };
   },
+  created() {
+    this.bgImage();
+  },
   methods: {
+    bgImage() {
+      var newImage = "type1";
+      this.$emit("bgImage", newImage);
+    },
     selectActivity(index) {
       const selectedIndex = this.selectedActivity.indexOf(index);
       if (selectedIndex > -1) {
