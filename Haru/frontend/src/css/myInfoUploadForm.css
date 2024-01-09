@@ -1,0 +1,238 @@
+/* ----------- 회원가입, 내 정보 수정 공통 css ----------- */
+/* container form */
+.myInfo-form {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  padding: 70px;
+  border-radius: 21px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 필수 사항 * 표시 */
+.mustInput::after {
+  content: "*";
+  margin-left: 5px;
+  color: #ff4900;
+}
+
+/* 각 입력 항목 영역 */
+.info-input-container {
+  padding-bottom: 40px;
+}
+
+/* 각 항목 label div */
+.label-area {
+  margin-bottom: 10px;
+}
+
+/* 각 항목 label */
+.label-area > label {
+  /* color: #efab90; */
+  font-size: 17px;
+}
+
+/* input 항목 + 중복확인btn + 안내문구 영역 */
+.input-area {
+  position: relative;
+}
+
+/* input 태그 */
+.input-text {
+  position: relative;
+  min-height: 55px;
+  width: 100%;
+  filter: none;
+  color: #454545;
+  cursor: auto;
+  background-color: #fff;
+  border: 1px solid #ededed;
+  border-radius: 100px;
+  margin-bottom: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  line-height: 1.111em;
+  transition: box-shadow 0.3s, color 0.3s, border-color 0.3s;
+  box-shadow: 0 1px 8px rgba(3, 3, 3, 0.06);
+}
+.input-text:hover {
+  border-color: #f8c08d;
+  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+}
+.input-text:focus {
+  color: #0b0b0b;
+  outline: none !important;
+  border-color: #f39f7e;
+  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+}
+
+/* input 태그 안에 우측 버튼 (중복확인, 인증 등) */
+.input-in-btn {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  width: fit-content;
+  padding: 7px 16px;
+  border: 1px solid #cfcfcf;
+  border-radius: 20px;
+  background-color: #fff;
+  transition: border 0.2s, color 0.2s;
+}
+
+.input-in-btn:hover {
+  border: 1px solid #ff922e;
+  color: #f77600;
+}
+
+/* 프로필 올리기 박스 */
+.profile-box {
+  width: 280px;
+  height: 230px;
+  padding: 25px;
+  border: 3px dotted #e99571;
+  border-radius: 45px;
+  background-color: rgb(255 255 255 / 50%);
+}
+
+/* 박스 안에 컨텐츠 */
+.profile-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* 카메라 아이콘 */
+.profile-box #preview-img {
+  width: 90px;
+}
+
+/* 사진 끌어다 올리기 텍스트 */
+.profile-box p {
+  font-size: 17px;
+  color: #747474;
+}
+
+/* 파일 업로드 - 라벨 버튼 */
+#labelForProfile {
+  display: inline-block;
+  width: fit-content;
+  padding: 7px 16px;
+  border: 1px solid #cfcfcf;
+  border-radius: 20px;
+  background-color: rgb(255 255 255 / 50%);
+  transition: border 0.2s, color 0.2s;
+}
+
+#labelForProfile:hover {
+  border: 1px solid #ff922e;
+  color: #f77600;
+}
+
+/* 프로필 input */
+#profile {
+  display: none;
+}
+
+/* 안내 문구 영역 */
+.error-msg-area {
+  margin-top: 5px;
+}
+
+/* 안내 문구 */
+.error-msg-area > .msg {
+  color: red;
+}
+
+/* ------------------- 이용약관 ------------------- */
+/* 이용약관 전체 영역 */
+.termsOfUse-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* 각각의 약관 항목 div */
+.termsOfUse-box {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 49px;
+  padding: 10px 24px 10px 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.termsOfUse-box > div {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.termsOfUse-box > div > input {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+}
+
+.termsOfUse-container .termsOfUse-box button {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 0px;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.myinfo-btn-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.myinfo-btn-area button {
+  width: 300px;
+}
+
+/* ------------------- 모달 ------------------- */
+/* 모달 스타일 */
+.terms-modal {
+  display: block;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 모달 콘텐츠 스타일 */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+/* 모달 닫기 버튼 스타일 */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
