@@ -277,6 +277,6 @@ export default {
 </script>
 
 <style scoped>
-@import "../css/MyPlaceDiary.css";
-@import "../css/Calendar.css";
+@import "../css/myPlaceDiary.css";
+@import "../css/calendar.css";
 </style>

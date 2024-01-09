@@ -124,43 +124,29 @@
           </div>
         </div>
 
-        <div class="label-box">
-          <label for="code">인증번호</label>
-          <span>*</span>
-        </div>
-
-        <div class="input-group-box-1">
+        <div class="myinfo-btn-area">
           <input
-            type="text"
-            @keydown.enter.prevent="handleEnter"
-            id="code"
-            placeholder="인증번호 입력"
+            type="button"
+            id="backbtn"
+            @click="backbtn"
+            value="뒤로가기"
+            class="big-ctlbtn cancle-btn"
           />
-        </div>
-        <p style="display: none" id="Code-msg" class="msg"></p>
+          <input
+            type="button"
+            id="update-my-info"
+            @click="updateMyInfo"
+            value="정보수정"
+            class="big-ctlbtn select-btn"
+          />
 
-        <div class="update-button-group-container">
-          <div class="update-button-group-box">
-            <input
-              type="button"
-              id="backbtn"
-              @click="backbtn"
-              value="뒤로가기"
-            />
-            <input
-              type="button"
-              id="update-my-info"
-              @click="updateMyInfo"
-              value="정보수정"
-            />
-
-            <input
-              type="button"
-              id="delete-my-info"
-              @click="toggleDeleteMyInfoModal"
-              value="탈퇴하기"
-            />
-          </div>
+          <input
+            type="button"
+            id="delete-my-info"
+            @click="toggleDeleteMyInfoModal"
+            value="탈퇴하기"
+            class="big-ctlbtn delete-btn"
+          />
         </div>
       </form>
     </div>
@@ -184,7 +170,14 @@ export default {
   components: {
     DeleteMyInfoModal,
   },
+  created() {
+    this.bgImage();
+  },
   methods: {
+    bgImage() {
+      var newImage = "type1";
+      this.$emit("bgImage", newImage);
+    },
     nicknameCheck() {
       const nickname = document.getElementById("nickname").value;
       if (nickname === "") {

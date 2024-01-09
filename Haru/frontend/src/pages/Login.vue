@@ -1,24 +1,39 @@
 <template>
-  <div class="container-1">
+  <div class="container1">
     <div class="login-container">
-      <div class="white-box">
-        <div class="left-box">
-          <h2>하루의 여울</h2>
-          <img src="../assets/login_icon.png" />
-          <p>장소...추천 받으실래요?</p>
-          <a href="/Signup">회원가입</a>
-        </div>
-        <div class="login-box">
+      <!-- 좌측 박스 영역 -->
+      <div class="left-box">
+        <h2>하루의 여울</h2>
+        <img src="../assets/login_icon.png" />
+        <p>장소...추천 받으실래요?</p>
+        <a href="/Signup" class="big-ctlbtn else-btn">회원가입</a>
+      </div>
+
+      <!-- 로그인 박스 영역 -->
+      <div class="login-box">
+        <div class="login-inner-box">
           <form method="POST" autocomplete="off">
             <h1>로그인</h1>
             <div class="form-input-box">
+              <!-- 아이디 -->
               <div class="form-input">
                 <label for="userId">아이디</label>
-                <input type="text" name="userId" id="userId" />
+                <input
+                  type="text"
+                  name="userId"
+                  id="userId"
+                  class="input-text"
+                />
               </div>
+              <!-- 비밀번호 -->
               <div class="form-input">
                 <label for="password">비밀번호</label>
-                <input type="password" name="password" id="password" />
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="input-text"
+                />
               </div>
               <div class="form-check">
                 <div class="remember-checkbox">
@@ -26,7 +41,13 @@
                   <label for="remember">로그인 상태 유지</label>
                 </div>
               </div>
-              <button @click="submit" id="login-submit-btn">로그인</button>
+              <button
+                class="big-ctlbtn insert-btn"
+                @click="submit"
+                id="login-submit-btn"
+              >
+                로그인
+              </button>
 
               <div class="login-search-box">
                 <button @click="findIdToggleModal" @click.prevent="submit">
@@ -38,10 +59,10 @@
               </div>
             </div>
           </form>
-          <div class="social-login-box">
-            <a href="#"><img src="../assets/kakao_login_icon.png" /></a>
-            <a href="#"><img src="../assets/naver_login_icon.png" /></a>
-          </div>
+        </div>
+        <div class="social-login-box">
+          <a href="#"><img src="../assets/kakao_login_icon.png" /></a>
+          <a href="#"><img src="../assets/naver_login_icon.png" /></a>
         </div>
       </div>
     </div>
@@ -70,7 +91,14 @@ export default {
     FindByIdModal,
     FindByPwdModal,
   },
+  created() {
+    this.bgImage();
+  },
   methods: {
+    bgImage() {
+      var newImage = "type3";
+      this.$emit("bgImage", newImage);
+    },
     findIdToggleModal() {
       this.isIdModalOpen = !this.isIdModalOpen;
     },

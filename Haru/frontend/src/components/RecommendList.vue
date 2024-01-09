@@ -79,5 +79,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "../css/RecommendList.css";
+@import "../css/recommendList.css";
 </style>

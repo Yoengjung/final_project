@@ -1,6 +1,10 @@
 <template>
   <div
-    :class="{ 'bg-type1': bgType === 'type1', 'bg-type2': bgType === 'type2' }"
+    :class="{
+      'bg-type1': bgType === 'type1',
+      'bg-type2': bgType === 'type2',
+      'bg-type3': bgType === 'type3',
+    }"
   >
     <Header class="custom-header" />
     <RouterView @bgImage="updateBgImage" />
@@ -42,7 +46,7 @@ export default {
   background-size: cover;
 }
 .bg-type3 {
-  background-image: url("./assets/signup_bg.png");
+  background-image: url("./assets/main_image.png");
   background-size: cover;
 }
 html {
@@ -173,13 +177,13 @@ li {
   color: #fff;
 }
 .delete-btn {
-  background-color: #ff2e00;
+  background-color: #e18585;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
 .delete-btn:hover {
-  background-color: #c32300;
+  background-color: #c74c4c;
   color: #fff;
 }
 .select-btn {
