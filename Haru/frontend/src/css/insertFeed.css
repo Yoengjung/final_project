@@ -14,6 +14,12 @@
   /* box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15); */
 }
 
+.page-upload-title {
+  font-size: 1.5rem;
+  color: #efab90;
+  margin-bottom: 30px;
+}
+
 .part-area {
   margin-bottom: 30px;
 }
@@ -64,16 +70,18 @@
 }
 
 .hashtag-area {
-  margin-top: -10px;
   line-height: 40px;
 }
 
 .hashtag {
   background-color: #fff;
-  padding: 5px 15px;
+  display: inline-block;
+  padding: 0 15px;
+  margin-top: 5px;
   margin-right: 10px;
   border-radius: 32px;
   border: 1px solid #ffd1d1;
+  color: #ff6600;
 }
 
 .hash-active {
@@ -85,8 +93,14 @@
   background-color: #ffeee7;
 }
 
+.recommend-modal-open-btn {
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
 .btn-area {
-  width: 660px;
+  width: fit-content;
   height: fit-content;
   margin: 30px auto;
   text-align: center;

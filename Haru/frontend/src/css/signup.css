@@ -5,7 +5,6 @@
   padding-top: 300px;
   top: -200px;
   position: relative;
-  z-index: -1;
 }
 
 .login-form {
@@ -34,6 +33,10 @@
   color: #efab90;
 }
 
+.login-form .label-box span {
+  color: red;
+}
+
 .login-form .input-group-box {
   display: flex;
   flex-direction: row;
@@ -42,7 +45,7 @@
   border-radius: 49px;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .login-form .input-group-box-1 {
@@ -84,6 +87,11 @@
   margin-left: 10px;
 }
 
+.msg {
+  color: red;
+  font-size: 15px;
+}
+
 .login-form button {
   position: relative;
   border-radius: 49px;
@@ -94,10 +102,6 @@ label {
   flex-direction: row;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-span {
-  color: red;
 }
 
 .profile-box {
@@ -175,7 +179,7 @@ span {
   border-radius: 49px;
   background-color: white;
   border: 1px solid #cfcfcf;
-  right: 80px;
+  right: 10px;
 }
 
 .btn-group {
@@ -212,7 +216,7 @@ span {
 .modal {
   display: block;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
@@ -223,7 +227,7 @@ span {
 /* 모달 콘텐츠 스타일 */
 .modal-content {
   background-color: #fff;
-  margin: 15% auto;
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
