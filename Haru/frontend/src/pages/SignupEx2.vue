@@ -407,7 +407,6 @@ export default {
       // 파일 선택시 초기화 해줘야 선택한 파일만 files에 들어가기 때문이다.
       this.files = [];
       //const formData = new FormData();
-      const selectedtFiles = new this.FormData();
       const selectedFiles = event.target.files;
       for (let i = 0; i < selectFiles.length; i++) {
         const file = selectFiles[i];
@@ -419,7 +418,7 @@ export default {
           preview: preview,
         });
         //업로드할 파일은 FormData에 추가
-        this.FormData.append("files", file);
+        this.formData.append("files", file);
       }
     },
   },
