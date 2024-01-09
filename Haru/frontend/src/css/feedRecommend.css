@@ -17,6 +17,8 @@
 /* 제목 */
 .feed-rec-area-title {
   margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /* 장소 선택 안함 안내 div */

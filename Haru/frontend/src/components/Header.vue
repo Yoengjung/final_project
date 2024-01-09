@@ -152,8 +152,9 @@ img {
   display: flex;
 }
 
-/* .login-ul-box > .login-ul > li {
-} */
+.login-ul-box > .login-ul > li {
+  margin-left: 20px;
+}
 
 .login-ul-box > .login-ul > li > a {
   font-size: 20px;
