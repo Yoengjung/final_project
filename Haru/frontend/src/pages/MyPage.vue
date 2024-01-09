@@ -3,7 +3,7 @@
     <!-- 컨텐츠 -->
     <div class="mypage-box">
       <!-- title -->
-      <div class="main-title-left">
+      <div class="main-title">
         <h2>마이페이지</h2>
       </div>
       <div class="mypage-two-box">
@@ -18,30 +18,26 @@
                 <span>별명을 가진</span><span id="username-tag">고영중 님</span>
               </div>
             </li>
-            <li>
-              <ul class="user-activity-info">
-                <li class="cnt-infobox-area">
-                  <div class="commentCnt-box">
-                    <ul>
-                      <div>누적 댓글 갯수</div>
-                      <div class="div-tag">
-                        <span><img src="../img/mypage/image 95.png" /></span>
-                        <span>123</span>
-                      </div>
-                    </ul>
+            <li class="user-activity-info">
+              <div class="commentCnt-box">
+                <ul>
+                  <div>누적 댓글 개수</div>
+                  <div class="div-tag">
+                    <span><img src="../img/mypage/image 95.png" /></span>
+                    <span>123</span>
                   </div>
+                </ul>
+              </div>
 
-                  <div class="commentCnt-box">
-                    <ul>
-                      <div>누적 좋아요 갯수</div>
-                      <div class="div-tag">
-                        <span><img src="../img/mypage/image 94.png" /></span>
-                        <span>12</span>
-                      </div>
-                    </ul>
+              <div class="commentCnt-box">
+                <ul>
+                  <div>누적 좋아요 개수</div>
+                  <div class="div-tag">
+                    <span><img src="../img/mypage/image 94.png" /></span>
+                    <span>12</span>
                   </div>
-                </li>
-              </ul>
+                </ul>
+              </div>
             </li>
             <div class="update-mydata-box">
               <a

@@ -2,7 +2,10 @@
   <div>
     <div class="userConfirm-container">
       <div class="userConfirm-box">
-        <h3>개인 정보 확인</h3>
+        <!-- title -->
+        <div class="main-title">
+          <h2>개인 정보 확인</h2>
+        </div>
         <form>
           <label for="password">비밀번호</label>
           <input type="password" id="password" />

@@ -113,12 +113,12 @@ ul {
   cursor: pointer;
 }
 
-.main-title-left {
+.main-title {
   margin-bottom: 20px;
   width: fit-content;
 }
 
-.main-title-left > h2 {
+.main-title > h2 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #f39f7e;
