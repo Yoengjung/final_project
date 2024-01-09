@@ -45,9 +45,9 @@ body {
 }
 .percentage-box {
     width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .rating-bar{
     width: 85%;
@@ -64,10 +64,14 @@ justify-content: center;
     margin-left: 7px;
     margin-right: 7px;
 }
+.rating-percent {
+    padding-left : 64px;
+}
 .rating-number {
+    position: relative;
     list-style: none;
     float: left;
-    padding-left: 54px;
+    padding-left: 49px;
     text-align: center;
 }
 .percentage{

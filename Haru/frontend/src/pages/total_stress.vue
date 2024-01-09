@@ -9,7 +9,7 @@
         <!-- 스트레스 수치 바 시작 -->
         <div class="rating-bar-container">
           <div class="percentage-box">
-            <ul>
+            <ul class="rating-percent">
               <li class="rating-number"></li>
               <li class="rating-number">
                 <span class="percentage">10%</span>
@@ -143,7 +143,7 @@ export default {
   },
   mounted() {
     let currentWidth  = 0;
-    const targetWidth = 50; // 목표 값 추후 변경
+    const targetWidth = 70; // 목표 값 추후 변경
 
     const animationDuration = 3000;
     const interval = 30;
