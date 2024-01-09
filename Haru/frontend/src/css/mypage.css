@@ -37,12 +37,13 @@
 
 /* 닉네임 영역 */
 .mypage-left-box ul li .nickname-box {
-  margin-top: 10px;
+  margin-top: 30px;
+  text-align: center;
 }
 
 /* 닉네임 텍스트 */
 .mypage-left-box ul li #nickname-tag {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   margin-top: 20px;
 }
@@ -56,7 +57,7 @@
 /* 사용자 이름 텍스트 */
 .username-box #username-tag {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 /* 누적 개수 박스 2개 영역 */
@@ -91,8 +92,7 @@
 /* '누적 댓글/좋아요 개수' 텍스트 div */
 .commentCnt-box ul div:first-child {
   margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
 }
 
 /* 각 박스 안에 아이콘 이미지, 개수 텍스트 영역 */
@@ -170,7 +170,7 @@
   padding: 0 20px;
   height: 70px;
   align-items: center;
-  justify-content: start;
+  width: fit-content;
   border-radius: 10px;
   background-color: #f2f2f2;
 }

@@ -87,7 +87,7 @@ img {
   justify-content: center;
   background-color: transparent;
   font-size: 20px;
-  color: white;
+  /* color: white; */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
