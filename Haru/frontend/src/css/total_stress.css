@@ -5,10 +5,6 @@ body {
 }
 .result-container{
     width: 100%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
 }
 .result-card-container {
@@ -26,113 +22,68 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 }
-
-/* 수치 영역 시작 */
-
-.slider {
-    position: relative;
-    padding: 120px 0 60px 0;
+/* 스트레스 수치 뱃지 */
+.custom-bedge {
+    font-size: 25px!important;
+    background-color: #B8D9A3!important;
+}
+.result-comment{
+    font-size: 30px;
     font-weight: bold;
-    color: #aaa;
     text-align: center;
 }
-.slider-bar {
-    background: #ddd;
-    padding: 3px;
-    height: 30px;
-    border-radius: 30px;
+
+/*수치영역 바 시작 */
+.rating-bar-container {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
-.slider .rate-ul {
-    margin: 0;
+.percentage-box {
+    width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+.rating-bar{
+    width: 85%;
+    height: 45px;
+    background-color: #E2E2E2;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+}
+.rating-bar-gauge {
+    height: 34px;
+    background-color: #B8D9A3;
+    border-radius: 100px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.rating-number {
     list-style: none;
-    padding: 0;
-}
-.slider .rate-li {
-    position: relative;
     float: left;
-    width: 12.5%;
-    height: 24px;
-    white-space: nowrap;
+    padding-left: 54px;
+    text-align: center;
 }
-.slider-scroll {
-    position: absolute;
-    left: 5px;
-    top: 123px;
-    width: 0;
-    height: 24px;
-    border-radius: 30px;
-    background: #eb9fb9;
-    background: -moz-linear-gradient(left, #eb9fb9 0%, #d0014f 100%);
-    background: -webkit-linear-gradient(left, #eb9fb9 0%,#d0014f 100%);
-    background: linear-gradient(to right,  #eb9fb9 0%,#d0014f 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb9fb9', endColorstr='#d0014f',GradientType=1 );
-    min-width: 24px;
+.percentage{
+    font-size: 20px;
+    font-weight: bold;
+    color: #707070;
 }
-.slider-scroll div {
-    position: absolute;
-    top: -110px;
-    right: 0;
-    transform: translate(50%,0) rotate(180deg);
-    transition: all .5s cubic-bezier(0.855, 0.055, 0.520, 1.505);
-    transform-origin: center 72px;
-    padding:10px;
-    border-radius: 5px;
-    background: #cf024f;
-    color: #fff;
-    opacity: 0;
-}
-.slider-scroll .reveal {
-    opacity: 1;
-    transform: translate(50%,0) rotate(0);
-}
-.slider-scroll .stop {
-    animation-name: bascule;
-    animation-timing-function: cubic-bezier(0.000, 0.930, 0.265, 1.550);
-    animation-duration: .8s;
-}
-@keyframes bascule {
-    0 {
-        transform: translate(50%,0) rotate(0);
-    }
-    50% {
-        transform: translate(50%,0) rotate(40deg);
-    }
-    100% {
-        transform: translate(50%,0) rotate(0);
-    }
-}
-.slider-scroll span:before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -8px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 8px 0 8px;
-    border-color: #cf0250 transparent transparent transparent;
-}
-.slider-scroll span {
-    display: block;
-    font-size: 18px;
-    line-height: 24px;
-}
-.pourcentage,
-.fourchette {
-    position: absolute;
-    left: -35px;
-    transform: translate(-50%,0);
-}
-.pourcentage {
-    top: -30px;
-    font-size: 16px;
+.s-percentage {
+    padding-left: 20px;
 }
 .fourchette {
+    left: 45px;
+    position: absolute;
+    top: 75px;
     padding-top: 40px;
-    top: 100%;
-    font-size: 12px;
+    width: 43%;
 }
 .fourchette:before {
     content: '';
@@ -154,35 +105,7 @@ body {
     left: 56%;
     transform: translateX(-50%);
 }
-.txt-pink {
-    color: #cf024f;
-}
-.pourcentage.txt-pink {
-    animation: scale .3s ease-out;
-}
-@keyframes scale {
-    0 {
-        transform: translate(-50%,0) scale(1);
-    }
-    50% {
-        transform: translate(-50%,0) scale(1.5);
-    }
-    100% {
-        transform: translate(-50%,0) scale(1);
-    }
-}
-/* 수치 영역 끝 */
-
-/* 스트레스 수치 뱃지 */
-.custom-bedge {
-    font-size: 25px!important;
-    background-color: #B8D9A3!important;
-}
-.result-comment{
-    font-size: 30px;
-    font-weight: bold;
-}
-
+/*수치 영역 바 끝*/
 
 /* 스트레스 수치 지표 */
 .stress-nomal {
@@ -204,12 +127,15 @@ body {
 
 .stress-area{
     margin-top: 55px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 
 /* 장소 추천 영역 시작 */
 .recomend-area{
-    margin-top: 40px;
+    margin-top: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -286,6 +212,7 @@ body {
     }
 }
 .food-desc-box {
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: top;
