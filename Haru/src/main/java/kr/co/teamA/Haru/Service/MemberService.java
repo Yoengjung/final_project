@@ -1,6 +1,8 @@
 package kr.co.teamA.Haru.Service;
 
+import kr.co.teamA.Haru.DTO.MemberDTO;
 import kr.co.teamA.Haru.DTO.UserIdDTO;
+import kr.co.teamA.Haru.Entity.Member;
 import kr.co.teamA.Haru.Repository.MemberRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,5 +24,17 @@ public class MemberService {
             return 0;
         }
     }
-
+public Member create(MemberDTO boardDto){
+    Member entity = Member.builder()
+    .userId(boardDto.getUserId())
+    .pwd(boardDto.getPwd())
+    .email(boardDto.getEmail())
+    .name(boardDto.getName())
+    .nickname(boardDto.getNickname())
+    //.(new Data())
+    .profileImg(boardDto.getProfileImg())
+    //.createdAt(LocalDateTime.now())
+    .build();
+    return memberRepository.save(entity);
+    }
 }

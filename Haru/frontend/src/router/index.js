@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../pages/Home.vue";
 import Login from "../pages/Login.vue";
-import Signup from "../pages/Signup.vue";
+//import Signup from "../pages/Signup.vue";
+import SignupEx2 from "../pages/SignupEx2.vue";
 import UploadedImage from "../pages/UploadedImage.vue";
 import FaceRegistration from "../pages/FaceRegistration.vue";
 import Feed from "../pages/Feed.vue";
@@ -29,9 +30,9 @@ const routes = [
     component: Login,
   },
   {
-    path: "/Signup",
-    name: "Signup",
-    component: Signup,
+    path: "/SignupEx2",
+    name: "SignupEx2",
+    component: SignupEx2,
   },
   {
     path: "/UploadedImage",
@@ -101,8 +102,8 @@ const routes = [
   {
     path: "/SelectHobby",
     name: "SelectHobby",
-    component: SelectHobby
-  }
+    component: SelectHobby,
+  },
 ];
 
 const router = createRouter({

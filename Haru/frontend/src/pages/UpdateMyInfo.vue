@@ -168,11 +168,35 @@ export default {
       event.preventDefault();
     },
     submit() {
+      //데이터 입력후 가입 버튼 클릭
       const userId = document.getElementById("userId").value;
+      const pwd = document.getElementById("pwd").value;
       const nickname = document.getElementById("nickname").value;
       const email = document.getElementById("email").value;
       const name = document.getElementById("name").value;
-
+      // Add additional data to formData
+      this.formData.append("userId", userId);
+      this.formData.append("pwd", pwd);
+      this.formData.append("nickname", nickname);
+      this.formData.append("email", email);
+      this.formData.append("name", name);
+      axios
+        .post("http://192.168.0.34/Haru/signup", this.formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((res) => {
+          if (res.data === 1) {
+            alert("회원가입이 완료되었습니다.");
+            this.$router.push("/login");
+          } else {
+            alert("회원가입에 실패하였습니다.");
+            return false;
+          }
+        })
+        .catch((error) => {
+          console.error("API 호출 에러:", error);
+          return false;
+        });
       var idRegex = /^[a-zA-Z0-9_]+$/;
       var nicknameRegex = /^[a-zA-Z0-9ㄱ-ㅎ가-힣]+$/;
       var emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,5}$/;
