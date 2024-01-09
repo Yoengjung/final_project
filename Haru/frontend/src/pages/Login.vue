@@ -111,4 +111,9 @@ export default {
 </script>
 <style scoped>
 @import url("../css/login.css");
+.container1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
