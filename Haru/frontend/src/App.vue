@@ -109,6 +109,11 @@ ul {
   margin: 0;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
 .cursor-p {
   cursor: pointer;
 }
@@ -118,14 +123,19 @@ ul {
   width: fit-content;
 }
 
-.main-title > h2 {
+.main-title-center {
+  margin: 0 auto 20px;
+}
+
+.main-title > h2,
+.main-title-center > h2 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #f39f7e;
 }
 
 /*big button 크기 (추가, 수정, 삭제)*/
-.big_ctlbtn {
+.big-ctlbtn {
   /*button*/
   width: 180px;
   height: 50px;
@@ -135,85 +145,84 @@ ul {
 }
 
 /*big button 색상 (추가, 수정, 삭제)*/
-.insert_btn {
+.insert-btn {
   background-color: #f7a27e;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
-.insert_btn:hover {
+.insert-btn:hover {
   background-color: #eb7543;
   color: #fff;
 }
-.update_btn {
+.update-btn {
   background-color: #f0bba4;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
-.update_btn:hover {
+.update-btn:hover {
   background-color: #ed956f;
   color: #fff;
 }
-.delete_btn {
+.delete-btn {
   background-color: #ff2e00;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
-.delete_btn:hover {
+.delete-btn:hover {
   background-color: #c32300;
   color: #fff;
 }
-.select_btn {
-  background-color: #ffffff;
-  border: 1px solid #0143ff;
-  color: #0143ff;
+.select-btn {
+  background-color: #7facef;
+  color: #fff;
+  border: 0;
   border-radius: 25px;
 }
-.select_btn:hover {
-  background-color: #f0f4ff;
-  border: 1px solid #0143ff;
-  color: #0143ff;
+.select-btn:hover {
+  background-color: #437fd7;
+  color: #fff;
 }
-.reset_btn {
+.reset-btn {
   background-color: #ffe6c7;
   color: #000000;
   border: 0;
   border-radius: 25px;
 }
-.reset_btn:hover {
+.reset-btn:hover {
   background-color: #ffd49f;
   color: #000000;
 }
-.normal_btn {
+.normal-btn {
   background-color: #ffffff;
   border: 1px solid #252525;
   color: #252525;
   border-radius: 25px;
 }
-.normal_btn:hover {
+.normal-btn:hover {
   background-color: rgb(235, 235, 235);
   border: 1px solid #252525;
   color: #252525;
 }
-.else_btn {
+.else-btn {
   background-color: #6d6d6d;
   color: #fff;
   border: 0;
   border-radius: 25px;
 }
-.else_btn:hover {
+.else-btn:hover {
   background-color: #454545;
   color: #fff;
 }
-.cancle_btn {
+.cancle-btn {
   background-color: #e9e9e9;
   color: #000000;
   border: 0;
   border-radius: 25px;
 }
-.cancle_btn:hover {
+.cancle-btn:hover {
   background-color: #c5c5c5;
   color: #000000;
 }

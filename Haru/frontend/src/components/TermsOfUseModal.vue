@@ -1,7 +1,16 @@
 <template>
-  <div class="modal" v-show="termsOfUseModalOpen" @click="$emit('closeModal')">
-    <div class="modal-content">
-      <span class="close" @click="$emit('closeModal')">&times;</span>
+  <div
+    class="terms-modal"
+    v-show="termsOfUseModalOpen"
+    @click="$emit('closeModal')"
+  >
+    <div class="modal-content" @click.stop>
+      <!-- X 버튼 -->
+      <button
+        id="feed-detail-modal-close"
+        @click="$emit('close-modal')"
+      ></button>
+      <!-- <span class="close" @click="$emit('closeModal')">&times;</span> -->
       <p>이용약관에 동의</p>
       <br />
       <p>

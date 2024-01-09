@@ -41,7 +41,7 @@
             </li>
             <div class="update-mydata-box">
               <a
-                class="big_ctlbtn update_btn"
+                class="big-ctlbtn update-btn"
                 href="/userConfirmation"
                 id="updateMyDataBtn"
                 >내 정보 수정</a

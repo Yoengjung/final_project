@@ -34,10 +34,10 @@
 
         <!-- 버튼 영역 -->
         <div class="mydiary-update-btn-area">
-          <button @click="$emit('close-modal')" class="big_ctlbtn cancle_btn">
+          <button @click="$emit('close-modal')" class="big-ctlbtn cancle-btn">
             취소하기
           </button>
-          <button class="big_ctlbtn insert_btn">수정하기</button>
+          <button class="big-ctlbtn insert-btn">수정하기</button>
         </div>
       </div>
     </div>

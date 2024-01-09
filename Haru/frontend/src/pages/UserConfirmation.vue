@@ -2,7 +2,7 @@
   <div class="container1">
     <div class="userConfirm-box">
       <!-- title -->
-      <div class="main-title">
+      <div class="main-title-center">
         <h2>개인 정보 확인</h2>
       </div>
       <form>
@@ -12,7 +12,7 @@
           <p id="userComfirm-pwd-msg"></p>
         </div>
         <button
-          class="big_ctlbtn update_btn"
+          class="big-ctlbtn update-btn"
           type="submit"
           id="userConfirm-btn"
           @click="userConfirmBtn"
@@ -47,8 +47,4 @@ export default {
 </script>
 <style scoped>
 @import url("../css/userConfirmation.css");
-
-.main-title {
-  margin: 0 auto 20px;
-}
 </style>
