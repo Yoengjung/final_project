@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../pages/Home.vue";
 import Login from "../pages/Login.vue";
-import Signup from "../pages/Signup.vue";
+//import Signup from "../pages/Signup.vue";
+import SignupEx1 from "../pages/SignupEx1.vue";
 import UploadedImage from "../pages/UploadedImage.vue";
 import FaceRegistration from "../pages/FaceRegistration.vue";
 import Feed from "../pages/Feed.vue";
@@ -31,7 +32,7 @@ const routes = [
   {
     path: "/Signup",
     name: "Signup",
-    component: Signup,
+    component: SignupEx1,
   },
   {
     path: "/UploadedImage",
