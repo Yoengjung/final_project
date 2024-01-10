@@ -164,10 +164,14 @@ export default {
       email: "",
       name: "",
       profile: "",
-      files:[], // 파일을 저장하는 배열
-      formData: new FormData(), // FormData 객체 초기화
       termsOfUseModalOpen: false,
       modalOpen: false,
+
+              //파일업로드 관련 추가하기 --------------- 기존코드
+              files:[],
+              // 서버로 파일을 전송할 객체
+              //폼에서의 입력값, 업로드한 이미지 여기에 저장
+              formData: new FormData(), // FormData 객체 초기화
     };
   },
   components: {
