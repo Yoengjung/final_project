@@ -1,7 +1,6 @@
 /* 개인 정보 확인 box */
 .userConfirm-box {
   width: fit-content;
-  height: 230px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;

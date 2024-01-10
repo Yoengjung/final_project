@@ -15,6 +15,7 @@ import UpdateMyInfo from "../pages/UpdateMyInfo.vue";
 import UserConfirmation from "../pages/UserConfirmation.vue";
 import SelectHobby from "../pages/SelectHobby.vue";
 import Total_stress from "../pages/Total_stress.vue";
+import Test from "../pages/test.vue";
 
 const routes = [
   {
@@ -96,6 +97,11 @@ const routes = [
     path: "/Total_stress",
     name: "Total_stress",
     component: Total_stress,
+  },
+  {
+    path: "/Test",
+    name: "Test",
+    component: Test,
   },
 ];
 

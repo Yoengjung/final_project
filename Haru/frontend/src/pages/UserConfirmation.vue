@@ -47,4 +47,8 @@ export default {
 </script>
 <style scoped>
 @import url("../css/userConfirmation.css");
+.container1 {
+  display: flex;
+  align-items: center;
+}
 </style>

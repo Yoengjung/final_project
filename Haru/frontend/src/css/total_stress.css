@@ -4,16 +4,15 @@
 }
 .result-card-container {
   width: 100%;
-  height: 750px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .result-card-box {
+  padding: 60px 0;
   background-color: #f8f8f8;
   border-radius: 10px;
   width: 1200px;
-  height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -65,6 +64,7 @@
 }
 /* 숫자로 보여줄 div */
 .percentage-number {
+  line-height: 30px;
   padding-top: 2px;
   padding-right: 10px;
   font-size: 17px;
@@ -138,7 +138,6 @@
 /* 스트레스 수치 지표 끝 */
 /*수치 영역 바 끝*/
 .stress-area {
-  margin-top: 55px;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -146,28 +145,48 @@
 }
 
 /* 장소 추천 영역 시작 */
-.recomend-area {
-  margin-top: 120px;
+.recommend-area {
+  margin-top: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
-.recomend-area-box {
+.recommend-area-box {
   width: 90%;
   display: flex;
   flex-direction: row;
 }
-.recomend-button {
+.recommend-button {
   margin-left: auto;
+  display: flex;
+  justify-content: space-between;
 }
+
+.recommend-button > .swiper-btn {
+  font-size: 30px;
+  padding: 0;
+  width: 55px;
+  border: 1px solid;
+  border-radius: 30px;
+  display: inline-block;
+  background-color: #fff;
+  height: 55px;
+  margin-left: 10px;
+  font-weight: 100;
+  transition: background-color 0.2s ease-in;
+}
+.recommend-button > .swiper-btn:hover {
+  background-color: #dce5eb;
+}
+
 /* 장소 추천 멘트 */
-.recomend-comment > span {
+.recommend-comment > span {
   font-size: 25px;
 }
 
 /* 장소 카드 영역 */
-.recomend-place {
+.recommend-place {
   background-color: #f8f8f8;
   overflow-x: auto;
   margin-top: 20px;
@@ -243,6 +262,7 @@
 .review-score {
   font-size: 20px;
   color: white;
+  font-weight: 300;
 }
 /* 장소 주소 */
 .food-address {
@@ -265,35 +285,18 @@
   cursor: pointer;
   z-index: 1;
 }
-.recomend-btn-el {
-  width: 50px;
-  cursor: pointer;
-}
 
 /* 하단 버튼 */
 .step-btn {
-  margin-top: 30px;
   display: flex;
   flex-direction: row;
-  margin-right: 5px;
-  border-radius: 60px;
-  color: white;
-  font-size: 20px;
-  border: none;
   align-items: center;
-  height: 50px;
+  width: 570px;
+  justify-content: space-between;
+  padding-top: 30px;
 }
 .step-btn > span {
   padding: 5px 20px;
-}
-#prev-button {
-  background-color: #cacaca;
-}
-#next-button {
-  background-color: #8fc9ff;
-}
-#main-button {
-  background-color: #ffa34e;
 }
 
 /* 진행바 시작 */

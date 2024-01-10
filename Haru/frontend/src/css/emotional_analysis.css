@@ -63,7 +63,7 @@
 }
 
 /* 입력 영역 */
-.input-area {
+.stress-input-area {
   width: 540px;
   height: 550px;
   background-color: #ededed;
@@ -79,11 +79,6 @@
   align-items: center;
   width: 90%;
   height: 90%;
-}
-
-/* 스크롤바 제거 */
-::-webkit-scrollbar {
-  display: none;
 }
 
 /* 공통영역 끝 */
@@ -199,6 +194,8 @@
 /* 기분 폰트 사이즈 */
 .mood-scale-1 {
   font-size: 25px;
+  display: flex;
+  align-items: center;
 }
 
 /*
@@ -515,6 +512,7 @@
   font-weight: bold;
   transition: 0.8s;
 }
+
 .progressbar li > .span-thin {
   font-weight: 300;
   transition: 0.8s;

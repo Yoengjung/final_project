@@ -13,7 +13,7 @@
               >
                 <span
                   :class="{
-                    'span-bold': index + 1 === activeStep,
+                    'span-bold': index + 1 <= activeStep,
                     'span-thin': index !== activeStep,
                   }"
                   >{{ item }}</span
@@ -51,7 +51,7 @@
           </div>
           <!-- 설명 영역 끝 -->
           <!-- 입력 영역 -->
-          <div class="input-area">
+          <div class="stress-input-area">
             <div class="input-area-box upload-grid">
               <div class="upload-area-container">
                 <div class="upload-area-box1">
@@ -102,11 +102,11 @@
           </div>
           <!-- 설명 영역 끝 -->
           <!-- 입력 영역 -->
-          <div class="input-area">
+          <div class="stress-input-area">
             <div class="input-area-box">
               <div class="mood-scale">
                 <div class="mood-scale-1">
-                  나의 기분은 지금
+                  나의 기분은 지금 &nbsp;
                   <span
                     class="badge rounded-pill"
                     :class="moodColor"
@@ -167,7 +167,7 @@
           </div>
           <!-- 설명 영역 끝 -->
           <!-- 입력 영역 -->
-          <div class="input-area">
+          <div class="stress-input-area">
             <div class="input-area-box">
               <!-- 일기 시작 -->
               <div class="input-diary">
@@ -281,7 +281,6 @@ export default {
       }
     },
     modal_click() {
-      console.log("!!!!!!");
       this.modal_Check = !this.modal_Check;
     },
     fileChanged(event) {
@@ -351,5 +350,10 @@ export default {
 }
 .input-diary {
   align-items: normal;
+}
+
+/* 스크롤바 제거 */
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

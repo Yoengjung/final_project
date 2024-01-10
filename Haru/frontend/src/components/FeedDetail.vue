@@ -125,7 +125,7 @@
           <!-- 우측 댓글 영역 -->
           <div class="modal-comment-area">
             <!-- 추천 받은 장소 -->
-            <div class="recommend-area">
+            <div class="feed-recommend-area">
               <div class="rec-detail-img-area">
                 <a href="{{recommend.url}}"
                   ><img class="rec-detail-img" :src="recommend.img" alt=""

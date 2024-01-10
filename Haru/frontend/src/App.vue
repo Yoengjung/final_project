@@ -108,10 +108,6 @@ img {
   user-drag: none;
 }
 
-/* .container {
-  margin: 0 auto;
-} */
-
 .container1 {
   padding: 80px 228px 150px;
   margin: 0 auto;
@@ -162,7 +158,8 @@ li {
   /*button*/
   width: 180px;
   height: 50px;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
   border: 0;
   border-radius: 25px;
   transition: background-color 0.2s;
@@ -241,7 +238,7 @@ li {
   color: #fff;
 }
 .cancle-btn {
-  background-color: #e9e9e9;
+  background-color: #d5d5d5;
   color: #000000;
   border: 0;
   border-radius: 25px;
