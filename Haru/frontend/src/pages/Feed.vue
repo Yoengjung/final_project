@@ -120,7 +120,7 @@ export default {
   methods: {
     // 해당 화면 Background 이미지 설정
     bgImage() {
-      var newImage = "type2";
+      var newImage = "type4";
       this.$emit("bgImage", newImage);
     },
     openModal() {

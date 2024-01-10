@@ -208,8 +208,13 @@ export default {
     for (var i = 0; i < this.myFeed.originHashtag.length; i++) {
       this.activeTags[0][i] = i;
     }
+    this.bgImage();
   },
   methods: {
+    bgImage() {
+      var newImage = "type4";
+      this.$emit("bgImage", newImage);
+    },
     toggleActive(index, num) {
       const indexOfTag = this.activeTags[num].indexOf(index);
 

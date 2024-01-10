@@ -4,6 +4,8 @@
       'bg-type1': bgType === 'type1',
       'bg-type2': bgType === 'type2',
       'bg-type3': bgType === 'type3',
+      'bg-type4': bgType === 'type4',
+      'bg-type5': bgType === 'type5',
     }"
   >
     <Header class="custom-header" />
@@ -38,15 +40,23 @@ export default {
 <style>
 /* body에 배경 이미지 설정 */
 .bg-type1 {
-  background-image: url("./assets/signup_bg.png");
+  background-image: url("./assets/bgImage/type1.png");
   background-size: cover;
 }
 .bg-type2 {
-  background-image: url("./assets/image_63.png");
+  background-image: url("./assets/bgImage/type2.png");
   background-size: cover;
 }
 .bg-type3 {
-  background-image: url("./assets/main_image.png");
+  background-image: url("./assets/bgImage/type3.png");
+  background-size: cover;
+}
+.bg-type4 {
+  background-image: url("./assets/bgImage/type4.png");
+  background-size: cover;
+}
+.bg-type5 {
+  background-image: url("./assets/bgImage/type5.png");
   background-size: cover;
 }
 html {

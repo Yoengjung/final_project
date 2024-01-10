@@ -104,7 +104,14 @@ export default {
       modal_Check: false,
     };
   },
+  created() {
+    this.bgImage();
+  },
   methods: {
+    bgImage() {
+      var newImage = "type4";
+      this.$emit("bgImage", newImage);
+    },
     openModal() {
       this.modal_Check = !this.modal_Check;
     },

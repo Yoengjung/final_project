@@ -181,7 +181,14 @@ export default {
       modal_Check: false,
     };
   },
+  created() {
+    this.bgImage();
+  },
   methods: {
+    bgImage() {
+      var newImage = "type4";
+      this.$emit("bgImage", newImage);
+    },
     toggleActive(index) {
       const indexOfTag = this.activeTags.indexOf(index);
 
@@ -191,7 +198,6 @@ export default {
         this.activeTags.splice(indexOfTag, 1);
       }
     },
-
     getTagClasses(index) {
       return {
         hashtag: true,

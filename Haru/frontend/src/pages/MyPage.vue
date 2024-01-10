@@ -9,7 +9,9 @@
       <div class="mypage-two-box">
         <div class="mypage-left-box">
           <ul>
-            <li><img src="../assets/main_image.png" class="profileImg" /></li>
+            <li>
+              <img src="../assets/bgImage/type3.png" class="profileImg" />
+            </li>
             <li>
               <div class="nickname-box">
                 <span id="nickname-tag">잘생긴 훈남</span>
