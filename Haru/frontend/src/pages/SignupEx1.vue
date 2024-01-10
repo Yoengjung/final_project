@@ -107,6 +107,7 @@
           <label for="profile">프로필 사진</label>
         </div>
         <div class="profile-box">
+        // 파일에 대한 미리보기 이미지 표시
           <div v-for="file in files" :key="file.name">
             <img :src="file.preview" id="preview-img" style="width: 100px" />
           </div>
@@ -118,7 +119,7 @@
             type="file"
             name="profile"
             id="profile"
-            @change="selectFile"
+            @change="selectFile"    // 파일 선택이 변경될때 selectFile 메소드를 호출하는 Vue.js 이벤트 리스너
             multiple
             accept="image/*"
             ref="fileRef"
@@ -196,10 +197,12 @@ export default {
       for (let i = 0; i < selectedFiles.length; i++) {
         const file = selectedFiles[i];
         const preview = URL.createObjectURL(file);
+        // this.files 배열에 파일의 이름과 미리보기 URL을 포함하는 객체 추가 !
         this.files.push({
-          name: file.name,
-          preview: preview,
+          name: file.name,  //파일의 이름
+          preview: preview, // 미리보기 URL
         });
+        // 'files'라는 키에 파일 데이터를 추가하여 어러파일 전송 가능 !
         this.formData.append("files", file);
       }
     },
@@ -311,17 +314,18 @@ export default {
     },
     //모든 데이터를 입력후 가입 버튼을 클릭 했을 때
     submit() {
+    //각 입력 필드에서 값을 가져오기
       const userId = document.getElementById("userId").value;
       const pwd = document.getElementById("pwd").value;
       const nickname = document.getElementById("nickname").value;
       const email = document.getElementById("email").value;
       const name = document.getElementById("name").value;
 
-      console.log(userId)
-      console.log(pwd)
-      console.log(nickname)
-      console.log(email)
-      console.log(name)
+      //console.log(userId)
+      //console.log(pwd)
+      //console.log(nickname)
+      //console.log(email)
+      //console.log(name)
 
       // Add additional data to formData
       this.formData.append("userId", userId);
@@ -329,9 +333,9 @@ export default {
       this.formData.append("nickname", nickname);
       this.formData.append("email", email);
       this.formData.append("name", name);
-
+      // formdata의 내용 출력 (디버깅 목적)
       console.log(this.formData)
-
+      // 서버에 회원가입 정보를 비동기적으로 전송
       axios
         .post("http://192.168.0.224:81/Haru/signup", this.formData, {
           headers: { "Content-Type": "multipart/form-data" },
