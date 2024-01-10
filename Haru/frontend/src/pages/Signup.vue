@@ -168,7 +168,7 @@
           <div class="input-area">
             <div class="profile-box">
               <div class="profile-contents">
-                <img src="../assets/camera_image.png" id="preview-img" />
+                <img src="../assets/icon/camera_image.png" id="preview-img" />
                 <p>사진 끌어다 올리기</p>
                 <label for="profile" id="labelForProfile" class="cursor-p"
                   >파일 업로드</label

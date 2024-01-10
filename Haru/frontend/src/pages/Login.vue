@@ -4,7 +4,7 @@
       <!-- 좌측 박스 영역 -->
       <div class="left-box">
         <h2>하루의 여울</h2>
-        <img src="../assets/login_icon.png" />
+        <img src="../assets/icon/login/login_icon.png" />
         <p>장소...추천 받으실래요?</p>
         <a href="/Signup" class="big-ctlbtn else-btn">회원가입</a>
       </div>
@@ -61,8 +61,12 @@
           </form>
         </div>
         <div class="social-login-box">
-          <a href="#"><img src="../assets/kakao_login_icon.png" /></a>
-          <a href="#"><img src="../assets/naver_login_icon.png" /></a>
+          <a href="#"
+            ><img src="../assets/icon/login/kakao_login_icon.png"
+          /></a>
+          <a href="#"
+            ><img src="../assets/icon/login/naver_login_icon.png"
+          /></a>
         </div>
       </div>
     </div>

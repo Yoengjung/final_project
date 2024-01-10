@@ -60,11 +60,14 @@
                   <div>
                     <img
                       class="alarm-img"
-                      src="../assets/alarm_heart_icon.png"
+                      src="../assets/icon/alarm/alarm_heart_icon.png"
                     />
                     <span id="comment-content">댓글 내용</span>
                     <span class="alarm-time"
-                      ><img src="@/assets/time_icon.png" alt="" />10분전</span
+                      ><img
+                        src="@/assets/icon/time_icon.png"
+                        alt=""
+                      />10분전</span
                     >
                   </div>
                 </li>
@@ -72,11 +75,14 @@
                   <div>
                     <img
                       class="alarm-img"
-                      src="../assets/kakao_login_icon.png"
+                      src="../assets/icon/login/kakao_login_icon.png"
                     />
                     <span id="comment-content">댓글 내용</span>
                     <span class="alarm-time"
-                      ><img src="@/assets/time_icon.png" alt="" />40분전</span
+                      ><img
+                        src="@/assets/icon/time_icon.png"
+                        alt=""
+                      />40분전</span
                     >
                   </div>
                 </li>
@@ -84,7 +90,7 @@
                   <div>
                     <img
                       class="alarm-img"
-                      src="../assets/alarm_basic_icon.png"
+                      src="../assets/icon/alarm/alarm_basic_icon.png"
                     />
                     <span id="comment-content">댓글 내용</span>
                     <span class="alarm-time">23.12.27 1:03</span>
@@ -94,7 +100,7 @@
                   <div>
                     <img
                       class="alarm-img"
-                      src="../assets/alarm_heart_icon.png"
+                      src="../assets/icon/alarm/alarm_heart_icon.png"
                     />
                     <span id="comment-content">댓글 내용</span>
                     <span class="alarm-time">23.12.26 1:03</span>
@@ -104,7 +110,7 @@
                   <div>
                     <img
                       class="alarm-img"
-                      src="../assets/alarm_comment_icon.png"
+                      src="../assets/icon/alarm/alarm_comment_icon.png"
                     />
                     <span id="comment-content">댓글 내용</span>
                     <span class="alarm-time">23.12.25 1:03</span>
@@ -114,7 +120,7 @@
                   <div>
                     <img
                       class="alarm-img"
-                      src="../assets/alarm_comment_icon.png"
+                      src="../assets/icon/alarm/alarm_comment_icon.png"
                     />
                     <span id="comment-content">댓글 내용</span>
                     <span class="alarm-time">23.12.24 1:03</span>
@@ -124,7 +130,7 @@
                   <div>
                     <img
                       class="alarm-img"
-                      src="../assets/alarm_basic_icon.png"
+                      src="../assets/icon/alarm/alarm_basic_icon.png"
                     />
                     <span id="comment-content">댓글 내용</span>
                     <span class="alarm-time">23.12.23 1:03</span>

@@ -1,6 +1,6 @@
 <template>
   <video muted autoplay loop class="home">
-    <source src="../assets/main_bg.mp4" type="video/mp4" />
+    <source src="../assets/bgImage/main_bg.mp4" type="video/mp4" />
   </video>
   <div class="screen-1">
     <h1>지친 현대인의 삶을 위한, 하루의 여울</h1>

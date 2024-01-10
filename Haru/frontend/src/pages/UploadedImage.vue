@@ -18,6 +18,6 @@ export default {
   top: -5px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../assets/login_bg.png");
+  background-image: url("../assets/bgImage/type1.png");
 }
 </style>
