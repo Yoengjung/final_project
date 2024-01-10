@@ -11,6 +11,15 @@
 <script>
 export default {
   name: "HelloWorld",
+  created() {
+    this.bgImage();
+  },
+  methods: {
+    bgImage() {
+      var newImage = "";
+      this.$emit("bgImage", newImage);
+    },
+  },
 };
 </script>
 
