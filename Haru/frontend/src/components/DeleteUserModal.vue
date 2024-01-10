@@ -17,17 +17,20 @@
       <div class="deleteMyInfo-modal-body">
         <img src="../img/deleteUserModal/image106.png" />
         <div class="delete-text-commend">
-          <p>탈퇴 선택시, 계정은 삭제되며</p>
-          <p style="color: red">복구 되지 않습니다.</p>
+          <p>
+            탈퇴 선택시, 계정은 삭제되며
+            <span style="color: red">복구 되지 않습니다.</span>
+          </p>
           <div class="delete-commend-input-box">
-            <span>탈퇴하시기 전에</span>&nbsp;
+            <span>탈퇴하시기 전에 아이디를 입력해주세요.</span>
+          </div>
+          <div>
             <input
               class="input-text"
               type="text"
               id="delete-id"
               placeholder="아이디"
-            />&nbsp;
-            <span>를 입력해주세요.</span>
+            />
           </div>
         </div>
       </div>
@@ -60,6 +63,6 @@ export default {
 <style scoped>
 .input-text {
   display: inline-block;
-  width: 190px;
+  margin-top: 10px;
 }
 </style>

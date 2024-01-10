@@ -191,13 +191,21 @@
           <!-- 장소보여주기 끝 -->
         </div>
         <div class="step-btn">
-          <button class="big-ctlbtn cancle-btn" id="prev-button">
+          <button
+            @click="toMyPlaceDiary"
+            class="big-ctlbtn cancle-btn"
+            id="prev-button"
+          >
             이전 추천 리스트
           </button>
           <button class="big-ctlbtn select-btn" id="next-button">
             나의 스트레스 보고서
           </button>
-          <button class="big-ctlbtn insert-btn" id="main-button">
+          <button
+            @click="toMain"
+            class="big-ctlbtn insert-btn"
+            id="main-button"
+          >
             메인으로 이동
           </button>
         </div>
@@ -239,6 +247,12 @@ export default {
         left: slider.scrollWidth,
         behavior: "smooth",
       });
+    },
+    toMyPlaceDiary() {
+      this.$router.push("/MyPlaceDiary");
+    },
+    toMain() {
+      this.$router.push("/");
     },
   },
   mounted() {
