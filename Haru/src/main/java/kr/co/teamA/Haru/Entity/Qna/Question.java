@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 public class Question {
     @jakarta.persistence.Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
 
     // 다수의 질문과 한명의 작성자
     @ManyToOne
