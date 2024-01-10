@@ -8,9 +8,27 @@
         @submit.prevent="onSubmit"
         class="myInfo-form"
       >
+<<<<<<< HEAD
         <!-- 타이틀 -->
         <div class="main-title-center">
           <h2>회원가입</h2>
+=======
+        <h2>가입하기</h2>
+        <div class="label-box">
+          <label for="userId">아이디</label>
+          <span>*</span>
+        </div>
+        <div class="input-group-box">
+          <input type="text" @keydown.enter.prevent="handleEnter" id="userId" />
+          <button id="id-check" @click="idCheck">Button</button>
+        </div>
+        <p style="display: none" id="idCheck-msg"></p>
+        <div class="label-box">
+          <label for="pwd">비밀번호</label><span>*</span>
+        </div>
+        <div class="input-group-box-1">
+          <input type="password" name="pwd" id="pwd" />
+>>>>>>> BeomSeokLee
         </div>
 
         <!-- 입력 항목 input -->
@@ -184,6 +202,7 @@
 
         <!-------------- 이용약관 -------------->
         <div class="termsOfUse-container">
+<<<<<<< HEAD
           <div class="label-area">
             <label>이용약관 및 개인정보처리방침</label>
           </div>
@@ -207,6 +226,23 @@
                 <label for="privacyPolicy">[필수]개인정보처리방침에 동의</label>
               </div>
               <button @click="privacyPolicyModal">></button>
+=======
+          <p>이용약관 및 개인정보처리방침</p>
+          <div class="termsOfUse-box">
+            <input type="checkbox" name="termsOfUse" id="termsOfUse" />
+            <label for="termsOfUse">[필수]이용약관에 동의</label>
+            <button @click="termsOfUseModal">></button>
+          </div>
+          <div class="termsOfUse-box">
+            <input type="checkbox" name="privacyPolicy" id="privacyPolicy" />
+            <label for="privacyPolicy">[필수]개인정보처리방침에 동의</label>
+            <button @click="privacyPolicyModal">></button>
+          </div>
+          <div class="btn-group">
+            <div class="btn-group-1">
+              <button id="back-btn" @click="back">뒤로가기</button>
+              <button id="submit-btn" @click="submit">가입하기</button>
+>>>>>>> BeomSeokLee
             </div>
           </div>
         </div>
@@ -255,11 +291,17 @@ export default {
   components: {
     privacyPolicyModal,
     termsOfUseModal,
+<<<<<<< HEAD
   },
   mounted() {},
   created() {
     this.bgImage();
   },
+=======
+  },
+  mounted() {},
+
+>>>>>>> BeomSeokLee
   methods: {
     bgImage() {
       var newImage = "type1";
@@ -281,7 +323,11 @@ export default {
       this.modalOpen = false;
     },
 
+<<<<<<< HEAD
     async idCheck() {
+=======
+    idCheck() {
+>>>>>>> BeomSeokLee
       var idRegex = /^[a-zA-Z0-9_]+$/;
       const userId = document.getElementById("userId").value;
       if (userId === "") {

@@ -94,6 +94,19 @@ html {
   font-size: 16px;
   position: relative;
 }
+/*이미지 드래그 및 복사 방지*/
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
 
 /* .container {
   margin: 0 auto;
@@ -103,6 +116,11 @@ html {
   padding: 80px 228px;
   margin: 0 auto;
   min-height: calc(100vh - 249px); /* footer 계산용 */
+}
+
+.container1 {
+  padding: 80px 228px 228px;
+  margin: 0 auto;
 }
 
 a {

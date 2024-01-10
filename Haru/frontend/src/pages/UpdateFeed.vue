@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <div class="container1">
+<<<<<<< HEAD
       <FeedRecommend
         v-if="modal_Check"
         @close-modal="closeModal"
         :RecommendList="RecommendList"
       />
+=======
+>>>>>>> BeomSeokLee
       <form>
         <div class="bg">
           <div>
@@ -81,6 +84,7 @@
 
           <!-- 추천 장소 선택 -->
           <div class="part-area">
+<<<<<<< HEAD
             <button
               type="button"
               class="part-title recommend-modal-open-btn else-btn"
@@ -88,6 +92,9 @@
             >
               추천 장소 선택
             </button>
+=======
+            <p class="part-title">추천 장소</p>
+>>>>>>> BeomSeokLee
           </div>
 
           <div class="btn-area">
@@ -99,8 +106,11 @@
   </div>
 </template>
 <script>
+<<<<<<< HEAD
 import FeedRecommend from "../components/FeedRecommendModal.vue";
 
+=======
+>>>>>>> BeomSeokLee
 export default {
   name: "UpdateFeed",
   data() {
@@ -122,6 +132,7 @@ export default {
         "생고기",
       ],
       activeTags: [[], []],
+<<<<<<< HEAD
       modal_Check: false,
       RecommendList: [
         {
@@ -202,6 +213,8 @@ export default {
           ],
         },
       ],
+=======
+>>>>>>> BeomSeokLee
     };
   },
   created() {
@@ -227,6 +240,7 @@ export default {
         "hash-active": this.activeTags[num].includes(index),
       };
     },
+<<<<<<< HEAD
 
     openModal() {
       this.modal_Check = !this.modal_Check;
@@ -257,4 +271,11 @@ export default {
 #uploadFeed:hover {
   background-color: #ffa83f;
 }
+=======
+  },
+};
+</script>
+<style scoped>
+@import url("../css/updateFeed.css");
+>>>>>>> BeomSeokLee
 </style>

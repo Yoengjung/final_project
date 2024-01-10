@@ -1,6 +1,10 @@
 /* 모달---------------------------------------------- */
 /* dimmed */
+<<<<<<< HEAD
 .feed-modal-wrap {
+=======
+.modal-wrap {
+>>>>>>> BeomSeokLee
   position: fixed;
   top: 0px;
   left: 0px;
@@ -16,6 +20,7 @@
 }
 
 /* modal or popup */
+<<<<<<< HEAD
 .feed-modal-container {
   position: relative;
   height: 850px;
@@ -40,6 +45,28 @@
 
 /* X 버튼 */
 #common-modal-close {
+=======
+.modal-container {
+  position: relative;
+  width: 1130px;
+  height: 94vh;
+  background: #fff2f2;
+  border-radius: 10px;
+  padding: 40px;
+  box-sizing: border-box;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+/* X 버튼 영역 */
+.modal-btn {
+  width: 1050px;
+  /* margin-bottom: 10px; */
+}
+
+/* X 버튼 */
+#modal_close {
+>>>>>>> BeomSeokLee
   width: 39px;
   height: 36px;
   float: right;
@@ -48,7 +75,11 @@
 }
 
 /* 헤더(프로필, 닉네임, 카테고리) */
+<<<<<<< HEAD
 .feed-card-content-area {
+=======
+.card-content-area {
+>>>>>>> BeomSeokLee
   width: 740px;
 }
 

@@ -2,6 +2,7 @@
   <div class="container-header">
     <!-- 로고, 메인 GNB -->
     <header>
+<<<<<<< HEAD
       <div class="left-side-area">
         <div class="logo">
           <a href="/"><img src="../assets/logo_검정.png" /></a>
@@ -35,6 +36,35 @@
             <a href="/SelectHobby">취미 및 관심사</a>
             <a href="/userConfirmation">회원정보 수정</a>
           </div>
+=======
+      <div class="dropdown">
+        <button class="dropbtn dropbtn-1">나의 스트레스</button>
+        <div class="dropdown-content dropdown-1">
+          <a href="/Emotional_analysis">나의 스트레스 분석하기</a>
+          <a href="#">나의 스트레스 종합 보고서</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">내 장소</button>
+        <div class="dropdown-content">
+          <a href="MyPlaceDiary">추천 리스트</a>
+          <a href="#">찜한 장소</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">피드</button>
+        <div class="dropdown-content">
+          <a href="/feed">피드</a>
+          <a href="/MyFeed">내 피드</a>
+          <a href="insertFeed">피드 작성하기</a>
+>>>>>>> BeomSeokLee
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">마이페이지</button>
+        <div class="dropdown-content">
+          <a href="/MyPage">마이페이지</a>
+          <a href="/">회원정보 수정</a>
         </div>
       </div>
       <div class="login-ul-box">
@@ -54,7 +84,18 @@ export default {
 <style scoped>
 .container-header {
   margin: 0px;
+<<<<<<< HEAD
   padding: 20px 228px;
+=======
+  padding: 0px;
+  position: relative;
+  /* width: 60%; */
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+>>>>>>> BeomSeokLee
   z-index: 10;
 }
 
@@ -69,8 +110,17 @@ header {
 }
 
 .logo {
+<<<<<<< HEAD
   z-index: 3;
   margin-right: 60px;
+=======
+  position: relative;
+  top: 30px;
+  left: 80px;
+  width: 100px;
+  height: 100px;
+  z-index: 3;
+>>>>>>> BeomSeokLee
 }
 
 img {

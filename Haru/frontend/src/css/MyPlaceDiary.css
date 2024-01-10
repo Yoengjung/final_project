@@ -18,10 +18,16 @@
 }
 
 /* 탭 영역 버튼 */
+<<<<<<< HEAD
 /* [추천 리스트] 버튼 */
 .myplace-tab-btn-area > .tab-btn-left {
   border-radius: 10px 0px 0px 0px;
   width: 424px;
+=======
+.myplace-tab-btn-area > .tab-btn-left {
+  border-radius: 10px 0px 0px 0px;
+  width: 370px;
+>>>>>>> BeomSeokLee
   height: 50px;
   background: #efefef;
   text-align: center;
@@ -30,10 +36,16 @@
   line-height: 50px;
 }
 
+<<<<<<< HEAD
 /* [일기] 버튼 */
 .myplace-tab-btn-area > .tab-btn-right {
   border-radius: 0px 10px 0px 0px;
   width: 424px;
+=======
+.myplace-tab-btn-area > .tab-btn-right {
+  border-radius: 0px 10px 0px 0px;
+  width: 370px;
+>>>>>>> BeomSeokLee
   height: 50px;
   background: #efefef;
   text-align: center;
@@ -42,6 +54,7 @@
   line-height: 50px;
 }
 
+<<<<<<< HEAD
 /* 버튼 클릭 됐을 때 */
 .myplace-tab-btn-area > .tab-btn-active {
   background: #f9ccbe;
@@ -54,10 +67,20 @@
   max-height: 650px;
   min-height: fit-content;
   padding: 20px 50px 50px;
+=======
+.myplace-tab-btn-area > .tab-btn-active {
+  background: #d7d7d7;
+  font-weight: 700;
+}
+
+.tab-content-area {
+  height: 565px;
+>>>>>>> BeomSeokLee
   background: #f8f8f8;
   border-radius: 0 0 10px 10px;
   overflow: auto;
 }
+<<<<<<< HEAD
 
 /* 추천 리스트 전체 영역 */
 .rlist-container {
@@ -131,3 +154,5 @@
   border: 0;
   background-size: 27px;
 }
+=======
+>>>>>>> BeomSeokLee

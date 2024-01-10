@@ -113,6 +113,7 @@ export default {
       modal_Check: false,
     };
   },
+<<<<<<< HEAD
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
@@ -123,6 +124,9 @@ export default {
       var newImage = "type2";
       this.$emit("bgImage", newImage);
     },
+=======
+  methods: {
+>>>>>>> BeomSeokLee
     openModal() {
       this.modal_Check = !this.modal_Check;
     },

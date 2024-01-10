@@ -91,6 +91,7 @@ export default {
     FindByIdModal,
     FindByPwdModal,
   },
+<<<<<<< HEAD
   created() {
     this.bgImage();
   },
@@ -102,6 +103,12 @@ export default {
     findIdToggleModal() {
       this.isIdModalOpen = !this.isIdModalOpen;
     },
+=======
+  methods: {
+    findIdToggleModal() {
+      this.isIdModalOpen = !this.isIdModalOpen;
+    },
+>>>>>>> BeomSeokLee
     findPwdToggleModal() {
       console.log("비밀번호 찾기 모달");
       this.isPwdModalOpen = !this.isPwdModalOpen;
