@@ -107,12 +107,22 @@
           <label for="profile">프로필 사진</label>
         </div>
         <div class="profile-box">
-          <img src="../assets/camera_image.png" id="preview-img" />
+          <div v-for="file in files" :key="file.name">
+            <img :src="file.preview" id="preview-img" style="width: 100px" />
+          </div>
           <p>사진 끌어다 올리기</p>
           <label for="profile">
             <div class="btn-upload">파일 업로드하기</div>
           </label>
-          <input type="file" name="profile" id="profile" />
+          <input
+            type="file"
+            name="profile"
+            id="profile"
+            @change="selectFile"
+            multiple
+            accept="image/*"
+            ref="fileRef"
+          />
         </div>
         <div class="termsOfUse-container">
           <p>이용약관 및 개인정보처리방침</p>
@@ -164,6 +174,12 @@ export default {
       profile: "",
       termsOfUseModalOpen: false,
       modalOpen: false,
+
+      // 파일업로드 관련 추가하기  ----------- 기존코드
+      files: [],
+      // 서버로 파일을 전송할 객체
+      // 폼에서의 입력값 , 업로드한 이미지도 여기에 저장
+      formData: new FormData(),
     };
   },
   components: {
@@ -173,6 +189,26 @@ export default {
   mounted() {},
 
   methods: {
+    //미리보기 추가하기
+    selectFile(event) {
+      // 파일 선택시 초기화 해줘야 선택한 파일만 files 에 들어 가기 때문이다.
+      this.files = [];
+      //const formData = new FormData();
+      const selectedFiles = event.target.files;
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const file = selectedFiles[i];
+        // 미리보기 URL 생성
+        const preview = URL.createObjectURL(file);
+        // 파일 정보와 미리보기 URL을 files 배열에 추가
+        this.files.push({
+          name: file.name,
+          preview: preview,
+        });
+        // 업로드할 파일은 FormData에 추가
+        this.formData.append("files", file);
+      }
+    },
+
     back() {
       this.$router.push("/login");
     },
@@ -206,7 +242,7 @@ export default {
         return false;
       }
       axios
-        .get(`http://localhost/Haru/${userId}/userId`)
+        .get(`http://192.168.0.40/Haru/idchk/${userId}`)
         .then((res) => {
           console.log(res);
           if (res.data) {
@@ -238,7 +274,7 @@ export default {
       }
 
       axios
-        .post(`http://${process.env.BACK_END_URL}/Haru/nicknameCheck`, {
+        .post("http://192.168.0.40/Haru/nicknameCheck", {
           nickname: nickname,
         })
         .then((res) => {
@@ -278,113 +314,38 @@ export default {
     handleEnter(event) {
       event.preventDefault();
     },
+    //모든 데이터를 입력후 가입 버튼을 클릭 했을 때
     submit() {
       const userId = document.getElementById("userId").value;
       const pwd = document.getElementById("pwd").value;
-      const pwd_chk = document.getElementById("pwd_chk").value;
       const nickname = document.getElementById("nickname").value;
       const email = document.getElementById("email").value;
       const name = document.getElementById("name").value;
+      // Add additional data to formData
+      this.formData.append("userId", userId);
+      this.formData.append("pwd", pwd);
+      this.formData.append("nickname", nickname);
+      this.formData.append("email", email);
+      this.formData.append("name", name);
 
-      var idRegex = /^[a-zA-Z0-9_]+$/;
-      var pwdRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
-      var nicknameRegex = /^[a-zA-Z0-9ㄱ-ㅎ가-힣]+$/;
-      var emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,5}$/;
-
-      if (userId === "") {
-        document.getElementById("idCheck-msg").innerText =
-          "아이디는 필수 입력 사항입니다.";
-        document.getElementById("idCheck-msg").style.display = "block";
-      }
-      if (pwd === "") {
-        document.getElementById("pwd-msg").innerHTML =
-          "비밀번호는 영문 대문자와 숫자, 특수문자를 포함한 8자리 이상이어야 합니다.";
-        document.getElementById("pwd-msg").style.display = "block";
-      } else {
-        document.getElementById("pwd-msg").style.display = "none";
-      }
-      if (pwd_chk !== pwd || pwd_chk === "") {
-        document.getElementById("pwd-chk-msg").innerHTML =
-          "비밀번호가 일치하지 않습니다.";
-        document.getElementById("pwd-chk-msg").style.display = "block";
-      } else {
-        document.getElementById("pwd-chk-msg").style.display = "none";
-      }
-      if (nickname === "") {
-        document.getElementById("nicknameCheck-msg").innerHTML =
-          "닉네임은 필수 입력 사항입니다.";
-        document.getElementById("nicknameCheck-msg").style.display = "block";
-      } else {
-        document.getElementById("nicknameCheck-msg").style.display = "none";
-      }
-      if (name === "") {
-        document.getElementById("nameCheck-msg").innerHTML =
-          "이름은 필수 입력 사항입니다.";
-        document.getElementById("nameCheck-msg").style.display = "block";
-      } else {
-        document.getElementById("nameCheck-msg").style.display = "none";
-      }
-      if (email === "") {
-        document.getElementById("emailCheck-msg").innerHTML =
-          "이메일은 필수 입력 사항입니다.";
-        document.getElementById("emailCheck-msg").style.display = "block";
-      } else {
-        document.getElementById("emailCheck-msg").style.display = "none";
-      }
-
-      if (
-        userId === "" ||
-        pwd === "" ||
-        pwd_chk === "" ||
-        email === "" ||
-        name === "" ||
-        nickname === ""
-      ) {
-        return false;
-      }
-
-      if (idRegex.test(userId) === false) {
-        document.getElementById("userId").focus();
-        document.getElementById("idCheck-msg").innerText =
-          "아이디는 영문 대소문자와 숫자, _만 사용 가능합니다.";
-        document.getElementById("idCheck-msg").style.display = "block";
-      } else if (pwdRegex.test(pwd) == false) {
-        document.getElementById("pwdCheck-msg").innerHTML =
-          "비밀번호는 영문 대문자와 숫자, 특수문자를 포함한 8자리 이상이어야 합니다.";
-        document.getElementById("pwdCheck-msg").style.display = "block";
-        document.getElementById("pwd").focus();
-      } else if (pwd !== pwd_chk) {
-        alert("비밀번호가 일치하지 않습니다.");
-        document.getElementById("pwd_chk").focus();
-      } else if (nicknameRegex.test(nickname) === false) {
-        alert("닉네임은 한글, 영문 대소문자, 숫자만 사용 가능합니다.");
-        document.getElementById("nickname").focus();
-      } else if (emailRegex.test(email) === false) {
-        alert("이메일 형식이 올바르지 않습니다.");
-        document.getElementById("email").focus();
-      } else {
-        axios
-          .post("http://localhost:8090/api/user/signup", {
-            userId: userId,
-            pwd: pwd,
-            nickname: nickname,
-            email: email,
-            name: name,
-          })
-          .then((res) => {
-            if (res.data === 1) {
-              alert("회원가입이 완료되었습니다.");
-              this.$router.push("/login");
-            } else {
-              alert("회원가입에 실패하였습니다.");
-              return false;
-            }
-          })
-          .catch((error) => {
-            console.error("API 호출 에러:", error);
+      console.log(this.formData);
+      axios
+        .post("http://192.168.0.40/Haru/signup", this.formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((res) => {
+          if (res.data === 1) {
+            alert("회원가입이 완료되었습니다.");
+            this.$router.push("/login");
+          } else {
+            alert("회원가입에 실패하였습니다.");
             return false;
-          });
-      }
+          }
+        })
+        .catch((error) => {
+          console.error("API 호출 에러:", error);
+          return false;
+        });
     },
     previewImage(event) {
       const reader = new FileReader();

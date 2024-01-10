@@ -42,11 +42,11 @@ public class MemberController {
         String imgName=null;
         for (MultipartFile multipartFile : files){
             imgName = UUID.randomUUID() + getExtension(multipartFile.getOriginalFilename());
+            System.out.println(imgName);
             String filePath = imageDirectory + imgName;
             try (FileOutputStream writer = new FileOutputStream(filePath)) {
                 writer.write(multipartFile.getBytes());
             }catch (Exception e){
-                //log.error(e.getMessage(), e);
                 throw new RuntimeException("Fail to upload files.");
             }
         }
