@@ -286,13 +286,13 @@
   justify-content: center;
 }
 .card {
-  width: 245px;
+  width: 100%;
   height: 265px;
   border-radius: 10px;
   background: #fff;
 }
 .bcard {
-  width: 245px;
+  width: 100%;
   height: 265px;
   border-radius: 10px;
   background: #5a5a5a;
@@ -326,7 +326,7 @@
 }
 .warn-title {
   margin-left: 20px;
-  font-size: 30px;
+  font-size: 21px;
   font-weight: 600;
 }
 .warn-info-box-1 > img {

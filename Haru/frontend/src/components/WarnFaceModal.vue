@@ -1,15 +1,18 @@
 <template>
   <div class="faceReg-container">
     <div class="warn-modal-box">
+      <!-- v-show="modal_Check" -->
       <div
         class="warn-modal-wrap"
         id="modal-wrap"
-        v-show="modal_Check"
-        @click="modal_click"
+        @click="this.$emit('hideModal')"
       >
         <div class="modal-container1" @click.stop="">
           <div class="warn-modal-btn">
-            <button id="warn_modal_close" @click="hideModal"></button>
+            <button
+              id="warn_modal_close"
+              @click="this.$emit('hideModal')"
+            ></button>
           </div>
           <div class="warn-info">
             <div class="warn-info-box">
@@ -83,14 +86,12 @@ export default {
     return {};
   },
   props: {
-    modal_Check: {
-      type: Boolean,
-    },
+    modal_Check: Boolean,
   },
   methods: {
-    hideModal() {
-      this.$emit("hide-modal");
-    },
+    // hideModal() {
+    //   this.$emit("modal_click");
+    // },
   },
 };
 </script>

@@ -231,88 +231,11 @@
           <h3 id="analyzing">분석중입니다.</h3>
           <h3 id="almost-end">거의 다 왔어요!</h3>
         </div>
-
-        <!-- 모달 영역 시작-->
-        <div class="warnfaceModal">
-          <div class="warn-modal-box">
-            <div class="warn-modal-wrap" id="modal-wrap" v-show="modal_Check">
-              <div class="modal-container1">
-                <div class="warn-modal-btn">
-                  <button id="warn_modal_close" @click="modal_click"></button>
-                </div>
-                <div class="warn-info">
-                  <div class="warn-info-box">
-                    <div class="warn-info-box-1">
-                      <img
-                        src="../img/FaceRegistration/warn_img.png"
-                        width="70"
-                      />
-                      <span class="warn-title">얼굴을 찾지 못했어요....</span>
-                    </div>
-                  </div>
-                  <div class="info-cards-container">
-                    <div class="info-cards-1 card">
-                      <img
-                        src="../img/FaceRegistration/warn_info_img/image 79.png"
-                        width="60"
-                      />
-                      <img
-                        src="../img/FaceRegistration/warn_info_img/image 75.png"
-                        width="100"
-                        height="130"
-                      />
-                      <span class="info-coment"
-                        >스티커나 필터를 사용한 경우</span
-                      >
-                    </div>
-                    <div class="info-cards-2 card">
-                      <img
-                        src="../img/FaceRegistration/warn_info_img/image 79.png"
-                        width="60"
-                      />
-                      <img
-                        src="../img/FaceRegistration/warn_info_img/image 76.png"
-                        width="100"
-                        height="130"
-                      />
-                      <span class="info-coment">옆 모습만 나온 경우</span>
-                    </div>
-                    <div class="info-cards-3 bcard">
-                      <img
-                        src="../img/FaceRegistration/warn_info_img/image 79.png"
-                        width="60"
-                      />
-                      <img
-                        src="../img/FaceRegistration/warn_info_img/image 77.png"
-                        width="100"
-                        height="130"
-                      />
-                      <span class="info-coment" style="color: white"
-                        >사진이 어둡게 나온 경우</span
-                      >
-                    </div>
-                    <div class="info-cards-4 card">
-                      <img
-                        src="../img/FaceRegistration/warn_info_img/image 79.png"
-                        width="60"
-                      />
-                      <img
-                        src="../img/FaceRegistration/warn_info_img/image 78.png"
-                        width="100"
-                        height="130"
-                      />
-                      <span class="info-coment">얼굴이 작게 나온 경우</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 모달 영역 끝 -->
       </div>
       <!-- 카드 영역 끝 3-->
     </div>
+    <!-- 모달 영역-------------------->
+    <WarnFaceModal v-if="modal_Check" @hideModal="modal_click" />
   </div>
   <!-- 카드 전체 영역 끝 -->
   <!-- 최종 결과화면 들어올 자리 -->
@@ -320,6 +243,7 @@
 </template>
 
 <script>
+import WarnFaceModal from "@/components/WarnFaceModal.vue";
 export default {
   name: "EmotionalAnalysis",
   data() {
@@ -357,6 +281,7 @@ export default {
       }
     },
     modal_click() {
+      console.log("!!!!!!");
       this.modal_Check = !this.modal_Check;
     },
     fileChanged(event) {
@@ -401,6 +326,9 @@ export default {
         this.moodColor = "mood-very-good";
       }
     },
+  },
+  components: {
+    WarnFaceModal,
   },
 };
 </script>
