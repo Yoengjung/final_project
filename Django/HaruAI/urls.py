@@ -4,4 +4,5 @@ from django.urls import path, include
 urlpatterns = [
     # path('api/predict/', predict, name='predict'),
     path('face/', include('face.urls')),
+    path('calculate/', include('calculate.urls')),
 ]

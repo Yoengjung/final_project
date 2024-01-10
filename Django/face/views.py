@@ -1,49 +1,30 @@
 from django.http import JsonResponse, HttpResponse
-import tensorflow as tf
-import cv2
 import numpy as np
 from django.views.decorators.csrf import csrf_exempt
-import matplotlib
-import matplotlib.pyplot as plt
 from deepface import DeepFace
 import tensorflow as tf
-from tensorflow.keras.applications import EmotionNet
 import cv2
 import pandas as pd
-
-matplotlib.use('Agg')
-plt.switch_backend('agg')
+import tensorflow.keras as keras
 
 
 # Create your views here.
 
-@csrf_exempt
-def sendImg(request):
-    img = request.FILES['img']
+
+def getFaceStress(img):  # 표정을 분석하여 스트레스 수치를 계산하는 함수
     img = np.frombuffer(img.read(), np.uint8)
     img = cv2.imdecode(img, cv2.IMREAD_COLOR)
-    try:
-        img = getFace(img)
-    except:
-        return HttpResponse("Face not found", status=400)
-    # img = resizeImg(img)
+    img = getFace(img)
+    img = resizeImg(img)
 
-    if img is None:
-        # 얼굴을 찾지 못했을 경우 적절한 응답을 반환하거나 예외 처리를 수행할 수 있습니다.
-        return HttpResponse("Face not found", status=400)
-    predict_emote(img)
-    try:
-        # Ensure that img is a numpy array
-        img = np.array(img)
-        _, buffer = cv2.imencode('.png', img)
-        return HttpResponse(buffer.tobytes(), content_type='image/png')
-    except cv2.error as e:
-        # 예외 처리: 이미지 인코딩 중 문제가 발생했을 경우
-        return HttpResponse(f"Image encoding error: {str(e)}", status=500)
+    result = predict_emote(img)
+
+    return result
 
 
-def getFace(img):
-    # 안면 추출 (detectFace 대신 extract_faces 사용)
+def getFace(img):  # 사진에서 얼굴을 찾아 추출하는 함수
+
+    # SSD 모델을 이용하여 안면 추출
     result = DeepFace.extract_faces(img, detector_backend='ssd')[0]
 
     # 검출된 안면 좌표 가져오기
@@ -59,29 +40,22 @@ def getFace(img):
     return face_img
 
 
-def resizeImg(img):
-    img_array = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    img_array = cv2.resize(img_array, (224, 224), interpolation=cv2.INTER_AREA)
-    return img_array
+def resizeImg(img):  # 입력 받은 이미지를 학습된 모델에 맞게 전처리
+    image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype('float32')
+    image = np.array(cv2.resize(image, (48, 48)))
+    image = np.expand_dims(image, axis=0)
+    image /= 255.0
+
+    return image
 
 
 def predict_emote(img):
-    # 모델 불러오기
-    model = MobileNetV3(weights="mobilenet_v3_small_100_224", include_top=True)
+    model = keras.models.load_model(r'E:\git\final_project\Django\face\data\face_model.h5')  # 학습된 모델 load
 
-    # 표정 분류 클래스
-    class_names = ["angry", "disgusted", "fearful", "happy", "sad", "surprised", "neutral"]
+    label_names = ['기쁨', '당황', '분노', '불안', '상처', '슬픔', '중립']  # 모델의 label_list
 
-    # Resize image to match the input size of the VGGFace2 model
-    img_array = cv2.resize(img_array, (224, 224))
-    img = img_to_array(img)
-    img = preprocess_input(img)
+    predictions = model.predict(img)[0]
 
-    # 모델 예측
-    prediction = model.predict(img)
+    result = [{'label': label_names[i], 'confidence': round(predictions[i] * 100)} for i in range(len(label_names))]  # 각 라벨과 확률을 dictionary로 만들어 리스트로 반환
 
-    # 가장 높은 확률을 가진 분류
-    class_index = tf.argmax(prediction)
-
-    # 분류 이름 출력
-    print(class_names[class_index])
+    return result

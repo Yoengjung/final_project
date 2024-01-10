@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-vjc*#l1u=3@%vpvf$#*mqyw1_3xm6@9$1xax0-v)_ue2!h19bz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "text",
     "face",
+    "calculate",
 
 ]
 
@@ -54,10 +55,10 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://192.168.0.215:8081",
-    'http://localhost:8081',  # Spring Boot 애플리케이션의 URL
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://192.168.0.215:8081",
+#     'http://localhost:8081',  # Spring Boot 애플리케이션의 URL
+# ]
 
 ROOT_URLCONF = "HaruAI.urls"
 
