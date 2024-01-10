@@ -1,5 +1,8 @@
 /* 공통 영역 시작 */
 /* 공통영역 emotional_analysis.html에 맞게 수정해야됨. */
+.stress-container {
+  padding: 30px 0 100px;
+}
 
 /* 전체 카드 컨테이너 */
 .reg-container {
@@ -29,7 +32,7 @@
 
 /* 버튼 영역 */
 .next-button {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 /* 설명영역 */
@@ -166,6 +169,7 @@
   background-size: cover;
   cursor: pointer;
   margin-top: -20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 /*핸들러 이미지*/
 .facebgicon1::-webkit-slider-thumb {
@@ -228,31 +232,8 @@
   width: 100%;
 }
 
-/* 일기 제목 */
-#diary-title {
-  width: 100%;
-  height: 50px;
-  background-color: #fffbf6;
-  border-radius: 10px;
-  border: none;
-  text-align: center;
-}
-/* 일기 내용 */
-.diary-content-box {
-  margin-top: 10px;
-}
-#diary-content {
-  width: 100%;
-  height: 400px;
-  border-radius: 10px;
-  line-height: 27px;
-  resize: none;
-  border: none;
-  padding: 30px;
-  font-size: 15px;
-  background-image: url(../img/FaceRegistration/diarybg.png);
-  background-size: cover;
-}
+/* 일기 css */
+/* "../css/myDiaryUpdate.css" 참고 */
 
 /* 모달 css */
 .warn-modal-wrap {
@@ -488,7 +469,7 @@
   color: #7d7d7d;
 }
 .progressbar > li > span {
-  font-size: 20px;
+  font-size: 17px;
   color: #fbfbfb;
 }
 .progressbar li:before {

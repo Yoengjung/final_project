@@ -1,5 +1,5 @@
 <template>
-  <div class="container1">
+  <div class="stress-container">
     <!-- 진행바 영역 시작 -->
     <div class="pro-bar">
       <div class="pro-bar-box">
@@ -171,8 +171,8 @@
             <div class="input-area-box">
               <!-- 일기 시작 -->
               <div class="input-diary">
-                <div class="diary-date">
-                  <h2 id="diary-date-h1">2024년 01월 07일</h2>
+                <div class="diary-date-area">
+                  <h2 id="diary-date-h2">2024년 01월 07일</h2>
                 </div>
                 <div class="diary-title-box">
                   <input
@@ -410,5 +410,18 @@ export default {
 
 .big-ctlbtn {
   margin: 0 10px;
+}
+#diary-title {
+  width: 100%;
+}
+#diary-content {
+  width: 100%;
+  height: 400px;
+  padding: 30px;
+  background-size: cover;
+  line-height: 27px;
+}
+.input-diary {
+  align-items: normal;
 }
 </style>

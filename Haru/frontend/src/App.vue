@@ -113,14 +113,9 @@ img {
 } */
 
 .container1 {
-  padding: 80px 228px;
+  padding: 80px 228px 150px;
   margin: 0 auto;
   min-height: calc(100vh - 249px); /* footer 계산용 */
-}
-
-.container1 {
-  padding: 80px 228px 228px;
-  margin: 0 auto;
 }
 
 a {
