@@ -151,7 +151,7 @@ export default {
             {
               storeName: "신논현역 딸부자네 불백",
               stAddress: "서울시 강남구 꼬마빌딩 1층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
               heartOnOff: "on",
@@ -159,7 +159,7 @@ export default {
             {
               storeName: "신논현역 버거킹",
               stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: ["패스트푸드", "맛집", "와퍼"],
               heartOnOff: "off",
@@ -167,7 +167,7 @@ export default {
             {
               storeName: "신논현역 버거킹",
               stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: ["패스트푸드", "맛집", "와퍼"],
               heartOnOff: "off",
@@ -180,7 +180,7 @@ export default {
             {
               storeName: "신논현역 와플대학",
               stAddress: "서울시 강남구 꼬마빌딩 3층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: [
                 "카페",
@@ -196,7 +196,7 @@ export default {
             {
               storeName: "신논현역 딸부자네 불백",
               stAddress: "서울시 강남구 꼬마빌딩 1층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: [
                 "푸드",
@@ -216,7 +216,7 @@ export default {
             {
               storeName: "신논현역 버거킹",
               stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               hashtag: ["패스트푸드", "맛집", "와퍼"],
               heartOnOff: "off",
             },
@@ -277,6 +277,6 @@ export default {
 </script>
 
 <style scoped>
-@import "../css/myPlaceDiary.css";
-@import "../css/calendar.css";
+@import "@/css/myPlaceDiary.css";
+@import "@/css/calendar.css";
 </style>

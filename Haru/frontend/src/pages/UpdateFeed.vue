@@ -19,7 +19,7 @@
               <div v-for="(item, idx) in 5" :key="idx">
                 <label :for="'file' + (idx + 1)">
                   <div class="file" :class="{ upfile: idx === 0 }">
-                    <img v-if="idx === 0" src="../img/Feed/camera.png" alt="" />
+                    <img v-if="idx === 0" src="@/img/Feed/camera.png" alt="" />
                   </div>
                 </label>
                 <input
@@ -130,7 +130,7 @@ export default {
             {
               storeName: "신논현역 딸부자네 불백",
               stAddress: "서울시 강남구 꼬마빌딩 1층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
               heartOnOff: "on",
@@ -138,7 +138,7 @@ export default {
             {
               storeName: "신논현역 버거킹",
               stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: ["패스트푸드", "맛집", "와퍼"],
               heartOnOff: "off",
@@ -146,7 +146,7 @@ export default {
             {
               storeName: "신논현역 버거킹",
               stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: ["패스트푸드", "맛집", "와퍼"],
               heartOnOff: "off",
@@ -159,7 +159,7 @@ export default {
             {
               storeName: "신논현역 와플대학",
               stAddress: "서울시 강남구 꼬마빌딩 3층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: [
                 "카페",
@@ -175,7 +175,7 @@ export default {
             {
               storeName: "신논현역 딸부자네 불백",
               stAddress: "서울시 강남구 꼬마빌딩 1층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               link: "#",
               hashtag: [
                 "푸드",
@@ -195,7 +195,7 @@ export default {
             {
               storeName: "신논현역 버거킹",
               stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("../img/Feed/bul.png"),
+              img: require("@/img/Feed/bul.png"),
               hashtag: ["패스트푸드", "맛집", "와퍼"],
               heartOnOff: "off",
             },
@@ -245,7 +245,7 @@ export default {
 };
 </script>
 <style scoped>
-@import url("../css/uploadFeed.css");
+@import url("@/css/uploadFeed.css");
 .hashtag-area {
   margin-top: -10px;
 }

@@ -15,7 +15,7 @@
       </div>
 
       <div class="deleteMyInfo-modal-body">
-        <img src="../img/deleteUserModal/image106.png" />
+        <img src="@/img/deleteUserModal/image106.png" />
         <div class="delete-text-commend">
           <p>
             탈퇴 선택시, 계정은 삭제되며

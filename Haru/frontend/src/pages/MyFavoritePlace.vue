@@ -12,7 +12,7 @@
           :key="idx"
         >
           <div class="'food-img">
-            <img class="heart-img" src="../img/Total_stress/img/image 47.png" />
+            <img class="heart-img" src="@/img/Total_stress/img/image 47.png" />
             <img :src="item.image" alt="" class="place-card" />
           </div>
           <div class="food-desc">

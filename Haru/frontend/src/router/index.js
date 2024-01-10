@@ -3,7 +3,7 @@ import Home from "../pages/Home.vue";
 import Login from "../pages/Login.vue";
 import Signup from "../pages/Signup.vue";
 import UploadedImage from "../pages/UploadedImage.vue";
-import Emotional_analysis from "../pages/Emotional_analysis.vue";
+import Emotional_analysis from "../pages/stress/Emotional_analysis.vue";
 import Feed from "../pages/Feed.vue";
 import InsertFeed from "../pages/InsertFeed.vue";
 import UpdateFeed from "../pages/UpdateFeed.vue";
@@ -14,7 +14,7 @@ import UpdateMyPage from "../pages/UpdateMyPage.vue";
 import UpdateMyInfo from "../pages/UpdateMyInfo.vue";
 import UserConfirmation from "../pages/UserConfirmation.vue";
 import SelectHobby from "../pages/SelectHobby.vue";
-import Total_stress from "../pages/Total_stress.vue";
+import Total_stress from "../pages/stress/Total_stress.vue";
 import MyFavoritePlace from "../pages/MyFavoritePlace.vue";
 import Test from "../pages/test.vue"; // test 화면
 

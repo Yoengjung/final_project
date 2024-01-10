@@ -24,5 +24,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../css/home.css");
+@import url("@/css/home.css");
 </style>

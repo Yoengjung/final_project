@@ -20,7 +20,7 @@
     >
       <!-- 아이콘 -->
       <div class="myplace-diary-icon-bg">
-        <img src="../img/myPlace/diaryicon.png" alt="" />
+        <img src="@/img/myPlace/diaryicon.png" alt="" />
       </div>
 
       <!-- 제목 -->

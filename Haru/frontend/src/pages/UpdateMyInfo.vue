@@ -316,5 +316,5 @@ export default {
 <style></style>
 
 <style scoped>
-@import url("../css/updateMyInfo.css");
+@import url("@/css/updateMyInfo.css");
 </style>

@@ -39,7 +39,7 @@
               class="rlist-heart"
               :class="{ recBtnDisplayNone: isBtnHeartNone === true }"
             >
-              <img class="cursor-p" src="../img/Feed/heart.png" id="heart" />
+              <img class="cursor-p" src="@/img/Feed/heart.png" id="heart" />
             </div>
 
             <!-- 체크박스 -> 추천리스트 선택 -->
@@ -79,5 +79,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "../css/recommendList.css";
+@import "@/css/recommendList.css";
 </style>

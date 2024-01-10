@@ -21,15 +21,15 @@ export default {
     return {
       cardList: [
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abc",
           profileLink: "#",
           nickname: "닉네임",
           mainCategory: "액티비티",
           images: [
-            require("../img/Feed/feed1.png"),
-            require("../img/Feed/feed3.jpg"),
-            require("../img/Feed/feed2.jpg"),
+            require("@/img/Feed/feed1.png"),
+            require("@/img/Feed/feed3.jpg"),
+            require("@/img/Feed/feed2.jpg"),
           ],
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다",
@@ -38,12 +38,12 @@ export default {
           comments: 5,
         },
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abcd",
           profileLink: "#",
           nickname: "닉네임",
           mainCategory: "액티비티",
-          images: [require("../img/Feed/feed3.jpg")],
+          images: [require("@/img/Feed/feed3.jpg")],
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다 오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다 꼭 또가고 싶어졌다",
           likes: 22,
@@ -51,14 +51,14 @@ export default {
           comments: 5,
         },
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abcd",
           profileLink: "#",
           nickname: "닉네임",
           mainCategory: "액티비티",
           images: [
-            require("../img/Feed/feed3.jpg"),
-            require("../img/Feed/feed2.jpg"),
+            require("@/img/Feed/feed3.jpg"),
+            require("@/img/Feed/feed2.jpg"),
           ],
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다",
@@ -67,15 +67,15 @@ export default {
           comments: 5,
         },
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abc",
           profileLink: "#",
           nickname: "닉네임",
           mainCategory: "액티비티",
           images: [
-            require("../img/Feed/feed1.png"),
-            require("../img/Feed/feed3.jpg"),
-            require("../img/Feed/feed2.jpg"),
+            require("@/img/Feed/feed1.png"),
+            require("@/img/Feed/feed3.jpg"),
+            require("@/img/Feed/feed2.jpg"),
           ],
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다",
@@ -84,15 +84,15 @@ export default {
           comments: 5,
         },
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abc",
           profileLink: "#",
           nickname: "닉네임",
           mainCategory: "액티비티",
           images: [
-            require("../img/Feed/feed1.png"),
-            require("../img/Feed/feed3.jpg"),
-            require("../img/Feed/feed2.jpg"),
+            require("@/img/Feed/feed1.png"),
+            require("@/img/Feed/feed3.jpg"),
+            require("@/img/Feed/feed2.jpg"),
           ],
           content:
             "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다",
@@ -126,5 +126,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "../css/feed.css";
+@import "@/css/feed.css";
 </style>

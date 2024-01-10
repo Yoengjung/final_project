@@ -35,7 +35,7 @@
           <div class="reg-info">
             <div class="reg-info-box">
               <img
-                src="../img/FaceRegistration/image3-unscreen.gif"
+                src="@/img/FaceRegistration/image3-unscreen.gif"
                 width="200"
               />
               <div class="reg-desc">
@@ -59,7 +59,7 @@
             >
               <div class="upload-area-container">
                 <div class="upload-area-box1">
-                  <img src="../img/FaceRegistration/camera.png" width="150" />
+                  <img src="@/img/FaceRegistration/camera.png" width="150" />
                 </div>
                 <div class="upload-area-box2">
                   <span id="face-pic-name">{{ fileName }}</span>
@@ -102,7 +102,7 @@
           <div class="reg-info">
             <div class="reg-info-box">
               <img
-                src="../img/FaceRegistration/darily--unscreen.gif"
+                src="@/img/FaceRegistration/darily--unscreen.gif"
                 width="300"
               />
               <div class="reg-desc">
@@ -167,7 +167,7 @@
           <div class="reg-info">
             <div class="reg-info-box">
               <img
-                src="../img/FaceRegistration/darily--unscreen.gif"
+                src="@/img/FaceRegistration/darily--unscreen.gif"
                 width="300"
               />
               <div class="reg-desc">
@@ -391,7 +391,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("../css/emotional_analysis.css");
+@import url("@/css/emotional_analysis.css");
 
 .big-ctlbtn {
   margin: 0 10px;

@@ -112,10 +112,10 @@
               <div class="'food-img">
                 <img
                   class="heart-img"
-                  src="../img/Total_stress/img/image 47.png"
+                  src="@/img/Total_stress/img/image 47.png"
                 />
                 <img
-                  src="../img/Total_stress/food/buger.jpg"
+                  src="@/img/Total_stress/food/buger.jpg"
                   alt="버거킹"
                   class="place-card"
                 />
@@ -141,10 +141,10 @@
               <div class="'food-img">
                 <img
                   class="heart-img"
-                  src="../img/Total_stress/img/image 47.png"
+                  src="@/img/Total_stress/img/image 47.png"
                 />
                 <img
-                  src="../img/Total_stress/food/duck.jpg"
+                  src="@/img/Total_stress/food/duck.jpg"
                   alt="버거킹"
                   class="place-card"
                 />
@@ -168,21 +168,21 @@
             </div>
             <div class="place-card">
               <img
-                src="../img/Total_stress/food/mega.jpg"
+                src="@/img/Total_stress/food/mega.jpg"
                 alt="버거킹"
                 class="place-card"
               />
             </div>
             <div class="place-card">
               <img
-                src="../img/Total_stress/food/starbucks.jpg"
+                src="@/img/Total_stress/food/starbucks.jpg"
                 alt="버거킹"
                 class="place-card"
               />
             </div>
             <div class="place-card">
               <img
-                src="../img/Total_stress/food/wf.jpg"
+                src="@/img/Total_stress/food/wf.jpg"
                 alt="버거킹"
                 class="place-card"
               />
@@ -282,5 +282,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("../css/total_stress.css");
+@import url("@/css/total_stress.css");
 </style>

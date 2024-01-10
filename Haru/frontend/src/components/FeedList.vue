@@ -24,7 +24,7 @@
           <!-- 본인 게시글인 경우 수정 dim 처리 -->
           <div class="update-area" v-if="i.uid === 'abc'">
             <a href="/UpdateFeed">
-              <img class="cursor-p" src="../img/Feed/update.png" alt="" />
+              <img class="cursor-p" src="@/img/Feed/update.png" alt="" />
               <p class="cursor-p">수정하기</p>
             </a>
           </div>
@@ -108,14 +108,14 @@
         <div class="card-btn">
           <div>
             <div class="heart">
-              <img class="cursor-p" src="../img/Feed/heart.png" id="heart" />
+              <img class="cursor-p" src="@/img/Feed/heart.png" id="heart" />
               <span>{{ i.likes }}</span>
             </div>
 
             <div class="comment">
               <img
                 class="cursor-p"
-                src="../img/Feed/comment.png"
+                src="@/img/Feed/comment.png"
                 id="comment"
                 @click="$emit('open-modal')"
               />

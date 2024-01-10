@@ -25,7 +25,7 @@
                 <ul>
                   <div>누적 댓글 개수</div>
                   <div class="div-tag">
-                    <span><img src="../img/mypage/image 95.png" /></span>
+                    <span><img src="@/img/mypage/image 95.png" /></span>
                     <span>123</span>
                   </div>
                 </ul>
@@ -35,7 +35,7 @@
                 <ul>
                   <div>누적 좋아요 개수</div>
                   <div class="div-tag">
-                    <span><img src="../img/mypage/image 94.png" /></span>
+                    <span><img src="@/img/mypage/image 94.png" /></span>
                     <span>12</span>
                   </div>
                 </ul>
@@ -164,5 +164,5 @@ export default {
 };
 </script>
 <style scoped>
-@import url("../css/mypage.css");
+@import url("@/css/mypage.css");
 </style>

@@ -205,7 +205,7 @@ img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  /*background-image: url("../img/FaceRegistration/mood_img/sad.png");*/
+  /*background-image: url("@/img/FaceRegistration/mood_img/sad.png");*/
   background-size: cover;
   cursor: pointer;
   margin-top: -20px;
@@ -213,19 +213,19 @@ img {
 }
 /*핸들러 이미지*/
 .facebgicon1::-webkit-slider-thumb {
-  background-image: url("../img/FaceRegistration/mood_img/verysad.png");
+  background-image: url("@/img/FaceRegistration/mood_img/verysad.png");
 }
 .facebgicon2::-webkit-slider-thumb {
-  background-image: url("../img/FaceRegistration/mood_img/sad.png");
+  background-image: url("@/img/FaceRegistration/mood_img/sad.png");
 }
 .facebgicon3::-webkit-slider-thumb {
-  background-image: url("../img/FaceRegistration/mood_img/normal.png");
+  background-image: url("@/img/FaceRegistration/mood_img/normal.png");
 }
 .facebgicon4::-webkit-slider-thumb {
-  background-image: url("../img/FaceRegistration/mood_img/happy.png");
+  background-image: url("@/img/FaceRegistration/mood_img/happy.png");
 }
 .facebgicon5::-webkit-slider-thumb {
-  background-image: url("../img/FaceRegistration/mood_img/veryhappy.png");
+  background-image: url("@/img/FaceRegistration/mood_img/veryhappy.png");
 }
 
 /* 트랙 스타일링 (WebKit 기반 브라우저) */
@@ -275,7 +275,7 @@ img {
 }
 
 /* 일기 css */
-/* "../css/myDiaryUpdate.css" 참고 */
+/* "@/css/myDiaryUpdate.css" 참고 */
 
 /* 모달 css */
 .warn-modal-wrap {
@@ -310,7 +310,7 @@ img {
   width: 39px;
   height: 36px;
   float: right;
-  background: url("../img/FaceRegistration/image-74.png");
+  background: url("@/img/FaceRegistration/image-74.png");
   border: none;
   cursor: pointer;
   z-index: 2;

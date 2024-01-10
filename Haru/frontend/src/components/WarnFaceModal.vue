@@ -17,18 +17,18 @@
           <div class="warn-info">
             <div class="warn-info-box">
               <div class="warn-info-box-1">
-                <img src="../img/FaceRegistration/warn_img.png" width="70" />
+                <img src="@/img/FaceRegistration/warn_img.png" width="70" />
                 <span class="warn-title">얼굴을 찾지 못했어요....</span>
               </div>
             </div>
             <div class="info-cards-container">
               <div class="info-cards-1 card">
                 <img
-                  src="../img/FaceRegistration/warn_info_img/image 79.png"
+                  src="@/img/FaceRegistration/warn_info_img/image 79.png"
                   width="60"
                 />
                 <img
-                  src="../img/FaceRegistration/warn_info_img/image 75.png"
+                  src="@/img/FaceRegistration/warn_info_img/image 75.png"
                   width="100"
                   height="130"
                 />
@@ -36,11 +36,11 @@
               </div>
               <div class="info-cards-2 card">
                 <img
-                  src="../img/FaceRegistration/warn_info_img/image 79.png"
+                  src="@/img/FaceRegistration/warn_info_img/image 79.png"
                   width="60"
                 />
                 <img
-                  src="../img/FaceRegistration/warn_info_img/image 76.png"
+                  src="@/img/FaceRegistration/warn_info_img/image 76.png"
                   width="100"
                   height="130"
                 />
@@ -48,11 +48,11 @@
               </div>
               <div class="info-cards-3 bcard">
                 <img
-                  src="../img/FaceRegistration/warn_info_img/image 79.png"
+                  src="@/img/FaceRegistration/warn_info_img/image 79.png"
                   width="60"
                 />
                 <img
-                  src="../img/FaceRegistration/warn_info_img/image 77.png"
+                  src="@/img/FaceRegistration/warn_info_img/image 77.png"
                   width="100"
                   height="130"
                 />
@@ -62,11 +62,11 @@
               </div>
               <div class="info-cards-4 card">
                 <img
-                  src="../img/FaceRegistration/warn_info_img/image 79.png"
+                  src="@/img/FaceRegistration/warn_info_img/image 79.png"
                   width="60"
                 />
                 <img
-                  src="../img/FaceRegistration/warn_info_img/image 78.png"
+                  src="@/img/FaceRegistration/warn_info_img/image 78.png"
                   width="100"
                   height="130"
                 />

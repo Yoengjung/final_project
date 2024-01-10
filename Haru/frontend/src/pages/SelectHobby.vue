@@ -18,7 +18,7 @@
             <img :src="activity.image" />
             <img
               v-if="selectedActivity.includes(index)"
-              src="../img/selectHobbyImg/Group_208.png"
+              src="@/img/selectHobbyImg/Group_208.png"
               class="hobby-check-img"
             />
             <span>{{ activity.name }}</span>
@@ -38,7 +38,7 @@
           >
             <img
               v-if="selectedCulture.includes(index)"
-              src="../img/selectHobbyImg/Group_208.png"
+              src="@/img/selectHobbyImg/Group_208.png"
               class="hobby-check-img"
             />
             <img :src="culture.image" />
@@ -59,7 +59,7 @@
           >
             <img
               v-if="selectedTravel.includes(index)"
-              src="../img/selectHobbyImg/Group_208.png"
+              src="@/img/selectHobbyImg/Group_208.png"
               class="hobby-check-img"
             />
             <img :src="travel.image" />
@@ -80,7 +80,7 @@
           >
             <img
               v-if="selectedHobby.includes(index)"
-              src="../img/selectHobbyImg/Group_208.png"
+              src="@/img/selectHobbyImg/Group_208.png"
               class="hobby-check-img"
             />
             <img :src="hobby.image" />
@@ -101,7 +101,7 @@
           >
             <img
               v-if="selectedFood.includes(index)"
-              src="../img/selectHobbyImg/Group_208.png"
+              src="@/img/selectHobbyImg/Group_208.png"
               class="hobby-check-img"
             />
             <img :src="food.image" />
@@ -122,7 +122,7 @@
           >
             <img
               v-if="selectedSelfDevelopment.includes(index)"
-              src="../img/selectHobbyImg/Group_208.png"
+              src="@/img/selectHobbyImg/Group_208.png"
               class="hobby-check-img"
             />
             <img :src="selfDevelopment.image" />
@@ -143,7 +143,7 @@
           >
             <img
               v-if="selectedShopping.includes(index)"
-              src="../img/selectHobbyImg/Group_208.png"
+              src="@/img/selectHobbyImg/Group_208.png"
               class="hobby-check-img"
             />
             <img :src="shopping.image" />
@@ -175,110 +175,110 @@ export default {
       activity: [
         {
           name: "골프",
-          image: require("../img/selectHobbyImg/액티비티/골프.png"),
+          image: require("@/img/selectHobbyImg/액티비티/골프.png"),
         },
         {
           name: "농구",
-          image: require("../img/selectHobbyImg/액티비티/농구.png"),
+          image: require("@/img/selectHobbyImg/액티비티/농구.png"),
         },
         {
           name: "등산",
-          image: require("../img/selectHobbyImg/액티비티/등산.png"),
+          image: require("@/img/selectHobbyImg/액티비티/등산.png"),
         },
         {
           name: "볼링",
-          image: require("../img/selectHobbyImg/액티비티/볼링.png"),
+          image: require("@/img/selectHobbyImg/액티비티/볼링.png"),
         },
         {
           name: "산책",
-          image: require("../img/selectHobbyImg/액티비티/산책.png"),
+          image: require("@/img/selectHobbyImg/액티비티/산책.png"),
         },
         {
           name: "수영",
-          image: require("../img/selectHobbyImg/액티비티/수영.png"),
+          image: require("@/img/selectHobbyImg/액티비티/수영.png"),
         },
         {
           name: "요가",
-          image: require("../img/selectHobbyImg/액티비티/요가.png"),
+          image: require("@/img/selectHobbyImg/액티비티/요가.png"),
         },
         {
           name: "자전거",
-          image: require("../img/selectHobbyImg/액티비티/자전거.png"),
+          image: require("@/img/selectHobbyImg/액티비티/자전거.png"),
         },
         {
           name: "클라이밍",
-          image: require("../img/selectHobbyImg/액티비티/클라이밍.png"),
+          image: require("@/img/selectHobbyImg/액티비티/클라이밍.png"),
         },
         {
           name: "헬스",
-          image: require("../img/selectHobbyImg/액티비티/헬스.png"),
+          image: require("@/img/selectHobbyImg/액티비티/헬스.png"),
         },
       ],
       culture: [
         {
           name: "공연",
-          image: require("../img/selectHobbyImg/문화_예술/공연.png"),
+          image: require("@/img/selectHobbyImg/문화_예술/공연.png"),
         },
         {
           name: "뮤지컬",
-          image: require("../img/selectHobbyImg/문화_예술/뮤지컬.png"),
+          image: require("@/img/selectHobbyImg/문화_예술/뮤지컬.png"),
         },
         {
           name: "영화",
-          image: require("../img/selectHobbyImg/문화_예술/영화.png"),
+          image: require("@/img/selectHobbyImg/문화_예술/영화.png"),
         },
         {
           name: "전시",
-          image: require("../img/selectHobbyImg/문화_예술/전시.png"),
+          image: require("@/img/selectHobbyImg/문화_예술/전시.png"),
         },
         {
           name: "콘서트",
-          image: require("../img/selectHobbyImg/문화_예술/콘서트.png"),
+          image: require("@/img/selectHobbyImg/문화_예술/콘서트.png"),
         },
       ],
       travel: [
-        { name: "바다", image: require("../img/selectHobbyImg/여행/바다.png") },
+        { name: "바다", image: require("@/img/selectHobbyImg/여행/바다.png") },
         {
           name: "캠핑 글램핑",
-          image: require("../img/selectHobbyImg/여행/캠핑_글램핑.png"),
+          image: require("@/img/selectHobbyImg/여행/캠핑_글램핑.png"),
         },
         {
           name: "테마파크",
-          image: require("../img/selectHobbyImg/여행/테마파크.png"),
+          image: require("@/img/selectHobbyImg/여행/테마파크.png"),
         },
       ],
       hobby: [
-        { name: "게임", image: require("../img/selectHobbyImg/취미/게임.png") },
-        { name: "공예", image: require("../img/selectHobbyImg/취미/공예.png") },
-        { name: "댄스", image: require("../img/selectHobbyImg/취미/댄스.png") },
+        { name: "게임", image: require("@/img/selectHobbyImg/취미/게임.png") },
+        { name: "공예", image: require("@/img/selectHobbyImg/취미/공예.png") },
+        { name: "댄스", image: require("@/img/selectHobbyImg/취미/댄스.png") },
         {
           name: "방탈출",
-          image: require("../img/selectHobbyImg/취미/방탈출.png"),
+          image: require("@/img/selectHobbyImg/취미/방탈출.png"),
         },
         {
           name: "보드게임",
-          image: require("../img/selectHobbyImg/취미/보드게임.png"),
+          image: require("@/img/selectHobbyImg/취미/보드게임.png"),
         },
-        { name: "사진", image: require("../img/selectHobbyImg/취미/사진.png") },
+        { name: "사진", image: require("@/img/selectHobbyImg/취미/사진.png") },
       ],
       food: [
-        { name: "맛집", image: require("../img/selectHobbyImg/푸드/맛집.png") },
-        { name: "카페", image: require("../img/selectHobbyImg/푸드/카페.png") },
+        { name: "맛집", image: require("@/img/selectHobbyImg/푸드/맛집.png") },
+        { name: "카페", image: require("@/img/selectHobbyImg/푸드/카페.png") },
       ],
       selfDevelopment: [
         {
           name: "독서 스터디",
-          image: require("../img/selectHobbyImg/자기계발/독서_스터디.png"),
+          image: require("@/img/selectHobbyImg/자기계발/독서_스터디.png"),
         },
         {
           name: "외국어",
-          image: require("../img/selectHobbyImg/자기계발/외국어.png"),
+          image: require("@/img/selectHobbyImg/자기계발/외국어.png"),
         },
       ],
       shopping: [
         {
           name: "쇼핑",
-          image: require("../img/selectHobbyImg/쇼핑/쇼핑.png"),
+          image: require("@/img/selectHobbyImg/쇼핑/쇼핑.png"),
         },
       ],
     };
@@ -351,5 +351,5 @@ export default {
 };
 </script>
 <style scoped>
-@import url("../css/selectHobby.css");
+@import url("@/css/selectHobby.css");
 </style>

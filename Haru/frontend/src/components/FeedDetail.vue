@@ -105,15 +105,11 @@
             <div class="card-btn">
               <div>
                 <div class="heart">
-                  <img
-                    class="cursor-p"
-                    src="../img/Feed/heart.png"
-                    id="heart"
-                  />
+                  <img class="cursor-p" src="@/img/Feed/heart.png" id="heart" />
                   <span>{{ card.likes }}</span>
                 </div>
                 <div class="comment">
-                  <img src="../img/Feed/comment.png" id="comment" />
+                  <img src="@/img/Feed/comment.png" id="comment" />
                   <span>{{ card.comments }}</span>
                 </div>
               </div>
@@ -169,7 +165,7 @@
                     <div class="m-comment">
                       <p>{{ com.comment }}</p>
                     </div>
-                    <img class="cursor-p" src="../img/Feed/report.png" />
+                    <img class="cursor-p" src="@/img/Feed/report.png" />
                   </div>
                 </div>
               </div>
@@ -201,15 +197,15 @@ export default {
   data() {
     return {
       card: {
-        profileImage: require("../img/Feed/no_profile.png"),
+        profileImage: require("@/img/Feed/no_profile.png"),
         uid: "abc",
         profileLink: "#",
         nickname: "닉네임",
         mainCategory: "액티비티",
         images: [
-          require("../img/Feed/feed1.png"),
-          require("../img/Feed/feed3.jpg"),
-          require("../img/Feed/feed2.jpg"),
+          require("@/img/Feed/feed1.png"),
+          require("@/img/Feed/feed3.jpg"),
+          require("@/img/Feed/feed2.jpg"),
         ],
         content:
           "오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다 오늘 정말 좋았던거 같은데... 뭐 별거 없었다... 하지만 야경은 진짜 멋있었다 꼭 또가고 싶어졌다",
@@ -219,14 +215,14 @@ export default {
       },
       comments: [
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abc",
           nickname: "이이이",
           cDate: "2023-12-30",
           comment: "저도 가고싶어요!",
         },
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abcd",
           nickname: "김기기김",
           cDate: "2023-12-30",
@@ -234,21 +230,21 @@ export default {
             "와, 정말로 그렇죠! 여행은 새로운 경험이자 모험이기도 해서 놀라운 순간과 추억을 만들어주죠. 그 곳에서 새로운 문화와 사람들을 만나고 색다른 경험을 즐기며 여행하는 건 정말 특별한 일이에요. 혹시 어디를 생각하고 있나요? 어느 지역의 자연이나 도시의 매력에 빠져들었을까요? 솔직히 여행은 항상 기대되고 설레이는 순간이죠!",
         },
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abc",
           nickname: "아아앙",
           cDate: "2023-12-29",
           comment: "저는 좀1",
         },
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abcd",
           nickname: "아아앙",
           cDate: "2023-12-28",
           comment: "저는 좀2",
         },
         {
-          profileImage: require("../img/Feed/no_profile.png"),
+          profileImage: require("@/img/Feed/no_profile.png"),
           uid: "abc",
           nickname: "아아앙",
           cDate: "2023-12-27",
@@ -257,7 +253,7 @@ export default {
       ],
       recommend: {
         name: "신논현역 딸부자네 불백",
-        img: require("../img/Feed/bul.png"),
+        img: require("@/img/Feed/bul.png"),
         hashtag: ["푸드", "맛집", "고기"],
         url: "https://www.naver.com/",
         address: "서울시 강남구 꼬마빌딩 1층",
@@ -270,5 +266,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../css/feedDetail.css";
+@import "@/css/feedDetail.css";
 </style>
