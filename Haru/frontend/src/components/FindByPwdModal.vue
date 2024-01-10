@@ -1,30 +1,103 @@
 <template>
-  <div v-if="modalOpen" class="findPwdModal">
-    <div class="findModalContent">
-      <span class="close" @click="$emit('modalClose')">&times;</span>
-      <h2>비밀번호 찾기</h2>
-      <form autocomplete="off">
-        <div>
-          <label for="id">아이디</label>
-          <input type="text" id="id" />
-        </div>
-        <div>
-          <label for="name">이름</label>
-          <input type="text" id="name" />
-        </div>
-        <div>
-          <label for="email">이메일</label>
-        </div>
-        <div class="email-box">
-          <input type="email" id="email" />
-          <button @click.prevent="submit">인증</button>
-        </div>
-        <div class="emailCheckBox">
-          <label for="emailCheck">인증번호</label>
-          <input type="number" id="emailCheck" />
-        </div>
-        <button @click="findIdToggleModal">비밀번호 찾기</button>
-      </form>
+  <div
+    class="FindMyAccount-modal"
+    v-if="modalOpen"
+    @click="$emit('modalClose')"
+  >
+    <div class="findMyAccount-modal-content" @click.stop>
+      <div class="feed-detail-modal-btn">
+        <!-- X 버튼 -->
+        <button id="common-modal-close" @click="$emit('modalClose')"></button>
+      </div>
+
+      <div class="findMyAccount-title-area">
+        <h2>비밀번호 찾기</h2>
+      </div>
+
+      <div class="findModalContent">
+        <form autocomplete="off">
+          <!-- 아이디 -->
+          <div class="info-input-container">
+            <div class="label-area">
+              <label for="id">아이디</label>
+            </div>
+            <div class="input-area">
+              <input
+                class="input-text"
+                type="text"
+                name="id"
+                id="id"
+                placeholder="아이디 입력"
+              />
+            </div>
+          </div>
+
+          <!-- 이름 -->
+          <div class="info-input-container">
+            <div class="label-area">
+              <label for="name">이름</label>
+            </div>
+            <div class="input-area">
+              <input
+                class="input-text"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="이름 입력"
+              />
+            </div>
+          </div>
+
+          <!-- 이메일 -->
+          <div class="info-input-container">
+            <div class="label-area">
+              <label for="email">이메일</label>
+            </div>
+            <div class="input-area">
+              <input
+                class="input-text"
+                type="email"
+                id="email"
+                placeholder="이메일 입력"
+              />
+              <button
+                class="input-in-btn"
+                id="email-ckeck"
+                @click.prevent="submit"
+              >
+                인증
+              </button>
+              <div class="error-msg-area">
+                <p style="display: none" id="emailCheck-msg" class="msg"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 이메일 인증 번호 -->
+          <div class="info-input-container">
+            <div class="label-area">
+              <label for="emailCheck">인증번호</label>
+            </div>
+            <div class="input-area">
+              <input
+                class="input-text"
+                type="number"
+                id="emailCheck"
+                placeholder="인증번호 입력"
+              />
+            </div>
+            <div class="error-msg-area">
+              <p style="display: none" id="Code-msg" class="msg"></p>
+            </div>
+          </div>
+
+          <div class="btn-area">
+            <button class="big-ctlbtn insert-btn" @click="findIdToggleModal">
+              비밀번호 찾기
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -39,3 +112,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.info-input-container {
+  padding-bottom: 30px;
+}
+.btn-area {
+  width: fit-content;
+  margin: 0 auto;
+}
+</style>

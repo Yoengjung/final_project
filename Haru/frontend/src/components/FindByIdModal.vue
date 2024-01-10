@@ -14,13 +14,6 @@
         <h2>아이디 찾기</h2>
       </div>
 
-      <!-- 
-  <div class="modalBackground">
-    <div v-if="modalOpen" class="findIdModal">
-      <div class="findModalContent">
-        <span class="close" @click="$emit('modalClose')">&times;</span>
-        <h2>아이디 찾기</h2> -->
-
       <div class="findModalContent">
         <form autocomplete="off">
           <!-- 이름 -->
@@ -67,12 +60,12 @@
           <!-- 이메일 인증 번호 -->
           <div class="info-input-container">
             <div class="label-area">
-              <label for="emailCheck" class="mustInput">인증번호</label>
+              <label for="emailCheck">인증번호</label>
             </div>
             <div class="input-area">
               <input
                 class="input-text"
-                type="text"
+                type="number"
                 id="emailCheck"
                 placeholder="인증번호 입력"
               />
