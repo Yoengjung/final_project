@@ -90,7 +90,7 @@
             </button>
           </div>
 
-          <div class="btn-area">
+          <div class="updateFeed-btn-area">
             <button id="uploadFeed">피드 수정하기</button>
           </div>
         </div>

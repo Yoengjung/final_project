@@ -44,8 +44,8 @@
   line-height: 40px;
 }
 
-.btn-area {
-  width: 660px;
+.updateFeed-btn-area {
+  /* width: 660px; */
   height: fit-content;
   margin: 30px auto;
   text-align: center;
