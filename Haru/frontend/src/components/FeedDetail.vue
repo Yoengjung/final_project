@@ -6,7 +6,7 @@
         <div class="feed-detail-modal-btn">
           <!-- X 버튼 -->
           <button
-            id="feed-detail-modal-close"
+            id="common-modal-close"
             @click="$emit('close-modal')"
           ></button>
         </div>

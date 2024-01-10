@@ -133,7 +133,7 @@
               placeholder="이메일 입력"
             />
             <button class="input-in-btn" id="email-ckeck" @click="emailCheck">
-              중복확인
+              인증
             </button>
             <div class="error-msg-area">
               <p style="display: none" id="emailCheck-msg" class="msg"></p>

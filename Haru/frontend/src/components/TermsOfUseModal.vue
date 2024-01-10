@@ -7,10 +7,7 @@
     <div class="terms-modal-content" @click.stop>
       <div class="feed-detail-modal-btn">
         <!-- X 버튼 -->
-        <button
-          id="feed-detail-modal-close"
-          @click="$emit('closeModal')"
-        ></button>
+        <button id="common-modal-close" @click="$emit('closeModal')"></button>
       </div>
 
       <div class="terms-title-area">

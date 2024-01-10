@@ -5,10 +5,7 @@
     <div class="feed-modal-container feed-rec-modal" @click.stop>
       <!-- x 버튼 -->
       <div class="feed-rec-modal-btn">
-        <button
-          id="feed-detail-modal-close"
-          @click="$emit('close-modal')"
-        ></button>
+        <button id="common-modal-close" @click="$emit('close-modal')"></button>
       </div>
 
       <!-------------------------- 컨텐츠 시작 -------------------------->

@@ -34,12 +34,12 @@
 }
 
 /* X 버튼 영역 */
-.feed-detail-modal-close {
+.common-modal-close {
   width: 1050px;
 }
 
 /* X 버튼 */
-#feed-detail-modal-close {
+#common-modal-close {
   width: 39px;
   height: 36px;
   float: right;
