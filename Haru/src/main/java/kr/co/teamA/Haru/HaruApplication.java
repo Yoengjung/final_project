@@ -23,7 +23,7 @@ public class HaruApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				System.out.println("test");
 				registry.addMapping("/**")
-						.allowedOrigins("http://192.168.0.40:8081/", "http://localhost/")
+						.allowedOrigins("http://192.168.0.224:8081/", "http://localhost/")
 						.allowedHeaders("*")
 						.allowedMethods("*").maxAge(3600);
 			}

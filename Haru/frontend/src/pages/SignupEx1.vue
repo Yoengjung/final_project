@@ -237,7 +237,7 @@ export default {
         return false;
       }
       axios
-        .get(`http://192.168.0.40:8081/Haru/idchk/${userId}`)
+        .get(`http://192.168.0.224:81/Haru/idchk/${userId}`)
         .then((res) => {
           console.log(res);
           if (res.data) {
@@ -333,7 +333,7 @@ export default {
       console.log(this.formData)
 
       axios
-        .post("http://192.168.0.40:81/Haru/signup", this.formData, {
+        .post("http://192.168.0.224:81/Haru/signup", this.formData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
