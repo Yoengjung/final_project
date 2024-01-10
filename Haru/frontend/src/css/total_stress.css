@@ -1,241 +1,235 @@
-body {
-    background-size: cover;
-    /* 추후 수정 */
-    height: 1080px;
-}
-.result-container{
-    width: 100%;
-    text-align: center;
+.result-container {
+  width: 100%;
+  text-align: center;
 }
 .result-card-container {
-    width: 100%;
-    height: 750px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.result-card-box{
-    background-color: #F8F8F8;
-    border-radius: 10px;
-    width: 1200px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+.result-card-box {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  width: 1200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 }
 /* 스트레스 수치 뱃지 */
 .custom-bedge {
-    font-size: 25px!important;
-    background-color: #B8D9A3!important;
+  font-size: 25px !important;
+  background-color: #b8d9a3 !important;
 }
-.result-comment{
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
+.result-comment {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
 }
 
 /*수치영역 바 시작 */
 /*수치 영역 컨테이너*/
 .rating-bar-container {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 /*10% ~ 90% 수치 영역 박스*/
 .percentage-box {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 /*수치 영역 회색 박스  */
-.rating-bar{
-    width: 85%;
-    height: 45px;
-    background-color: #E2E2E2;
-    border-radius: 100px;
-    display: flex;
-    align-items: center;
+.rating-bar {
+  width: 85%;
+  height: 45px;
+  background-color: #e2e2e2;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
 }
-/*수치 영역 게이지  */
+/* 수치 영역 게이지 */
 .rating-bar-gauge {
-    height: 34px;
-    background: linear-gradient(to left, #FF7171 0%, #efc8c8 100%);
-    border-radius: 100px;
-    margin-left: 7px;
-    margin-right: 7px;
+  height: 34px;
+  background: linear-gradient(to left, #ff7171 0%, #efc8c8 100%);
+  border-radius: 100px;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 /* 숫자로 보여줄 div */
 .percentage-number {
-    padding-top: 2px;
-    padding-right: 10px;
-    font-size: 17px;
-    float: right;
-    font-weight: bold;
-    color: white;
+  padding-top: 2px;
+  padding-right: 10px;
+  font-size: 17px;
+  float: right;
+  font-weight: bold;
+  color: white;
 }
 
 /*10% ~ 90% 수치 ul태그 */
 .rating-percent {
-    padding-left : 64px;
+  padding-left: 64px;
 }
 /*10% ~ 90% 수치 li태그 */
 .rating-number {
-    position: relative;
-    list-style: none;
-    float: left;
-    padding-left: 49px;
-    text-align: center;
+  position: relative;
+  list-style: none;
+  float: left;
+  padding-left: 49px;
+  text-align: center;
 }
 /*10% ~ 90% 수치 숫자 */
-.percentage{
-    font-size: 20px;
-    font-weight: bold;
-    color: #707070;
+.percentage {
+  font-size: 20px;
+  font-weight: bold;
+  color: #707070;
 }
 /* 정상, 주의, 심각 수치 선 */
 .fourchette {
-    left: 45px;
-    position: absolute;
-    top: 75px;
-    padding-top: 40px;
-    width: 50%;
+  left: 45px;
+  position: absolute;
+  top: 75px;
+  padding-top: 40px;
+  width: 50%;
 }
 .fourchette:before {
-    content: '';
-    position: absolute;
-    width: 5px;
-    height: 30px;
-    top: 0;
-    left: 50%;
-    background: #ddd;
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 30px;
+  top: 0;
+  left: 50%;
+  background: #ddd;
 }
 .fourchette:after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #ddd;
-    top: 29px;
-    left: 56%;
-    transform: translateX(-50%);
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+  top: 29px;
+  left: 56%;
+  transform: translateX(-50%);
 }
 /* 스트레스 수치 지표 */
 .stress-nomal {
-    color: #B8D9A3;
-    font-size: 20px;
-    font-weight: bold;
+  color: #b8d9a3;
+  font-size: 20px;
+  font-weight: bold;
 }
 .stress-warning {
-    color: #F8D800;
-    font-size: 20px;
-    font-weight: bold;
+  color: #f8d800;
+  font-size: 20px;
+  font-weight: bold;
 }
 .stress-danger {
-    color: #FF0000;
-    font-size: 20px;
-    font-weight: bold;
+  color: #ff0000;
+  font-size: 20px;
+  font-weight: bold;
 }
 /* 스트레스 수치 지표 끝 */
 /*수치 영역 바 끝*/
-.stress-area{
-    margin-top: 55px;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.stress-area {
+  margin-top: 55px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 장소 추천 영역 시작 */
-.recomend-area{
-    margin-top: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+.recomend-area {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-.recomend-area-box{
-    width: 90%;
-    display: flex;
-    flex-direction: row;
+.recomend-area-box {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
 }
 .recomend-button {
-    margin-left: auto;
+  margin-left: auto;
 }
 /* 장소 추천 멘트 */
 .recomend-comment > span {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 /* 장소 카드 영역 */
 .recomend-place {
-    background-color: #F8F8F8;
-    overflow-x: auto;
-    margin-top: 20px;
-    width: 90%;
-    height: 310px;
-    display: flex;
-    overflow-x: hidden;
-    /* white-space: nowrap; */
+  background-color: #f8f8f8;
+  overflow-x: auto;
+  margin-top: 20px;
+  width: 90%;
+  height: 310px;
+  display: flex;
+  overflow-x: hidden;
+  /* white-space: nowrap; */
 }
-
 
 /* 장소 추천 카드 시작 */
 /* 장소 카드 */
 .place-card {
-    position: relative;
-    flex: 0 0 auto;
-    width: 280px;
-    height: 280px;
-    /* background-color: #3b3b3b; */
-    margin-right: 20px;
-    border-radius: 10px;
+  position: relative;
+  flex: 0 0 auto;
+  width: 280px;
+  height: 280px;
+  /* background-color: #3b3b3b; */
+  margin-right: 20px;
+  border-radius: 10px;
 }
 
 /* 장소 이미지 */
 .food-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* 장소 세부정보 애니메이션 */
 /* 장소 설명 */
 .food-desc {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    color: white;
-    overflow: hidden;
-    height: 120px; /* 초기 높이 설정 */
-    transition: height 0.3s;
-    .food-detail {
-        display: none;
-    }
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: white;
+  overflow: hidden;
+  height: 120px; /* 초기 높이 설정 */
+  transition: height 0.3s;
+  .food-detail {
+    display: none;
+  }
 }
 .food-desc:hover {
-    height: 210px; /* 호버 시 높이 변경 */
-    .food-detail {
-        display: block;
-    }
+  height: 210px; /* 호버 시 높이 변경 */
+  .food-detail {
+    display: block;
+  }
 }
 .food-desc-box {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
 }
 
 /* 해시태그 */
@@ -247,132 +241,69 @@ body {
 
 /* 별점 css */
 .review-score {
-    font-size: 20px;
-    color: white;
+  font-size: 20px;
+  color: white;
 }
 /* 장소 주소 */
 .food-address {
-    font-size: 16px;
-    color: white;
+  font-size: 16px;
+  color: white;
 }
-.food-detail{
-    margin-top: 20px;
+.food-detail {
+  margin-top: 20px;
 }
 .food-title h4 {
-    color: white;
+  color: white;
 }
 
 /* 하트 버튼 */
 .heart-img {
-    width: 30px;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    cursor: pointer;
-    z-index: 1;
+  width: 30px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1;
 }
 .recomend-btn-el {
-    width: 50px;
-    cursor: pointer;
+  width: 50px;
+  cursor: pointer;
 }
 
 /* 하단 버튼 */
-.step-btn{
-    margin-top: 30px;
-    display: flex;
-    flex-direction: row;
-    margin-right: 5px;
-    border-radius: 60px;
-    color: white;
-    font-size: 20px;
-    border: none;
-    align-items: center;
-    height: 50px;
+.step-btn {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  margin-right: 5px;
+  border-radius: 60px;
+  color: white;
+  font-size: 20px;
+  border: none;
+  align-items: center;
+  height: 50px;
 }
 .step-btn > span {
-    padding: 5px 20px;
+  padding: 5px 20px;
 }
-#prev-button{
-    background-color: #CACACA;
+#prev-button {
+  background-color: #cacaca;
 }
-#next-button{
-    background-color: #8FC9FF;
+#next-button {
+  background-color: #8fc9ff;
 }
-#main-button{
-    background-color: #FFA34E;
+#main-button {
+  background-color: #ffa34e;
 }
 
 /* 진행바 시작 */
-pro-bar-box{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+pro-bar-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .row {
-    width: 100%;
+  width: 100%;
 }
-.progressbar {
-    margin: 30px 0 50px 0;
-    counter-reset: step;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-}
-.progressbar li {
-    list-style-type: none;
-    width: 15%;
-    float: left;
-    position: relative;
-    text-align: center;
-    text-transform: uppercase;
-    color: #7d7d7d;
-}
-.progressbar > li > span {
-    font-size: 20px;
-    color: #bad1de;
-}
-.progressbar li:before {
-    width: 20px;
-    height: 20px;
-    content: '';
-    line-height: 30px;
-    border: 2px solid #c9c9c9;
-    background-color: #c9c9c9;
-    display: block;
-    text-align: center;
-    margin: 0 auto 10px auto;
-    border-radius: 50%;
-    transition: all .8s;
-    position: relative;
-    z-index: 4;
-}
-.progressbar li:after {
-    width: 100%;
-    height: 2px;
-    content: '';
-    position: absolute;
-    background-color: #c9c9c9;
-    top: 9px;
-    left: -50%;
-    z-index: 3;
-    transition: all .8s;
-}
-.progressbar li:first-child:after {
-    content: none;
-}
-.progressbar li.active:before {
-    border-color: #157eb7;
-    background-color: #157eb7;
-}
-.progressbar li.active:after {
-    background-color: #157eb7;
-}
-.progressbar li.active > .span-bold {
-    color: #157eb7;
-    font-weight: bold;
-}
-.progressbar li > .span-thin{
-    font-weight: 300;
-    transition: 0.8s;
-}
+
 /* 진행바 끝 */

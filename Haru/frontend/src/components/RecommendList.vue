@@ -1,6 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
     <div
       v-for="(rlist, idx) in RecommendList"
       :key="idx"
@@ -65,16 +64,11 @@
           </div>
         </div>
       </div>
-=======
-    <div v-for="(rlist, idx) in RecommendList" :key="idx">
-      <div class=""></div>
->>>>>>> BeomSeokLee
     </div>
   </div>
 </template>
 <script>
 export default {
-<<<<<<< HEAD
   data() {
     return {};
   },
@@ -87,10 +81,3 @@ export default {
 <style scoped>
 @import "../css/recommendList.css";
 </style>
-=======
-  props: {
-    RecommendList: Object,
-  },
-};
-</script>
->>>>>>> BeomSeokLee

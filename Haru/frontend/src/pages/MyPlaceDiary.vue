@@ -98,22 +98,14 @@
         <div class="myplace-tab-btn-area">
           <div
             class="tab-btn-left cursor-p"
-<<<<<<< HEAD
             :class="{ 'tab-btn-active': isTabRecList === true }"
-=======
-            :class="{ 'tab-btn-active': activeTab === 'recommend' }"
->>>>>>> BeomSeokLee
             @click="changeTab('recommend')"
           >
             추천 리스트
           </div>
           <div
             class="tab-btn-right cursor-p"
-<<<<<<< HEAD
             :class="{ 'tab-btn-active': isTabRecList === false }"
-=======
-            :class="{ 'tab-btn-active': activeTab === 'diary' }"
->>>>>>> BeomSeokLee
             @click="changeTab('diary')"
           >
             일기
@@ -122,7 +114,6 @@
 
         <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트) -->
         <div class="tab-content-area">
-<<<<<<< HEAD
           <RecommendList
             :RecommendList="RecommendList"
             :isBtnHeartNone="isBtnHeartNone"
@@ -135,9 +126,6 @@
             v-if="isTabRecList === false"
           />
           <!-- {{ diaryList }} -->
-=======
-          <FeedList :RecommendList="RecommendList" />
->>>>>>> BeomSeokLee
         </div>
       </div>
     </div>
@@ -145,18 +133,13 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import RecommendList from "../components/RecommendList.vue";
 import MyDiaryList from "../components/MyDiaryList.vue";
-=======
-import FeedList from "../components/RecommendList.vue";
->>>>>>> BeomSeokLee
 
 export default {
   data() {
     return {
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
-<<<<<<< HEAD
       rDate: "9월 23일",
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
       isTabRecList: true, // 추천 리스트 탭 활성화
@@ -289,59 +272,11 @@ export default {
   components: {
     RecommendList,
     MyDiaryList,
-=======
-      RecommendList: [
-        {
-          storeName: "신논현역 딸부자네 불백",
-          stAddress: "서울시 강남구 꼬마빌딩 1층",
-          hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
-          heartOnOff: "on",
-        },
-        {
-          storeName: "신논현역 버거킹",
-          stAddress: "서울시 강남구 꼬마빌딩 2층",
-          hashtag: ["패스트푸드", "맛집", "와퍼"],
-          heartOnOff: "off",
-        },
-        {
-          storeName: "신논현역 와플대학",
-          stAddress: "서울시 강남구 꼬마빌딩 3층",
-          hashtag: ["카페", "맛집", "와플", "애플시나몬", "레몬에이드"],
-          heartOnOff: "on",
-        },
-        {
-          storeName: "신논현역 딸부자네 불백",
-          stAddress: "서울시 강남구 꼬마빌딩 1층",
-          hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
-          heartOnOff: "on",
-        },
-        {
-          storeName: "신논현역 버거킹",
-          stAddress: "서울시 강남구 꼬마빌딩 2층",
-          hashtag: ["패스트푸드", "맛집", "와퍼"],
-          heartOnOff: "off",
-        },
-      ],
-    };
-  },
-  methods: {
-    changeTab(tab) {
-      this.activeTab = tab;
-    },
-  },
-  components: {
-    FeedList,
->>>>>>> BeomSeokLee
   },
 };
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 @import "../css/myPlaceDiary.css";
 @import "../css/calendar.css";
-=======
-@import "../css/MyPlaceDiary.css";
-@import "../css/Calendar.css";
->>>>>>> BeomSeokLee
 </style>

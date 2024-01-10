@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div
     class="FindMyAccount-modal"
     v-if="modalOpen"
@@ -81,31 +80,6 @@
               아이디 찾기
             </button>
           </div>
-=======
-  <div class="modalBackground">
-    <div v-if="modalOpen" class="findIdModal">
-      <div class="findModalContent">
-        <span class="close" @click="$emit('modalClose')">&times;</span>
-        <h2>아이디 찾기</h2>
-        <form autocomplete="off">
-          <div>
-            <label for="name">이름</label>
-            <input type="text" id="name" />
-          </div>
-          <div>
-            <label for="email">이메일</label>
-          </div>
-          <div class="email-box">
-            <input type="email" id="email" />
-            <button @click.prevent="submit">인증</button>
-          </div>
-          <div class="emailCheckBox">
-            <label for="emailCheck">인증번호</label>
-            <input type="number" id="emailCheck" />
-          </div>
-
-          <button @click="findIdToggleModal">아이디 찾기</button>
->>>>>>> BeomSeokLee
         </form>
       </div>
     </div>
@@ -122,7 +96,6 @@ export default {
   },
 };
 </script>
-<<<<<<< HEAD
 <style scoped>
 .info-input-container {
   padding-bottom: 30px;
@@ -132,5 +105,3 @@ export default {
   margin: 0 auto;
 }
 </style>
-=======
->>>>>>> BeomSeokLee

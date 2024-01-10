@@ -6,7 +6,6 @@
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/Haru" />
         <option name="gradleJvm" value="#JAVA_HOME" />
->>>>>>> BeomSeokLee
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/Haru" />
