@@ -25,6 +25,7 @@ import MyFavoritePlace from "@/pages/myPlace/MyFavoritePlace.vue"; // 찜한 장
 
 // 기타--------------------------------------
 import Test from "@/pages/test.vue"; // test 화면
+import Emotional_report from "../pages/Emotional_report.vue";
 
 const routes = [
   {
@@ -106,6 +107,10 @@ const routes = [
     path: "/Test",
     name: "Test",
     component: Test,
+  {
+    path: "/Emotional_report",
+    name: "Emotional_report",
+    component: Emotional_report,
   },
 ];
 
