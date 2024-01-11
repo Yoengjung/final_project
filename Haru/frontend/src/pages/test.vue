@@ -2,6 +2,7 @@
   <div>
     <form action="">
       <input type="file" name="img" id="img" @change="selectFile" />
+      <input type="text" v-model="textData" placeholder="일기를  입력하세요" />
       <button type="button" name="send" id="send" @click="sendImg">전송</button>
     </form>
     <h1>{{ label }}</h1>
@@ -19,6 +20,7 @@ export default {
   name: "test",
   data() {
     return {
+      textData: "",
       total_score: "", // 스트레스 총합
       face_score: "", // 얼굴 스트레스
       diary_score: "", // 일기 스트레스
@@ -33,6 +35,7 @@ export default {
       this.formData.append("img", event.target.files[0]);
     },
     sendImg() {
+      this.formData.append("text", this.textData);
       this.total_score = "이미지 처리중";
       this.face_score = "";
       this.diary_score = "";
@@ -40,7 +43,7 @@ export default {
       this.confidence = "";
       this.date = "";
       axios
-        .post("http://192.168.0.215:8000/calculate/getStress1", this.formData, {
+        .post("http://192.168.0.227:8000/calculate/getStress1", this.formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -60,7 +63,7 @@ export default {
             this.formData.append("confidence", res.data["confidence"]);
             axios
               .post(
-                "http://192.168.0.215:8000/calculate/getStress2", // 이미지 처리 끝 일기 처리 시작
+                "http://192.168.0.227:8000/calculate/getStress2", // 이미지 처리 끝 일기 처리 시작
                 this.formData,
                 {
                   headers: {
