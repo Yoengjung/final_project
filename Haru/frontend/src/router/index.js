@@ -12,6 +12,7 @@ import SelectHobby from "@/pages/member/SelectHobby.vue"; // 취미 및 관심�
 // 스트레스 분석하기 stress--------------------------------------
 import Emotional_analysis from "@/pages/stress/Emotional_analysis.vue"; // 스트레스 분석 화면
 import Total_stress from "@/pages/stress/Total_stress.vue"; // 결과 화면
+import Emotional_report from "../pages/stress/Emotional_report.vue"; // 스트레스 종합 보고서
 
 // 피드 feed--------------------------------------
 import Feed from "@/pages/feed/Feed.vue";
@@ -25,7 +26,6 @@ import MyFavoritePlace from "@/pages/myPlace/MyFavoritePlace.vue"; // 찜한 장
 
 // 기타--------------------------------------
 import Test from "@/pages/test.vue"; // test 화면
-import Emotional_report from "../pages/Emotional_report.vue";
 
 const routes = [
   {
@@ -107,6 +107,7 @@ const routes = [
     path: "/Test",
     name: "Test",
     component: Test,
+  },
   {
     path: "/Emotional_report",
     name: "Emotional_report",

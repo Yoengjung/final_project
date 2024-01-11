@@ -158,7 +158,7 @@
 }
 
 /* 이미지 area (인디케이터, 캐러셀 이미지, 이전/다음 버튼) */
-.card-body-image {
+.feed-card-body-image {
   position: relative;
 }
 

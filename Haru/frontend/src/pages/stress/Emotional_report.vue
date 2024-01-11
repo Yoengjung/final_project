@@ -2,7 +2,7 @@
   <div class="container1">
     <div class="report-container">
       <div class="report-title">
-        <span>{{UserName}}의 스트레스 종합 보고서 😊</span>
+        <span>{{ UserName }}의 스트레스 종합 보고서 😊</span>
       </div>
       <div class="total_report_card">
         <div class="select-date-area">
@@ -15,17 +15,44 @@
           </select>
           <!-- 하루 -->
           <div class="date-input-area">
-            <input type="date" v-if="SelectDate === 'day'" v-model="Oneday" :max="nowDate">
+            <input
+              type="date"
+              v-if="SelectDate === 'day'"
+              v-model="Oneday"
+              :max="nowDate"
+            />
           </div>
           <!-- 일간 최대 14일 -->
           <div class="date-input-area" v-if="SelectDate === 'days'">
-            <input type="date" v-model="Startdays" :max="nowDate" @change="updateEndDateRange"> ~
-            <input type="date" v-model="Enddays" :min="minEndDays" :max="maxEndDays">
+            <input
+              type="date"
+              v-model="Startdays"
+              :max="nowDate"
+              @change="updateEndDateRange"
+            />
+            ~
+            <input
+              type="date"
+              v-model="Enddays"
+              :min="minEndDays"
+              :max="maxEndDays"
+            />
           </div>
           <!-- 월간 최대 12개월 -->
           <div class="date-input-area" v-if="SelectDate === 'month'">
-            <input type="month" v-model="Startmonth" :max="nowDate" @change="updateEndMonthRange"> ~
-            <input type="month" v-model="Endmonth" :min="minEndMonth" :max="maxEndMonth">
+            <input
+              type="month"
+              v-model="Startmonth"
+              :max="nowDate"
+              @change="updateEndMonthRange"
+            />
+            ~
+            <input
+              type="month"
+              v-model="Endmonth"
+              :min="minEndMonth"
+              :max="maxEndMonth"
+            />
           </div>
           <!-- 연간 상관 없음-->
           <div class="date-input-area" v-if="SelectDate === 'year'">
@@ -42,21 +69,29 @@
           </div>
         </div>
         <div class="report-contents">
-          <div v-if="SelectDate === 'day' ">
-            {{Oneday}} 스트레스 수치 <span class="badge rounded-pill normal-badge">정상</span> 입니다.
+          <div v-if="SelectDate === 'day'">
+            {{ Oneday }} 스트레스 수치
+            <span class="badge rounded-pill normal-badge">정상</span> 입니다.
           </div>
-          <div v-if="SelectDate === 'days' ">
-            {{Startdays}} ~ {{Enddays}} 스트레스 수치 <span class="badge rounded-pill warn-badge">위험</span> 입니다.
+          <div v-if="SelectDate === 'days'">
+            {{ Startdays }} ~ {{ Enddays }} 스트레스 수치
+            <span class="badge rounded-pill warn-badge">위험</span> 입니다.
           </div>
-          <div v-if="SelectDate === 'month' ">
-            {{Startmonth}}월 ~ {{Endmonth}}월 스트레스 수치 <span class="badge rounded-pill normal-badge">정상</span> 입니다.
+          <div v-if="SelectDate === 'month'">
+            {{ Startmonth }}월 ~ {{ Endmonth }}월 스트레스 수치
+            <span class="badge rounded-pill normal-badge">정상</span> 입니다.
           </div>
-          <div v-if="SelectDate === 'year' ">
-            {{SelectYear}}년 스트레스 수치 <span class="badge rounded-pill attention-badge">주의</span> 입니다.
+          <div v-if="SelectDate === 'year'">
+            {{ SelectYear }}년 스트레스 수치
+            <span class="badge rounded-pill attention-badge">주의</span> 입니다.
           </div>
         </div>
         <div class="report-chart-area">
-          <Line :options="chartOptions" :data="chartData" style="width: 100%; height: 100%;"></Line>
+          <Line
+            :options="chartOptions"
+            :data="chartData"
+            style="width: 100%; height: 100%"
+          ></Line>
         </div>
       </div>
     </div>
@@ -72,29 +107,29 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend
-} from 'chart.js'
-import { Line } from 'vue-chartjs'
+  Legend,
+} from "chart.js";
+import { Line } from "vue-chartjs";
 
 ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-)
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default {
-  name: 'Emotional_report',
+  name: "Emotional_report",
   components: {
-    Line
+    Line,
   },
   data() {
     return {
-      SelectDate : 'day',
-      UserName: '이범석',
+      SelectDate: "day",
+      UserName: "이범석",
 
       // 현재 날짜
       nowDate: new Date().toISOString().slice(0, 10),
@@ -105,14 +140,14 @@ export default {
       // 일간
       Startdays: new Date().toISOString().slice(0, 10),
       Enddays: new Date().toISOString().slice(0, 10),
-      minEndDays: '',
-      maxEndDays: '',
+      minEndDays: "",
+      maxEndDays: "",
 
       // 월간
       Startmonth: new Date().toISOString().slice(0, 10),
       Endmonth: new Date().toISOString().slice(0, 10),
-      minEndMonth: '',
-      maxEndMonth: '',
+      minEndMonth: "",
+      maxEndMonth: "",
 
       // 연도별로
       SelectYear: new Date().toISOString().slice(0, 4),
@@ -120,21 +155,36 @@ export default {
       //차트 영역
       chartData: {
         //바뀌어야 될 부분
-        labels: [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        datasets: [{
-          label: this.UserName + '님 스트레스 수치',
-          backgroundColor: '#f87979',
-          // 바뀌어야 될 부분
-          data: [10, 7.8, 2.1, 3.4, 5.6, 7.8, 9.1, 8.7, 6.5, 4.3, 2.1, 1.2],
-          tension: 0.1
-        }]
+        labels: [
+          "1월",
+          "2월",
+          "3월",
+          "4월",
+          "5월",
+          "6월",
+          "7월",
+          "8월",
+          "9월",
+          "10월",
+          "11월",
+          "12월",
+        ],
+        datasets: [
+          {
+            label: this.UserName + "님 스트레스 수치",
+            backgroundColor: "#f87979",
+            // 바뀌어야 될 부분
+            data: [10, 7.8, 2.1, 3.4, 5.6, 7.8, 9.1, 8.7, 6.5, 4.3, 2.1, 1.2],
+            tension: 0.1,
+          },
+        ],
       },
       chartOptions: {
-        responsive: false
-      }
-    }
+        responsive: false,
+      },
+    };
   },
-  methods : {
+  methods: {
     // 일간 유효성 검사
     updateEndDateRange() {
       // 종료 날짜 초기화
@@ -143,7 +193,7 @@ export default {
       const getMinDate = new Date(this.Startdays);
       const getMaxDate = new Date(this.Startdays);
 
-      getMinDate.setDate(getMinDate.getDate() -13);
+      getMinDate.setDate(getMinDate.getDate() - 13);
       this.minEndDays = getMinDate.toISOString().slice(0, 10);
 
       getMaxDate.setDate(getMaxDate.getDate() + 13);
@@ -168,13 +218,10 @@ export default {
       console.log(this.minEndMonth, this.maxEndMonth);
     },
   },
-}
+};
 </script>
-<script setup>
-
-</script>
+<script setup></script>
 
 <style scoped>
-  @import url("../css/Emotional_report.css");
+@import url("@/css/stress/Emotional_report.css");
 </style>
-
