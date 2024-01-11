@@ -119,7 +119,7 @@
             type="file"
             name="profile"
             id="profile"
-            @change="selectFile"    // 파일 선택이 변경될때 selectFile 메소드를 호출하는 Vue.js 이벤트 리스너
+            @change="selectFile"
             multiple
             accept="image/*"
             ref="fileRef"
