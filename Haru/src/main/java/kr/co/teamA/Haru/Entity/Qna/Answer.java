@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Answer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -17,7 +17,7 @@ public class Answer {
     @Lob
     private String contents;
 
-    private LocalDateTime Date;
+    private LocalDateTime createDate;
 
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_answer_question"))
