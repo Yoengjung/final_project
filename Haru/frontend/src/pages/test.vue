@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       textData: "",
+      img: "",
       total_score: "", // 스트레스 총합
       face_score: "", // 얼굴 스트레스
       diary_score: "", // 일기 스트레스
@@ -79,6 +80,9 @@ export default {
                 this.date = "분석된 날짜 : " + res.data["date"];
               });
           }
+        })
+        .catch((error) => {
+          console.log(error);
         });
     },
   },

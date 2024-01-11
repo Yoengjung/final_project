@@ -20,6 +20,7 @@
               v-if="SelectDate === 'day'"
               v-model="Oneday"
               :max="nowDate"
+              class="input-text"
             />
           </div>
           <!-- 일간 최대 14일 -->
@@ -29,6 +30,7 @@
               v-model="Startdays"
               :max="nowDate"
               @change="updateEndDateRange"
+              class="input-text"
             />
             ~
             <input
@@ -36,6 +38,7 @@
               v-model="Enddays"
               :min="minEndDays"
               :max="maxEndDays"
+              class="input-text"
             />
           </div>
           <!-- 월간 최대 12개월 -->
@@ -45,6 +48,7 @@
               v-model="Startmonth"
               :max="nowDate"
               @change="updateEndMonthRange"
+              class="input-text"
             />
             ~
             <input
@@ -52,11 +56,12 @@
               v-model="Endmonth"
               :min="minEndMonth"
               :max="maxEndMonth"
+              class="input-text"
             />
           </div>
           <!-- 연간 상관 없음-->
           <div class="date-input-area" v-if="SelectDate === 'year'">
-            <select v-model="SelectYear" class="year-selector">
+            <select v-model="SelectYear" class="year-selector input-text">
               <option>2020</option>
               <option>2021</option>
               <option>2022</option>
@@ -65,7 +70,7 @@
             </select>
           </div>
           <div class="date-input-area">
-            <button>검색</button>
+            <button class="big-ctlbtn else-btn">검색</button>
           </div>
         </div>
         <div class="report-contents">
@@ -88,6 +93,7 @@
         </div>
         <div class="report-chart-area">
           <Line
+            ref="chart"
             :options="chartOptions"
             :data="chartData"
             style="width: 100%; height: 100%"
@@ -184,7 +190,14 @@ export default {
       },
     };
   },
+  created() {
+    this.bgImage();
+  },
   methods: {
+    bgImage() {
+      var newImage = "type2";
+      this.$emit("bgImage", newImage);
+    },
     // 일간 유효성 검사
     updateEndDateRange() {
       // 종료 날짜 초기화
@@ -224,4 +237,16 @@ export default {
 
 <style scoped>
 @import url("@/css/stress/Emotional_report.css");
+/*날짜 입력 input 스타일*/
+.date-input-area > input {
+  border-radius: 20px;
+  width: 150px;
+  border: 2px solid #737373;
+  min-height: 53px;
+  padding: 10px 15px;
+}
+.input-text:hover {
+  border-color: #f8c08d;
+  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+}
 </style>
