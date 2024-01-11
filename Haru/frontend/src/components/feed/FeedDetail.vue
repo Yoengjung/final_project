@@ -14,19 +14,19 @@
           <div class="feed-card-header">
             <div class="left-header">
               <!-- 프로필 사진, 닉네임 -->
-              <div class="profile-area">
-                <div class="profile-img">
+              <div class="feed-profile-area">
+                <div class="feed-profile-img">
                   <a href="#"
                     ><img :src="card.profileImage" alt="프로필 이미지"
                   /></a>
                 </div>
                 <a href="#"
-                  ><span class="nickname">{{ card.nickname }}</span></a
+                  ><span class="feed-nickname">{{ card.nickname }}</span></a
                 >
               </div>
 
               <!-- 큰 카테고리 -->
-              <div class="main-category">{{ card.mainCategory }}</div>
+              <div class="feed-main-category">{{ card.mainCategory }}</div>
             </div>
             <h3 class="rec-title">여기를 추천받았어요!</h3>
           </div>
@@ -35,7 +35,7 @@
         <div class="feed-modal">
           <div class="modal-contents">
             <!-- 이미지 Area -->
-            <div class="card-body-image">
+            <div class="feed-card-body-image">
               <div
                 id="myCarousel"
                 class="carousel slide"
@@ -97,7 +97,7 @@
 
             <!-- 본문 contents -->
             <!-- 이미지 여러개면 margin-top 조금 올리기 -->
-            <div class="card-content">
+            <div class="feed-card-content">
               <p>{{ card.content }}</p>
             </div>
 

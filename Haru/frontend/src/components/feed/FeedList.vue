@@ -4,17 +4,17 @@
     <div class="feed-card" v-for="(i, idx) in cardList" :key="idx">
       <div class="feed-card-header">
         <!-- 프로필 사진, 닉네임 -->
-        <div class="profile-area">
-          <div class="profile-img">
+        <div class="feed-profile-area">
+          <div class="feed-profile-img">
             <a href="#"><img :src="i.profileImage" /></a>
           </div>
           <a href="#"
-            ><span class="nickname">{{ i.nickname }}</span></a
+            ><span class="feed-nickname">{{ i.nickname }}</span></a
           >
         </div>
 
         <!-- 큰 카테고리 -->
-        <div class="main-category">
+        <div class="feed-main-category">
           {{ i.mainCategory }}
         </div>
       </div>
@@ -23,7 +23,7 @@
         <!-- 이미지 Area -->
         <div class="card-body-image">
           <!-- 본인 게시글인 경우 수정 dim 처리 -->
-          <div class="update-area" v-if="i.uid === 'abc'">
+          <div class="feed-update-area" v-if="i.uid === 'abc'">
             <a href="/UpdateFeed">
               <img class="cursor-p" src="@/img/Feed/update.png" alt="" />
               <p class="cursor-p">수정하기</p>
@@ -91,7 +91,7 @@
 
         <!-- 본문 contents -->
         <!-- 이미지 여러개면 margin-top 조금 올리기 -->
-        <div class="card-content">
+        <div class="feed-card-content">
           <p>
             {{ i.content.slice(0, 90) }}
             <span

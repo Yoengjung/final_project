@@ -2,6 +2,7 @@
   <div class="container1">
     <FeedDetail v-if="modal_Check" @close-modal="closeModal" />
     <div class="feed-card-area" id="card-area">
+      <!-- 해시태그 검색 -->
       <form action="" id="search-form">
         <div class="search-area">
           <input

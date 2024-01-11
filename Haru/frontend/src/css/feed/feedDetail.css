@@ -47,9 +47,17 @@
   border: none;
 }
 
-/* 헤더(프로필, 닉네임, 카테고리) */
+/* 헤더(프로필, 닉네임, 카테고리, 여기를 추천받았어요!) */
 .feed-card-content-area {
   width: 740px;
+}
+
+/* 프로필사진, 닉네임, 카테고리 */
+.left-header {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* 본문 전체 영역(이미지, 댓글 영역) */

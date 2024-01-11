@@ -1,23 +1,5 @@
 /* 피드 리스트 */
-.feed-background-container {
-  background: burlywood;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  padding-top: 200px;
-  top: -150px;
-  z-index: -2;
-}
-
-.container-1 {
-  z-index: 1;
-}
-
-.page-title-area {
-  margin: 40px 0 40px 43px;
-}
-
+/* 해시태그 검색 form 영역 */
 #search-form {
   margin-bottom: 40px;
 }
@@ -28,6 +10,7 @@
   position: relative;
 }
 
+/* 검색 input 항목 */
 .hashtag-search-input {
   width: 500px;
   border-radius: 10px;
@@ -36,6 +19,7 @@
   padding-right: 50px;
 }
 
+/* 검색 버튼 */
 .hashtag-search-btn {
   width: fit-content;
   height: fit-content;
@@ -46,6 +30,7 @@
   top: 11px;
 }
 
+/* 검색 아이콘 */
 .hashtag-search-btn > img {
   width: 34px;
 }
@@ -75,64 +60,13 @@
   box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 20px 0px;
 }
 
-/* 프로필, 닉네임, 카테고리 */
-.feed-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.left-header {
-  width: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* 프로필, 닉네임 */
-.profile-area {
-  display: flex;
-  align-items: center;
-}
-
-/* 프로필 사진 */
-.profile-img > a > img {
-  display: inline-block;
-  border-radius: 55px;
-  width: 55px;
-  height: 55px;
-}
-
-/* 닉네임 */
-.nickname {
-  margin-left: 1rem;
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
-/* 카테고리 */
-.main-category {
-  display: inline-block;
-  width: fit-content;
-  height: fit-content;
-  padding: 0.1rem 0.8rem;
-  border-radius: 1.25rem;
-  background: #94e5ff;
-  font-weight: 600;
-}
-
 /* 본문 */
 .feed-card-body {
   margin-top: 0.75rem;
 }
 
-/* 이미지 area (인디케이터, 캐러셀 이미지, 이전/다음 버튼) */
-.card-body-image {
-  position: relative;
-}
-
 /* 수정하기 dim 처리 영역 */
-.update-area {
+.feed-update-area {
   position: absolute;
   z-index: 99;
   width: 250px;
@@ -144,7 +78,7 @@
   justify-content: center;
 }
 
-.update-area:hover {
+.feed-update-area:hover {
   position: absolute;
   background-color: rgb(111 111 111 / 50%);
   z-index: 99;
@@ -154,33 +88,78 @@
 }
 
 /* hover 전에는 '수정하기' 안보이도록 */
-.update-area > a > img,
-.update-area > a > p {
+.feed-update-area > a > img,
+.feed-update-area > a > p {
   display: none;
 }
 
-.update-area:hover > a > img,
-.update-area:hover > a > p {
+.feed-update-area:hover > a > img,
+.feed-update-area:hover > a > p {
   display: block;
 }
 
 /* 연필 이미지 */
-.update-area > a > img {
+.feed-update-area > a > img {
   width: 40px;
   margin: 0 auto;
 }
 
 /* 수정하기 p 태그 */
-.update-area > a > p {
+.feed-update-area > a > p {
   color: #fff;
   margin-top: 7px;
 }
 
 /* 본문 게시글 */
-.card-content {
+.feed-card-content {
   line-height: 1.3rem;
   height: fit-content;
   margin-top: 20px;
+}
+
+/* feed Detail 공통 사항 --------------------------------------------------- */
+/* 프로필, 닉네임, 카테고리 */
+.feed-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 프로필, 닉네임 */
+.feed-profile-area {
+  display: flex;
+  align-items: center;
+}
+
+/* 프로필 사진 */
+.feed-profile-img > a > img {
+  display: inline-block;
+  border-radius: 55px;
+  width: 55px;
+  height: 55px;
+}
+
+/* 닉네임 */
+.feed-nickname {
+  margin-left: 1rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+/* 카테고리 */
+.feed-main-category {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.1rem 0.8rem;
+  border-radius: 1.25rem;
+  background: #94e5ff;
+  font-weight: 600;
+}
+
+/* 이미지 area (인디케이터, 캐러셀 이미지, 이전/다음 버튼) */
+.card-body-image {
+  position: relative;
 }
 
 /* 더보기 */
@@ -227,8 +206,4 @@
 /* 캐러셀 - 인디케이터 가로 너비 */
 .carousel-indicators > button {
   width: 15px !important;
-}
-
-p {
-  margin: 0;
 }
