@@ -12,20 +12,6 @@
   display: flex;
 }
 
-/*이미지 드래그 및 복사 방지*/
-img {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-}
-
 /* 1개 카드 박스 */
 .reg-box {
   text-align: center;

@@ -166,16 +166,32 @@
             <label for="profile">프로필 사진</label>
           </div>
           <div class="input-area">
-            <div class="profile-box">
+            <div
+              class="profile-box"
+              @drop.prevent="dropInputTag($event)"
+              @dragover="dragover"
+              @dragleave="isDrag = false"
+            >
               <div class="profile-contents">
                 <img src="@/assets/icon/camera_image.png" id="preview-img" />
-                <p>사진 끌어다 올리기</p>
-                <label for="profile" id="labelForProfile" class="cursor-p"
+                <p>{{ fileName }}</p>
+                <label
+                  @drop.prevent="dropInputTag($event)"
+                  @dragover="dragover"
+                  @dragleave="isDrag = false"
+                  for="profile"
+                  id="labelForProfile"
+                  class="cursor-p"
                   >파일 업로드</label
                 >
               </div>
             </div>
-            <input type="file" name="profile" id="profile" />
+            <input
+              type="file"
+              name="profile"
+              id="profile"
+              @change="fileChanged"
+            />
           </div>
           <div class="error-msg-area">
             <p style="display: none" id="Code-msg" class="msg"></p>
@@ -250,6 +266,9 @@ export default {
       profile: "",
       termsOfUseModalOpen: false,
       modalOpen: false,
+      fileName: "끌어서 사진 올리기",
+      // 전송할 폼 정보들
+      formData: new FormData(),
     };
   },
   components: {
@@ -279,6 +298,23 @@ export default {
     },
     closePrivacyPolicyModal() {
       this.modalOpen = false;
+    },
+    fileChanged(event) {
+      this.fileName = event.target.files[0].name;
+    },
+    dragover(event) {
+      event.preventDefault();
+      this.isDrag = true;
+    },
+    //이미지 파일 드래그앤 드롭
+    dropInputTag(event) {
+      // 유사 배열을 배열로 변환
+      let file = Array.from(event.dataTransfer.files, (v) => v)[0];
+      this.fileName = file.name;
+      // 사진 파일을 formData에 추가
+      this.formData.append("faceImage", file);
+      event.preventDefault();
+      this.isDrag = false;
     },
 
     async idCheck() {

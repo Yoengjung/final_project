@@ -187,11 +187,16 @@ export default {
       },
       chartOptions: {
         responsive: false,
+        pointStyle: "circle",
+        lineWidth: 5,
+        pointRadius: 8,
+        pointHoverRadius: 12,
       },
     };
   },
   created() {
     this.bgImage();
+    this.chartData.datasets[0].label = this.UserName + "님 스트레스 수치";
   },
   methods: {
     bgImage() {

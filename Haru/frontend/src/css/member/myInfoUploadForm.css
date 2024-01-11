@@ -36,7 +36,7 @@
 /* 프로필 올리기 박스 */
 .profile-box {
   width: 280px;
-  height: 230px;
+  height: 255px;
   padding: 25px;
   border: 3px dotted #e99571;
   border-radius: 45px;
@@ -59,7 +59,8 @@
 
 /* 사진 끌어다 올리기 텍스트 */
 .profile-box p {
-  font-size: 17px;
+  text-align: center;
+  font-size: 16px;
   color: #747474;
 }
 
