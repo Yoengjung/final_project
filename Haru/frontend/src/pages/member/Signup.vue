@@ -180,7 +180,13 @@
               @dragleave="isDrag = false"
             >
               <div class="profile-contents">
-<<<<<<< HEAD:Haru/frontend/src/pages/member/Signup.vue
+                <!-- <div v-for="file in files" :key="file.name">
+                  <img
+                    v-if="file.preview"
+                    :src="file.preview"
+                    id="preview-img"
+                  /> -->
+                <!-- 01/11 (목) 영중, 리수 머지 : files에 값이 없을땐 기본이미지가 나오게 해야됨 ------------------------------------------------->
                 <img src="@/assets/icon/camera_image.png" id="preview-img" />
                 <p>{{ fileName }}</p>
                 <label
@@ -190,14 +196,6 @@
                   for="profile"
                   id="labelForProfile"
                   class="cursor-p"
-=======
-                <div v-for="file in files" :key="file.name">
-                  <img :src="file.preview" id="preview-img" />
-                </div>
-
-                <p>사진 끌어다 올리기</p>
-                <label for="profile" id="labelForProfile" class="cursor-p"
->>>>>>> origin/yj0110:Haru/frontend/src/pages/Signup.vue
                   >파일 업로드</label
                 >
               </div>
@@ -206,15 +204,12 @@
               type="file"
               name="profile"
               id="profile"
-<<<<<<< HEAD:Haru/frontend/src/pages/member/Signup.vue
               @change="fileChanged"
-=======
-              @change="selectFile"
               multiple
               accept="image/*"
               ref="fileRef"
->>>>>>> origin/yj0110:Haru/frontend/src/pages/Signup.vue
             />
+            <!-- </div> -->
           </div>
           <div class="error-msg-area">
             <p style="display: none" id="Code-msg" class="msg"></p>
@@ -290,16 +285,12 @@ export default {
       profile: "",
       termsOfUseModalOpen: false,
       modalOpen: false,
-<<<<<<< HEAD:Haru/frontend/src/pages/member/Signup.vue
       fileName: "끌어서 사진 올리기",
       // 전송할 폼 정보들
       formData: new FormData(),
-=======
       files: [],
-      formData: new FormData(),
       idCheckBoolean: false,
       nicknameCheckBoolean: false,
->>>>>>> origin/yj0110:Haru/frontend/src/pages/Signup.vue
     };
   },
   components: {

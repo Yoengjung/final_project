@@ -82,7 +82,7 @@
             <div class="input-area">
               <input
                 class="input-text"
-                type="number"
+                type="text"
                 id="emailCheck"
                 placeholder="인증번호 입력"
               />
