@@ -12,8 +12,8 @@
   </div>
 </template>
 <script>
-import FeedList from "@/components/FeedList.vue";
-import FeedDetail from "@/components/FeedDetail.vue";
+import FeedList from "@/components/feed/FeedList.vue";
+import FeedDetail from "@/components/feed/FeedDetail.vue";
 
 export default {
   name: "MyFeed",

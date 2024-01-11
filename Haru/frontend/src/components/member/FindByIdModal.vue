@@ -1,4 +1,5 @@
 <template>
+  <!-- 아이디 찾기 모달창 -->
   <div
     class="FindMyAccount-modal"
     v-if="modalOpen"

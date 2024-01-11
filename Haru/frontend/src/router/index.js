@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/pages/Home.vue"; // 메인 홈
+import Home from "@/pages/main/Home.vue"; // 메인 홈
 
 // 회원 member--------------------------------------
 import Login from "@/pages/member/Login.vue";

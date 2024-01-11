@@ -259,7 +259,7 @@
 </template>
 
 <script>
-import WarnFaceModal from "@/components/WarnFaceModal.vue";
+import WarnFaceModal from "@/components/stress/WarnFaceModal.vue";
 export default {
   name: "EmotionalAnalysis",
   data() {

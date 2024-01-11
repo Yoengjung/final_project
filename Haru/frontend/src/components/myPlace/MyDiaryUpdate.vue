@@ -1,4 +1,5 @@
 <template>
+  <!-- 일기 수정 -->
   <div>
     <div class="feed-modal-wrap" id="modal-wrap" @click="$emit('close-modal')">
       <!-- 모달창 영역 -->

@@ -1,4 +1,5 @@
 <template>
+  <!-- 이용 약관 모달창 -->
   <div
     class="terms-modal"
     v-show="termsOfUseModalOpen"

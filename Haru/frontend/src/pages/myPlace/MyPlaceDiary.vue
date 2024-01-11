@@ -133,8 +133,8 @@
 </template>
 
 <script>
-import RecommendList from "@/components/RecommendList.vue";
-import MyDiaryList from "@/components/MyDiaryList.vue";
+import RecommendList from "@/components/myPlace/RecommendList.vue";
+import MyDiaryList from "@/components/myPlace/MyDiaryList.vue";
 
 export default {
   data() {

@@ -235,8 +235,8 @@
 </template>
 <script>
 import axios from "axios";
-import termsOfUseModal from "@/components/TermsOfUseModal.vue";
-import privacyPolicyModal from "@/components/PrivacyPolicyModel.vue";
+import termsOfUseModal from "@/components/member/TermsOfUseModal.vue";
+import privacyPolicyModal from "@/components/member/PrivacyPolicyModel.vue";
 
 export default {
   name: "SignUp",

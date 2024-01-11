@@ -1,4 +1,5 @@
 <template>
+  <!-- 피드 생성/수정 - 추천 장소 선택 모달창 -->
   <!-- --------------------- modal Start ------------------------->
   <div class="feed-modal-wrap" id="modal-wrap" @click="$emit('close-modal')">
     <!-- 모달창 영역 -->
@@ -44,7 +45,7 @@
   </div>
 </template>
 <script>
-import RecList from "@/components/RecommendList.vue";
+import RecList from "@/components/myPlace/RecommendList.vue";
 
 export default {
   name: "feedRecommendList",

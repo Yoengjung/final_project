@@ -99,7 +99,7 @@
   </div>
 </template>
 <script>
-import FeedRecommend from "@/components/FeedRecommendModal.vue";
+import FeedRecommend from "@/components/feed/FeedRecommendModal.vue";
 
 export default {
   name: "UpdateFeed",

@@ -1,4 +1,5 @@
 <template>
+  <!-- 탈퇴하기 모달 -->
   <div
     class="deleteUser-modal"
     v-if="deleteMyInfoModal"

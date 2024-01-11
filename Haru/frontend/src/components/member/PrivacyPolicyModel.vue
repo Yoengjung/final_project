@@ -1,4 +1,5 @@
 <template>
+  <!-- 개인정보 관련 약관 모달창 -->
   <div class="terms-modal" v-show="modalOpen" @click="$emit('closeModal')">
     <div class="terms-modal-content" @click.stop>
       <div class="feed-detail-modal-btn">

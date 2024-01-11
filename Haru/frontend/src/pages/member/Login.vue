@@ -80,8 +80,8 @@
   </div>
 </template>
 <script>
-import FindByIdModal from "@/components/FindByIdModal.vue";
-import FindByPwdModal from "@/components/FindByPwdModal.vue";
+import FindByIdModal from "@/components/member/FindByIdModal.vue";
+import FindByPwdModal from "@/components/member/FindByPwdModal.vue";
 
 export default {
   name: "Login",

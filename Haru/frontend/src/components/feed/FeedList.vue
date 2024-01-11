@@ -1,4 +1,5 @@
 <template>
+  <!-- 피드 리스트 화면 - 카드 하나 -->
   <div>
     <div class="feed-card" v-for="(i, idx) in cardList" :key="idx">
       <div class="feed-card-header">

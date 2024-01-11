@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import DiaryUpdate from "@/components/MyDiaryUpdate.vue";
+import DiaryUpdate from "@/components/myPlace/MyDiaryUpdate.vue";
 
 export default {
   data() {
