@@ -76,19 +76,19 @@
         <div class="report-contents">
           <div v-if="SelectDate === 'day'">
             {{ Oneday }} 스트레스 수치
-            <span class="badge rounded-pill normal-badge">정상</span> 입니다.
+            <span class="badge rounded-pill normal-badge">정상</span>
           </div>
           <div v-if="SelectDate === 'days'">
             {{ Startdays }} ~ {{ Enddays }} 스트레스 수치
-            <span class="badge rounded-pill warn-badge">위험</span> 입니다.
+            <span class="badge rounded-pill warn-badge">위험</span>
           </div>
           <div v-if="SelectDate === 'month'">
             {{ Startmonth }}월 ~ {{ Endmonth }}월 스트레스 수치
-            <span class="badge rounded-pill normal-badge">정상</span> 입니다.
+            <span class="badge rounded-pill normal-badge">정상</span>
           </div>
           <div v-if="SelectDate === 'year'">
             {{ SelectYear }}년 스트레스 수치
-            <span class="badge rounded-pill attention-badge">주의</span> 입니다.
+            <span class="badge rounded-pill attention-badge">주의</span>
           </div>
         </div>
         <div class="report-chart-area">
