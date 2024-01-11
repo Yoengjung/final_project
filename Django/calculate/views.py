@@ -1,18 +1,18 @@
 import time
 
-from django.http import JsonResponse
-from django.shortcuts import render
 import numpy as np
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 import face.views
+import text.views
 
 
 # Create your views here.
 @csrf_exempt
 def getStress1(request):
     img = request.FILES['img']
-
+    print(img)
     try:
         face_dict = face.views.getFaceStress(img)
     except:
@@ -63,7 +63,7 @@ def getStress1(request):
         confidence = max_item['confidence']
         print(f'{label} {confidence}[{second_item["confidence"]}]')
 
-    with open('E:\\git\\final_project\\Django\\face\\img\\' + img.name, 'wb') as f:  # 입력받은 이미지를 저장
+    with open('face/img' + img.name, 'wb') as f:  # 입력받은 이미지를 저장
         for chunk in img.chunks():
             f.write(chunk)
 
@@ -72,12 +72,25 @@ def getStress1(request):
     return JsonResponse(ditca, safe=False)
 
 
+
 @csrf_exempt
 def getStress2(request):  # 일기를 분석하여 일기 스트레스 수치 및 스트레스 총합 계산
     today = time.strftime('%Y-%m-%d', time.localtime(time.time()))
     time.sleep(3)
     face_stress = float(request.POST['face_score'])
-    diary_stress = np.random.randint(0, 101)
+    print(face_stress)
+    diary_text = request.POST.get('text', '')  # 텍스트 데이터 받기
+    print(diary_text)
+
+    try:
+        diary_stress_results = text.views.text_data(diary_text)  # 텍스트 데이터 분석
+        diary_stress = diary_stress_results[0] if diary_stress_results else 0
+        diary_stress = round(100 - (diary_stress * 100))  # 스트레스 점수 계산
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+    print(diary_stress)
+    diary_stress = int(diary_stress)
     slider_stress = np.random.randint(0, 5) * 25
     print(face_stress, diary_stress, slider_stress)
     total_stress = round((face_stress * 0.3 + diary_stress * 0.6 + slider_stress * 0.1) / 10, 2)
