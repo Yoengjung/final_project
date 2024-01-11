@@ -125,7 +125,6 @@
             class="rlist-container"
             v-if="isTabRecList === false"
           />
-          <!-- {{ diaryList }} -->
         </div>
       </div>
     </div>

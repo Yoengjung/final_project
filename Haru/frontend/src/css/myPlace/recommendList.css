@@ -28,9 +28,10 @@
 /* 이미지 제외 가게 정보 영역 */
 .all-info > .content {
   width: 410px;
+  height: 105px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0 10px;
 }
 
@@ -64,6 +65,7 @@
   border-radius: 32px;
   border: 1px solid #ffd1d1;
   transition: box-shadow 0.15s ease-in 0s, background-color 0.15s ease-in 0s;
+  font-size: 15px;
 }
 
 /* 해시태그 hover */

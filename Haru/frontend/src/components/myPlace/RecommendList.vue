@@ -9,7 +9,11 @@
       <p>{{ rlist.rdate }}</p>
       <div v-for="(item, i) in rlist.recList" :key="i">
         <div class="rlist-card-area">
-          <div class="rlist-content-area">
+          <div
+            class="rlist-content-area"
+            @mouseover="FeedBtnOn"
+            @mouseleave="FeedBtnOff"
+          >
             <div class="all-info">
               <div class="rlist-img-area">
                 <a :href="item.link"
@@ -58,8 +62,12 @@
           </div>
 
           <div
+            v-if="isFeedBtnOn"
             class="upload-btn-area"
-            :class="{ recBtnDisplayNone: isBtnHeartNone === true }"
+            :class="{
+              recBtnDisplayNone: isBtnHeartNone === true,
+              feedBtnon: isFeedBtnOn === true,
+            }"
           >
             <span>피드 올리기</span>
           </div>
@@ -71,14 +79,28 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isFeedBtnOn: false,
+    };
   },
   props: {
     RecommendList: Object, // 추천 리스트 목록
     isBtnHeartNone: Boolean, //
   },
+  methods: {
+    FeedBtnOn() {
+      this.isFeedBtnOn = true;
+      console.log("true!");
+    },
+    FeedBtnOff() {
+      this.isFeedBtnOn = false;
+      console.log("false!");
+    },
+  },
 };
 </script>
 <style scoped>
 @import "@/css/myPlace/recommendList.css";
+.feedBtnon {
+}
 </style>
