@@ -154,7 +154,7 @@
 </template>
 <script>
 import axios from "axios";
-import DeleteMyInfoModal from "../components/DeleteUserModal.vue";
+import DeleteMyInfoModal from "@/components/DeleteUserModal.vue";
 
 export default {
   name: "UpdateMyInfo",

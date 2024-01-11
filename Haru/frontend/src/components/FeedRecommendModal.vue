@@ -44,7 +44,7 @@
   </div>
 </template>
 <script>
-import RecList from "../components/RecommendList.vue";
+import RecList from "@/components/RecommendList.vue";
 
 export default {
   name: "feedRecommendList",

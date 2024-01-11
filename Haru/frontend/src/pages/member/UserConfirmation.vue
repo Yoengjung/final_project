@@ -1,4 +1,5 @@
 <template>
+  <!-- 내 정보 수정 화면 이동 전 비밀번호 검사 화면 -->
   <div class="container1">
     <div class="userConfirm-box">
       <!-- title -->

@@ -168,7 +168,7 @@
           <div class="input-area">
             <div class="profile-box">
               <div class="profile-contents">
-                <img src="../assets/icon/camera_image.png" id="preview-img" />
+                <img src="@/assets/icon/camera_image.png" id="preview-img" />
                 <p>사진 끌어다 올리기</p>
                 <label for="profile" id="labelForProfile" class="cursor-p"
                   >파일 업로드</label
@@ -235,8 +235,8 @@
 </template>
 <script>
 import axios from "axios";
-import termsOfUseModal from "../components/TermsOfUseModal.vue";
-import privacyPolicyModal from "../components/PrivacyPolicyModel.vue";
+import termsOfUseModal from "@/components/TermsOfUseModal.vue";
+import privacyPolicyModal from "@/components/PrivacyPolicyModel.vue";
 
 export default {
   name: "SignUp",

@@ -2,6 +2,7 @@
 /* 공통영역 emotional_analysis.html에 맞게 수정해야됨. */
 .stress-container {
   padding: 30px 0 100px;
+  min-height: calc(100vh - 249px);
   overflow: hidden;
 }
 

@@ -1,5 +1,5 @@
 .background-container {
-  background-image: url("../assets/signup_bg.png") !important;
+  background-image: url("@/assets/signup_bg.png") !important;
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 300px;
