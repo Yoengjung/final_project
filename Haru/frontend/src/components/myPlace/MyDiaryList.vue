@@ -1,11 +1,13 @@
 <template>
   <!-- 내 장소 - 일기 리스트 -->
   <div class="">
-    <DiaryUpdate
+    <MyDiaryDetail
       @close-modal="closeModal"
+      @update-d-status="changeStatus"
       v-if="modal_Check"
       :selectedDiary="selectedDiary"
       :rDate="diaryList.rdate"
+      :dStatus="dStatus"
     />
     <!-- 날짜 -->
     <div class="myplace-diary-date">
@@ -25,17 +27,18 @@
 
       <!-- 제목 -->
       <div class="myplace-diary-title-area">
-        <a href=""
-          ><p>
-            {{ diary.diaryName }}
-          </p></a
+        <p
+          class="cursor-p"
+          @click="changeStatus('read'), openModal(), openDiaryUpdate(diary)"
         >
+          {{ diary.diaryName }}
+        </p>
       </div>
 
       <!-- 버튼 (수정, 삭제) -->
       <div class="myplace-diary-btn-area">
         <button
-          @click="openDiaryUpdate(diary), openModal()"
+          @click="changeStatus('update'), openModal(), openDiaryUpdate(diary)"
           class="diary-update-btn"
         ></button>
         <button class="diary-delete-btn"></button>
@@ -45,19 +48,20 @@
 </template>
 
 <script>
-import DiaryUpdate from "@/components/myPlace/MyDiaryUpdate.vue";
+import MyDiaryDetail from "@/components/myPlace/MyDiaryDetail.vue";
 
 export default {
   data() {
     return {
       selectedDiary: null,
       modal_Check: false,
+      dStatus: "",
     };
   },
   props: {
     diaryList: Object,
   },
-  components: { DiaryUpdate },
+  components: { MyDiaryDetail },
   methods: {
     openModal() {
       this.modal_Check = true;
@@ -69,6 +73,9 @@ export default {
 
     openDiaryUpdate(diary) {
       this.selectedDiary = diary;
+    },
+    changeStatus(status) {
+      this.dStatus = status;
     },
   },
 };

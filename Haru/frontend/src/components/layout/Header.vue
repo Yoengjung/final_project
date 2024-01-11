@@ -16,7 +16,7 @@
         <div class="dropdown">
           <button class="dropbtn">내 장소</button>
           <div class="dropdown-content">
-            <a href="MyPlaceDiary">추천 리스트</a>
+            <a href="MyPlaceDiary">추천 리스트/일기</a>
             <a href="/MyFavoritePlace">찜한 장소</a>
           </div>
         </div>

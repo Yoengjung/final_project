@@ -2,7 +2,8 @@
   <div>
     <form action="">
       <input type="file" name="img" id="img" @change="selectFile" />
-      <input type="text" v-model="textData" placeholder="일기를  입력하세요" />
+      <input type="text" v-model="textData" placeholder="일기를 입력하세요" />
+      <!-- 텍스트 입력란 추가 -->
       <button type="button" name="send" id="send" @click="sendImg">전송</button>
     </form>
     <h1>{{ label }}</h1>
@@ -20,8 +21,6 @@ export default {
   name: "test",
   data() {
     return {
-      textData: "",
-      img: "",
       total_score: "", // 스트레스 총합
       face_score: "", // 얼굴 스트레스
       diary_score: "", // 일기 스트레스
@@ -29,6 +28,7 @@ export default {
       confidence: "", // 얼굴 라벨 정확도
       date: "", // 분석일자
       formData: new FormData(),
+      textData: "", // 텍스트 데이터를 위한 데이터 바인딩
     };
   },
   methods: {
@@ -36,13 +36,16 @@ export default {
       this.formData.append("img", event.target.files[0]);
     },
     sendImg() {
-      this.formData.append("text", this.textData);
       this.total_score = "이미지 처리중";
       this.face_score = "";
       this.diary_score = "";
       this.label = "";
       this.confidence = "";
       this.date = "";
+
+      // 텍스트 데이터를 FormData에 추가
+      this.formData.append("text", this.textData);
+
       axios
         .post("http://192.168.0.227:8000/calculate/getStress1", this.formData, {
           headers: {
@@ -51,7 +54,7 @@ export default {
         })
         .then((res) => {
           this.total_score = "일기 처리중";
-          console.log(res);
+          console.log("Received data from getStress1:", res.data); // 이미지 처리 결과 확인
           if (res.data === "Face not found") {
             // 얼굴 못 찾았을 경우
             this.total_score = "얼굴을 찾을 수 없습니다.";
@@ -74,15 +77,12 @@ export default {
               )
               .then((res) => {
                 // 일기 처리 끝
-                console.log(res);
+                console.log("Received data from getStress2:", res.data); // 일기 처리 결과 확인
                 this.diary_score = "일기 스트레스 : " + res.data["diary_score"];
                 this.total_score = "스트레스 총합 : " + res.data["total_score"];
                 this.date = "분석된 날짜 : " + res.data["date"];
               });
           }
-        })
-        .catch((error) => {
-          console.log(error);
         });
     },
   },

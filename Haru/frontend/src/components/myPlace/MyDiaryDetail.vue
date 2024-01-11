@@ -18,7 +18,9 @@
               id="diary-title"
               placeholder="제목"
               maxlength="30"
+              ref="diaryTitle"
               :value="selectedDiary.diaryName"
+              :readonly="dStatus === 'read'"
             />
           </div>
           <div class="diary-content-box">
@@ -28,6 +30,7 @@
               placeholder="어떤 일이 있었나요?"
               maxlength="1000"
               :value="selectedDiary.dContents"
+              :readonly="dStatus === 'read'"
             ></textarea>
           </div>
         </div>
@@ -36,9 +39,25 @@
         <!-- 버튼 영역 -->
         <div class="mydiary-update-btn-area">
           <button @click="$emit('close-modal')" class="big-ctlbtn cancle-btn">
-            취소하기
+            취소
           </button>
-          <button class="big-ctlbtn insert-btn">수정하기</button>
+          <button
+            v-if="dStatus === 'read'"
+            class="big-ctlbtn insert-btn"
+            @click="updateDStatus('update')"
+          >
+            수정하기
+          </button>
+          <button
+            v-if="dStatus === 'update'"
+            class="big-ctlbtn select-btn"
+            @click="updateDStatus('update')"
+          >
+            수정완료
+          </button>
+          <button class="big-ctlbtn delete-btn" @click="deleteDiary">
+            삭제하기
+          </button>
         </div>
       </div>
     </div>
@@ -47,13 +66,27 @@
 
 <script>
 export default {
+  data() {
+    return {};
+  },
   props: {
     selectedDiary: Object,
     rDate: String,
+    dStatus: String,
   },
-  methods: {},
+  methods: {
+    updateDStatus(status) {
+      this.$emit("update-d-status", status);
+      if (status === "update") {
+        this.$refs.diaryTitle.focus();
+      }
+    },
+  },
 };
 </script>
 <style scoped>
 @import "@/css/myPlace/myDiary.css";
+.big-ctlbtn {
+  width: 140px;
+}
 </style>
