@@ -282,5 +282,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("@/css/stress/total_stress.css");
+@import url("@/css/client/stress/total_stress.css");
 </style>

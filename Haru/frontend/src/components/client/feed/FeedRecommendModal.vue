@@ -45,7 +45,7 @@
   </div>
 </template>
 <script>
-import RecList from "@/components/myPlace/RecommendList.vue";
+import RecList from "@/components/client/myPlace/RecommendList.vue";
 
 export default {
   name: "feedRecommendList",
@@ -63,6 +63,6 @@ export default {
 };
 </script>
 <style scoped>
-@import "@/css/feed/uploadFeed.css";
-@import "@/css/feed/feedRecommend.css";
+@import "@/css/client/feed/uploadFeed.css";
+@import "@/css/client/feed/feedRecommend.css";
 </style>

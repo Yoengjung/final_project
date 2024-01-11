@@ -351,5 +351,5 @@ export default {
 };
 </script>
 <style scoped>
-@import url("@/css/member/selectHobby.css");
+@import url("@/css/client/member/selectHobby.css");
 </style>

@@ -132,8 +132,8 @@
 </template>
 
 <script>
-import RecommendList from "@/components/myPlace/RecommendList.vue";
-import MyDiaryList from "@/components/myPlace/MyDiaryList.vue";
+import RecommendList from "@/components/client/myPlace/RecommendList.vue";
+import MyDiaryList from "@/components/client/myPlace/MyDiaryList.vue";
 
 export default {
   data() {
@@ -276,6 +276,6 @@ export default {
 </script>
 
 <style scoped>
-@import "@/css/myPlace/myPlaceDiary.css";
-@import "@/css/myPlace/calendar.css";
+@import "@/css/client/myPlace/myPlaceDiary.css";
+@import "@/css/client/myPlace/calendar.css";
 </style>

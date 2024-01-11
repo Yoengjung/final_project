@@ -22,8 +22,8 @@
   </div>
 </template>
 <script>
-import FeedList from "@/components/feed/FeedList.vue";
-import FeedDetail from "@/components/feed/FeedDetail.vue";
+import FeedList from "@/components/client/feed/FeedList.vue";
+import FeedDetail from "@/components/client/feed/FeedDetail.vue";
 
 export default {
   name: "feedMain",
@@ -138,5 +138,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "@/css/feed/feed.css";
+@import "@/css/client/feed/feed.css";
 </style>

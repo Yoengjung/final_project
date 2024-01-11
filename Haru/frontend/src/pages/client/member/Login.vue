@@ -80,8 +80,8 @@
   </div>
 </template>
 <script>
-import FindByIdModal from "@/components/member/FindByIdModal.vue";
-import FindByPwdModal from "@/components/member/FindByPwdModal.vue";
+import FindByIdModal from "@/components/client/member/FindByIdModal.vue";
+import FindByPwdModal from "@/components/client/member/FindByPwdModal.vue";
 
 export default {
   name: "Login",
@@ -116,7 +116,7 @@ export default {
 };
 </script>
 <style scoped>
-@import url("@/css/member/login.css");
+@import url("@/css/client/member/login.css");
 .container1 {
   display: flex;
   align-items: center;

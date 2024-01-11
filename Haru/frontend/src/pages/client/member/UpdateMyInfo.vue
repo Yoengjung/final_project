@@ -154,7 +154,7 @@
 </template>
 <script>
 import axios from "axios";
-import DeleteMyInfoModal from "@/components/member/DeleteUserModal.vue";
+import DeleteMyInfoModal from "@/components/client/member/DeleteUserModal.vue";
 
 export default {
   name: "UpdateMyInfo",
@@ -316,5 +316,5 @@ export default {
 <style></style>
 
 <style scoped>
-@import url("@/css/member/updateMyInfo.css");
+@import url("@/css/client/member/updateMyInfo.css");
 </style>

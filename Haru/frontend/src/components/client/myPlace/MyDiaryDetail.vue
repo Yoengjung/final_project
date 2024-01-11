@@ -85,7 +85,7 @@ export default {
 };
 </script>
 <style scoped>
-@import "@/css/myPlace/myDiary.css";
+@import "@/css/client/myPlace/myDiary.css";
 .big-ctlbtn {
   width: 140px;
 }

@@ -100,7 +100,7 @@ export default {
 };
 </script>
 <style scoped>
-@import "@/css/myPlace/recommendList.css";
+@import "@/css/client/myPlace/recommendList.css";
 .feedBtnon {
 }
 </style>

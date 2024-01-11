@@ -269,8 +269,8 @@
 </template>
 <script>
 import axios from "axios";
-import termsOfUseModal from "@/components/member/TermsOfUseModal.vue";
-import privacyPolicyModal from "@/components/member/PrivacyPolicyModel.vue";
+import termsOfUseModal from "@/components/client/member/TermsOfUseModal.vue";
+import privacyPolicyModal from "@/components/client/member/PrivacyPolicyModel.vue";
 
 export default {
   name: "SignUp",
@@ -710,5 +710,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("@/css/member/myInfoUploadForm.css");
+@import url("@/css/client/member/myInfoUploadForm.css");
 </style>

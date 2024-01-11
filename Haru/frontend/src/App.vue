@@ -39,9 +39,9 @@ export default {
 
 <style>
 /* 공통 css 적용 */
-@import url("@/css/common/common.css");
+@import url("@/css/client/common/common.css");
 /* 공통 font */
-@import url("@/css/common/font.css");
+@import url("@/css/client/common/font.css");
 /* 화면 별 background-image 설정 */
-@import url("@/css/common/bgImage.css");
+@import url("@/css/client/common/bgImage.css");
 </style>

@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import MyDiaryDetail from "@/components/myPlace/MyDiaryDetail.vue";
+import MyDiaryDetail from "@/components/client/myPlace/MyDiaryDetail.vue";
 
 export default {
   data() {

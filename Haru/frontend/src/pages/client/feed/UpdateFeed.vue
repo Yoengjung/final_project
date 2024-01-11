@@ -99,7 +99,7 @@
   </div>
 </template>
 <script>
-import FeedRecommend from "@/components/feed/FeedRecommendModal.vue";
+import FeedRecommend from "@/components/client/feed/FeedRecommendModal.vue";
 
 export default {
   name: "UpdateFeed",
@@ -245,7 +245,7 @@ export default {
 };
 </script>
 <style scoped>
-@import url("@/css/feed/uploadFeed.css");
+@import url("@/css/client/feed/uploadFeed.css");
 .hashtag-area {
   margin-top: -10px;
 }

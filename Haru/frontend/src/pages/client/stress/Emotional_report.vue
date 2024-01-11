@@ -241,7 +241,7 @@ export default {
 <script setup></script>
 
 <style scoped>
-@import url("@/css/stress/Emotional_report.css");
+@import url("@/css/client/stress/Emotional_report.css");
 /*날짜 입력 input 스타일*/
 .date-input-area > input {
   border-radius: 20px;
