@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmailCheckDTO {
-    private String email;
-    private String code;
+public class MyPageDTO {
+    private String userId;
+    private String name;
+    private String nickName;
 }

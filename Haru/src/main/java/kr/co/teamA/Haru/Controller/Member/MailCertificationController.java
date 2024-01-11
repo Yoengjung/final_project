@@ -5,6 +5,7 @@ import kr.co.teamA.Haru.Service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -25,9 +26,8 @@ public class MailCertificationController {
             return 1;
         }
     }
-
     @PostMapping("/emailCheck/certification")
-    public boolean verifyCertificationNumber(@RequestBody EmailCheckDTO email, String authCode) {
-        return emailSenderService.isVerify(email.getEmail(), authCode);
+    public boolean verifyCertificationNumber(@RequestBody EmailCheckDTO dto) {
+        return emailSenderService.isVerify(dto.getEmail(), dto.getCode());
     }
 }

@@ -5,7 +5,6 @@ import jakarta.mail.internet.MimeMessage;
 import kr.co.teamA.Haru.CertificationNumberDAO;
 import kr.co.teamA.Haru.Repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -21,16 +20,12 @@ public class EmailSenderService {
     private MemberRepository memberRepository;
     @Autowired
     private CertificationNumberDAO certificationNumberDAO;
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
 
     private String authCode;
 
 
     public int duplicateEmail(String email) {
-        System.out.println(email);
         int checkEmail = memberRepository.findUserEmailByEmail(email);
-        System.out.println("checkEmail " + checkEmail);
         return checkEmail > 0 ? 1 : 0;
     }
 
@@ -85,8 +80,17 @@ public class EmailSenderService {
         }
      }
 
-     public boolean isVerify(String email, String code) {
-        return !(certificationNumberDAO.hasKey(email) && certificationNumberDAO
-                .getCertificationNumber(email).equals(code));
+     public boolean isVerify(String email, String authCode) {
+        System.out.println(certificationNumberDAO.hasKey(email));
+        System.out.println(authCode);
+        System.out.println(certificationNumberDAO.getCertificationNumber(email));
+        if (certificationNumberDAO.hasKey(email) && certificationNumberDAO
+                .getCertificationNumber(email).equals(authCode)) {
+            certificationNumberDAO.deleteCertificationNumber(email);
+            return true;
+        }
+        else {
+            return false;
+        }
      }
 }

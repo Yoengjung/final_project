@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmailCheckDTO {
-    private String email;
-    private String code;
+public class NicknameDTO {
+    private String nickname;
 }

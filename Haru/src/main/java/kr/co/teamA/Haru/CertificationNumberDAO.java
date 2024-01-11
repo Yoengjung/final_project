@@ -12,7 +12,7 @@ public class CertificationNumberDAO {
     private final StringRedisTemplate stringRedisTemplate;
 
     public void saveCertificationNumber(String email, String authCode) {
-        stringRedisTemplate.opsForValue().set(email, authCode, Duration.ofSeconds(300));
+        stringRedisTemplate.opsForValue().set(email, authCode, Duration.ofSeconds(10000));
     }
 
     public String getCertificationNumber(String email) {

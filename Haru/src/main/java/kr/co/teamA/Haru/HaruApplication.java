@@ -2,6 +2,7 @@ package kr.co.teamA.Haru;
 
 import kr.co.teamA.Haru.Service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -15,6 +16,10 @@ public class HaruApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HaruApplication.class, args);
 	}
+
+	@Value("${server-port-url}")
+	private String serverPortUrl;
+
 	@Bean
 	public WebMvcConfigurer corsConfigure() {
 		return new WebMvcConfigurer() {
@@ -23,7 +28,7 @@ public class HaruApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				System.out.println("test");
 				registry.addMapping("/**")
-						.allowedOrigins("http://localhost:8081")
+						.allowedOrigins(serverPortUrl)
 						.allowedHeaders("*")
 						.allowedMethods("*").maxAge(3600);
 			}
