@@ -1,4 +1,5 @@
 <template>
+  <!-- 추천 리스트 - 내장소(추천리스트), 피드생성/수정(추천리스트 모달창) -->
   <div>
     <div
       v-for="(rlist, idx) in RecommendList"
@@ -79,5 +80,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "@/css/recommendList.css";
+@import "@/css/myPlace/recommendList.css";
 </style>

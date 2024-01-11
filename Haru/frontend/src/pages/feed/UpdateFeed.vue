@@ -245,7 +245,7 @@ export default {
 };
 </script>
 <style scoped>
-@import url("@/css/uploadFeed.css");
+@import url("@/css/feed/uploadFeed.css");
 .hashtag-area {
   margin-top: -10px;
 }

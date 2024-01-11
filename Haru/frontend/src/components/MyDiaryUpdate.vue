@@ -54,5 +54,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "@/css/myDiaryUpdate.css";
+@import "@/css/myPlace/myDiary.css";
 </style>

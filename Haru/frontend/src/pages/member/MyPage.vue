@@ -164,5 +164,5 @@ export default {
 };
 </script>
 <style scoped>
-@import url("@/css/mypage.css");
+@import url("@/css/member/mypage.css");
 </style>

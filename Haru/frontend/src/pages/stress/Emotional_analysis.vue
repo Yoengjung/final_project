@@ -391,7 +391,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("@/css/emotional_analysis.css");
+@import url("@/css/stress/emotional_analysis.css");
 
 .big-ctlbtn {
   margin: 0 10px;

@@ -493,5 +493,5 @@ export default {
 <style></style>
 
 <style scoped>
-@import url("@/css/myInfoUploadForm.css");
+@import url("@/css/member/myInfoUploadForm.css");
 </style>

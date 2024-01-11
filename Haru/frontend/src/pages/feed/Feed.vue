@@ -137,5 +137,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "@/css/feed.css";
+@import "@/css/feed/feed.css";
 </style>

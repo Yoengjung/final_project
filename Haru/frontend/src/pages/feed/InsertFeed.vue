@@ -218,5 +218,5 @@ export default {
 };
 </script>
 <style scoped>
-@import url("@/css/uploadFeed.css");
+@import url("@/css/feed/uploadFeed.css");
 </style>
