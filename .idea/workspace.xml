@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3fabed22-e770-49ad-b2ca-9506740586d5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/Haru.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/DeleteUserModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/FeedDetail.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/FeedList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/FeedRecommendModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/FindByIdModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/FindByPwdModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/MyDiaryList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/MyDiaryUpdate.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/PrivacyPolicyModel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/RecommendList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/TermsOfUseModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/components/WarnFaceModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/Calendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/MyDiaryUpdate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/MyPlaceDiary.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/RecommendList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/feedDetail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/feedRecommend.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/mypage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/selectHobby.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/updateFeed.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/updateMyInfo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/css/userConfirmation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/faceReg_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/warn_img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/warn_info_img/image 75.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/warn_info_img/image 76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/warn_info_img/image 77.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/warn_info_img/image 78.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/warn_info_img/image 79.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/Feed/checked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/deleteUserModal/image106.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/myPlace/diary-delete-btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/myPlace/diary-update-btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/myPlace/diary_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/myPlace/diaryicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/mypage/image 94.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/mypage/image 95.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/Group_208.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/문화_예술/공연.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/문화_예술/뮤지컬.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/문화_예술/영화.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/문화_예술/전시.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/문화_예술/콘서트.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/쇼핑/쇼핑.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/골프.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/농구.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/등산.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/볼링.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/산책.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/수영.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/요가.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/자전거.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/클라이밍.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/액티비티/헬스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/여행/바다.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/여행/캠핑_글램핑.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/여행/테마파크.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/자기계발/독서_스터디.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/자기계발/외국어.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/취미/게임.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/취미/공예.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/취미/댄스.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/취미/방탈출.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/취미/보드게임.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/취미/사진.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/푸드/맛집.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/img/selectHobbyImg/푸드/카페.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/MyFeed.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/MyPlaceDiary.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/SelectHobby.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/UpdateFeed.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/UpdateMyInfo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/UpdateMyPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/UserConfirmation.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/CertificationNumberDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/Config/RedisAuthConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/Controller/Member/MailCertificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/Controller/Member/MemberController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/DTO/EmailCheckDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/DTO/MemberDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/DTO/UserIdDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/Entity/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/Repository/MemberRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/Service/EmailSenderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/Service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/.idea/Django.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Django/.idea/Django.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Django/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/HaruAI/HaruAI/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/HaruAI/HaruAI/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django/HaruAI/HaruAI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django/HaruAI/HaruAI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/css/faceRegistration.css" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/css/faceRegistration.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/css/feed.css" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/css/feed.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/css/insertFeed.css" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/css/insertFeed.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/css/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/css/signup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/ezgif 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/image-62.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/image-73.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/image-75.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/image-76.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/image-77.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/image-78.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/image-79.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/img/FaceRegistration/image63.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/pages/FaceRegistration.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/FaceRegistration.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/pages/Feed.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/Feed.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/pages/InsertFeed.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/InsertFeed.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/pages/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/pages/MyPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/MyPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/pages/Signup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/pages/Signup.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/frontend/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/frontend/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/HaruApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/HaruApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/src/main/java/kr/co/teamA/Haru/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haru/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Haru/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2aWqOpoXCGNtrQfnGVdI9hdZTUy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fabed22-e770-49ad-b2ca-9506740586d5" name="Changes" comment="" />
+      <created>1704444654816</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704444654816</updated>
+    </task>
+    <servers />
+  </component>
+</project>

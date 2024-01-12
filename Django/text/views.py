@@ -129,9 +129,9 @@ def text_data(data):
 
     # 데이터 프레임의 감정 분석 수행
     predictions = model.predict(data_x)
-    print(predictions)
+
     # 결과 계산
     text_results = [min(max(round(float(pred), 2), 0), 1) for pred in predictions.flat]
-    print('하이')
+
     print(text_results)
     return text_results
