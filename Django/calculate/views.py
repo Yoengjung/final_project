@@ -82,12 +82,13 @@ def getStress2(request):  # 일기를 분석하여 일기 스트레스 수치 �
     diary_text = request.POST.get('text', '')  # 텍스트 데이터 받기
     print(diary_text)
 
-    try:
-        diary_stress_results = text.views.text_data(diary_text)  # 텍스트 데이터 분석
-        diary_stress = diary_stress_results[0] if diary_stress_results else 0
-        diary_stress = round(100 - (diary_stress * 100))  # 스트레스 점수 계산
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
+
+        # predict_load_data 함수를 사용하여 감정 분석을 수행하고, 결과를 diary_stress_results에 저장합니다.
+    diary_stress_results = text.views.predict_load_data(diary_text)
+        # 결과값이 0과 1 사이의 점수로 나오므로, 이를 100점 만점으로 변환하여 스트레스 점수로 사용합니다.
+    diary_stress = round((1-diary_stress_results) * 100)  # 스트레스 점수 계산
+
+
 
     print(diary_stress)
     diary_stress = int(diary_stress)
