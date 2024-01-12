@@ -72,7 +72,6 @@ def getStress1(request):
     return JsonResponse(ditca, safe=False)
 
 
-
 @csrf_exempt
 def getStress2(request):  # 일기를 분석하여 일기 스트레스 수치 및 스트레스 총합 계산
     today = time.strftime('%Y-%m-%d', time.localtime(time.time()))
