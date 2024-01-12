@@ -163,7 +163,7 @@ def text_data(data):
     print(text_results)
     return text_results
 def review_crawl(request):
-    df3 = pd.read_csv('reviewcrolling/csv_files/test.csv')
+    df3 = pd.read_csv('reviewcrolling/data/place_final.csv')
 
     service = Service(executable_path='reviewcrolling/data/msedgedriver.exe')
     driver = webdriver.Edge(service=service)
