@@ -36,6 +36,12 @@
             <a href="/userConfirmation">회원정보 수정</a>
           </div>
         </div>
+        <div class="dropdown">
+          <button class="dropbtn">QnA</button>
+          <div class="dropdown-content">
+            <a href="/QnA">QnA</a>
+          </div>
+        </div>
       </div>
       <div class="login-ul-box">
         <ul class="login-ul">

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import Home from "@/pages/client/main/Home.vue"; // 메인 홈
 
 // 회원 member--------------------------------------
@@ -26,6 +27,12 @@ import MyFavoritePlace from "@/pages/client/myPlace/MyFavoritePlace.vue"; // 찜
 
 // 기타--------------------------------------
 import Test from "@/pages/test.vue"; // test 화면
+
+// QnA--------------------------------------
+import QnA from "../pages/QnA.vue";
+import MyQnA from "../components/MyQnA.vue";
+import WriteQnAForm from "../pages/WriteQnAForm.vue";
+import QnADetail from "../pages/QnADetail.vue";
 
 const routes = [
   {
@@ -112,6 +119,26 @@ const routes = [
     path: "/Emotional_report",
     name: "Emotional_report",
     component: Emotional_report,
+  },
+  {
+    path: "/QnA",
+    name: "QnA",
+    component: QnA,
+  },
+  {
+    path: "/MyQnA",
+    name: "MyQnA",
+    component: MyQnA,
+  },
+  {
+    path: "/WriteQnAForm",
+    name: "WriteQnAForm",
+    component: WriteQnAForm,
+  },
+  {
+    path: "/QnADetail",
+    name: "QnADetail",
+    component: QnADetail,
   },
 ];
 

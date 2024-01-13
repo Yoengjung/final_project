@@ -268,7 +268,7 @@ export default {
   font-family: "SUITE";
 }
 .amu {
-  background-image: url("@/assets/main_image.png");
+  background-image: url("@/assets/bgImage/type3.png");
 }
 .QnA-tr {
   text-align: center;

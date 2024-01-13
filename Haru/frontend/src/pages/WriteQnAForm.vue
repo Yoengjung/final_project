@@ -34,7 +34,7 @@ export default {
 </script>
 <style scoped>
 .qna-Write-background {
-  background-image: url("@/assets/main_image.png");
+  background-image: url("@/assets/bgImage/type3.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 100px;
