@@ -238,7 +238,9 @@
                   name="privacyPolicy"
                   id="privacyPolicy"
                 />
-                <label for="privacyPolicy">[필수]개인정보처리방침에 동의</label>
+                <label for="privacyPolicy"
+                  >[필수]개인정보 처리 방침에 동의</label
+                >
               </div>
               <button @click="privacyPolicyModal">></button>
             </div>

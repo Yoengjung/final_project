@@ -29,10 +29,10 @@ import MyFavoritePlace from "@/pages/client/myPlace/MyFavoritePlace.vue"; // 찜
 import Test from "@/pages/test.vue"; // test 화면
 
 // QnA--------------------------------------
-import QnA from "../pages/QnA.vue";
-import MyQnA from "../components/MyQnA.vue";
-import WriteQnAForm from "../pages/WriteQnAForm.vue";
-import QnADetail from "../pages/QnADetail.vue";
+import QnA from "@/pages/client/qna/QnA.vue";
+import MyQnA from "@/components/client/qna/MyQnA.vue";
+import WriteQnAForm from "@/pages/client/qna/WriteQnAForm.vue";
+import QnADetail from "@/pages/client/qna/QnADetail.vue";
 
 const routes = [
   {

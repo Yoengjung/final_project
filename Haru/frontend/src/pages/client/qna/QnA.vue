@@ -1,15 +1,10 @@
 <template>
-  <div class="amu">
+  <div class="container1">
     <div class="qna-container">
       <div class="faq-container">
-        <h2
-          class="faq-title"
-          style="text-align: center; padding: 75px 0 50px 0"
-        >
-          QnA 페이지
-        </h2>
+        <h2 class="faq-title">QnA 페이지</h2>
       </div>
-      <div class="nav-bar" style="padding: 30px">
+      <div class="nav-bar">
         <router-link to="/qna" class="nav-item" exact-active-class="active"
           >Q&A</router-link
         >
@@ -21,19 +16,38 @@
       <table class="qna-table">
         <thead>
           <tr>
-            <th class="QnA-tr">No</th>
+            <th class="QnA-tr">번호</th>
             <th class="QnA-tr">카테고리</th>
             <th>제목</th>
-            <th class="QnA-tr">날짜</th>
+            <th>작성자</th>
+            <th class="QnA-tr">작성일</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in paginatedQnA" :key="item.no">
-            <td class="QnA-tr">{{ item.no }}.</td>
+          <tr
+            v-for="item in paginatedQnA"
+            :key="item.no"
+            :class="{
+              noticeTR:
+                item.category === '공지사항' ||
+                item.category === '자주 묻는 질문',
+            }"
+          >
+            <!-- category 가 공지사항인게 먼저 정렬된 데이터 받아야됨 -->
+            <td class="QnA-tr">{{ item.no }}</td>
             <td class="QnA-tr">{{ item.category }}</td>
             <td>
-              <a href="#">{{ item.title }}</a>
+              <a href="#">{{ item.title }}</a
+              ><span
+                class="qna-badge"
+                :class="{
+                  notAnswered: item.progress === '미답변',
+                  answered: item.progress === '완료',
+                }"
+                >{{ item.progress }}</span
+              >
             </td>
+            <td class="QnA-tr">{{ item.writer }}</td>
             <td class="QnA-tr">{{ item.date }}</td>
           </tr>
         </tbody>
@@ -77,12 +91,16 @@
               placeholder="Search"
             />
             <button type="button" class="QnA-search-btn" @click="onSearch">
-              <img src="../img/Feed/search_btn.png" alt="" />
+              <img src="@/img/Feed/search_btn.png" alt="" />
             </button>
           </div>
         </form>
         <div>
-          <button type="button" class="QnA-Write" @click="onWrite">
+          <button
+            type="button"
+            class="insert-btn QnA-Write big-ctlbtn"
+            @click="onWrite"
+          >
             글쓰기
           </button>
         </div>
@@ -102,99 +120,127 @@ export default {
       AllQna: [
         // Populate this array with your Q&A items
         {
-          no: 1,
+          no: 4,
           category: "공지사항",
           title: "배송 문의 드립니다",
+          writer: "관리자",
           date: "2020-11-12",
-        },
-        {
-          no: 2,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
         },
         {
           no: 3,
           category: "공지사항",
-          title: "배송 문의 드립니다",
-          date: "2020-11-12",
-        },
-        {
-          no: 4,
-          category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "관리자",
           date: "2017-11-22",
         },
         {
-          no: 5,
-          category: "공지사항",
+          no: 2,
+          category: "자주 묻는 질문",
           title: "배송 문의 드립니다",
+          writer: "관리자",
           date: "2020-11-12",
         },
         {
-          no: 6,
-          category: "이용문의",
+          no: 1,
+          category: "자주 묻는 질문",
           title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "관리자",
           date: "2017-11-22",
         },
         {
-          no: 7,
-          category: "공지사항",
+          no: 16,
+          category: "이용문의",
           title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "미답변",
           date: "2020-11-12",
+        },
+        {
+          no: 15,
+          category: "이용문의",
+          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "미답변",
+          date: "2017-11-22",
+        },
+        {
+          no: 14,
+          category: "이용문의",
+          title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "미답변",
+          date: "2020-11-12",
+        },
+        {
+          no: 13,
+          category: "이용문의",
+          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "미답변",
+          date: "2017-11-22",
+        },
+        {
+          no: 12,
+          category: "이용문의",
+          title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "완료",
+          date: "2020-11-12",
+        },
+        {
+          no: 11,
+          category: "이용문의",
+          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "완료",
+          date: "2017-11-22",
+        },
+        {
+          no: 10,
+          category: "이용문의",
+          title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "완료",
+          date: "2020-11-12",
+        },
+        {
+          no: 9,
+          category: "이용문의",
+          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "완료",
+          date: "2017-11-22",
         },
         {
           no: 8,
           category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
-        },
-        {
-          no: 9,
-          category: "공지사항",
           title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "완료",
           date: "2020-11-12",
         },
         {
           no: 7,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "완료",
           date: "2017-11-22",
         },
         {
           no: 6,
-          category: "공지사항",
+          category: "이용문의",
           title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "완료",
           date: "2020-11-12",
         },
         {
           no: 5,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
-        },
-        {
-          no: 4,
-          category: "공지사항",
-          title: "배송 문의 드립니다",
-          date: "2020-11-12",
-        },
-        {
-          no: 3,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
-        },
-        {
-          no: 2,
-          category: "공지사항",
-          title: "배송 문의 드립니다",
-          date: "2020-11-12",
-        },
-        {
-          no: 1,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "완료",
           date: "2017-11-22",
         },
         // ... more items
@@ -210,6 +256,9 @@ export default {
     pageCount() {
       return Math.ceil(this.AllQna.length / this.pageSize);
     },
+  },
+  created() {
+    this.$emit("bgImage", "type3");
   },
   methods: {
     toggle(index) {
@@ -248,15 +297,15 @@ export default {
 };
 </script>
 
-<style>
-* {
-  font-family: "SUITE";
+<style scoped>
+.noticeTR {
+  background-color: #efefef;
+  font-weight: 600;
 }
-.amu {
-  background-image: url("@/assets/bgImage/type3.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 100px;
+
+.faq-title {
+  text-align: center;
+  padding: 75px 0px 30px;
 }
 
 .pagination {
@@ -288,20 +337,9 @@ export default {
 }
 
 .QnA-Write {
-  padding: 10px 20px;
-  background-color: #ccafaf;
-  color: #000000;
-  border: 2px solid #fff;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer; /* 마우스 오버 시 커서 변경 */
-  outline: none; /* 클릭 시 나타나는 외곽선 제거 */
-  transition: background-color 0.3s, transform 0.3s;
+  transition: transform 0.3s;
 }
-
 .QnA-Write:hover {
-  background-color: #c96969; /* 호버 시 배경색 변경 */
-  color: #000; /* 호버 시 글씨 색상 변경 */
   transform: scale(1.05); /* 호버 시 버튼 확대 */
 }
 .qna-container {
@@ -312,11 +350,10 @@ export default {
   border: none;
   border-radius: 27px;
   width: 100%;
-  max-width: 1463px; /* Adjust the width as needed */
+  max-width: 1463px;
   min-width: 900px;
   height: 100%;
-  margin: 0 auto; /* Center the table */
-  border: 0.5px solid #ccc; /* 테두리 추가 */
+  margin: 0 auto;
 }
 
 .qna-table {
@@ -327,11 +364,10 @@ export default {
   line-height: 1.5;
   padding: 5%;
 }
+
 #search-form {
   width: 530px;
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: center;
+  margin-bottom: 0;
 }
 
 .search-area {
@@ -351,13 +387,17 @@ export default {
 
 .qna-table thead th {
   padding: 10px;
-  background-color: #f2f2f2; /* Header background */
-  background-color: rgb(250, 127, 127);
+  background-color: #fbbda4;
+  text-align: center;
 }
 
 .qna-table tbody td {
   padding: 10px;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.qna-table tbody td a {
+  color: #333;
 }
 
 .qna-table tbody tr:hover {
@@ -370,6 +410,7 @@ export default {
   padding: 10px 0; /* 위아래 패딩 */
   list-style: none; /* 리스트 스타일 제거 */
   background-color: #ffffff; /* 배경색 */
+  margin: 10px 0 50px;
 }
 
 .nav-bar:active {
@@ -380,7 +421,7 @@ export default {
   margin: 0 10px; /* 좌우 마진 */
   text-decoration: none; /* 밑줄 제거 */
   color: #333; /* 텍스트 색상 */
-  font-size: 16px; /* 폰트 사이즈 */
+  font-size: 19px; /* 폰트 사이즈 */
   border-radius: 4px; /* 둥근 모서리 */
   transition: background-color 0.3s; /* 배경색 변경 효과 */
 }
@@ -391,8 +432,8 @@ export default {
 
 .active {
   font-weight: bold; /* 활성화된 링크의 폰트 두께 */
-  color: #007bff; /* 활성화된 링크의 색상 */
-  border-bottom: 3px solid #007bff; /* 활성화된 링크의 밑줄 */
+  color: #2eb4c9; /* 활성화된 링크의 색상 */
+  border-bottom: 3px solid #2eb4c9; /* 활성화된 링크의 밑줄 */
 }
 
 .QnA-tr {
@@ -416,9 +457,26 @@ export default {
 
 .search-container {
   display: flex;
-  flex-direction: row;
-  left: 50%;
-  width: 615px;
-  transform: translateX(-50%);
+  width: fit-content;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+.qna-badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-left: 15px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.notAnswered {
+  background-color: #fdd;
+  color: red;
+}
+.answered {
+  background-color: #def;
+  color: #1d8eff;
 }
 </style>

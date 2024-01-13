@@ -1,15 +1,11 @@
 <template>
-  <div class="amu">
+  <div class="container1">
     <div class="qna-container">
       <div class="faq-container">
-        <h2
-          class="faq-title"
-          style="text-align: center; padding: 75px 0 50px 0"
-        >
-          나의 QnA 페이지
-        </h2>
+        <h2 class="faq-title">나의 QnA 페이지</h2>
       </div>
-      <div class="nav-bar" style="padding: 30px">
+
+      <div class="nav-bar">
         <router-link to="/qna" class="nav-item" exact-active-class="active"
           >Q&A</router-link
         >
@@ -21,11 +17,10 @@
       <table class="qna-table">
         <thead>
           <tr>
-            <th class="QnA-tr">No</th>
+            <th class="QnA-tr">번호</th>
             <th class="QnA-tr">카테고리</th>
             <th>제목</th>
-            <th class="QnA-tr">날짜</th>
-            <th class="QnA-tr">진행 상황</th>
+            <th class="QnA-tr">작성일</th>
           </tr>
         </thead>
         <tbody>
@@ -33,10 +28,17 @@
             <td class="QnA-tr">{{ item.no }}</td>
             <td class="QnA-tr">{{ item.category }}</td>
             <td>
-              <a href="#">{{ item.title }}</a>
+              <a href="#">{{ item.title }}</a
+              ><span
+                class="qna-badge"
+                :class="{
+                  notAnswered: item.progress === '미답변',
+                  answered: item.progress === '완료',
+                }"
+                >{{ item.progress }}</span
+              >
             </td>
             <td class="QnA-tr">{{ item.date }}</td>
-            <td class="QnA-tr">{{ item.Progress }}</td>
           </tr>
         </tbody>
       </table>
@@ -79,12 +81,16 @@
               placeholder="Search"
             />
             <button type="button" class="QnA-search-btn" @click="onSearch">
-              <img src="../img/Feed/search_btn.png" alt="" />
+              <img src="@/img/Feed/search_btn.png" alt="" />
             </button>
           </div>
         </form>
         <div>
-          <button type="button" class="QnA-Write" @click="onWrite">
+          <button
+            type="button"
+            class="big-ctlbtn insert-btn QnA-Write"
+            @click="onWrite"
+          >
             글쓰기
           </button>
         </div>
@@ -102,116 +108,95 @@ export default {
 
       MyQna: [
         {
-          no: 1,
-          category: "공지사항",
-          title: "배송 문의 드립니다",
-          date: "2020-11-12",
-          Progress: "완료",
-        },
-        {
-          no: 2,
+          no: 13,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
           date: "2017-11-22",
-          Progress: "완료",
+          progress: "미답변",
         },
         {
-          no: 3,
-          category: "공지사항",
+          no: 12,
+          category: "이용문의",
           title: "배송 문의 드립니다",
           date: "2020-11-12",
-          Progress: "완료",
+          progress: "완료",
         },
         {
-          no: 4,
+          no: 11,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
           date: "2017-11-22",
-          Progress: "완료",
+          progress: "미답변",
         },
         {
-          no: 5,
-          category: "공지사항",
+          no: 10,
+          category: "이용문의",
           title: "배송 문의 드립니다",
           date: "2020-11-12",
-          Progress: "완료",
+          progress: "완료",
         },
         {
-          no: 6,
+          no: 9,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
           date: "2017-11-22",
-          Progress: "완료",
-        },
-        {
-          no: 7,
-          category: "공지사항",
-          title: "배송 문의 드립니다",
-          date: "2020-11-12",
-          Progress: "완료",
+          progress: "완료",
         },
         {
           no: 8,
           category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
-          Progress: "완료",
-        },
-        {
-          no: 9,
-          category: "공지사항",
           title: "배송 문의 드립니다",
           date: "2020-11-12",
-          Progress: "완료",
+          progress: "완료",
         },
         {
           no: 7,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
           date: "2017-11-22",
-          Progress: "완료",
+          progress: "완료",
         },
         {
           no: 6,
-          category: "공지사항",
+          category: "이용문의",
           title: "배송 문의 드립니다",
           date: "2020-11-12",
-          Progress: "완료",
+          progress: "완료",
         },
         {
           no: 5,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
           date: "2017-11-22",
-          Progress: "완료",
+          progress: "완료",
         },
         {
           no: 4,
-          category: "공지사항",
+          category: "이용문의",
           title: "배송 문의 드립니다",
           date: "2020-11-12",
-          Progress: "완료",
+          progress: "완료",
         },
         {
           no: 3,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
           date: "2017-11-22",
-          Progress: "완료",
+          progress: "완료",
         },
         {
           no: 2,
-          category: "공지사항",
+          category: "이용문의",
           title: "배송 문의 드립니다",
           date: "2020-11-12",
-          Progress: "완료",
+          progress: "완료",
         },
         {
           no: 1,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
           date: "2017-11-22",
-          Progress: "완료",
+          progress: "완료",
         },
       ],
     };
@@ -225,6 +210,9 @@ export default {
     pageCount() {
       return Math.ceil(this.MyQna.length / this.pageSize);
     },
+  },
+  created() {
+    this.$emit("bgImage", "type3");
   },
   methods: {
     toggle(index) {
@@ -264,12 +252,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  font-family: "SUITE";
-}
-.amu {
-  background-image: url("@/assets/bgImage/type3.png");
-}
 .QnA-tr {
   text-align: center;
 }
