@@ -221,11 +221,12 @@
           <button class="big-ctlbtn select-btn" @click="submitCard">
             분석하기
           </button>
+          <button class="big-ctlbtn else-btn" @click="modal_click">
+            모달 임시버튼
+          </button>
         </div>
         <div>
-          <a href="/Total_stress">분석 임시 페이지 버튼</a>
-          <button @click="loadingOpen()">로딩 임시버튼</button>
-          <button @click="modal_click">모달 임시버튼</button>
+          <!-- <button @click="loadingOpen()">로딩 임시버튼</button> -->
         </div>
 
         <!-- 로딩화면 1 -->
@@ -288,28 +289,28 @@ export default {
     },
     //분석하기 버튼
     submitCard() {
+      this.$router.push("/Total_stress");
+
       // 기분 척도
-      this.formData.append("mood", this.changeMood);
+      // this.formData.append("mood", this.changeMood);
       // 일기
-      this.formData.append(
-        "title",
-        document.getElementById("diary-title").value
-      );
+      // this.formData.append(
+      //   "title",
+      //   document.getElementById("diary-title").value
+      // );
       // 일기 내용
-      this.formData.append(
-        "content",
-        document.getElementById("diary-content").value
-      );
+      // this.formData.append(
+      //   "content",
+      //   document.getElementById("diary-content").value
+      // );
       // 일기 날짜
-      this.formData.append(
-        "date",
-        document.getElementById("diary-date-h1").innerText
-      );
-
-      for (let value of this.formData.values()) {
-        console.log(value);
-      }
-
+      // this.formData.append(
+      //   "date",
+      //   document.getElementById("diary-date-h1").innerText
+      // );
+      // for (let value of this.formData.values()) {
+      //   console.log(value);
+      // }
       // 분석하기 버튼 클릭시 로딩화면 들어갈 자리
     },
     dragover(event) {
