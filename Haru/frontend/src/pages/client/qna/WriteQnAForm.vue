@@ -2,20 +2,55 @@
   <div class="container1">
     <div class="qna-write-container">
       <form class="qna-write-form" autocomplete="off">
-        <h2>QnA</h2>
-        <label for="qna-title">제목</label>
-        <input type="text" placeholder="제목을 입력하세요" id="qna-title" />
-        <label for="qna-content">내용</label>
-        <textarea
-          name="qna-content"
-          id="qna-content"
-          cols="30"
-          rows="10"
-          placeholder="내용을 입력하세요"
-        ></textarea>
+        <h2>Q&A 등록</h2>
+        <div class="info-input-container">
+          <div class="label-area">
+            <label for="qna-title">카테고리 선택</label>
+          </div>
+
+          <!-- 날짜 선택 -->
+          <select class="input-select" v-model="selectCategory">
+            <option value="usage">이용문의</option>
+            <!-- [공지사항은 관리자만 입력할 수 있도록] => v-if="mid.slide(5) === 'admin'" -->
+            <option value="notice">공지사항</option>
+          </select>
+        </div>
+
+        <!-- 제목 -->
+        <div class="info-input-container">
+          <div class="label-area">
+            <label for="qna-title">제목</label>
+          </div>
+          <div class="input-area">
+            <input
+              class="input-text"
+              type="text"
+              name="qna-title"
+              id="qna-title"
+              placeholder="Q&A 제목을 입력해주세요."
+            />
+          </div>
+        </div>
+
+        <!-- 내용 -->
+        <div class="info-input-container">
+          <div class="label-area">
+            <label for="qna-content">내용</label>
+          </div>
+          <textarea
+            class="input-text"
+            id="qna-content"
+            cols="88"
+            rows="10"
+            placeholder="Q&A 내용을 작성하세요."
+          ></textarea>
+        </div>
+
         <div class="btn-group">
-          <button type="submit">등록</button>
-          <button type="button" @click="cancel">취소</button>
+          <button class="big-ctlbtn insert-btn" type="submit">등록</button>
+          <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
+            취소
+          </button>
         </div>
       </form>
     </div>
@@ -24,7 +59,11 @@
 <script>
 export default {
   name: "WriteQnAForm",
-  data() {},
+  data() {
+    return {
+      selectCategory: "usage", // 이용문의
+    };
+  },
   methods: {
     cancel() {
       this.$router.push("/QnA");
@@ -36,19 +75,25 @@ export default {
 };
 </script>
 <style scoped>
+.btn-group {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.btn-group > .insert-btn {
+  margin-right: 20px;
+}
 .qna-write-container {
   padding-left: 100px;
   padding-right: 100px;
-  margin: 100px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255 255 255 / 90%);
   border: none;
   border-radius: 27px;
   width: 100%;
-  max-width: 1463px; /* Adjust the width as needed */
+  max-width: 1463px;
   min-width: 900px;
   height: 100%;
-  margin: 0 auto; /* Center the table */
-  border: 0.5px solid #ccc; /* 테두리 추가 */
+  margin: 0 auto;
 }
 
 .qna-write-form {
@@ -62,21 +107,19 @@ label {
 }
 
 .qna-write-form h2 {
-  text-align: center;
   margin-bottom: 30px;
-  margin-top: 30px;
+  text-align: center;
+  padding: 75px 0px 30px;
 }
 
 #qna-title {
   height: 50px;
-  font-size: 20px;
   padding: 0 20px 0 20px;
   margin-bottom: 20px;
   border-radius: 20px;
 }
 
 #qna-content {
-  font-size: 20px;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 20px;

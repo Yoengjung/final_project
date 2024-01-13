@@ -114,6 +114,35 @@ p {
   box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
 }
 
+.input-select {
+  position: relative;
+  min-height: 55px;
+  width: 30%;
+  color: #454545;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ededed;
+  border-radius: 100px;
+  outline: none !important;
+  margin-bottom: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  line-height: 1.111em;
+  transition: box-shadow 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.input-select:hover {
+  border-color: #f8c08d;
+  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+}
+
+.input-text:focus {
+  color: #0b0b0b;
+  outline: none !important;
+  border-color: #f39f7e;
+  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+}
+
 /* input 태그 안에 우측 버튼 (중복확인, 인증 등) */
 .input-in-btn {
   position: absolute;
@@ -151,6 +180,35 @@ p {
   border: 0;
   border-radius: 25px;
   transition: background-color 0.2s;
+}
+
+/* 페이지 네이션 ----------------------------------------------------------------------------- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* 버튼 사이의 간격 */
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.pagination-button {
+  padding: 7px;
+  border: none;
+  background-color: #fff; /* 하얀 배경 */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-size: 16px;
+}
+
+.pagination-button.active {
+  color: black;
+  font-weight: bold;
+}
+
+.pagination-button.disabled {
+  cursor: default;
+  opacity: 0.5; /* 비활성화된 버튼은 더 흐릿하게 */
 }
 
 /* 버튼 css ----------------------------------------------------------------------------- */
