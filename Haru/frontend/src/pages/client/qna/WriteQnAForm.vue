@@ -1,5 +1,5 @@
 <template>
-  <div class="qna-Write-background">
+  <div class="container1">
     <div class="qna-write-container">
       <form class="qna-write-form" autocomplete="off">
         <h2>QnA</h2>
@@ -30,15 +30,12 @@ export default {
       this.$router.push("/QnA");
     },
   },
+  created() {
+    this.$emit("bgImage", "type3");
+  },
 };
 </script>
 <style scoped>
-.qna-Write-background {
-  background-image: url("@/assets/bgImage/type3.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 100px;
-}
 .qna-write-container {
   padding-left: 100px;
   padding-right: 100px;
