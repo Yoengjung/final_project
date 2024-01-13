@@ -26,10 +26,10 @@
 }
 
 /* 글쓰기 버튼 */
-.QnA-Write {
+.qna-write {
   transition: transform 0.3s;
 }
-.QnA-Write:hover {
+.qna-write:hover {
   transform: scale(1.05); /* 호버 시 버튼 확대 */
 }
 
@@ -42,19 +42,19 @@
   padding: 5%;
 }
 
-#search-form {
+#qna-search-form {
   width: 530px;
   margin-bottom: 0;
 }
 
-.search-area {
+.qna-search-area {
   background-color: rgb(255, 255, 255);
   width: fit-content;
   margin: 0 auto;
   position: relative;
 }
 
-.QnA-search-input {
+.qna-search-input {
   width: 500px;
   border-radius: 10px;
   border: 1px solid #dbdbdb;
@@ -107,17 +107,11 @@
   background-color: #e2e2e2; /* 호버 시 배경색 */
 }
 
-.active {
-  font-weight: bold; /* 활성화된 링크의 폰트 두께 */
-  color: #2eb4c9; /* 활성화된 링크의 색상 */
-  border-bottom: 3px solid #2eb4c9; /* 활성화된 링크의 밑줄 */
-}
-
-.QnA-tr {
+.qna-tr {
   text-align: center;
 }
 
-.QnA-search-btn {
+.qna-search-btn {
   width: fit-content;
   height: fit-content;
   border: none;
@@ -132,7 +126,7 @@
   z-index: 10;
 }
 
-.search-container {
+.qna-search-container {
   display: flex;
   width: fit-content;
   align-items: center;
