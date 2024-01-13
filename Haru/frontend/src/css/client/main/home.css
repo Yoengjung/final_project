@@ -3,7 +3,7 @@ video {
   margin: 0px;
   max-width: 100%;
   object-fit: cover;
-  z-index: -2;
+  height: 100vh;
 }
 .home {
   display: block;
@@ -13,18 +13,122 @@ video {
   top: -5px;
   z-index: -1;
 }
-
-.screen-1 {
-  width: 80%;
-  height: 500px;
-  top: 150px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  z-index: 1;
+.main-container {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
 }
 
-.home .screen-1 h1 {
-  margin-bottom: 20px;
+/*원페이지 스크롤링*/
+.pages {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: -100%;
+  transition: bottom .7s;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.page:first-child {
+  bottom: 0;
+}
+
+.first {
+
+}
+
+.second {
+  background-color: #073642;
+}
+
+.third {
+  background-color: #cb4b16;
+}
+
+/*페이지 버튼들*/
+.pagination {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination>li {
+  cursor: pointer;
+  list-style: none;
+  height: 20px;
+  width: 20px;
+  background: #000000;
+  border-radius: 50%;
+  margin-top: 10px;
+  transition: background .7s;
+}
+
+.pagination>li.active {
+  background: #ffffff;
+}
+/*메인 페이지*/
+.main-page {
+  padding-top: 200px;
+  padding-left: 228px;
+  padding-right: 228px;
+  width: 100%;
+  height: 100%;
+}
+
+/*메인에 들어갈 문구*/
+.title-box > span{
+  white-space: nowrap;
+}
+
+#main-title {
+  font-size: 50px;
+  font-weight: 500;
+}
+#sub-title{
+  font-size: 20px;
+}
+/*뱃지*/
+.site-info-badge{
+  display: flex;
+  background-color: rgba(217, 217, 217, 0.5);
+  padding: 50px 90px 50px 90px;
+  border-radius: 200px;
+  width: fit-content;
+  text-align: center;
+}
+/*뱃지 안에 들어갈 내용들*/
+.info-section{
+  display: flex;
+  flex-direction: column;
+}
+.info-img{
+  width: 120px;
+}
+.title-box{
+  display: flex;
+  flex-direction: column;
+}
+.wrapper-badge{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.info-section:not(.info-section:last-child){
+  border-right: solid 1px #676767;
 }
