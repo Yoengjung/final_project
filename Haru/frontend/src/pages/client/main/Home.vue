@@ -13,6 +13,7 @@ export default {
   name: "HelloWorld",
   created() {
     this.bgImage();
+    this.$emit("is-main", true);
   },
   methods: {
     bgImage() {

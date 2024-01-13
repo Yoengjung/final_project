@@ -37,9 +37,9 @@
           </div>
         </div>
         <div class="dropdown">
-          <button class="dropbtn">QnA</button>
+          <button class="dropbtn">Q&A</button>
           <div class="dropdown-content">
-            <a href="/QnA">QnA</a>
+            <a href="/QnA">Q&A</a>
           </div>
         </div>
       </div>

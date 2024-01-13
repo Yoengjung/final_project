@@ -2,7 +2,7 @@
   <div class="container1">
     <div class="qna-container">
       <div class="faq-container">
-        <h2 class="faq-title">QnA 페이지</h2>
+        <h2 class="faq-title">Q&A 페이지</h2>
       </div>
       <div class="nav-bar">
         <router-link to="/qna" class="nav-item" exact-active-class="active"
@@ -298,6 +298,7 @@ export default {
 </script>
 
 <style scoped>
+@import url("@/css/client/qna/qna.css");
 .noticeTR {
   background-color: #efefef;
   font-weight: 600;
