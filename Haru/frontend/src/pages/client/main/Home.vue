@@ -21,16 +21,20 @@
                 <span>회원수</span>
                 <span>{{total_member}}명</span>
               </div>
+              <!-- 공백div -->
+              <div class="white-space-div"></div>
               <div class="info-section">
                 <img src="@/img/main/stress.png" class="info-img">
                 <span>오늘 평균 스트레스 수치</span>
                 <span>{{today_stress_avg}}%</span>
               </div>
+              <div class="white-space-div"></div>
               <div class="info-section">
                 <img src="@/img/main/feed.png" class="info-img">
                 <span>누적 피드수</span>
                 <span>{{total_feed}}개</span>
               </div>
+              <div class="white-space-div"></div>
               <div class="info-section">
                 <img src="@/img/main/like.png" class="info-img">
                 <span>누적 좋아요</span>

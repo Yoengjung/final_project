@@ -111,6 +111,7 @@ video {
   border-radius: 200px;
   width: fit-content;
   text-align: center;
+  align-items: center;
 }
 /*뱃지 안에 들어갈 내용들*/
 .info-section{
@@ -123,6 +124,7 @@ video {
 .title-box{
   display: flex;
   flex-direction: column;
+  color: white;
 }
 .wrapper-badge{
   width: 100%;
@@ -130,5 +132,10 @@ video {
   justify-content: center;
 }
 .info-section:not(.info-section:last-child){
-  border-right: solid 1px #676767;
+}
+.white-space-div{
+  height: 70px;
+  width: 20px;
+  border-right: solid 1px #8c8c8c;
+  margin-right: 20px;
 }
