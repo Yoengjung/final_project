@@ -46,27 +46,77 @@
       </div>
       <!--두번째 화면-->
       <div class="page blur-bg">
-        <div>
-          <div>
-            <span>하루의 여울은</span>
-            <span>사용자의 스트레스를 분석하여</span>
-            <span>맞춤 장소를 제공해주는 사이트입니다.</span>
-            <span>얼굴을 인삭하고, 일기를 작성해보세요.</span>
-          </div>
-          <div>
-            <img src="">
-            <img src="">
-            <img src="">
+        <div class="contents-container">
+          <div class="contents-box">
+            <div class="info-box-1">
+              <span class="info-title">하루의 여울은</span>
+              <span class="info-content">사용자의 스트레스를 분석하여</span>
+              <span class="info-content">맞춤 장소를 제공해주는 사이트입니다.</span>
+              <span class="info-content">얼굴을 인식하고, 일기를 작성해보세요!</span>
+            </div>
+            <div class="info-img-box">
+              <img src="@/img/main/face.gif" id="info-img-1">
+              <img src="@/img/main/place.png" id="info-img-2">
+              <video muted autoplay loop class="diary-video">
+                <source src="@/img/main/일기쓰기.mp4" type="video/mp4" >
+              </video>
+            </div>
           </div>
         </div>
       </div>
       <!--세번째 화면-->
       <div class="page blur-bg">
-        <h2 class="title">공부열심히 합시다</h2>
+        <div class="contents-container">
+          <div class="contents-box">
+            <div class="info-img-box">
+              <img src="@/img/main/피드누끼.gif" width="500">
+            </div>
+            <div class="info-box-2">
+              <span class="info-title">피드로 장소 확인~</span>
+              <span class="info-content">내가 올린 피드부터</span>
+              <span class="info-content">다른 사용자들 피드까지 확인하고</span>
+              <span class="info-content">장소를 직접 찾아가보세요!</span>
+            </div>
+          </div>
+        </div>
       </div>
       <!--세번째 화면-->
-      <div class="first page">
-        <h2 class="title">공부열심히 합시다</h2>
+      <div class="page">
+        <div class="last-page">
+            <div class="main-last-page">
+              <div class="last-page-left-box">
+                <div class="last-page-logo">
+                  <img src="@/img/main/logo.png" width="250">
+                </div>
+                <div class="last-page-channel">
+                  <img src="@/img/main/channelBtn.png" width="250">
+                </div>
+              </div>
+              <div class="last-page-right-box">
+                <span class="info-title">오늘도 당신에게</span>
+                <span class="info-title">행복을 추천 중</span>
+                <span>하루의 여울</span>
+              </div>
+            </div>
+<!--          푸터 영역-->
+            <div class="main-footer">
+              <div class="img-area">
+                <img src="@/assets/logo/logo_white.png" alt="" />
+              </div>
+
+              <div class="info-area">
+                <p>사업자 번호: 120910-30-230923</p>
+                <p>주소: 서울시 강남구 테헤란로</p>
+                <p>전화번호: 02-1234-1234</p>
+              </div>
+
+              <div class="coperation-info-area">
+                <p>Haru Coperation</p>
+                <p>Copyright © 하루의 여울 2024</p>
+              </div>
+            </div>
+<!--          푸터 영역 끝-->
+        </div>
       </div>
     </div>
     <!-- 페이징 -->
@@ -200,7 +250,7 @@ export default {
 
           now -= step;
 
-        }, 50);
+        }, 70);
       }
 
       // count_data의 변수들을 가져옴.
@@ -223,6 +273,7 @@ export default {
 
     // 카운트 0.7초 간격을 두고 실행
     setTimeout(() => this.counter(), 700);
+
   }
 }
 </script>
