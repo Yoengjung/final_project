@@ -1,4 +1,4 @@
-package kr.co.teamA.Haru.config;
+package kr.co.teamA.Haru.security;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,6 @@ import java.util.List;
 @Table(name = "Member")
 public class User implements UserDetails {
     @Id
-    private Long id;
     private String userId;
     private String pwd;
     private String nickname;
@@ -29,13 +28,6 @@ public class User implements UserDetails {
     private String profileImg;
     private String cDate;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -44,7 +36,6 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
-
     @Override
     public String getPassword() {
         return this.pwd;
@@ -64,6 +55,7 @@ public class User implements UserDetails {
     public boolean isAccountNonLocked() {
         return true;
     }
+
 
     @Override
     public boolean isCredentialsNonExpired() {

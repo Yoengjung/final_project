@@ -13,7 +13,11 @@
         <!-- 로그인 박스 영역 -->
         <div class="login-box">
           <div class="login-inner-box">
-            <form method="POST" autocomplete="off">
+            <form
+              method="post"
+              autocomplete="off"
+              @submit.prevent="loginSubmit"
+            >
               <h1>로그인</h1>
               <div class="form-input-box">
                 <!-- 아이디 -->
@@ -24,6 +28,7 @@
                     name="userId"
                     id="userId"
                     class="input-text"
+                    v-model="userId"
                   />
                 </div>
                 <!-- 비밀번호 -->
@@ -34,6 +39,7 @@
                     name="password"
                     id="password"
                     class="input-text"
+                    v-model="pwd"
                   />
                 </div>
                 <div class="form-check">
@@ -44,8 +50,8 @@
                 </div>
                 <button
                   class="big-ctlbtn insert-btn"
-                  @click="submit"
                   id="login-submit-btn"
+                  @submit="loginSubmit"
                 >
                   로그인
                 </button>
@@ -82,6 +88,7 @@
 <script>
 import FindByIdModal from "@/components/client/member/FindByIdModal.vue";
 import FindByPwdModal from "@/components/client/member/FindByPwdModal.vue";
+import axios from "axios";
 
 export default {
   name: "Login",
@@ -89,8 +96,9 @@ export default {
     return {
       isIdModalOpen: false,
       isPwdModalOpen: false,
-      name: "",
-      email: "",
+      userId: "",
+      pwd: "",
+      AccessToken: "",
     };
   },
   components: {
@@ -111,6 +119,38 @@ export default {
     findPwdToggleModal() {
       console.log("비밀번호 찾기 모달");
       this.isPwdModalOpen = !this.isPwdModalOpen;
+    },
+    loginSubmit() {
+      axios
+        .post(
+          `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/login`,
+          {
+            id: this.userId,
+            pwd: this.pwd,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${this.AccessToken}`,
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          if (!res.data.access_token == "") {
+            alert("로그인 성공");
+            localStorage.setItem("jwtToken", res.data.access_token);
+            this.$router.replace("/");
+          } else {
+            alert("로그인 실패");
+          }
+        })
+        .catch((error) => {
+          // 에러 핸들링: HTTP 응답이 200이 아닌 경우 또는 네트워크 에러 등을 처리
+          console.error("로그인 오류", error);
+          alert("로그인 중 오류가 발생했습니다.");
+        });
     },
   },
 };

@@ -88,6 +88,8 @@ export default {
   name: "InsertFeed",
   data() {
     return {
+      isLoggedIn: false,
+      AccessToken: "",
       uid: "abc",
       hashtag: [
         "고기",
@@ -183,11 +185,22 @@ export default {
   },
   created() {
     this.bgImage();
+    this.getToken();
   },
   methods: {
     bgImage() {
       var newImage = "type4";
       this.$emit("bgImage", newImage);
+    },
+    getToken() {
+      this.AccessToken = localStorage.getItem("jwtToken");
+      console.log(this.AccessToken);
+      if (this.AccessToken != null) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+        this.$router.push("/login");
+      }
     },
     toggleActive(index) {
       const indexOfTag = this.activeTags.indexOf(index);

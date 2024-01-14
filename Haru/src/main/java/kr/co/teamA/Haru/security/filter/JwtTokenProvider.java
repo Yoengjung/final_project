@@ -1,4 +1,4 @@
-package kr.co.teamA.Haru.config.utils;
+package kr.co.teamA.Haru.security.filter;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -9,23 +9,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-
 import java.security.Key;
 import java.util.Date;
 
-
-@Slf4j
 @Component
+@Slf4j
 public class JwtTokenProvider {
-
     Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
     //인증된 사용자에 대한 JWT를 생성을 하고
-    public JwtTokenProvider() {
-        this.key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
-    }
     public String createToken(Authentication authentication) {
-
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + 3600000);
@@ -40,9 +33,9 @@ public class JwtTokenProvider {
 
 
     public String resolveToken(HttpServletRequest request) {
-        System.out.println("5-------------------------");
+        System.out.println("resolveToken");
+        System.out.println("request.getHeader(\"Authorization\") =>"+request.getHeader("Authorization"));
         String bearerToken = request.getHeader("Authorization");
-        System.out.println("bearerToken =>"+bearerToken);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
@@ -53,10 +46,7 @@ public class JwtTokenProvider {
     public boolean validateToken(String token) {
 
         try {
-            System.out.println("1-------------------------");
-
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
-
             return true;
         } catch (MalformedJwtException ex) {
             log.error("Invalid JWT token : 토큰의 형식이 올바르지 않음 ");
@@ -67,7 +57,6 @@ public class JwtTokenProvider {
         } catch (IllegalArgumentException ex) {
             log.error("JWT claims string is empty : 토큰이 비어있거나 null일 때 발생");
         } catch (SignatureException e) {
-            System.out.println("2-------------------------");
             log.error("there is an error with the signature of you token : 토큰의 서명이 유효하지 않을 때 발생");
         }
 
@@ -84,3 +73,4 @@ public class JwtTokenProvider {
                 .getSubject();
     }
 }
+

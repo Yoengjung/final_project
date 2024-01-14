@@ -165,6 +165,8 @@ export default {
       email: "",
       name: "",
       deleteMyInfoModal: false,
+      isLoggedIn: false,
+      AccessToken: "",
     };
   },
   components: {
@@ -172,11 +174,22 @@ export default {
   },
   created() {
     this.bgImage();
+    this.getToken();
   },
   methods: {
     bgImage() {
       var newImage = "type1";
       this.$emit("bgImage", newImage);
+    },
+    getToken() {
+      this.AccessToken = localStorage.getItem("jwtToken");
+      console.log(this.AccessToken);
+      if (this.AccessToken != null) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+        this.$router.push("/login");
+      }
     },
     nicknameCheck() {
       const nickname = document.getElementById("nickname").value;

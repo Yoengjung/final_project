@@ -180,14 +180,15 @@
               @dragleave="isDrag = false"
             >
               <div class="profile-contents">
-                <!-- <div v-for="file in files" :key="file.name">
+                <div v-for="file in files" :key="file.name">
                   <img
                     v-if="file.preview"
                     :src="file.preview"
                     id="preview-img"
-                  /> -->
+                  />
+                </div>
                 <!-- 01/11 (목) 영중, 리수 머지 : files에 값이 없을땐 기본이미지가 나오게 해야됨 ------------------------------------------------->
-                <img src="@/assets/icon/camera_image.png" id="preview-img" />
+                <img :src="files.preview" id="preview-img" />
                 <p>{{ fileName }}</p>
                 <label
                   @drop.prevent="dropInputTag($event)"
@@ -204,7 +205,7 @@
               type="file"
               name="profile"
               id="profile"
-              @change="fileChanged"
+              @change="handleFileChange"
               multiple
               accept="image/*"
               ref="fileRef"
@@ -286,7 +287,6 @@ export default {
       termsOfUseModalOpen: false,
       modalOpen: false,
       fileName: "끌어서 사진 올리기",
-      // 전송할 폼 정보들
       formData: new FormData(),
       files: [],
       idCheckBoolean: false,
@@ -384,27 +384,63 @@ export default {
       event.preventDefault();
       this.isDrag = true;
     },
+    handleFileChange(event) {
+      if (event.dataTransfer) {
+        this.dropInputTag(event);
+        console.log("test1");
+      } else {
+        this.selectFile(event);
+        console.log("test2");
+      }
+    },
+
     //이미지 파일 드래그앤 드롭
     dropInputTag(event) {
-      // 유사 배열을 배열로 변환
-      let file = Array.from(event.dataTransfer.files, (v) => v)[0];
-      this.fileName = file.name;
-      // 사진 파일을 formData에 추가
-      this.formData.append("faceImage", file);
+      this.clearFiles();
+      let files = Array.from(event.dataTransfer.files);
+
+      if (files.length > 0) {
+        const file1 = files[0];
+        this.fileName = file1.name;
+
+        const preview = URL.createObjectURL(file1);
+        this.files.push({
+          name: file1.name,
+          preview: preview,
+        });
+
+        this.formData.append("faceImage", file1);
+        this.formData.append("files", file1);
+      }
+
       event.preventDefault();
       this.isDrag = false;
     },
-
-    selectFile(event) {
+    clearFiles() {
       this.files = [];
+      this.fileName = "";
+      this.formData.delete("files");
+      this.formData.delete("faceImage");
+    },
+    selectFile(event) {
+      this.clearFiles(); // 기존 파일 정보 초기화
+
       const selectedFiles = event.target.files;
+
       for (let i = 0; i < selectedFiles.length; i++) {
         const file = selectedFiles[i];
+
+        // 파일 미리보기 설정
         const preview = URL.createObjectURL(file);
+
         this.files.push({
           name: file.name,
           preview: preview,
         });
+
+        this.fileName = file.name;
+
+        this.formData.append("faceImage", file);
         this.formData.append("files", file);
       }
     },
@@ -681,9 +717,10 @@ export default {
                 }
               )
               .then((res) => {
+                alert(res);
                 if (res.status == 200) {
                   alert("회원가입이 완료되었습니다.");
-                  this.$router.push("/login");
+                  this.$router.push("/Login");
                 }
               })
               .catch((error) => {

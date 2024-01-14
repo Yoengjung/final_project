@@ -38,6 +38,8 @@
 export default {
   data() {
     return {
+      isLoggedIn: false,
+      AccessToken: "",
       myFaboritePlace: [
         {
           image: require("@/img/Total_stress/food/buger.jpg"),
@@ -107,11 +109,22 @@ export default {
   },
   created() {
     this.bgImage();
+    this.getToken();
   },
   methods: {
     bgImage() {
       var newImage = "type5";
       this.$emit("bgImage", newImage);
+    },
+    getToken() {
+      this.AccessToken = localStorage.getItem("jwtToken");
+      console.log(this.AccessToken);
+      if (this.AccessToken != null) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+        this.$router.push("/login");
+      }
     },
   },
 };

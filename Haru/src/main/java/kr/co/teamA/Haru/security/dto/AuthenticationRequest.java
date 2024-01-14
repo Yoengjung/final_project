@@ -1,16 +1,15 @@
-package kr.co.teamA.Haru.config.dto;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+package kr.co.teamA.Haru.security.dto;
+
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class AuthenticationRequest {
     // 사용자 이름을 저장
-    private String userId;
+    private String id;
     // 사용자 비밀전호를 저장
     private String pwd;
 }

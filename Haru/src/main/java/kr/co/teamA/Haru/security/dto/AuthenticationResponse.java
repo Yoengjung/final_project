@@ -1,4 +1,4 @@
-package kr.co.teamA.Haru.config.dto;
+package kr.co.teamA.Haru.security.dto;
 // 모든 필드를 인자로 받는 생성자를 자동으로 생성
 
 import lombok.AllArgsConstructor;

@@ -1,9 +1,8 @@
-package kr.co.teamA.Haru.Controller.Member;
+package kr.co.teamA.Haru.Controller.member;
 
 import kr.co.teamA.Haru.DTO.MemberDTO;
-import kr.co.teamA.Haru.Service.EmailSenderService;
-import kr.co.teamA.Haru.Service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
+import kr.co.teamA.Haru.Service.member.EmailSenderService;
+import kr.co.teamA.Haru.Service.member.MemberService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

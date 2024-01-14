@@ -19,6 +19,8 @@ export default {
   name: "MyFeed",
   data() {
     return {
+      isLoggedIn: false,
+      AccessToken: "",
       cardList: [
         {
           profileImage: require("@/img/Feed/no_profile.png"),
@@ -106,6 +108,7 @@ export default {
   },
   created() {
     this.bgImage();
+    this.getToken();
   },
   methods: {
     bgImage() {
@@ -117,6 +120,16 @@ export default {
     },
     closeModal() {
       this.modal_Check = false;
+    },
+    getToken() {
+      this.AccessToken = localStorage.getItem("jwtToken");
+      console.log(this.AccessToken);
+      if (this.AccessToken != null) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+        this.$router.push("/login");
+      }
     },
   },
   components: {

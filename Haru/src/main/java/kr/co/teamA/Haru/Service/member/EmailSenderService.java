@@ -1,4 +1,4 @@
-package kr.co.teamA.Haru.Service;
+package kr.co.teamA.Haru.Service.member;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;

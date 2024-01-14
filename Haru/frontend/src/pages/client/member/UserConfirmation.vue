@@ -28,17 +28,31 @@
 export default {
   name: "UserConfirmation",
   data() {
-    return {};
+    return {
+      AccessToken: "",
+      isLoggedIn: false,
+    };
   },
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
+    this.getToken();
   },
   methods: {
     // 해당 화면 Background 이미지 설정
     bgImage() {
       var newImage = "type1";
       this.$emit("bgImage", newImage);
+    },
+    getToken() {
+      this.AccessToken = localStorage.getItem("jwtToken");
+      console.log(this.AccessToken);
+      if (this.AccessToken != null) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+        this.$router.push("/login");
+      }
     },
     userConfirmBtn() {
       this.$router.push("/updateMyInfo");

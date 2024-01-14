@@ -39,16 +39,52 @@
       </div>
       <div class="login-ul-box">
         <ul class="login-ul">
-          <li><a href="/login">로그인</a></li>
-          <li><a href="/signup">회원가입</a></li>
+          <div v-if="!isLoggedIn">
+            <li><a href="/login">로그인</a></li>
+            <li><a href="/signup">회원가입</a></li>
+          </div>
+          <div v-else>
+            <li>
+              <button @click="logout">로그아웃</button>
+            </li>
+          </div>
         </ul>
       </div>
     </header>
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   name: "Header",
+  components: {},
+  data() {
+    return {
+      isLoggedIn: false,
+    };
+  },
+  created() {
+    this.getToken();
+  },
+  methods: {
+    getToken() {
+      const token = localStorage.getItem("jwtToken");
+      this.isLoggedIn = token ? true : false;
+    },
+    logout() {
+      console.log(this.Access_token);
+      axios
+        .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
+        .then((res) => {
+          if (res.data == "Logout") {
+            localStorage.removeItem("jwtToken");
+            this.Access_token = "";
+            this.$router.replace("/login");
+          }
+        });
+    },
+  },
 };
 </script>
 <style scoped>

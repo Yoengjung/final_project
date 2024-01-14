@@ -145,20 +145,53 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   name: "MyPage",
   data() {
-    return {};
+    return {
+      isLoggedIn: false,
+      AccessToken: "",
+    };
   },
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
+    this.getToken();
+    this.getData();
   },
   methods: {
     // 해당 화면 Background 이미지 설정
     bgImage() {
       var newImage = "type1";
       this.$emit("bgImage", newImage);
+    },
+    getToken() {
+      this.AccessToken = localStorage.getItem("jwtToken");
+      console.log(this.AccessToken);
+      if (this.AccessToken != null) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+        this.$router.push("/login");
+      }
+    },
+    getData() {
+      axios
+        .post(
+          `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/myPageData`,
+          this.AccessToken,
+          {
+            headers: {
+              Authorization: `Bearer ${this.AccessToken}`, // Bearer 스킴을 사용하여 토큰을 전송
+              "Content-Type": "application/json", // 요청 데이터의 타입을 명시
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+        });
     },
   },
 };

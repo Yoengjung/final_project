@@ -1,8 +1,6 @@
-package kr.co.teamA.Haru.Service;
+package kr.co.teamA.Haru.Service.member;
 
 import kr.co.teamA.Haru.DTO.MemberDTO;
-import kr.co.teamA.Haru.DTO.NicknameDTO;
-import kr.co.teamA.Haru.DTO.UserIdDTO;
 import kr.co.teamA.Haru.Entity.Member;
 import kr.co.teamA.Haru.Repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
-public class MemberService {
+public class MemberService{
 
     private final MemberRepository memberRepository;
 
@@ -24,15 +22,16 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public int checkDuplicateUserId(String userId) {
-        Optional checkUserId = memberRepository.findUserIdById(userId);
-        return checkUserId != null ? 1 : 0;
-    }
+//    public int checkDuplicateUserId(String userId) {
+//        Optional checkUserId = memberRepository.findUserIdById(userId);
+//        return checkUserId != null ? 1 : 0;
+//    }
 
     public Member create(MemberDTO dto) {
         LocalDateTime now = LocalDateTime.now();
         String encoderPassword = passwordEncoder.encode(dto.getPwd());
-        System.out.println(encoderPassword);
+        System.out.println("encodeing" + encoderPassword);
+        System.out.println(dto.getUserId());
         Member entity = Member.builder()
                 .userId(dto.getUserId())
                 .pwd(encoderPassword)
@@ -50,4 +49,5 @@ public class MemberService {
         Optional checkNickname = memberRepository.findNicknameByNickname(nickname);
         return checkNickname != null ? 1 : 0;
     }
+
 }

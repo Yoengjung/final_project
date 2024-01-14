@@ -138,6 +138,8 @@ import MyDiaryList from "@/components/client/myPlace/MyDiaryList.vue";
 export default {
   data() {
     return {
+      isLoggedIn: false,
+      AccessToken: "",
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
       rDate: "9월 23일",
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
@@ -250,12 +252,22 @@ export default {
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
+    this.getToken();
   },
   methods: {
     // 해당 화면 Background 이미지 설정
     bgImage() {
       var newImage = "type5";
       this.$emit("bgImage", newImage);
+    },
+    getToken() {
+      this.AccessToken = localStorage.getItem("jwtToken");
+      if (this.AccessToken != null) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+        this.$router.push("/login");
+      }
     },
 
     // 탭 전환하기
