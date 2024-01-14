@@ -9,7 +9,7 @@
     <!-- 컨텐츠 -->
     <div class="pages" ref="pages">
       <div class="page">
-        <div class="main-page">
+        <div class="main-page" ref="main-page">
           <div class="title-box">
             <span id="main-title">지친 현대인의 삶을 위한, 하루의 여울</span>
             <span id="sub-title">하루의 여울이 당신을 위해 이곳으로 안내합니다.</span>
@@ -18,38 +18,53 @@
             <div class="site-info-badge">
               <div class="info-section">
                 <img src="@/img/main/account.png" class="info-img">
-                <span>회원수</span>
-                <span>{{total_member}}명</span>
+                <span class="badge-content">회원수</span>
+                <span class="title-bold">{{count_data.count_member.count}}명</span>
               </div>
               <!-- 공백div -->
               <div class="white-space-div"></div>
               <div class="info-section">
                 <img src="@/img/main/stress.png" class="info-img">
-                <span>오늘 평균 스트레스 수치</span>
-                <span>{{today_stress_avg}}%</span>
+                <span class="badge-content">오늘 평균 스트레스 수치</span>
+                <span class="title-bold">{{count_data.count_stress_avg.count}}%</span>
               </div>
               <div class="white-space-div"></div>
               <div class="info-section">
                 <img src="@/img/main/feed.png" class="info-img">
-                <span>누적 피드수</span>
-                <span>{{total_feed}}개</span>
+                <span class="badge-content">누적 피드수</span>
+                <span class="title-bold">{{count_data.count_feed.count}}개</span>
               </div>
               <div class="white-space-div"></div>
               <div class="info-section">
                 <img src="@/img/main/like.png" class="info-img">
-                <span>누적 좋아요</span>
-                <span>{{total_like}}개</span>
+                <span class="badge-content">누적 좋아요</span>
+                <span class="title-bold">{{count_data.count_like.count}}개</span>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <!--두번째 화면-->
+      <div class="page blur-bg">
+        <div>
+          <div>
+            <span>하루의 여울은</span>
+            <span>사용자의 스트레스를 분석하여</span>
+            <span>맞춤 장소를 제공해주는 사이트입니다.</span>
+            <span>얼굴을 인삭하고, 일기를 작성해보세요.</span>
           </div>
+          <div>
+            <img src="">
+            <img src="">
+            <img src="">
+          </div>
+        </div>
       </div>
-      <div class="second page">
-        <h2 class="title">원페이지 스크롤링입니다</h2>
-      </div>
-      <div class="third page">
+      <!--세번째 화면-->
+      <div class="page blur-bg">
         <h2 class="title">공부열심히 합시다</h2>
       </div>
+      <!--세번째 화면-->
       <div class="first page">
         <h2 class="title">공부열심히 합시다</h2>
       </div>
@@ -77,11 +92,22 @@ export default {
       // 애니메이션 상태
       animation_state : false,
 
-      //메인에 보여줄 변수들
-      total_member : 1249,
-      today_stress_avg: 62,
-      total_feed: 1202,
-      total_like : 2103,
+      // 메인에 보여줄 변수들
+      count_data : {
+        count_member : {
+          count : 0 , max : 14135
+        },
+        count_stress_avg : {
+          count : 0 , max : 64
+        },
+        count_feed : {
+          count : 0 , max : 13464
+        },
+        count_like :{
+          count : 0 , max : 132416
+        }
+      },
+
     }
   },
   created(){
@@ -159,7 +185,34 @@ export default {
       else{
         this.gotoNext();
       }
+    },
+    // 카운트 효과를 위한 메서드
+    counter(){
+      const handler = (now, max, step, propertyName) => {
+        // 0부터 10씩 빼서 올리는 핸들.
+        const handle = setInterval(() => {
+          // 2023 - 2023 = 0 => 2023 - 2013 = 10...
+          this.count_data[propertyName].count = Math.ceil(max - now);
+
+          if (now < 1){
+            clearInterval(handle);
+          }
+
+          now -= step;
+
+        }, 50);
+      }
+
+      // count_data의 변수들을 가져옴.
+      for (const propertyName in this.count_data) {
+        // 최대 값 가져옴.
+        const max = this.count_data[propertyName].max;
+        const now = max;
+        const step = now /10;
+        handler(now, max, step, propertyName);
+      }
     }
+
   },
   mounted() {
     this.init();
@@ -167,6 +220,9 @@ export default {
     this.$refs.pages.ontouchend = this.onTouchEnd;
     this.$refs.pages.onmousewheel = this.onWheel;
     this.$refs.pages.onwheel = this.onWheel;
+
+    // 카운트 0.7초 간격을 두고 실행
+    setTimeout(() => this.counter(), 700);
   }
 }
 </script>

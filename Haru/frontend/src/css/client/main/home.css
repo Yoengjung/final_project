@@ -46,18 +46,6 @@ video {
   bottom: 0;
 }
 
-.first {
-
-}
-
-.second {
-  background-color: #073642;
-}
-
-.third {
-  background-color: #cb4b16;
-}
-
 /*페이지 버튼들*/
 .pagination {
   position: absolute;
@@ -93,6 +81,7 @@ video {
 
 /*메인에 들어갈 문구*/
 .title-box > span{
+  color: white;
   white-space: nowrap;
 }
 
@@ -109,33 +98,53 @@ video {
   background-color: rgba(217, 217, 217, 0.5);
   padding: 50px 90px 50px 90px;
   border-radius: 200px;
-  width: fit-content;
+  width: 80%;
   text-align: center;
   align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+  white-space: nowrap;
+  min-width: 800px;
 }
 /*뱃지 안에 들어갈 내용들*/
 .info-section{
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
+/*이미지 크기*/
 .info-img{
-  width: 120px;
+  width: 85px;
 }
 .title-box{
   display: flex;
   flex-direction: column;
   color: white;
 }
+/*뱃지 감싸고 있는 div*/
 .wrapper-badge{
   width: 100%;
   display: flex;
   justify-content: center;
 }
-.info-section:not(.info-section:last-child){
-}
-.white-space-div{
+/*뱃지 사이 선*/
+.white-space-div {
   height: 70px;
-  width: 20px;
+  /*width와 margin-right 같은 넓이여야됨.*/
+  width: 50px;
+  margin-right: 50px;
   border-right: solid 1px #8c8c8c;
-  margin-right: 20px;
+}
+/*타이틀 폰트*/
+.title-bold{
+  font-weight: bold;
+  font-size: 35px;
+}
+.badge-content{
+  margin-top: 20px;
+}
+
+/*뒷 배경 흐림 */
+.blur-bg{
+  backdrop-filter: blur(10px);
 }
