@@ -62,6 +62,11 @@
   padding-right: 50px;
 }
 
+/* 검색 아이콘 */
+.qna-search-btn > img {
+  width: 34px;
+}
+
 .qna-table thead th {
   padding: 10px;
   background-color: #fbbda4;

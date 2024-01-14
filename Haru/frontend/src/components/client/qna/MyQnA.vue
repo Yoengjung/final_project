@@ -17,16 +17,16 @@
       <table class="qna-table">
         <thead>
           <tr>
-            <th class="QnA-tr">번호</th>
-            <th class="QnA-tr">카테고리</th>
+            <th class="qna-tr">번호</th>
+            <th class="qna-tr">카테고리</th>
             <th>제목</th>
-            <th class="QnA-tr">작성일</th>
+            <th class="qna-tr">작성일</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in paginatedQnA" :key="item.no">
-            <td class="QnA-tr">{{ item.no }}</td>
-            <td class="QnA-tr">{{ item.category }}</td>
+            <td class="qna-tr">{{ item.no }}</td>
+            <td class="qna-tr">{{ item.category }}</td>
             <td>
               <a href="#">{{ item.title }}</a
               ><span
@@ -38,7 +38,7 @@
                 >{{ item.progress }}</span
               >
             </td>
-            <td class="QnA-tr">{{ item.date }}</td>
+            <td class="qna-tr">{{ item.date }}</td>
           </tr>
         </tbody>
       </table>
@@ -71,16 +71,16 @@
           &gt;
         </button>
       </div>
-      <div class="search-container">
-        <form id="search-form" @submit.prevent="onSearch">
-          <div class="search-area">
+      <div class="qna-search-container">
+        <form id="qna-search-form" @submit.prevent="onSearch">
+          <div class="qna-search-area">
             <input
-              class="QnA-search-input"
+              class="qna-search-input"
               v-model="searchQuery"
               type="text"
               placeholder="Search"
             />
-            <button type="button" class="QnA-search-btn" @click="onSearch">
+            <button type="button" class="qna-search-btn" @click="onSearch">
               <img src="@/img/Feed/search_btn.png" alt="" />
             </button>
           </div>
@@ -88,7 +88,7 @@
         <div>
           <button
             type="button"
-            class="big-ctlbtn insert-btn QnA-Write"
+            class="big-ctlbtn insert-btn qna-Write"
             @click="onWrite"
           >
             글쓰기
@@ -253,7 +253,12 @@ export default {
 
 <style scoped>
 @import url("@/css/client/qna/qnaBoard.css");
-.QnA-tr {
+.qna-tr {
   text-align: center;
+}
+.active {
+  font-weight: bold; /* 활성화된 링크의 폰트 두께 */
+  color: #2eb4c9; /* 활성화된 링크의 색상 */
+  border-bottom: 3px solid #2eb4c9; /* 활성화된 링크의 밑줄 */
 }
 </style>
