@@ -33,8 +33,9 @@ public class QuestionController {
         return "question_detail";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create")  // 질문 등록하기
     public String questionCreate(QuestionForm questionForm) {
+
         return "question_form";
     }
 
