@@ -122,7 +122,7 @@
 </template>
 <script>
 export default {
-  name: "PrivacyPolicyModel",
+  name: "PrivacyPolicyModal",
   data() {
     return {};
   },

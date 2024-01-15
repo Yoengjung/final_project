@@ -272,7 +272,7 @@
 <script>
 import axios from "axios";
 import termsOfUseModal from "@/components/client/member/TermsOfUseModal.vue";
-import privacyPolicyModal from "@/components/client/member/PrivacyPolicyModel.vue";
+import privacyPolicyModal from "@/components/client/member/PrivacyPolicyModal.vue";
 
 export default {
   name: "SignUp",
