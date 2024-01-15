@@ -40,7 +40,7 @@
           <button class="dropbtn">Q&A</button>
           <div class="dropdown-content">
             <a href="/QnA">Q&A 게시판</a>
-            <!-- <a href="/QnA">Q&A 등록</a> -->
+            <a href="/WriteQnA">Q&A 등록</a>
           </div>
         </div>
       </div>

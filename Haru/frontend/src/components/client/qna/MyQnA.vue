@@ -6,7 +6,7 @@
       </div>
 
       <div class="nav-bar">
-        <router-link to="/qna" class="nav-item" exact-active-class="active"
+        <router-link to="/QnA" class="nav-item" exact-active-class="active"
           >Q&A</router-link
         >
         <router-link to="/myQnA" class="nav-item" exact-active-class="active"
@@ -245,7 +245,7 @@ export default {
     },
     onWrite() {
       console.log("글쓰기 페이지로 이동");
-      this.$router.push({ name: "WriteQnAForm" });
+      this.$router.push({ name: "WriteQnA" });
     },
   },
 };

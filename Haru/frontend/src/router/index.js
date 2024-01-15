@@ -31,8 +31,9 @@ import Test from "@/pages/test.vue"; // test 화면
 // QnA--------------------------------------
 import QnA from "@/pages/client/qna/QnA.vue";
 import MyQnA from "@/components/client/qna/MyQnA.vue";
-import WriteQnAForm from "@/pages/client/qna/WriteQnAForm.vue";
-import QnADetail from "@/pages/client/qna/QnADetail.vue";
+import WriteQnA from "@/pages/client/qna/WriteQnA.vue";
+import UpdateQnA from "@/pages/client/qna/UpdateQnA.vue";
+import DetailQnA from "@/pages/client/qna/DetailQnA.vue";
 
 const routes = [
   {
@@ -131,14 +132,19 @@ const routes = [
     component: MyQnA,
   },
   {
-    path: "/WriteQnAForm",
-    name: "WriteQnAForm",
-    component: WriteQnAForm,
+    path: "/WriteQnA",
+    name: "WriteQnA",
+    component: WriteQnA,
   },
   {
-    path: "/QnADetail",
-    name: "QnADetail",
-    component: QnADetail,
+    path: "/UpdateQnA",
+    name: "UpdateQnA",
+    component: UpdateQnA,
+  },
+  {
+    path: "/DetailQnA",
+    name: "DetailQnA",
+    component: DetailQnA,
   },
 ];
 

@@ -2,18 +2,21 @@
   <div class="container1">
     <div class="qna-write-container">
       <form class="qna-write-form" autocomplete="off">
-        <h2>Q&A 등록</h2>
+        <h2>Q&A</h2>
+        <!-- 카테고리 -->
         <div class="info-input-container">
           <div class="label-area">
-            <label for="qna-title">카테고리 선택</label>
+            <label for="qna-category">카테고리</label>
           </div>
-
-          <!-- 날짜 선택 -->
-          <select class="input-select" v-model="selectCategory">
-            <option value="usage">이용문의</option>
-            <!-- [공지사항은 관리자만 입력할 수 있도록] => v-if="mid.slide(5) === 'admin'" -->
-            <option value="notice">공지사항</option>
-          </select>
+          <div class="input-area">
+            <input
+              class="input-text"
+              type="text"
+              id="qna-category"
+              :value="myQnA.category === 'usage' ? '이용문의' : '공지사항'"
+              readonly
+            />
+          </div>
         </div>
 
         <!-- 제목 -->
@@ -28,6 +31,8 @@
               name="qna-title"
               id="qna-title"
               placeholder="Q&A 제목을 입력해주세요."
+              :value="myQnA.title"
+              readonly
             />
           </div>
         </div>
@@ -43,14 +48,16 @@
             cols="88"
             rows="10"
             placeholder="Q&A 내용을 작성하세요."
+            v-model="myQnA.contents"
+            readonly
           ></textarea>
         </div>
 
         <div class="btn-group">
-          <button class="big-ctlbtn insert-btn" type="submit">등록</button>
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
             취소
           </button>
+          <button class="big-ctlbtn update-btn" type="submit">수정</button>
         </div>
       </form>
     </div>
@@ -58,19 +65,24 @@
 </template>
 <script>
 export default {
-  name: "WriteQnAForm",
+  name: "WriteQnA",
   data() {
     return {
-      selectCategory: "usage", // 이용문의
+      myQnA: {
+        category: "usage",
+        title: "어떻게 스트레스 분석이 이렇게 잘맞는건가요?!?!",
+        contents: "너무 잘맞아요!",
+      },
     };
   },
   methods: {
     cancel() {
-      this.$router.push("/QnA");
+      this.$router.go(-1); // 뒤로가기
     },
   },
   created() {
     this.$emit("bgImage", "type3");
+    this.selectCategory = this.myQnA.category;
   },
 };
 </script>
@@ -80,7 +92,7 @@ export default {
   justify-content: center;
   margin-bottom: 50px;
 }
-.btn-group > .insert-btn {
+.btn-group > .cancle-btn {
   margin-right: 20px;
 }
 .qna-write-container {

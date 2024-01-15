@@ -7,7 +7,7 @@
       <div class="nav-bar">
         <!-- exact-active-class : Vue Router에서 사용되는 속성 -->
         <!-- router-link가 현재 활성화된(exact match) 상태일 때 적용할 클래스를 지정하는 데 사용 -->
-        <router-link to="/qna" class="nav-item" exact-active-class="active"
+        <router-link to="/QnA" class="nav-item" exact-active-class="active"
           >Q&A</router-link
         >
         <router-link to="/myQnA" class="nav-item" exact-active-class="active"
@@ -37,7 +37,7 @@
             <td class="qna-tr">{{ item.no }}</td>
             <td class="qna-tr">{{ item.category }}</td>
             <td>
-              <a href="#">{{ item.title }}</a
+              <a href="/DetailQnA">{{ item.title }}</a
               ><span
                 class="qna-badge"
                 :class="{
@@ -291,7 +291,7 @@ export default {
     },
     onWrite() {
       console.log("글쓰기 페이지로 이동");
-      this.$router.push({ name: "WriteQnAForm" });
+      this.$router.push({ name: "WriteQnA" });
     },
   },
 };
