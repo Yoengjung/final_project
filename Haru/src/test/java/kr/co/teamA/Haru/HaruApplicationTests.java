@@ -6,6 +6,7 @@ import java.util.List;
 
 import kr.co.teamA.Haru.Question.Question;
 import kr.co.teamA.Haru.Question.QuestionRepository;
+import kr.co.teamA.Haru.Question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,12 +18,14 @@ import java.util.List;
 class HaruApplicationTests {
 
 	@Autowired
-	private QuestionRepository questionRepository;
+	private QuestionService questionService;
 
 	@Test
 	void testJpa() {
-		List<Question> qList = this.questionRepository.findBySubjectLike("sbb%");
-		Question q = qList.get(0);
-		assertEquals("sbb가 무엇인가요?", q.getSubject());
+		for (int i = 1; i <= 300; i++) {
+			String subject = String.format("테스트 데이터입니다:[%03d]", i);
+			String content = "내용무";
+			this.questionService.create(subject, content, null);
+		}
 	}
 }
