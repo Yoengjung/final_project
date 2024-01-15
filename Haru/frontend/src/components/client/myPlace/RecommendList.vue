@@ -7,12 +7,12 @@
       class="rlist-day-area"
     >
       <p>{{ rlist.rdate }}</p>
-      <div v-for="(item, i) in rlist.recList" :key="i">
+      <div v-for="(item, i) in rlist.recList" :key="i" @mouseleave="FeedBtnOff">
         <div class="rlist-card-area">
           <div
             class="rlist-content-area"
-            @mouseover="FeedBtnOn"
-            @mouseleave="FeedBtnOff"
+            :id="'contentArea' + idx + '-' + i"
+            @mouseover="FeedBtnOn(idx + '-' + i)"
           >
             <div class="all-info">
               <div class="rlist-img-area">
@@ -61,16 +61,22 @@
             </div>
           </div>
 
-          <div
-            v-if="isFeedBtnOn"
-            class="upload-btn-area"
-            :class="{
-              recBtnDisplayNone: isBtnHeartNone === true,
-              feedBtnon: isFeedBtnOn === true,
-            }"
-          >
-            <span>피드 올리기</span>
-          </div>
+          <transition name="fade">
+            <div
+              v-if="myNum === idx + '-' + i"
+              @mouseover="FeedBtnOn(idx + '-' + i)"
+              @mouseleave="FeedBtnOff()"
+              @click="gotoWriteFeed"
+              class="upload-btn-area cursor-p"
+              :id="'uploadBtn' + idx + '-' + i"
+              :class="{
+                recBtnDisplayNone: isBtnHeartNone === true,
+                feedBtnon: myNum === idx + '-' + i,
+              }"
+            >
+              <span>피드 올리기</span>
+            </div>
+          </transition>
         </div>
       </div>
     </div>
@@ -80,7 +86,7 @@
 export default {
   data() {
     return {
-      isFeedBtnOn: false,
+      myNum: "",
     };
   },
   props: {
@@ -88,19 +94,27 @@ export default {
     isBtnHeartNone: Boolean, //
   },
   methods: {
-    FeedBtnOn() {
-      this.isFeedBtnOn = true;
-      console.log("true!");
+    FeedBtnOn(num) {
+      this.myNum = num;
     },
     FeedBtnOff() {
-      this.isFeedBtnOn = false;
-      console.log("false!");
+      this.myNum = 0;
+    },
+    gotoWriteFeed() {
+      this.$router.push("/insertFeed");
     },
   },
 };
 </script>
 <style scoped>
 @import "@/css/client/myPlace/recommendList.css";
-.feedBtnon {
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

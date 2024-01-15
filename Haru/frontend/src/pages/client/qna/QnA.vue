@@ -1,16 +1,13 @@
 <template>
-  <div class="amu">
+  <div class="container1">
     <div class="qna-container">
       <div class="faq-container">
-        <h2
-          class="faq-title"
-          style="text-align: center; padding: 75px 0 50px 0"
-        >
-          나의 QnA 페이지
-        </h2>
+        <h2 class="faq-title">Q&A 페이지</h2>
       </div>
-      <div class="nav-bar" style="padding: 30px">
-        <router-link to="/qna" class="nav-item" exact-active-class="active"
+      <div class="nav-bar">
+        <!-- exact-active-class : Vue Router에서 사용되는 속성 -->
+        <!-- router-link가 현재 활성화된(exact match) 상태일 때 적용할 클래스를 지정하는 데 사용 -->
+        <router-link to="/QnA" class="nav-item" exact-active-class="active"
           >Q&A</router-link
         >
         <router-link to="/myQnA" class="nav-item" exact-active-class="active"
@@ -21,22 +18,37 @@
       <table class="qna-table">
         <thead>
           <tr>
-            <th class="QnA-tr">No</th>
-            <th class="QnA-tr">카테고리</th>
+            <th class="qna-tr">번호</th>
+            <th class="qna-tr">카테고리</th>
             <th>제목</th>
-            <th class="QnA-tr">날짜</th>
-            <th class="QnA-tr">진행 상황</th>
+            <th>작성자</th>
+            <th class="qna-tr">작성일</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in paginatedQnA" :key="item.no">
-            <td class="QnA-tr">{{ item.no }}</td>
-            <td class="QnA-tr">{{ item.category }}</td>
+          <tr
+            v-for="item in paginatedQnA"
+            :key="item.no"
+            :class="{
+              noticeTR: item.category === '공지사항',
+            }"
+          >
+            <!-- category 가 공지사항인게 먼저 정렬된 데이터 받아야됨 -->
+            <td class="qna-tr">{{ item.no }}</td>
+            <td class="qna-tr">{{ item.category }}</td>
             <td>
-              <a href="#">{{ item.title }}</a>
+              <a href="/DetailQnA">{{ item.title }}</a
+              ><span
+                class="qna-badge"
+                :class="{
+                  notAnswered: item.progress === '미답변',
+                  answered: item.progress === '완료',
+                }"
+                >{{ item.progress }}</span
+              >
             </td>
-            <td class="QnA-tr">{{ item.date }}</td>
-            <td class="QnA-tr">{{ item.Progress }}</td>
+            <td class="qna-tr">{{ item.writer }}</td>
+            <td class="qna-tr">{{ item.date }}</td>
           </tr>
         </tbody>
       </table>
@@ -69,22 +81,26 @@
           &gt;
         </button>
       </div>
-      <div class="search-container">
-        <form id="search-form" @submit.prevent="onSearch">
-          <div class="search-area">
+      <div class="qna-search-container">
+        <form id="qna-search-form" @submit.prevent="onSearch">
+          <div class="qna-search-area">
             <input
-              class="QnA-search-input"
+              class="qna-search-input"
               v-model="searchQuery"
               type="text"
-              placeholder="Search"
+              placeholder="제목으로 검색하세요"
             />
-            <button type="button" class="QnA-search-btn" @click="onSearch">
-              <img src="../img/Feed/search_btn.png" alt="" />
+            <button type="button" class="qna-search-btn" @click="onSearch">
+              <img src="@/img/Feed/search_btn.png" alt="" />
             </button>
           </div>
         </form>
         <div>
-          <button type="button" class="QnA-Write" @click="onWrite">
+          <button
+            type="button"
+            class="qna-write insert-btn big-ctlbtn"
+            @click="onWrite"
+          >
             글쓰기
           </button>
         </div>
@@ -100,119 +116,132 @@ export default {
       currentPage: 1,
       pageSize: 10,
 
-      MyQna: [
+      AllQna: [
         {
-          no: 1,
+          no: 4,
           category: "공지사항",
           title: "배송 문의 드립니다",
+          writer: "관리자",
           date: "2020-11-12",
-          Progress: "완료",
-        },
-        {
-          no: 2,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
-          Progress: "완료",
         },
         {
           no: 3,
           category: "공지사항",
-          title: "배송 문의 드립니다",
-          date: "2020-11-12",
-          Progress: "완료",
-        },
-        {
-          no: 4,
-          category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "관리자",
           date: "2017-11-22",
-          Progress: "완료",
         },
         {
-          no: 5,
+          no: 2,
           category: "공지사항",
           title: "배송 문의 드립니다",
+          writer: "관리자",
           date: "2020-11-12",
-          Progress: "완료",
         },
         {
-          no: 6,
+          no: 1,
+          category: "공지사항",
+          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "관리자",
+          date: "2017-11-22",
+        },
+        {
+          no: 16,
+          category: "이용문의",
+          title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "미답변",
+          date: "2020-11-12",
+        },
+        {
+          no: 15,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "미답변",
           date: "2017-11-22",
-          Progress: "완료",
         },
         {
-          no: 7,
-          category: "공지사항",
+          no: 14,
+          category: "이용문의",
           title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "미답변",
           date: "2020-11-12",
-          Progress: "완료",
+        },
+        {
+          no: 13,
+          category: "이용문의",
+          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "미답변",
+          date: "2017-11-22",
+        },
+        {
+          no: 12,
+          category: "이용문의",
+          title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "완료",
+          date: "2020-11-12",
+        },
+        {
+          no: 11,
+          category: "이용문의",
+          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "완료",
+          date: "2017-11-22",
+        },
+        {
+          no: 10,
+          category: "이용문의",
+          title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "완료",
+          date: "2020-11-12",
+        },
+        {
+          no: 9,
+          category: "이용문의",
+          title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "완료",
+          date: "2017-11-22",
         },
         {
           no: 8,
           category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
-          Progress: "완료",
-        },
-        {
-          no: 9,
-          category: "공지사항",
           title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "완료",
           date: "2020-11-12",
-          Progress: "완료",
         },
         {
           no: 7,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "완료",
           date: "2017-11-22",
-          Progress: "완료",
         },
         {
           no: 6,
-          category: "공지사항",
+          category: "이용문의",
           title: "배송 문의 드립니다",
+          writer: "고구마",
+          progress: "완료",
           date: "2020-11-12",
-          Progress: "완료",
         },
         {
           no: 5,
           category: "이용문의",
           title: "부적절한 블라블라 내용 삭제 요청",
+          writer: "고구마",
+          progress: "완료",
           date: "2017-11-22",
-          Progress: "완료",
         },
-        {
-          no: 4,
-          category: "공지사항",
-          title: "배송 문의 드립니다",
-          date: "2020-11-12",
-          Progress: "완료",
-        },
-        {
-          no: 3,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
-          Progress: "완료",
-        },
-        {
-          no: 2,
-          category: "공지사항",
-          title: "배송 문의 드립니다",
-          date: "2020-11-12",
-          Progress: "완료",
-        },
-        {
-          no: 1,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          date: "2017-11-22",
-          Progress: "완료",
-        },
+        // ... more items
       ],
     };
   },
@@ -220,11 +249,14 @@ export default {
     paginatedQnA() {
       const start = (this.currentPage - 1) * this.pageSize;
       const end = start + this.pageSize;
-      return this.MyQna.slice(start, end);
+      return this.AllQna.slice(start, end);
     },
     pageCount() {
-      return Math.ceil(this.MyQna.length / this.pageSize);
+      return Math.ceil(this.AllQna.length / this.pageSize);
     },
+  },
+  created() {
+    this.$emit("bgImage", "type3");
   },
   methods: {
     toggle(index) {
@@ -257,20 +289,18 @@ export default {
     },
     onWrite() {
       console.log("글쓰기 페이지로 이동");
-      this.$router.push({ name: "WriteQnAForm" });
+      this.$router.push({ name: "WriteQnA" });
     },
   },
 };
 </script>
 
 <style scoped>
-* {
-  font-family: "SUITE";
-}
-.amu {
-  background-image: url("@/assets/main_image.png");
-}
-.QnA-tr {
-  text-align: center;
+@import url("@/css/client/qna/qnaBoard.css");
+/* TAB 활성화 표시 */
+.active {
+  font-weight: bold; /* 활성화된 링크의 폰트 두께 */
+  color: #2eb4c9; /* 활성화된 링크의 색상 */
+  border-bottom: 3px solid #2eb4c9; /* 활성화된 링크의 밑줄 */
 }
 </style>

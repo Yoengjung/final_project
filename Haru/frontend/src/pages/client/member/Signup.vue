@@ -239,7 +239,9 @@
                   name="privacyPolicy"
                   id="privacyPolicy"
                 />
-                <label for="privacyPolicy">[필수]개인정보처리방침에 동의</label>
+                <label for="privacyPolicy"
+                  >[필수]개인정보 처리 방침에 동의</label
+                >
               </div>
               <button @click="privacyPolicyModal">></button>
             </div>
@@ -271,7 +273,7 @@
 <script>
 import axios from "axios";
 import termsOfUseModal from "@/components/client/member/TermsOfUseModal.vue";
-import privacyPolicyModal from "@/components/client/member/PrivacyPolicyModel.vue";
+import privacyPolicyModal from "@/components/client/member/PrivacyPolicyModal.vue";
 
 export default {
   name: "SignUp",

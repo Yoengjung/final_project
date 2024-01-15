@@ -140,4 +140,7 @@ export default {
 </script>
 <style scoped>
 @import "@/css/client/feed/feed.css";
+.page-upload-title {
+  margin-left: 43px;
+}
 </style>

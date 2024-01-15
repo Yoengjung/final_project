@@ -9,8 +9,8 @@
     }"
   >
     <Header class="custom-header" />
-    <RouterView @bgImage="updateBgImage" />
-    <Footer />
+    <RouterView @bgImage="updateBgImage" @is-main="mainPage" />
+    <Footer v-if="!isMain" />
   </div>
 </template>
 
@@ -23,6 +23,7 @@ export default {
   data() {
     return {
       bgType: "",
+      isMain: false,
     };
   },
   components: {
@@ -32,6 +33,9 @@ export default {
   methods: {
     updateBgImage(bg) {
       this.bgType = bg;
+    },
+    mainPage(is) {
+      this.isMain = is;
     },
   },
 };
