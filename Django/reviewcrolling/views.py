@@ -164,16 +164,18 @@ def text_data(data):
     return text_results
 def review_crawl(request):
     df3 = pd.read_csv('reviewcrolling/data/place_final.csv')
-
     service = Service(executable_path='reviewcrolling/data/msedgedriver.exe')
     driver = webdriver.Edge(service=service)
+
+    df2 = pd.DataFrame()
+    df2 = pd.read_csv('reviewcrolling/data/review_score.csv')
+    df2_length = len(df2)
+    df3 = df3.iloc[df2_length:]
 
     link = df3['review_url']
     location = df3['location']
     name = df3['name']
-
-    df2 = pd.DataFrame()
-
+    wait = WebDriverWait(driver, 5)
     for i, (l, loc, n) in tqdm(enumerate(zip(link, location, name)), total=len(link)):
         reviewlist = []
         url = '{}'.format(l)
@@ -219,51 +221,57 @@ def review_crawl(request):
 
         for i in range(rounded_value):
             body.send_keys(Keys.PAGE_DOWN)
-            time.sleep(0.5)
             try:
+                element = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "E4qxG")))
                 clickable_element = driver.find_element(By.CLASS_NAME, 'E4qxG')
                 clickable_element.click()
-                time.sleep(0.2)
             except Exception as e:
                 # print("클릭할 요소를 찾지 못했습니다:", e)
                 pass
-            time.sleep(0.2)
+        try:
+            element = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "rvCSr")))
+            plus_elements = driver.find_elements(By.CLASS_NAME, 'rvCSr')
+            for element in plus_elements:
+                try:
+                    element.click()
+                except Exception as e:
+                    break
+                    # print("클릭 중 오류 발생:", e)
+        except:
+            pass
 
-        plus_elements = driver.find_elements(By.CLASS_NAME, 'rvCSr')
-
-        for element in plus_elements:
-            try:
-                element.click()
-                time.sleep(0.5)
-            except Exception as e:
-                break
-                # print("클릭 중 오류 발생:", e)
-
-        time.sleep(0.5)
-        elements = driver.find_elements(By.CLASS_NAME, 'zPfVt')
-
-        for element in elements:
-            reviewlist.append(element.text)
+        try:
+            element = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "zPfVt")))
+            elements = driver.find_elements(By.CLASS_NAME, 'zPfVt')
+            for element in elements:
+                try:
+                    reviewlist.append(element.text)
+                except Exception as e:
+                    print("뭔 에러냐 이거")
+                    pass
+        except:
+            average_sentiment = 0
 
         df = pd.DataFrame(reviewlist)
         df['링크'] = link
 
         data = {'document': df.iloc[:, 0]}
         data_df = pd.DataFrame(data)
+        try:
+            data_x = predict_load_data(data_df)
+            predictions = model.predict(data_x)
 
-        data_x = predict_load_data(data_df)
-        predictions = model.predict(data_x)
-
-        predict_values = [prediction[0] for prediction in predictions]
-        average_sentiment = np.mean(predict_values)
+            predict_values = [prediction[0] for prediction in predictions]
+            average_sentiment = np.mean(predict_values)
+        except:
+            average_sentiment = 0
 
         temp_df = pd.DataFrame({'name': n, 'review_url': l, 'score': average_sentiment}, index=[0])
         df2 = pd.concat([df2, temp_df], ignore_index=True)
         print(df2)
         # 여기부터는 내부 반복문 및 로직이 들어갑니다...
         # 나머지 코드는 이전과 동일하게 유지됩니다.
-        if i % 10 == 0:
-            df2.to_csv('reviewcrolling/data/review_score.csv', index=False)
+        df2.to_csv('reviewcrolling/data/review_score.csv', index=False)
 
     # 데이터 저장 및 HTTP 응답 반환
     df2.to_csv('review_score.csv', index=False)
