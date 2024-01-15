@@ -88,7 +88,7 @@
               class="qna-search-input"
               v-model="searchQuery"
               type="text"
-              placeholder="Search"
+              placeholder="제목으로 검색하세요"
             />
             <button type="button" class="qna-search-btn" @click="onSearch">
               <img src="@/img/Feed/search_btn.png" alt="" />
@@ -114,11 +114,9 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 10, // Number of items per page
-      // ... more FAQs
+      pageSize: 10,
 
       AllQna: [
-        // Populate this array with your Q&A items
         {
           no: 4,
           category: "공지사항",
