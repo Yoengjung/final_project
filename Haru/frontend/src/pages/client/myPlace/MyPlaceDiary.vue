@@ -1,90 +1,35 @@
 <template>
   <!-- 내 장소 - [추천 리스트/ 일기] 화면 -->
   <div class="container1">
-    <!-- <div class="page-title-area">
-      <h1 class="page-upload-title">내 기록</h1>
-    </div> -->
-
     <div class="myplace-content-area">
       <!-- 달력 -->
       <div class="myplace-calendar-area">
         <div class="myplace-calendar-container">
           <div class="myplace-calendar">
             <header>
-              <h2>September</h2>
-
-              <a class="btn-prev fontawesome-angle-left" href="#"></a>
-              <a class="btn-next fontawesome-angle-right" href="#"></a>
+              <button class="cal-btn-prev" @click="changeMonth(-1)"></button>
+              <span>{{ calendarHeader }}</span>
+              <button class="cal-btn-next" @click="changeMonth(1)"></button>
             </header>
 
             <table class="myplace-calendar-table">
               <thead>
                 <tr>
-                  <td>Mo</td>
-                  <td>Tu</td>
-                  <td>We</td>
-                  <td>Th</td>
-                  <td>Fr</td>
-                  <td>Sa</td>
-                  <td>Su</td>
+                  <th v-for="index in week" :key="index">
+                    {{ index }}
+                  </th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                  <td class="prev-month">26</td>
-                  <td class="prev-month">27</td>
-                  <td class="prev-month">28</td>
-                  <td class="prev-month">29</td>
-                  <td class="prev-month">30</td>
-                  <td class="prev-month">31</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                  <td>7</td>
-                  <td>8</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td class="calendar-event">10</td>
-                  <td>11</td>
-                  <td>12</td>
-                  <td>13</td>
-                  <td>14</td>
-                  <td>15</td>
-                </tr>
-                <tr>
-                  <td>16</td>
-                  <td>17</td>
-                  <td>18</td>
-                  <td>19</td>
-                  <td>20</td>
-                  <td class="calendar-event">21</td>
-                  <td>22</td>
-                </tr>
-
-                <tr>
-                  <td class="calendar-current-day calendar-event">23</td>
-                  <td>24</td>
-                  <td>25</td>
-                  <td>26</td>
-                  <td>27</td>
-                  <td>28</td>
-                  <td>29</td>
-                </tr>
-                <tr>
-                  <td>30</td>
-                  <td class="next-month">1</td>
-                  <td class="next-month">2</td>
-                  <td class="next-month">3</td>
-                  <td class="next-month">4</td>
-                  <td class="next-month">5</td>
-                  <td class="next-month">6</td>
+                <tr v-for="(index, i) in days" :key="i">
+                  <td
+                    v-for="childIndex in index"
+                    :key="childIndex"
+                    :class="{ 'cal-set-today': isToday(childIndex) }"
+                  >
+                    {{ childIndex }}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -99,6 +44,7 @@
           <div
             class="tab-btn-left cursor-p"
             :class="{ 'tab-btn-active': isTabRecList === true }"
+            @click="changeTab('recommend')"
           >
             추천 리스트
           </div>
@@ -112,7 +58,7 @@
         </div>
 
         <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트)myNum -->
-        <div class="tab-content-area" @mouseover="recBtnOff">
+        <div class="tab-content-area">
           <RecommendList
             :RecommendList="RecommendList"
             :isBtnHeartNone="isBtnHeartNone"
@@ -138,14 +84,15 @@ import MyDiaryList from "@/components/client/myPlace/MyDiaryList.vue";
 export default {
   data() {
     return {
+      // 달력 외 관련
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
-      rDate: "9월 23일",
+      // rDate: "2024-01-05",
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
       isTabRecList: true, // 추천 리스트 탭 활성화
       RecommendList: [
         // 추천 받았던 리스트 (날짜별)
         {
-          rdate: "9월 23일",
+          rdate: "2024-01-15",
           recList: [
             {
               storeName: "신논현역 딸부자네 불백",
@@ -174,7 +121,7 @@ export default {
           ],
         },
         {
-          rdate: "9월 22일",
+          rdate: "2024-01-10",
           recList: [
             {
               storeName: "신논현역 와플대학",
@@ -210,7 +157,7 @@ export default {
           ],
         },
         {
-          rdate: "9월 21일",
+          rdate: "2024-01-07",
           recList: [
             {
               storeName: "신논현역 버거킹",
@@ -224,7 +171,7 @@ export default {
       ],
       // 일기 리스트
       diaryList: {
-        rdate: "2023년 03월 23일(수)",
+        rdate: "2024년 01월 10일(수)",
         dList: [
           {
             diaryNum: 0,
@@ -245,13 +192,59 @@ export default {
           },
         ],
       },
+      // 달력 관련 데이터
+      today: new Date(),
+      week: ["일", "월", "화", "수", "목", "금", "토"],
+      calendarHeader: "",
+      days: [],
     };
+  },
+  mounted() {
+    this.calendarImplementation();
   },
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
   },
   methods: {
+    calendarImplementation: function () {
+      this.days = [];
+      const year = this.today.getFullYear();
+      const month = this.today.getMonth();
+      // 시작 요일 찾기
+      const startDayOfTheMonth = new Date(year, month, 1).getDay();
+      // 마지막 날
+      const endDayOfTheMonth = new Date(year, month + 1, 0).getDate();
+      // 시작날부터 마지막 날까지 채우기
+      const basicDays = Array.from(
+        { length: endDayOfTheMonth },
+        (v, i) => i + 1
+      );
+      // 시작 요일까지의 빈 날짜 채우기
+      // 수요일이면 startDayofTheMonth 값이 3 [null, null, null]
+      const emptyDays = Array(startDayOfTheMonth).fill(null);
+      // 두 배열 합치기
+      const combinedDays = [...emptyDays, ...basicDays];
+      // 7일씩 나누고 넣기
+      for (let i = 0; i < endDayOfTheMonth + startDayOfTheMonth; i += 7) {
+        this.days.push(combinedDays.slice(i, i + 7));
+      }
+      this.calendarHeader = `${year}년 ${month + 1} 월`;
+      this.addLastWeekEmptyDays();
+    },
+    addLastWeekEmptyDays: function () {
+      // 마지막 주에 뒤에 남는 일 채우기
+      const daysLastIndex = this.days.length - 1;
+      // fill -> 배열의 길이만큼 밖에 추가 안돼서 못씀
+      if (this.days[daysLastIndex] !== 7) this.days[daysLastIndex].length = 7;
+    },
+    changeMonth: function (val) {
+      this.today = new Date(
+        this.today.setMonth(this.today.getMonth() + val, 1)
+      );
+      this.calendarImplementation();
+    },
+
     // 해당 화면 Background 이미지 설정
     bgImage() {
       var newImage = "type5";
@@ -267,6 +260,18 @@ export default {
         this.isTabRecList = false;
       }
     },
+    isToday(day) {
+      // moment 생성 -> 날짜 라이브러리
+      const moment = require("moment");
+      // 오늘 날짜
+      const todayy = moment();
+      // 오늘 날짜에 해당하면 클래스 표시 위해 format
+      var indexDay = moment(
+        new Date(todayy.year(), todayy.month(), day)
+      ).format("YYYY-MM-DD");
+
+      return indexDay === todayy.format("YYYY-MM-DD");
+    },
   },
   components: {
     RecommendList,
@@ -278,4 +283,39 @@ export default {
 <style scoped>
 @import "@/css/client/myPlace/myPlaceDiary.css";
 @import "@/css/client/myPlace/calendar.css";
+
+/* 오늘 날짜에 표시 */
+.cal-set-today {
+  background: #398ab1;
+  color: #f9f9f9;
+}
+
+#calendarSection {
+  text-align: center;
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+table {
+  border-spacing: 2px;
+  border-collapse: separate;
+}
+td {
+  width: 65px;
+  height: 65px;
+  text-align: center;
+  vertical-align: baseline;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  line-height: 58px;
+  cursor: pointer;
+}
+
+tr td:first-child,
+tr th:first-child {
+  color: red;
+}
+tr td:last-child,
+tr th:last-child {
+  color: blue;
+}
 </style>
