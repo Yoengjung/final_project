@@ -221,11 +221,12 @@
           <button class="big-ctlbtn select-btn" @click="submitCard">
             분석하기
           </button>
+          <button class="big-ctlbtn else-btn" @click="modal_click">
+            모달 임시버튼
+          </button>
         </div>
         <div>
-          <a href="/Total_stress">분석 임시 페이지 버튼</a>
-          <button @click="loadingOpen()">로딩 임시버튼</button>
-          <button @click="modal_click">모달 임시버튼</button>
+          <!-- <button @click="loadingOpen()">로딩 임시버튼</button> -->
         </div>
 
         <!-- 로딩화면 1 -->
@@ -259,135 +260,135 @@
 </template>
 
 <script>
-// import WarnFaceModal from "@/components/client/stress/WarnFaceModal.vue";
-// export default {
-//   name: "EmotionalAnalysis",
-//   data() {
-//     return {
-//       modal_Check: false,
-//       fileName: "끌어서 사진 올려놓기!",
-//       currentIndex: 0,
-//       changeMood: 3,
-//       moodText: "보통",
-//       moodColor: "mood-normal",
-//       isDrag: false,
-//       //진행바
-//       steps: ["얼굴 등록하기", "척도 등록하기", "일기 쓰기", "완료!"],
-//       activeStep: 1,
-//       // 전송할 폼 정보들
-//       formData: new FormData(),
-//     };
-//   },
-//   created() {
-//     this.bgImage();
-//   },
-//   methods: {
-//     bgImage() {
-//       var newImage = "type2";
-//       this.$emit("bgImage", newImage);
-//     },
-//     //분석하기 버튼
-//     submitCard() {
-//       // 기분 척도
-//       this.formData.append("mood", this.changeMood);
-//       // 일기
-//       this.formData.append(
-//         "title",
-//         document.getElementById("diary-title").value
-//       );
-//       // 일기 내용
-//       this.formData.append(
-//         "content",
-//         document.getElementById("diary-content").value
-//       );
-//       // 일기 날짜
-//       this.formData.append(
-//         "date",
-//         document.getElementById("diary-date-h1").innerText
-//       );
+import WarnFaceModal from "@/components/client/stress/WarnFaceModal.vue";
+export default {
+  name: "EmotionalAnalysis",
+  data() {
+    return {
+      modal_Check: false,
+      fileName: "끌어서 사진 올려놓기!",
+      currentIndex: 0,
+      changeMood: 3,
+      moodText: "보통",
+      moodColor: "mood-normal",
+      isDrag: false,
+      //진행바
+      steps: ["얼굴 등록하기", "척도 등록하기", "일기 쓰기", "완료!"],
+      activeStep: 1,
+      // 전송할 폼 정보들
+      formData: new FormData(),
+    };
+  },
+  created() {
+    this.bgImage();
+  },
+  methods: {
+    bgImage() {
+      var newImage = "type2";
+      this.$emit("bgImage", newImage);
+    },
+    //분석하기 버튼
+    submitCard() {
+      this.$router.push("/Total_stress");
 
-//       for (let value of this.formData.values()) {
-//         console.log(value);
-//       }
-
-//       // 분석하기 버튼 클릭시 로딩화면 들어갈 자리
-//     },
-//     dragover(event) {
-//       event.preventDefault();
-//       this.isDrag = true;
-//     },
-//     //이미지 파일 드래그앤 드롭
-//     dropInputTag(event) {
-//       // 유사 배열을 배열로 변환
-//       let file = Array.from(event.dataTransfer.files, (v) => v)[0];
-//       this.fileName = file.name;
-//       // 사진 파일을 formData에 추가
-//       this.formData.append("faceImage", file);
-//       event.preventDefault();
-//       this.isDrag = false;
-//     },
-//     // 진행바 다음 단계로 이동
-//     next() {
-//       if (this.activeStep < this.steps.length - 1) {
-//         this.activeStep++;
-//       }
-//     },
-//     // 진행바 이전 단계로 이동
-//     back() {
-//       if (this.activeStep > 0) {
-//         this.activeStep--;
-//       }
-//     },
-//     modal_click() {
-//       this.modal_Check = !this.modal_Check;
-//     },
-//     fileChanged(event) {
-//       this.fileName = event.target.files[0].name;
-//     },
-//     slideCard() {
-//       const cards = document.querySelectorAll(".reg-box");
-//       if (this.currentIndex < cards.length - 1) {
-//         this.currentIndex++; // 다음 카드로 이동
-//         this.updateCardsPosition();
-//         this.next();
-//       }
-//     },
-//     returnCard() {
-//       if (this.currentIndex > 0) {
-//         this.currentIndex--; // 이전 카드로 이동
-//         this.updateCardsPosition();
-//         this.back();
-//       }
-//     },
-//     updateCardsPosition() {
-//       const cards = document.querySelectorAll(".reg-box");
-//       cards.forEach((card) => {
-//         card.style.transform = `translateX(-${100 * this.currentIndex}%)`;
-//       });
-//     },
-//     updateMood() {
-//       if (this.changeMood === "1") {
-//         this.moodText = "매우 나쁨";
-//         this.moodColor = "mood-bad";
-//       } else if (this.changeMood === "2") {
-//         this.moodText = "나쁨";
-//         this.moodColor = "mood-little-bad";
-//       } else if (this.changeMood === "3") {
-//         this.moodText = "보통";
-//         this.moodColor = "mood-normal";
-//       } else if (this.changeMood === "4") {
-//         this.moodText = "좋음";
-//         this.moodColor = "mood-good";
-//       } else if (this.changeMood === "5") {
-//         this.moodText = "매우 좋음";
-//         this.moodColor = "mood-very-good";
-//       }
-//     },
-//   },
-//   components: {
-//     WarnFaceModal,
-//   },
-// };
+      // 기분 척도
+      // this.formData.append("mood", this.changeMood);
+      // 일기
+      // this.formData.append(
+      //   "title",
+      //   document.getElementById("diary-title").value
+      // );
+      // 일기 내용
+      // this.formData.append(
+      //   "content",
+      //   document.getElementById("diary-content").value
+      // );
+      // 일기 날짜
+      // this.formData.append(
+      //   "date",
+      //   document.getElementById("diary-date-h1").innerText
+      // );
+      // for (let value of this.formData.values()) {
+      //   console.log(value);
+      // }
+      // 분석하기 버튼 클릭시 로딩화면 들어갈 자리
+    },
+    dragover(event) {
+      event.preventDefault();
+      this.isDrag = true;
+    },
+    //이미지 파일 드래그앤 드롭
+    dropInputTag(event) {
+      // 유사 배열을 배열로 변환
+      let file = Array.from(event.dataTransfer.files, (v) => v)[0];
+      this.fileName = file.name;
+      // 사진 파일을 formData에 추가
+      this.formData.append("faceImage", file);
+      event.preventDefault();
+      this.isDrag = false;
+    },
+    // 진행바 다음 단계로 이동
+    next() {
+      if (this.activeStep < this.steps.length - 1) {
+        this.activeStep++;
+      }
+    },
+    // 진행바 이전 단계로 이동
+    back() {
+      if (this.activeStep > 0) {
+        this.activeStep--;
+      }
+    },
+    modal_click() {
+      this.modal_Check = !this.modal_Check;
+    },
+    fileChanged(event) {
+      this.fileName = event.target.files[0].name;
+    },
+    slideCard() {
+      const cards = document.querySelectorAll(".reg-box");
+      if (this.currentIndex < cards.length - 1) {
+        this.currentIndex++; // 다음 카드로 이동
+        this.updateCardsPosition();
+        this.next();
+      }
+    },
+    returnCard() {
+      if (this.currentIndex > 0) {
+        this.currentIndex--; // 이전 카드로 이동
+        this.updateCardsPosition();
+        this.back();
+      }
+    },
+    updateCardsPosition() {
+      const cards = document.querySelectorAll(".reg-box");
+      cards.forEach((card) => {
+        card.style.transform = `translateX(-${100 * this.currentIndex}%)`;
+      });
+    },
+    updateMood() {
+      if (this.changeMood === "1") {
+        this.moodText = "매우 나쁨";
+        this.moodColor = "mood-bad";
+      } else if (this.changeMood === "2") {
+        this.moodText = "나쁨";
+        this.moodColor = "mood-little-bad";
+      } else if (this.changeMood === "3") {
+        this.moodText = "보통";
+        this.moodColor = "mood-normal";
+      } else if (this.changeMood === "4") {
+        this.moodText = "좋음";
+        this.moodColor = "mood-good";
+      } else if (this.changeMood === "5") {
+        this.moodText = "매우 좋음";
+        this.moodColor = "mood-very-good";
+      }
+    },
+  },
+  components: {
+    WarnFaceModal,
+  },
+};
 </script>
 
 <style scoped>

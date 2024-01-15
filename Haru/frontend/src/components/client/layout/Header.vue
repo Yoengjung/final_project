@@ -36,6 +36,13 @@
             <a href="/userConfirmation">회원정보 수정</a>
           </div>
         </div>
+        <div class="dropdown">
+          <button class="dropbtn">Q&A</button>
+          <div class="dropdown-content">
+            <a href="/QnA">Q&A 게시판</a>
+            <a href="/WriteQnA">Q&A 등록</a>
+          </div>
+        </div>
       </div>
       <div class="login-ul-box">
         <ul class="login-ul">
