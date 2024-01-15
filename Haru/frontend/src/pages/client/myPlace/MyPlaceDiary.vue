@@ -99,7 +99,6 @@
           <div
             class="tab-btn-left cursor-p"
             :class="{ 'tab-btn-active': isTabRecList === true }"
-            @click="changeTab('recommend')"
           >
             추천 리스트
           </div>
@@ -112,13 +111,14 @@
           </div>
         </div>
 
-        <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트) -->
-        <div class="tab-content-area">
+        <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트)myNum -->
+        <div class="tab-content-area" @mouseover="recBtnOff">
           <RecommendList
             :RecommendList="RecommendList"
             :isBtnHeartNone="isBtnHeartNone"
             class="rlist-container"
             v-if="isTabRecList === true"
+            ref="recList"
           />
           <MyDiaryList
             :diaryList="diaryList"
