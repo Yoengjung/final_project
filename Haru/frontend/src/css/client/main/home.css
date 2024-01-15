@@ -174,7 +174,7 @@ video {
 
 /*두번째 화면*/
 .info-box-1{
-  margin-right: 100px;
+  margin-right: 150px;
   display: flex;
   flex-direction: column;
 }
@@ -199,7 +199,9 @@ video {
    transform: translate(-50%, -50%);
    z-index: 2;
  }
-
+#feed-img{
+  box-shadow: 5px 5px 5px 5px gray;
+}
 /*세번째 화면*/
 .info-box-2{
   margin-left: 100px;

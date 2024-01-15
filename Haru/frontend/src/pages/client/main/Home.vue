@@ -69,7 +69,7 @@
         <div class="contents-container">
           <div class="contents-box">
             <div class="info-img-box">
-              <img src="@/img/main/피드누끼.gif" width="500">
+              <img src="@/img/main/피드누끼.gif" width="500" id="feed-img">
             </div>
             <div class="info-box-2">
               <span class="info-title">피드로 장소 확인~</span>
