@@ -38,7 +38,7 @@ public class MemberController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> handleFileUpload(@ModelAttribute MemberDTO memberDTO,
-                                              @RequestParam("files") List<MultipartFile> files) {
+            @RequestParam("files") List<MultipartFile> files) {
 
         String imgName = null;
         for (MultipartFile multipartFile : files) {
@@ -55,9 +55,7 @@ public class MemberController {
         return ResponseEntity.ok().build();
     }
 
-
     private String getExtension(String fileName) {
         return fileName.substring(fileName.lastIndexOf("."));
     }
 }
-

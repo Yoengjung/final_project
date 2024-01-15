@@ -48,7 +48,6 @@ public class AuthController {
     @Value("${profile-img-path}")
     private String imageDirctory;
 
-
     @GetMapping("/{userId}/userIdCheck")
     public ResponseEntity<?> duplicationUserIdCheck(@PathVariable String userId) {
         Optional dto = memberRepository.findUserIdById(userId);
@@ -114,9 +113,7 @@ public class AuthController {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             authenticationRequest.getUserId(),
-                            authenticationRequest.getPwd()
-                    )
-            );
+                            authenticationRequest.getPwd()));
 
             // 인증 성공 시, SecurityContextHolder에 인증 정보를 설정
             SecurityContextHolder.getContext().setAuthentication(authentication);

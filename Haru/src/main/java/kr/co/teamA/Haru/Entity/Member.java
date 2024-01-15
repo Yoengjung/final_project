@@ -1,7 +1,7 @@
 package kr.co.teamA.Haru.Entity;
 
 import jakarta.persistence.*;
-import kr.co.teamA.Haru.config.Role;
+// import kr.co.teamA.Haru.config.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,12 +21,23 @@ import java.util.List;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_")
-    @SequenceGenerator(name = "MEMBER_SEQ", sequenceName = "MEMBER_SEQ", allocationSize = 1)
-    private Long id;
-
     @Column(length = 100, nullable = false)
     private String userId;
+
+    // @OneToMany(mappedBy = "member")
+    // private List<QnA> qnas;
+
+    // @OneToMany(mappedBy = "member")
+    // private List<StressData> stressD;
+
+    // @OneToMany(mappedBy = "member")
+    // private List<Alarm> alarms;
+
+    // @OneToMany(mappedBy = "member")
+    // private List<Diary> diarys;
+
+    // @OneToMany(mappedBy = "member")
+    // private List<LOGLOGGIN> logloggins;
 
     @Column(length = 255, nullable = false)
     private String pwd;
@@ -40,7 +51,7 @@ public class Member {
     @Column(length = 100, nullable = false)
     private String email;
 
-    @Column(length = 255)
+    @Column(length = 255, name = "profileImg")
     private String profileImg;
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
