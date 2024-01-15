@@ -104,7 +104,7 @@ video {
   justify-content: center;
   margin-top: 70px;
   white-space: nowrap;
-  min-width: 800px;
+  min-width: 900px;
 }
 /*뱃지 안에 들어갈 내용들*/
 .info-section{
@@ -131,8 +131,9 @@ video {
 .white-space-div {
   height: 70px;
   /*width와 margin-right 같은 넓이여야됨.*/
-  width: 50px;
+  width: 1px;
   margin-right: 50px;
+  margin-left: 50px;
   border-right: solid 1px #8c8c8c;
 }
 /*타이틀 폰트*/
@@ -199,9 +200,6 @@ video {
    transform: translate(-50%, -50%);
    z-index: 2;
  }
-#feed-img{
-  box-shadow: 5px 5px 5px 5px gray;
-}
 /*세번째 화면*/
 .info-box-2{
   margin-left: 100px;
@@ -241,8 +239,52 @@ video {
   color: white;
   font-size: 25px;
 }
+
 /*푸터 영역*/
 .main-footer{
   background-color: #333;
+  height: 30%;
   margin-bottom: 0;
+  display: flex;
+  padding: 80px 228px 40px;
+}
+/* footer 전체 컨테이너 */
+.footer-area {
+  display: flex;
+  width: 700px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-area {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.coperation-info-area {
+  top: -3px;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.coperation-info-area p:first-child {
+  font-size: 24px;
+}
+
+/* 로고 이미지 */
+.img-area > img {
+  width: 150px;
+}
+
+.coperation-info-area > p, .info-area > p {
+  color: #bdbdbd;
+  font-size: 15px;
+  font-weight: 300;
+}
+.main-footer > div {
+  margin-right: 30px;
 }

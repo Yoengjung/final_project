@@ -242,7 +242,7 @@ export default {
         // 0부터 10씩 빼서 올리는 핸들.
         const handle = setInterval(() => {
           // 2023 - 2023 = 0 => 2023 - 2013 = 10...
-          this.count_data[propertyName].count = Math.ceil(max - now);
+          this.count_data[propertyName].count = Math.ceil(max - now).toLocaleString();
 
           if (now < 1){
             clearInterval(handle);
