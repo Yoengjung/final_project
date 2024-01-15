@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+<<<<<<< HEAD
 
 import Home from "@/pages/client/main/Home.vue"; // 메인 홈
 
@@ -34,6 +35,22 @@ import MyQnA from "@/components/client/qna/MyQnA.vue";
 import WriteQnA from "@/pages/client/qna/WriteQnA.vue";
 import UpdateQnA from "@/pages/client/qna/UpdateQnA.vue";
 import DetailQnA from "@/pages/client/qna/DetailQnA.vue";
+=======
+import Home from "../pages/Home.vue";
+import Login from "../pages/Login.vue";
+import Signup from "../pages/Signup.vue";
+import UploadedImage from "../pages/UploadedImage.vue";
+import FaceRegistration from "../pages/FaceRegistration.vue";
+import Feed from "../pages/Feed.vue";
+import DiaryRegistration from "../pages/DiaryRegistration.vue";
+import InsertFeed from "../pages/InsertFeed.vue";
+import WriteDiary from "../pages/WriteDiary.vue";
+import UpdateFeed from "../pages/UpdateFeed.vue";
+import MyFeed from "../pages/MyFeed.vue";
+import MyPlaceDiary from "../pages/MyPlaceDiary.vue"; // 내 장소 - 추천리스트/일기 화면
+import MyPage from "../pages/MyPage.vue";
+import UpdateMyPage from "../pages/UpdateMyPage.vue";
+>>>>>>> middle_branch
 
 const routes = [
   {
@@ -145,6 +162,31 @@ const routes = [
     path: "/DetailQnA",
     name: "DetailQnA",
     component: DetailQnA,
+  },
+  {
+    path: "/UpdateFeed",
+    name: "UpdateFeed",
+    component: UpdateFeed,
+  },
+  {
+    path: "/MyFeed",
+    name: "MyFeed",
+    component: MyFeed,
+  },
+  {
+    path: "/MyPlaceDiary",
+    name: "MyPlaceDiary",
+    component: MyPlaceDiary,
+  },
+  {
+    path: "/MyPage",
+    name: "MyPage",
+    component: MyPage,
+  },
+  {
+    path: "/UpdateMyPage",
+    name: "UpdateMyPage",
+    component: UpdateMyPage,
   },
 ];
 

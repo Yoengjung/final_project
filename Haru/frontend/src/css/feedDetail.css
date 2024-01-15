@@ -1,6 +1,6 @@
-/* 피드 상세 화면 모달창 ---------------------------------------------- */
+/* 모달---------------------------------------------- */
 /* dimmed */
-.feed-modal-wrap {
+.modal-wrap {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -16,48 +16,36 @@
 }
 
 /* modal or popup */
-.feed-modal-container {
+.modal-container {
   position: relative;
-  height: 850px;
-  /* height: 94vh; */
+  width: 1130px;
+  height: 94vh;
+  background: #fff2f2;
   border-radius: 10px;
   padding: 40px;
   box-sizing: border-box;
-}
-
-/* 위에 모달 컨테이너 상세 속성 -> 피드 디테일 화면 */
-.feed-detail {
-  background: #fff2f2;
   overflow: scroll;
   overflow-x: hidden;
-  width: 1130px;
 }
 
 /* X 버튼 영역 */
-.common-modal-close {
+.modal-btn {
   width: 1050px;
+  /* margin-bottom: 10px; */
 }
 
 /* X 버튼 */
-#common-modal-close {
+#modal_close {
   width: 39px;
   height: 36px;
   float: right;
-  background: url("@/img/Feed/image-74.png");
+  background: url("../img/Feed/image-74.png");
   border: none;
 }
 
-/* 헤더(프로필, 닉네임, 카테고리, 여기를 추천받았어요!) */
-.feed-card-content-area {
+/* 헤더(프로필, 닉네임, 카테고리) */
+.card-content-area {
   width: 740px;
-}
-
-/* 프로필사진, 닉네임, 카테고리 */
-.left-header {
-  width: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 /* 본문 전체 영역(이미지, 댓글 영역) */
@@ -74,7 +62,7 @@
 }
 
 /* 추천 장소 */
-.feed-recommend-area {
+.recommend-area {
   padding: 11px 20px;
   background-color: #fff;
   margin-bottom: 15px;
@@ -268,40 +256,4 @@
 .delete:hover {
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
   background-color: #ff8383;
-/* 좋아요, 댓글 버튼 */
-.card-btn {
-  display: flex;
-  align-items: center;
-  margin-top: 1.5rem;
-  justify-content: space-between;
-}
-
-.card-btn > div {
-  display: flex;
-  align-items: center;
-}
-
-/* 좋아요 */
-.heart {
-  margin-right: 3.25rem;
-}
-
-.heart > img {
-  margin-right: 0.5rem;
-  width: 2rem;
-}
-
-/* 댓글 */
-.comment > img {
-  margin-right: 0.5rem;
-  width: 1.75rem;
-}
-
-/* 캐러셀 - 인디케이터 가로 너비 */
-.carousel-indicators > button {
-  width: 15px !important;
-}
-
-p {
-  margin: 0;
 }

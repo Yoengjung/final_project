@@ -127,8 +127,11 @@ import FeedList from "../components/RecommendList.vue";
 export default {
   data() {
     return {
+<<<<<<< HEAD
       isLoggedIn: false,
       AccessToken: "",
+=======
+>>>>>>> middle_branch
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
       RecommendList: [
         {
@@ -164,6 +167,7 @@ export default {
       ],
     };
   },
+<<<<<<< HEAD
   created() {
     this.getToken();
   },
@@ -177,6 +181,9 @@ export default {
         this.$router.push("/login");
       }
     },
+=======
+  methods: {
+>>>>>>> middle_branch
     changeTab(tab) {
       this.activeTab = tab;
     },
@@ -189,5 +196,9 @@ export default {
 
 <style scoped>
 @import "../css/MyPlaceDiary.css";
+<<<<<<< HEAD
 @import "../css/calendar.css";
+=======
+@import "../css/Calendar.css";
+>>>>>>> middle_branch
 </style>
