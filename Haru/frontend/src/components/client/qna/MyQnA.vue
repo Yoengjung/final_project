@@ -28,7 +28,7 @@
             <td class="qna-tr">{{ item.no }}</td>
             <td class="qna-tr">{{ item.category }}</td>
             <td>
-              <a href="#">{{ item.title }}</a
+              <a href="/DetailQnA">{{ item.title }}</a
               ><span
                 class="qna-badge"
                 :class="{
