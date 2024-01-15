@@ -1,6 +1,6 @@
 package kr.co.teamA.Haru.Entity;
 
-import java.util.List;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,31 +22,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "FEED")
-public class Feed {
+@Table(name = "FEEDCOMMENT")
+public class FeedComment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FEED_SEQ_")
-    @SequenceGenerator(name = "FEED_SEQ_", sequenceName = "FEED_SEQ_", allocationSize = 1)
-    private Long feedNum;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FEEDCOMMENT_SEQ_")
+    @SequenceGenerator(name = "FEEDCOMMENT_SEQ_", sequenceName = "FEEDCOMMENT_SEQ_", allocationSize = 1)
+    private int commentNum;
+
+    @ManyToOne
+    @JoinColumn(name = "feedNum")
+    private Feed feed;
 
     @ManyToOne
     @JoinColumn(name = "userId")
     private Member member;
 
-    @ManyToOne
-    @JoinColumn(name = "placeNum")
-    private Place place;
-
-    @Column(length = 500, nullable = false)
-    private String feedContent;
-
-    @Column(length = 255, nullable = false)
-    private String feedCategory;
+    @Column(length = 400, nullable = false)
+    private String feedCommentContent;
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private String feedCdate;
-
-    @Column(length = 255)
-    private String feedHashTag;
+    private Date feedCdate;
 }
