@@ -1,6 +1,6 @@
 package kr.co.teamA.Haru.Member;
 
-import kr.co.teamA.Haru.User.User;
+
 import kr.co.teamA.Haru.User.UserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

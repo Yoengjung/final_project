@@ -1,12 +1,14 @@
 package kr.co.teamA.Haru.User;
 
-import kr.co.teamA.Haru.DataNotFoundException;
-import lombok.RequiredArgsConstructor;
+import java.util.Optional;
 
+import kr.co.teamA.Haru.DataNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+
+
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
@@ -24,7 +26,7 @@ public class UserService {
         return user;
     }
 
-    public SiteUser getUser(String name) {
+    public SiteUser getUser(String username) {
         Optional<SiteUser> siteUser = this.userRepository.findByusername(username);
         if (siteUser.isPresent()) {
             return siteUser.get();
