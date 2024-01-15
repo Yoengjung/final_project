@@ -2,10 +2,10 @@
   <div class="container1">
     <div class="qna-write-container">
       <form class="qna-write-form" autocomplete="off">
-        <h2>Q&A</h2>
+        <h2>Q&A 상세보기</h2>
         <!-- 카테고리 -->
         <div class="info-input-container">
-          <div class="label-area">
+          <div class="qna-label-area">
             <label for="qna-category">카테고리</label>
           </div>
           <div class="input-area">
@@ -21,7 +21,7 @@
 
         <!-- 제목 -->
         <div class="info-input-container">
-          <div class="label-area">
+          <div class="qna-label-area">
             <label for="qna-title">제목</label>
           </div>
           <div class="input-area">
@@ -30,7 +30,6 @@
               type="text"
               name="qna-title"
               id="qna-title"
-              placeholder="Q&A 제목을 입력해주세요."
               :value="myQnA.title"
               readonly
             />
@@ -39,7 +38,7 @@
 
         <!-- 내용 -->
         <div class="info-input-container">
-          <div class="label-area">
+          <div class="qna-label-area">
             <label for="qna-content">내용</label>
           </div>
           <textarea
@@ -47,17 +46,39 @@
             id="qna-content"
             cols="88"
             rows="10"
-            placeholder="Q&A 내용을 작성하세요."
             v-model="myQnA.contents"
             readonly
           ></textarea>
         </div>
 
-        <div class="btn-group">
+        <!-- 답변 내용 -->
+        <div class="info-input-container">
+          <div class="qna-label-area">
+            <label for="qna-content" id="answered">답변</label>
+          </div>
+          <textarea
+            class="input-text"
+            id="qna-content"
+            cols="88"
+            rows="10"
+            v-model="myQnA.answer"
+            readonly
+          ></textarea>
+        </div>
+
+        <div class="qna-btn-group">
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
-            취소
+            목록으로
           </button>
-          <button class="big-ctlbtn update-btn" type="submit">수정</button>
+          <!-- 답변이 된 경우 '수정', '삭제'는 불가 -->
+          <button
+            class="big-ctlbtn update-btn"
+            type="button"
+            @click="qnaUpdate"
+          >
+            수정
+          </button>
+          <button class="big-ctlbtn delete-btn" type="button">삭제</button>
         </div>
       </form>
     </div>
@@ -72,12 +93,16 @@ export default {
         category: "usage",
         title: "어떻게 스트레스 분석이 이렇게 잘맞는건가요?!?!",
         contents: "너무 잘맞아요!",
+        answer: "많은 이용 부탁드립니다!",
       },
     };
   },
   methods: {
     cancel() {
       this.$router.go(-1); // 뒤로가기
+    },
+    qnaUpdate() {
+      this.$router.push("/UpdateQnA");
     },
   },
   created() {
@@ -87,54 +112,8 @@ export default {
 };
 </script>
 <style scoped>
-.btn-group {
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 50px;
-}
-.btn-group > .cancle-btn {
+@import url("@/css/client/qna/qnaForm.css");
+.qna-btn-group > .update-btn {
   margin-right: 20px;
-}
-.qna-write-container {
-  padding-left: 100px;
-  padding-right: 100px;
-  background-color: rgb(255 255 255 / 90%);
-  border: none;
-  border-radius: 27px;
-  width: 100%;
-  max-width: 1463px;
-  min-width: 900px;
-  height: 100%;
-  margin: 0 auto;
-}
-
-.qna-write-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  font-size: 20px;
-  left: 15px;
-}
-
-.qna-write-form h2 {
-  margin-bottom: 30px;
-  text-align: center;
-  padding: 75px 0px 30px;
-}
-
-#qna-title {
-  height: 50px;
-  padding: 0 20px 0 20px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-}
-
-#qna-content {
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  resize: none;
 }
 </style>

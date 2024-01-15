@@ -299,6 +299,7 @@ export default {
 
 <style scoped>
 @import url("@/css/client/qna/qnaBoard.css");
+/* TAB 활성화 표시 */
 .active {
   font-weight: bold; /* 활성화된 링크의 폰트 두께 */
   color: #2eb4c9; /* 활성화된 링크의 색상 */

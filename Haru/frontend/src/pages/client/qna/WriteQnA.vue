@@ -4,7 +4,7 @@
       <form class="qna-write-form" autocomplete="off">
         <h2>Q&A 등록</h2>
         <div class="info-input-container">
-          <div class="label-area">
+          <div class="qna-label-area">
             <label for="qna-title">카테고리 선택</label>
           </div>
 
@@ -18,7 +18,7 @@
 
         <!-- 제목 -->
         <div class="info-input-container">
-          <div class="label-area">
+          <div class="qna-label-area">
             <label for="qna-title">제목</label>
           </div>
           <div class="input-area">
@@ -34,7 +34,7 @@
 
         <!-- 내용 -->
         <div class="info-input-container">
-          <div class="label-area">
+          <div class="qna-label-area">
             <label for="qna-content">내용</label>
           </div>
           <textarea
@@ -46,7 +46,7 @@
           ></textarea>
         </div>
 
-        <div class="btn-group">
+        <div class="qna-btn-group">
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
             취소
           </button>
@@ -76,54 +76,5 @@ export default {
 };
 </script>
 <style scoped>
-.btn-group {
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 50px;
-}
-.btn-group > .cancle-btn {
-  margin-right: 20px;
-}
-.qna-write-container {
-  padding-left: 100px;
-  padding-right: 100px;
-  background-color: rgb(255 255 255 / 90%);
-  border: none;
-  border-radius: 27px;
-  width: 100%;
-  max-width: 1463px;
-  min-width: 900px;
-  height: 100%;
-  margin: 0 auto;
-}
-
-.qna-write-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  font-size: 20px;
-  left: 15px;
-}
-
-.qna-write-form h2 {
-  margin-bottom: 30px;
-  text-align: center;
-  padding: 75px 0px 30px;
-}
-
-#qna-title {
-  height: 50px;
-  padding: 0 20px 0 20px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-}
-
-#qna-content {
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  resize: none;
-}
+@import url("@/css/client/qna/qnaForm.css");
 </style>
