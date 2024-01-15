@@ -145,7 +145,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "MyPage",
@@ -159,7 +159,7 @@ export default {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
     this.getToken();
-    this.getData();
+    // this.getData();
   },
   methods: {
     // 해당 화면 Background 이미지 설정
@@ -177,22 +177,22 @@ export default {
         this.$router.push("/login");
       }
     },
-    getData() {
-      axios
-        .post(
-          `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/myPageData`,
-          this.AccessToken,
-          {
-            headers: {
-              Authorization: `Bearer ${this.AccessToken}`, // Bearer 스킴을 사용하여 토큰을 전송
-              "Content-Type": "application/json", // 요청 데이터의 타입을 명시
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res.data);
-        });
-    },
+    // getData() {
+    //   axios
+    //     .post(
+    //       `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/myPageData`
+    //       // this.AccessToken,
+    //       // {
+    //       //   headers: {
+    //       //     Authorization: `Bearer ${this.AccessToken}`, // Bearer 스킴을 사용하여 토큰을 전송
+    //       //     "Content-Type": "application/json", // 요청 데이터의 타입을 명시
+    //       //   },
+    //       // }
+    //     )
+    //     .then((res) => {
+    //       console.log(res.data);
+    //     });
+    // },
   },
 };
 </script>
