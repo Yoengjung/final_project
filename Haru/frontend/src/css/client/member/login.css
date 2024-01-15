@@ -1,0 +1,378 @@
+.login-container {
+  display: flex;
+<<<<<<< HEAD:Haru/frontend/src/css/login.css
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background-image: url("../assets/main_image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+=======
+  margin: 0 auto;
+  width: fit-content;
+>>>>>>> 3452ddf317ab63b434bd437bc2e5367c419eef0b:Haru/frontend/src/css/client/member/login.css
+}
+
+.white-box {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 25px;
+}
+
+.left-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 25px 0 0 25px;
+  padding: 5px 140px 5px 130px;
+}
+
+.left-box h2 {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.left-box img {
+  margin-top: 15px;
+  width: 200px;
+}
+
+.left-box p {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #879090;
+  font-weight: 200;
+}
+
+.left-box a {
+  margin-top: 25px;
+  text-align: center;
+  line-height: 50px;
+}
+
+/* 로그인 박스 */
+.login-box {
+  display: flex;
+  left: -20px;
+  height: 450px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(236 184 163);
+  border-radius: 15px;
+  padding: 0 70px;
+}
+
+/* 로그인 텍스트 */
+.login-box h1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 0px;
+  font-size: 30px;
+}
+
+/* 로그인 박스 */
+.form-input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+}
+
+.form-input-box .form-input:first-child input {
+  margin-bottom: 10px;
+}
+
+/* 아이디, 비밀번호 input */
+.form-input-box .form-input input {
+  min-height: 50px;
+}
+
+.form-input {
+  width: 270px;
+}
+
+.form-check {
+  display: flex;
+  margin: 10px 0;
+  padding: 0px;
+}
+
+.form-check .remember-checkbox {
+  display: flex;
+}
+
+.form-check .remember-checkbox label {
+  margin-left: 10px;
+}
+
+.login-search-box {
+  display: flex;
+  margin: 15px 0 7px;
+  padding: 0px;
+}
+
+.login-search-box button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 15px;
+  border: none;
+  background-color: transparent;
+}
+
+.social-login-box {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-login-box a {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  margin: 0px 10px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+/* 모달창 */
+<<<<<<< HEAD:Haru/frontend/src/css/login.css
+.findIdModal {
+  background-color: white;
+  z-index: 10;
+  width: 70%;
+  max-width: 600px;
+  height: 50%;
+  min-height: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+.findIdModal .findModalContent {
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+.findIdModal .findModalContent h2 {
+  text-align: center;
+}
+
+.findIdModal .findModalContent form {
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 10%;
+}
+
+.findIdModal .findModalContent form > div {
+  width: 100%;
+}
+
+.findIdModal .findModalContent form input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0px 10px;
+  font-size: 20px;
+}
+
+.findIdModal .findModalContent form .email-box {
+  display: flex;
+  align-items: center;
+}
+
+.findIdModal .findModalContent form #email {
+  width: 80%;
+}
+
+.findIdModal .findModalContent form .email-box button {
+  width: 15%;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #919090;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  margin-left: 30px;
+}
+
+.findIdModal .findModalContent form .emailCheckBox {
+  margin-bottom: 35px;
+}
+
+.findIdModal .findModalContent form button {
+  width: 50%;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #919090;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.findIdModal .findModalContent form button:hover {
+  background-color: #b5b5b5;
+}
+
+.findIdModal .findModalContent .close {
+  z-index: 10;
+  color: black;
+}
+
+.findPwdModal {
+  background-color: white;
+  z-index: 10;
+  width: 70%;
+  max-width: 600px;
+  height: 60%;
+  min-height: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+.findPwdModal .findModalContent {
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+.findPwdModal .findModalContent h2 {
+  text-align: center;
+}
+
+.findPwdModal .findModalContent form {
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 10%;
+}
+
+.findPwdModal .findModalContent form > div {
+  width: 100%;
+}
+
+.findPwdModal .findModalContent form input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0px 10px;
+  font-size: 20px;
+}
+
+.findPwdModal .findModalContent form .email-box {
+  display: flex;
+  align-items: center;
+}
+
+.findPwdModal .findModalContent form .email-box button {
+  width: 15%;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #919090;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  margin-left: 30px;
+}
+
+.findPwdModal .findModalContent form #email {
+  width: 80%;
+}
+
+.findPwdModal .findModalContent form button {
+  width: 50%;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #919090;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.findPwdModal .findModalContent form .emailCheckBox {
+  margin-bottom: 35px;
+}
+
+.findPwdModal .findModalContent form button:hover {
+  background-color: #b5b5b5;
+}
+
+.findPwdModal .findModalContent .close {
+  z-index: 10;
+  color: black;
+=======
+/* -------------------------- */
+/* 전체 모달 영역 */
+.FindMyAccount-modal {
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+}
+
+/* 흰색 영역 */
+.findMyAccount-modal-content {
+  background-color: #f9f8f7;
+  margin: 3% auto;
+  padding: 40px 70px;
+  border: 1px solid #888;
+  border-radius: 40px;
+  width: 550px;
+}
+
+/* 제목 영역 */
+.findMyAccount-title-area {
+  margin: 10px 0 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+/* 제목 텍스트 */
+.findMyAccount-title-area > h2 {
+  width: fit-content;
+  font-size: 1.5rem;
+  font-weight: 700;
+>>>>>>> 3452ddf317ab63b434bd437bc2e5367c419eef0b:Haru/frontend/src/css/client/member/login.css
+}

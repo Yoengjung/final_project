@@ -1,0 +1,112 @@
+/* 내 장소 - 추천 리스트-좌측 달력 */
+@use postcss-preset-env;
+
+.myplace-calendar-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.myplace-calendar-container {
+  width: 510px;
+  background-color: #f7f7f7;
+}
+
+.myplace-calendar {
+  text-align: center;
+}
+
+.myplace-calendar header {
+  position: relative;
+}
+
+.myplace-calendar h2 {
+  text-transform: uppercase;
+}
+
+.myplace-calendar thead {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.myplace-calendar tbody {
+  color: #7c8a95;
+}
+
+.myplace-calendar tbody td:hover {
+  border: 2px solid #00addf;
+}
+
+.myplace-calendar td {
+  border: 2px solid transparent;
+  border-radius: 50%;
+  display: inline-block;
+  height: 4em;
+  line-height: 4em;
+  text-align: center;
+  width: 4em;
+}
+
+.myplace-calendar .prev-month,
+.myplace-calendar .next-month {
+  color: #cbd1d2;
+}
+
+.myplace-calendar .prev-month:hover,
+.myplace-calendar .next-month:hover {
+  border: 2px solid #cbd1d2;
+}
+
+.calendar-current-day {
+  background: #00addf;
+  color: #f9f9f9;
+}
+
+.calendar-event {
+  cursor: pointer;
+  position: relative;
+}
+
+.calendar-event:after {
+  background: #00addf;
+  border-radius: 50%;
+  bottom: 0.5em;
+  display: block;
+  content: "";
+  height: 0.5em;
+  left: 50%;
+  margin: -0.25em 0 0 -0.25em;
+  position: absolute;
+  width: 0.5em;
+}
+
+.calendar-event.calendar-current-day:after {
+  background: #f9f9f9;
+}
+
+.btn-prev,
+.btn-next {
+  border: 2px solid #cbd1d2;
+  border-radius: 50%;
+  color: #cbd1d2;
+  height: 2em;
+  font-size: 0.75em;
+  line-height: 2em;
+  margin: -1em;
+  position: absolute;
+  top: 50%;
+  width: 2em;
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+  background: #cbd1d2;
+  color: #f9f9f9;
+}
+
+.btn-prev {
+  left: 6em;
+}
+
+.btn-next {
+  right: 6em;
+}
