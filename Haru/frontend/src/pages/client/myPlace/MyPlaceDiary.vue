@@ -1,90 +1,40 @@
 <template>
   <!-- 내 장소 - [추천 리스트/ 일기] 화면 -->
   <div class="container1">
-    <!-- <div class="page-title-area">
-      <h1 class="page-upload-title">내 기록</h1>
-    </div> -->
-
     <div class="myplace-content-area">
       <!-- 달력 -->
       <div class="myplace-calendar-area">
         <div class="myplace-calendar-container">
           <div class="myplace-calendar">
             <header>
-              <h2>September</h2>
-
-              <a class="btn-prev fontawesome-angle-left" href="#"></a>
-              <a class="btn-next fontawesome-angle-right" href="#"></a>
+              <button class="cal-btn-prev" @click="changeMonth(-1)"></button>
+              <span>{{ calendarHeader }}</span>
+              <button class="cal-btn-next" @click="changeMonth(1)"></button>
             </header>
 
             <table class="myplace-calendar-table">
               <thead>
                 <tr>
-                  <td>Mo</td>
-                  <td>Tu</td>
-                  <td>We</td>
-                  <td>Th</td>
-                  <td>Fr</td>
-                  <td>Sa</td>
-                  <td>Su</td>
+                  <th v-for="index in week" :key="index">
+                    {{ index }}
+                  </th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                  <td class="prev-month">26</td>
-                  <td class="prev-month">27</td>
-                  <td class="prev-month">28</td>
-                  <td class="prev-month">29</td>
-                  <td class="prev-month">30</td>
-                  <td class="prev-month">31</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                  <td>7</td>
-                  <td>8</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td class="calendar-event">10</td>
-                  <td>11</td>
-                  <td>12</td>
-                  <td>13</td>
-                  <td>14</td>
-                  <td>15</td>
-                </tr>
-                <tr>
-                  <td>16</td>
-                  <td>17</td>
-                  <td>18</td>
-                  <td>19</td>
-                  <td>20</td>
-                  <td class="calendar-event">21</td>
-                  <td>22</td>
-                </tr>
-
-                <tr>
-                  <td class="calendar-current-day calendar-event">23</td>
-                  <td>24</td>
-                  <td>25</td>
-                  <td>26</td>
-                  <td>27</td>
-                  <td>28</td>
-                  <td>29</td>
-                </tr>
-                <tr>
-                  <td>30</td>
-                  <td class="next-month">1</td>
-                  <td class="next-month">2</td>
-                  <td class="next-month">3</td>
-                  <td class="next-month">4</td>
-                  <td class="next-month">5</td>
-                  <td class="next-month">6</td>
+                <tr v-for="(index, i) in days" :key="i">
+                  <td
+                    v-for="childIndex in index"
+                    :key="childIndex"
+                    :class="{
+                      'cal-set-today': isToday(childIndex),
+                      'selected-cal-day': isSelected(childIndex),
+                      'calendar-event': isInRecList(childIndex),
+                      'prev-next-monthDay': isPrevNextDay(i, childIndex),
+                    }"
+                  >
+                    {{ childIndex }}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -134,20 +84,22 @@
 <script>
 import RecommendList from "@/components/client/myPlace/RecommendList.vue";
 import MyDiaryList from "@/components/client/myPlace/MyDiaryList.vue";
+import moment from "moment";
 
 export default {
   data() {
     return {
-      isLoggedIn: false,
-      AccessToken: "",
+
+      // 달력 외 관련
+
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
-      rDate: "9월 23일",
+      // rDate: "2024-01-05",
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
       isTabRecList: true, // 추천 리스트 탭 활성화
       RecommendList: [
         // 추천 받았던 리스트 (날짜별)
         {
-          rdate: "9월 23일",
+          rdate: "2024-01-15",
           recList: [
             {
               storeName: "신논현역 딸부자네 불백",
@@ -176,7 +128,7 @@ export default {
           ],
         },
         {
-          rdate: "9월 22일",
+          rdate: "2024-01-10",
           recList: [
             {
               storeName: "신논현역 와플대학",
@@ -212,7 +164,7 @@ export default {
           ],
         },
         {
-          rdate: "9월 21일",
+          rdate: "2024-01-07",
           recList: [
             {
               storeName: "신논현역 버거킹",
@@ -226,7 +178,7 @@ export default {
       ],
       // 일기 리스트
       diaryList: {
-        rdate: "2023년 03월 23일(수)",
+        rdate: "2024년 01월 10일(수)",
         dList: [
           {
             diaryNum: 0,
@@ -247,7 +199,19 @@ export default {
           },
         ],
       },
+      // 달력 관련 데이터
+      // today: new Date(),
+      today: moment(), // moment 객체 생성
+      week: ["일", "월", "화", "수", "목", "금", "토"],
+      calendarHeader: "",
+      myYear: 0,
+      myMonth: 0,
+      days: [],
+      isSelectedtoday: false,
     };
+  },
+  mounted() {
+    this.calendarImplementation();
   },
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
@@ -255,7 +219,69 @@ export default {
     this.getToken();
   },
   methods: {
-    // 해당 화면 Background 이미지 설정
+    // 달력 만들기----------------------------------
+    calendarImplementation: function () {
+      this.days = [];
+      this.myYear = this.today.year();
+      this.myMonth = this.today.month();
+
+      // 시작 요일 찾기
+      const startDayOfTheMonth = moment([this.myYear, this.myMonth, 1]).day();
+      // 마지막 날
+      const endDayOfTheMonth = moment([this.myYear, this.myMonth])
+        .endOf("month")
+        .date();
+
+      // 시작날부터 마지막 날까지 채우기
+      const basicDays = Array.from(
+        { length: endDayOfTheMonth },
+        (v, i) => i + 1
+      );
+
+      // 전달의 마지막 날 가져오기
+      var prevMonthofLastDate = moment([this.myYear, this.myMonth])
+        .subtract(1, "months")
+        .endOf("month")
+        .date();
+
+      // 시작 요일까지의 빈 날짜 채우기 - 전달 날짜로
+      const emptyDays = Array.from(
+        { length: startDayOfTheMonth },
+        (_, i) => prevMonthofLastDate - i
+      ).reverse();
+      // 두 배열 합치기
+      const combinedDays = [...emptyDays, ...basicDays];
+      // 7일씩 나누고 넣기
+      for (let i = 0; i < endDayOfTheMonth + startDayOfTheMonth; i += 7) {
+        this.days.push(combinedDays.slice(i, i + 7));
+      }
+      this.calendarHeader = `${this.myYear}년 ${this.myMonth + 1} 월`;
+      this.addLastWeekEmptyDays();
+    },
+
+    // 막주 날짜 채우기----------------------------------
+    addLastWeekEmptyDays: function () {
+      // 마지막 주에 몇개의 값이 있는지 확인
+      const daysLastIndex = this.days.length - 1; // index 여서 -1
+      const lastdayIdx = this.days[daysLastIndex].length;
+
+      // 마지막 날 이후엔 1부터 채우기
+      if (this.days[daysLastIndex] !== 7) {
+        this.days[daysLastIndex].length = 7;
+        for (var i = lastdayIdx; i < 7; i++) {
+          this.days[daysLastIndex][i] = i - lastdayIdx + 1;
+        }
+      }
+    },
+
+    // 날짜 변경----------------------------------
+    changeMonth: function (val) {
+      // moment 적용한거로 변경
+      this.today = moment(this.today).add(val, "months").startOf("month");
+      this.calendarImplementation();
+    },
+
+    // 해당 화면 Background 이미지 설정----------------------------------
     bgImage() {
       var newImage = "type5";
       this.$emit("bgImage", newImage);
@@ -270,7 +296,7 @@ export default {
       }
     },
 
-    // 탭 전환하기
+    // 탭 전환하기----------------------------------
     changeTab(tab) {
       this.activeTab = tab;
       if (tab === "recommend") {
@@ -278,6 +304,44 @@ export default {
       } else {
         this.isTabRecList = false;
       }
+    },
+
+    // 오늘 날짜면 달력에 동그라미 표시----------------------------------
+    isToday(day) {
+      // moment 생성 -> 날짜 라이브러리
+      const moment = require("moment");
+      // 오늘 날짜
+      const todayy = moment();
+      // 오늘 날짜에 해당하면 클래스 표시 위해 format
+      var indexDay = moment([this.myYear, this.myMonth, day]).format(
+        "YYYY-MM-DD"
+      );
+
+      return indexDay === todayy.format("YYYY-MM-DD");
+    },
+
+    isSelected(day) {
+      // 화면 최초 진입 시 오늘 날짜면 표시
+      // 한번 움직였으면 상태값 바꾸고 클릭한 곳에 동그라미 표시하고
+      // 데이터 불러오기
+      return this.isToday(day) && !this.isSelectedtoday;
+    },
+
+    // 받아온 추천 리스트에 rDate를 화면에 점으로 표시하기----------------------------------
+    isInRecList(day) {
+      const rdates = this.RecommendList.map((item) => item.rdate);
+      var indexDay = moment([this.myYear, this.myMonth, day]).format(
+        "YYYY-MM-DD"
+      );
+      return rdates.includes(indexDay);
+    },
+
+    // 이전달, 다음달 날짜면 회색 처리 / 선택 못하게 일단 막아두기
+    isPrevNextDay(i, index) {
+      return (
+        (i == 0 && index > this.days[i][this.days[i].length - 1]) ||
+        (i == this.days.length - 1 && index < 7)
+      );
     },
   },
   components: {
@@ -290,4 +354,37 @@ export default {
 <style scoped>
 @import "@/css/client/myPlace/myPlaceDiary.css";
 @import "@/css/client/myPlace/calendar.css";
+
+.prev-next-monthDay {
+  color: #c7c7c7;
+}
+
+#calendarSection {
+  text-align: center;
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+table {
+  border-spacing: 2px;
+  border-collapse: separate;
+}
+td {
+  width: 65px;
+  height: 65px;
+  text-align: center;
+  vertical-align: baseline;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  line-height: 58px;
+  cursor: pointer;
+}
+
+/* tr td:first-child,
+tr th:first-child {
+  color: red;
+}
+tr td:last-child,
+tr th:last-child {
+  color: blue;
+} */
 </style>

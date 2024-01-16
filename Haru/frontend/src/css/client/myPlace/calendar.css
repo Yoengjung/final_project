@@ -1,14 +1,14 @@
 /* 내 장소 - 추천 리스트-좌측 달력 */
-@use postcss-preset-env;
-
 .myplace-calendar-table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
 .myplace-calendar-container {
-  width: 510px;
+  width: 511px;
   background-color: #f7f7f7;
+  border-radius: 20px;
+  padding: 0 30px 30px;
 }
 
 .myplace-calendar {
@@ -16,7 +16,15 @@
 }
 
 .myplace-calendar header {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px 0;
+}
+
+.myplace-calendar header span {
+  font-size: 21px;
+  font-weight: 600;
 }
 
 .myplace-calendar h2 {
@@ -32,18 +40,9 @@
   color: #7c8a95;
 }
 
-.myplace-calendar tbody td:hover {
-  border: 2px solid #00addf;
-}
-
-.myplace-calendar td {
-  border: 2px solid transparent;
-  border-radius: 50%;
-  display: inline-block;
-  height: 4em;
-  line-height: 4em;
-  text-align: center;
-  width: 4em;
+.myplace-calendar tbody td:hover,
+.selected-cal-day {
+  border: 2px solid #00addf !important;
 }
 
 .myplace-calendar .prev-month,
@@ -56,9 +55,9 @@
   border: 2px solid #cbd1d2;
 }
 
-.calendar-current-day {
-  background: #00addf;
-  color: #f9f9f9;
+/* 오늘 날짜에 표시 */
+.cal-set-today {
+  background: #c1e7f9;
 }
 
 .calendar-event {
@@ -83,30 +82,29 @@
   background: #f9f9f9;
 }
 
-.btn-prev,
-.btn-next {
-  border: 2px solid #cbd1d2;
-  border-radius: 50%;
-  color: #cbd1d2;
-  height: 2em;
-  font-size: 0.75em;
-  line-height: 2em;
-  margin: -1em;
-  position: absolute;
-  top: 50%;
-  width: 2em;
+.cal-btn-prev,
+.cal-btn-next {
+  font-size: 30px;
+  width: 55px;
+  height: 55px;
+  border: 1px solid;
+  border-radius: 30px;
+  display: inline-block;
+  background-color: #fff;
+  font-weight: 100;
+  transition: background-color 0.2s ease-in;
 }
 
-.btn-prev:hover,
-.btn-next:hover {
-  background: #cbd1d2;
-  color: #f9f9f9;
+.cal-btn-prev:hover,
+.cal-btn-next:hover {
+  background: #e7e7e7;
+  color: #333333;
 }
 
-.btn-prev {
-  left: 6em;
+.cal-btn-prev::after {
+  content: "<";
 }
 
-.btn-next {
-  right: 6em;
+.cal-btn-next::after {
+  content: ">";
 }
