@@ -207,6 +207,7 @@ def review_crawl(request):
 
         section_count_text = section_count_text.replace(',', '')
 
+        print(section_count_text)
         section_count = float(section_count_text)
 
         if section_count > 2000:
