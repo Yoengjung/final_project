@@ -147,7 +147,6 @@ export default {
           }
         })
         .catch((error) => {
-          // 에러 핸들링: HTTP 응답이 200이 아닌 경우 또는 네트워크 에러 등을 처리
           console.error("로그인 오류", error);
           alert("로그인 중 오류가 발생했습니다.");
         });

@@ -222,6 +222,9 @@
           <div class="label-area">
             <label>이용약관 및 개인정보처리방침</label>
           </div>
+          <div class="error-msg-area">
+            <p style="display: none" id="termsOfUse-msg" class="msg"></p>
+          </div>
 
           <div class="termsOfUse-box-area">
             <div class="termsOfUse-box input-text">
@@ -564,6 +567,10 @@ export default {
       event.preventDefault();
     },
     submit() {
+      const termsOfUse = document.getElementById("termsOfUse");
+      const termsOfUseMsg = document.getElementById("termsOfUse-msg");
+      const privacyPolicy = document.getElementById("privacyPolicy");
+
       this.formData.delete("userId", "");
       this.formData.delete("pwd", "");
       this.formData.delete("nickname", "");
@@ -647,6 +654,13 @@ export default {
         document.getElementById("emailCheck-msg").style.display = "block";
       } else {
         document.getElementById("emailCheck-msg").style.display = "none";
+      }
+      if (!termsOfUse.checked || !privacyPolicy.checked) {
+        termsOfUseMsg.innerHTML =
+          "이용약관 및 개인정보처리방침은 필수 체크 사항입니다.";
+        termsOfUseMsg.style.display = "block";
+      } else {
+        termsOfUseMsg.style.display = "none";
       }
 
       if (

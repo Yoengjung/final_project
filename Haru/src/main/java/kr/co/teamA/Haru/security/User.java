@@ -45,6 +45,13 @@ public class User implements UserDetails {
     public String getUsername() {
         return this.name;
     }
+    public String getNickname() {
+        return this.nickname;
+    }
+
+    public String getUserId() {
+        return this.userId;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

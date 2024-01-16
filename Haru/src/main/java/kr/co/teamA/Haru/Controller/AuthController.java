@@ -1,5 +1,6 @@
 package kr.co.teamA.Haru.Controller;
 
+import kr.co.teamA.Haru.security.User;
 import kr.co.teamA.Haru.security.dto.AuthenticationRequest;
 import kr.co.teamA.Haru.security.dto.AuthenticationResponse;
 import kr.co.teamA.Haru.security.filter.JwtTokenProvider;
@@ -46,6 +47,7 @@ public class AuthController {
     @Value("${profile-img-path}")
     private String imageDirctory;
 
+    private User user;
 
     @GetMapping("/{userId}/userIdCheck")
     public ResponseEntity<?> duplicationUserIdCheck(@PathVariable String userId) {
@@ -110,20 +112,23 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(
             @RequestBody AuthenticationRequest authenticationRequest) {
+
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getId(),
                             authenticationRequest.getPwd())
             );
-            System.out.println("jwtTokenProvider =>"+jwtTokenProvider.createToken(authentication));
+//            System.out.println("jwtTokenProvider =>"+jwtTokenProvider.createToken(authentication));
 
             // 인증 성공 시, SecurityContextHolder에 인증 정보를 설정한다.
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             // JwtTokenProvider를 사용하여 JWT 토큰을 생성
-            String jwt = jwtTokenProvider.createToken(authentication);
+
+            User user = new User();
+            user.setUserId(authenticationRequest.getId());
+            String jwt = jwtTokenProvider.createToken(authentication, user);
             System.out.print("jwt =>"+jwt);
-            // AuthenticationResponse에 JWT 토큰을 담아 클라이언트에게 반환
             return ResponseEntity.ok(new AuthenticationResponse(jwt));
         } catch
         (Exception e) {
@@ -141,6 +146,7 @@ public class AuthController {
         SecurityContextHolder.clearContext();
         return ResponseEntity.ok("Logout");
     }
+
 
     private String getExtension(String fileName) {
         return fileName.substring(fileName.lastIndexOf("."));

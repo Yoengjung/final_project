@@ -14,10 +14,11 @@
             </li>
             <li>
               <div class="nickname-box">
-                <span id="nickname-tag">잘생긴 훈남</span>
+                <span id="nickname-tag">{{ data.nickname }}</span>
               </div>
               <div class="username-box">
-                <span>별명을 가진</span><span id="username-tag">고영중 님</span>
+                <span>별명을 가진</span
+                ><span id="username-tag">{{ data.username }} 님</span>
               </div>
             </li>
             <li class="user-activity-info">
@@ -146,6 +147,8 @@
 </template>
 <script>
 import axios from "axios";
+import { ref, onMounted } from "vue";
+import { jwtDecode } from "jwt-decode";
 
 export default {
   name: "MyPage",
@@ -158,8 +161,6 @@ export default {
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
-    this.getToken();
-    this.getData();
   },
   methods: {
     // 해당 화면 Background 이미지 설정
@@ -167,32 +168,41 @@ export default {
       var newImage = "type1";
       this.$emit("bgImage", newImage);
     },
-    getToken() {
-      this.AccessToken = localStorage.getItem("jwtToken");
-      console.log(this.AccessToken);
-      if (this.AccessToken != null) {
-        this.isLoggedIn = true;
-      } else {
-        this.isLoggedIn = false;
-        this.$router.push("/login");
-      }
-    },
-    getData() {
+  },
+  setup() {
+    const isLoggedIn = ref(false); // Use ref to create reactive isLoggedIn
+    const data = ref([]); // Use ref to create reactive data
+
+    const getToken = () => {
+      const token = localStorage.getItem("jwtToken");
+      isLoggedIn.value = token ? true : false;
+    };
+
+    const logout = () => {
       axios
-        .post(
-          `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/myPageData`,
-          this.AccessToken,
-          {
-            headers: {
-              Authorization: `Bearer ${this.AccessToken}`, // Bearer 스킴을 사용하여 토큰을 전송
-              "Content-Type": "application/json", // 요청 데이터의 타입을 명시
-            },
-          }
-        )
+        .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
         .then((res) => {
-          console.log(res.data);
+          if (res.data == "Logout") {
+            localStorage.removeItem("jwtToken");
+            window.location.href = "/login";
+          }
         });
-    },
+    };
+
+    const decodeToken = (token) => {
+      if (token == null) return false;
+      const decoded = jwtDecode(token);
+      data.value = decoded; // Use data.value to set the value of the ref
+      return decoded;
+    };
+
+    onMounted(() => {
+      getToken();
+      const token = localStorage.getItem("jwtToken");
+      decodeToken(token);
+    });
+
+    return { logout, data }; // Return data in the setup function
   },
 };
 </script>

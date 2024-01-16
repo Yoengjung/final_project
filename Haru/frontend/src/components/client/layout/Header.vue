@@ -52,6 +52,9 @@
           </div>
           <div v-else>
             <li>
+              <span id="userNickname-box"
+                >{{ data.nickname }}님 환영합니다.</span
+              >
               <button @click="logout">로그아웃</button>
             </li>
           </div>
@@ -62,35 +65,48 @@
 </template>
 <script>
 import axios from "axios";
+import { ref, onMounted } from "vue";
+import { jwtDecode } from "jwt-decode";
 
 export default {
   name: "Header",
-  components: {},
   data() {
-    return {
-      isLoggedIn: false,
-    };
+    return {};
   },
-  created() {
-    this.getToken();
-  },
-  methods: {
-    getToken() {
+  setup() {
+    const isLoggedIn = ref(false);
+    const data = ref([]);
+
+    const getToken = () => {
       const token = localStorage.getItem("jwtToken");
-      this.isLoggedIn = token ? true : false;
-    },
-    logout() {
-      console.log(this.Access_token);
+      isLoggedIn.value = token ? true : false;
+    };
+
+    const logout = () => {
       axios
         .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
         .then((res) => {
           if (res.data == "Logout") {
             localStorage.removeItem("jwtToken");
-            this.Access_token = "";
-            this.$router.replace("/login");
+            window.location.href = "/login";
           }
         });
-    },
+    };
+
+    const decodeToken = (token) => {
+      if (token == null) return false;
+      const decoded = jwtDecode(token);
+      data.value = decoded; // Use data.value to set the value of the ref
+      return decoded;
+    };
+
+    onMounted(() => {
+      getToken();
+      const token = localStorage.getItem("jwtToken");
+      decodeToken(token);
+    });
+
+    return { isLoggedIn, logout, data }; // Return data in the setup function
   },
 };
 </script>
@@ -192,15 +208,15 @@ img {
   display: inline-flex;
 }
 
-.login-ul-box > .login-ul {
+.login-ul-box > .login-ul div {
   display: flex;
 }
 
-.login-ul-box > .login-ul > li {
+.login-ul-box > .login-ul > div > li {
   margin-left: 20px;
 }
 
-.login-ul-box > .login-ul > li > a {
+.login-ul-box > .login-ul > div > li > a {
   font-size: 20px;
   color: black;
   white-space: nowrap;
@@ -208,5 +224,20 @@ img {
 
 .login-ul-box ul li a:hover {
   color: #fba883;
+}
+
+button {
+  font-size: 20px;
+  color: black;
+  white-space: nowrap;
+  border: none;
+  background: none;
+}
+
+#userNickname-box {
+  font-size: 20px;
+  color: black;
+  white-space: nowrap;
+  margin-right: 10px;
 }
 </style>

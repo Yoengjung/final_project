@@ -12,4 +12,6 @@ public class AuthenticationRequest {
     private String id;
     // 사용자 비밀전호를 저장
     private String pwd;
+
+    private String nickname;
 }
