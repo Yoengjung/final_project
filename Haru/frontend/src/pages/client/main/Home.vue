@@ -102,7 +102,7 @@
                 <img src="@/img/main/logo.png" width="250" />
               </div>
               <div class="last-page-channel">
-                <img src="@/img/main/channelBtn.png" width="250" />
+                <button id="channel-btn"><img src="@/img/main/channelBtn.png" width="250" /></button>
               </div>
             </div>
             <div class="last-page-right-box">
