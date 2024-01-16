@@ -63,6 +63,7 @@ export default {
   margin: 0px;
   padding: 20px 228px;
   z-index: 10;
+  width: 100%;
 }
 
 header {
