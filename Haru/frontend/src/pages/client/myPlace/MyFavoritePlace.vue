@@ -118,7 +118,6 @@ export default {
     },
     getToken() {
       this.AccessToken = localStorage.getItem("jwtToken");
-      console.log(this.AccessToken);
       if (this.AccessToken != null) {
         this.isLoggedIn = true;
       } else {
