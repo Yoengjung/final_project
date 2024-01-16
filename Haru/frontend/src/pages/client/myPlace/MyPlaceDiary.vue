@@ -80,6 +80,7 @@
 <script>
 import RecommendList from "@/components/client/myPlace/RecommendList.vue";
 import MyDiaryList from "@/components/client/myPlace/MyDiaryList.vue";
+import moment from "moment";
 
 export default {
   data() {
@@ -193,9 +194,12 @@ export default {
         ],
       },
       // 달력 관련 데이터
-      today: new Date(),
+      // today: new Date(),
+      today: moment(), // moment 객체 생성
       week: ["일", "월", "화", "수", "목", "금", "토"],
       calendarHeader: "",
+      myYear: 0,
+      myMonth: 0,
       days: [],
     };
   },
@@ -209,12 +213,21 @@ export default {
   methods: {
     calendarImplementation: function () {
       this.days = [];
-      const year = this.today.getFullYear();
-      const month = this.today.getMonth();
+      this.myYear = this.today.year();
+      this.myMonth = this.today.month();
+
       // 시작 요일 찾기
-      const startDayOfTheMonth = new Date(year, month, 1).getDay();
+      const startDayOfTheMonth = new Date(
+        this.myYear,
+        this.myMonth,
+        1
+      ).getDay();
       // 마지막 날
-      const endDayOfTheMonth = new Date(year, month + 1, 0).getDate();
+      const endDayOfTheMonth = new Date(
+        this.myYear,
+        this.myMonth + 1,
+        0
+      ).getDate();
       // 시작날부터 마지막 날까지 채우기
       const basicDays = Array.from(
         { length: endDayOfTheMonth },
@@ -229,7 +242,7 @@ export default {
       for (let i = 0; i < endDayOfTheMonth + startDayOfTheMonth; i += 7) {
         this.days.push(combinedDays.slice(i, i + 7));
       }
-      this.calendarHeader = `${year}년 ${month + 1} 월`;
+      this.calendarHeader = `${this.myYear}년 ${this.myMonth + 1} 월`;
       this.addLastWeekEmptyDays();
     },
     addLastWeekEmptyDays: function () {
@@ -239,9 +252,8 @@ export default {
       if (this.days[daysLastIndex] !== 7) this.days[daysLastIndex].length = 7;
     },
     changeMonth: function (val) {
-      this.today = new Date(
-        this.today.setMonth(this.today.getMonth() + val, 1)
-      );
+      // moment 적용한거로 변경
+      this.today = moment(this.today).add(val, "months").startOf("month");
       this.calendarImplementation();
     },
 
@@ -266,9 +278,9 @@ export default {
       // 오늘 날짜
       const todayy = moment();
       // 오늘 날짜에 해당하면 클래스 표시 위해 format
-      var indexDay = moment(
-        new Date(todayy.year(), todayy.month(), day)
-      ).format("YYYY-MM-DD");
+      var indexDay = moment([this.myYear, this.myMonth, day]).format(
+        "YYYY-MM-DD"
+      );
 
       return indexDay === todayy.format("YYYY-MM-DD");
     },
