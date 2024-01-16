@@ -40,20 +40,11 @@
   color: #7c8a95;
 }
 
-.myplace-calendar tbody td:hover {
-  border: 2px solid #00addf;
+.myplace-calendar tbody td:hover,
+.selected-cal-day {
+  border: 2px solid #00addf !important;
 }
 
-/* .myplace-calendar td {
-  border: 2px solid transparent;
-  border-radius: 50%;
-  display: inline-block;
-  height: 4em;
-  line-height: 4em;
-  text-align: center;
-  width: 4em;
-}
- */
 .myplace-calendar .prev-month,
 .myplace-calendar .next-month {
   color: #cbd1d2;
@@ -64,9 +55,9 @@
   border: 2px solid #cbd1d2;
 }
 
-.calendar-current-day {
-  background: #00addf;
-  color: #f9f9f9;
+/* 오늘 날짜에 표시 */
+.cal-set-today {
+  background: #c1e7f9;
 }
 
 .calendar-event {
@@ -117,5 +108,3 @@
 .cal-btn-next::after {
   content: ">";
 }
-
-/* isInRecList isToday setToday*/

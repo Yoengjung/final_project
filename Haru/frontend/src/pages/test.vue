@@ -86,12 +86,4 @@ td {
   text-align: center;
   vertical-align: baseline;
 }
-tr td:first-child,
-tr th:first-child {
-  color: red;
-}
-tr td:last-child,
-tr th:last-child {
-  color: blue;
-}
 </style>

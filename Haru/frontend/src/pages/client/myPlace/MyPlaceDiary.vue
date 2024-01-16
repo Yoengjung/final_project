@@ -26,7 +26,12 @@
                   <td
                     v-for="childIndex in index"
                     :key="childIndex"
-                    :class="{ 'cal-set-today': isToday(childIndex) }"
+                    :class="{
+                      'cal-set-today': isToday(childIndex),
+                      'selected-cal-day': isSelected(childIndex),
+                      'calendar-event': isInRecList(childIndex),
+                      'prev-next-monthDay': isPrevNextDay(i, childIndex),
+                    }"
                   >
                     {{ childIndex }}
                   </td>
@@ -201,6 +206,7 @@ export default {
       myYear: 0,
       myMonth: 0,
       days: [],
+      isSelectedtoday: false,
     };
   },
   mounted() {
@@ -211,31 +217,36 @@ export default {
     this.bgImage();
   },
   methods: {
+    // 달력 만들기----------------------------------
     calendarImplementation: function () {
       this.days = [];
       this.myYear = this.today.year();
       this.myMonth = this.today.month();
 
       // 시작 요일 찾기
-      const startDayOfTheMonth = new Date(
-        this.myYear,
-        this.myMonth,
-        1
-      ).getDay();
+      const startDayOfTheMonth = moment([this.myYear, this.myMonth, 1]).day();
       // 마지막 날
-      const endDayOfTheMonth = new Date(
-        this.myYear,
-        this.myMonth + 1,
-        0
-      ).getDate();
+      const endDayOfTheMonth = moment([this.myYear, this.myMonth])
+        .endOf("month")
+        .date();
+
       // 시작날부터 마지막 날까지 채우기
       const basicDays = Array.from(
         { length: endDayOfTheMonth },
         (v, i) => i + 1
       );
-      // 시작 요일까지의 빈 날짜 채우기
-      // 수요일이면 startDayofTheMonth 값이 3 [null, null, null]
-      const emptyDays = Array(startDayOfTheMonth).fill(null);
+
+      // 전달의 마지막 날 가져오기
+      var prevMonthofLastDate = moment([this.myYear, this.myMonth])
+        .subtract(1, "months")
+        .endOf("month")
+        .date();
+
+      // 시작 요일까지의 빈 날짜 채우기 - 전달 날짜로
+      const emptyDays = Array.from(
+        { length: startDayOfTheMonth },
+        (_, i) => prevMonthofLastDate - i
+      ).reverse();
       // 두 배열 합치기
       const combinedDays = [...emptyDays, ...basicDays];
       // 7일씩 나누고 넣기
@@ -245,25 +256,36 @@ export default {
       this.calendarHeader = `${this.myYear}년 ${this.myMonth + 1} 월`;
       this.addLastWeekEmptyDays();
     },
+
+    // 막주 날짜 채우기----------------------------------
     addLastWeekEmptyDays: function () {
-      // 마지막 주에 뒤에 남는 일 채우기
-      const daysLastIndex = this.days.length - 1;
-      // fill -> 배열의 길이만큼 밖에 추가 안돼서 못씀
-      if (this.days[daysLastIndex] !== 7) this.days[daysLastIndex].length = 7;
+      // 마지막 주에 몇개의 값이 있는지 확인
+      const daysLastIndex = this.days.length - 1; // index 여서 -1
+      const lastdayIdx = this.days[daysLastIndex].length;
+
+      // 마지막 날 이후엔 1부터 채우기
+      if (this.days[daysLastIndex] !== 7) {
+        this.days[daysLastIndex].length = 7;
+        for (var i = lastdayIdx; i < 7; i++) {
+          this.days[daysLastIndex][i] = i - lastdayIdx + 1;
+        }
+      }
     },
+
+    // 날짜 변경----------------------------------
     changeMonth: function (val) {
       // moment 적용한거로 변경
       this.today = moment(this.today).add(val, "months").startOf("month");
       this.calendarImplementation();
     },
 
-    // 해당 화면 Background 이미지 설정
+    // 해당 화면 Background 이미지 설정----------------------------------
     bgImage() {
       var newImage = "type5";
       this.$emit("bgImage", newImage);
     },
 
-    // 탭 전환하기
+    // 탭 전환하기----------------------------------
     changeTab(tab) {
       this.activeTab = tab;
       if (tab === "recommend") {
@@ -272,6 +294,8 @@ export default {
         this.isTabRecList = false;
       }
     },
+
+    // 오늘 날짜면 달력에 동그라미 표시----------------------------------
     isToday(day) {
       // moment 생성 -> 날짜 라이브러리
       const moment = require("moment");
@@ -283,6 +307,30 @@ export default {
       );
 
       return indexDay === todayy.format("YYYY-MM-DD");
+    },
+
+    isSelected(day) {
+      // 화면 최초 진입 시 오늘 날짜면 표시
+      // 한번 움직였으면 상태값 바꾸고 클릭한 곳에 동그라미 표시하고
+      // 데이터 불러오기
+      return this.isToday(day) && !this.isSelectedtoday;
+    },
+
+    // 받아온 추천 리스트에 rDate를 화면에 점으로 표시하기----------------------------------
+    isInRecList(day) {
+      const rdates = this.RecommendList.map((item) => item.rdate);
+      var indexDay = moment([this.myYear, this.myMonth, day]).format(
+        "YYYY-MM-DD"
+      );
+      return rdates.includes(indexDay);
+    },
+
+    // 이전달, 다음달 날짜면 회색 처리 / 선택 못하게 일단 막아두기
+    isPrevNextDay(i, index) {
+      return (
+        (i == 0 && index > this.days[i][this.days[i].length - 1]) ||
+        (i == this.days.length - 1 && index < 7)
+      );
     },
   },
   components: {
@@ -296,10 +344,8 @@ export default {
 @import "@/css/client/myPlace/myPlaceDiary.css";
 @import "@/css/client/myPlace/calendar.css";
 
-/* 오늘 날짜에 표시 */
-.cal-set-today {
-  background: #398ab1;
-  color: #f9f9f9;
+.prev-next-monthDay {
+  color: #c7c7c7;
 }
 
 #calendarSection {
@@ -322,12 +368,12 @@ td {
   cursor: pointer;
 }
 
-tr td:first-child,
+/* tr td:first-child,
 tr th:first-child {
   color: red;
 }
 tr td:last-child,
 tr th:last-child {
   color: blue;
-}
+} */
 </style>
