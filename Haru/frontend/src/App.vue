@@ -8,9 +8,9 @@
       'bg-type5': bgType === 'type5',
     }"
   >
-    <Header class="custom-header" />
-    <RouterView @bgImage="updateBgImage" @is-main="mainPage" />
-    <Footer v-if="!isMain" />
+    <Header class="custom-header" :class="{ mainAbsolute: isMain === true }" />
+    <RouterView @bgImage="updateBgImage" @jasic="bumo" />
+    <Footer :class="{ mainFooter: isMain === true }" />
   </div>
 </template>
 
@@ -34,8 +34,8 @@ export default {
     updateBgImage(bg) {
       this.bgType = bg;
     },
-    mainPage(is) {
-      this.isMain = is;
+    bumo(isis) {
+      this.isMain = isis;
     },
   },
 };
@@ -48,4 +48,10 @@ export default {
 @import url("@/css/client/common/font.css");
 /* 화면 별 background-image 설정 */
 @import url("@/css/client/common/bgImage.css");
+.mainAbsolute {
+  position: absolute;
+}
+.mainFooter {
+  display: none;
+}
 </style>

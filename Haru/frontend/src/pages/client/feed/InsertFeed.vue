@@ -47,7 +47,7 @@
             <p class="part-title">
               추천 해시태그<br />
               <span style="color: #a7a7a7"
-                >사진을 업로드하면 해시태그를 추천해드려요!</span
+                >피드를 작성하면 해시태그를 추천해드려요!</span
               >
             </p>
           </div>
@@ -60,6 +60,41 @@
             >
               #{{ hash }}
             </span>
+          </div>
+        </div>
+
+        <div class="part-area">
+          <div>
+            <p class="part-title">
+              해시태그 직접 입력<br />
+              <span style="color: #a7a7a7"
+                >추가하고 싶은 해시태그를 직접 입력해보세요!</span
+              >
+            </p>
+          </div>
+          <div class="hashtag-area-two">
+            <div
+              class="write-down-hash-area"
+              v-for="(whIdx, wHash) in writeHashtag"
+              :key="whIdx"
+            >
+              <span class="hash-icon">#</span>
+              <input
+                type="text"
+                class="hashtag writeHash"
+                placeholder="직접 입력하기"
+                :key="wHash"
+                :ref="'writeHashtagInput' + whIdx"
+              />
+            </div>
+            <div class="add-hashtag-area">
+              <button
+                @click.prevent="addHashTag"
+                class="add-hashtag-btn big-ctlbtn insert-btn"
+              >
+                추가
+              </button>
+            </div>
           </div>
         </div>
 
@@ -100,7 +135,8 @@ export default {
         "무한리필",
         "생고기",
       ],
-      activeTags: [],
+      writeHashtag: [""], // 직접 입력 해시태그
+      activeTags: [], // 활성화된 해시태그
       RecommendList: [
         {
           rdate: "9월 23일",
@@ -218,6 +254,8 @@ export default {
         "hash-active": this.activeTags.includes(index),
       };
     },
+    // 해시태그 직접 입력
+    addHashTag() {},
 
     openModal() {
       this.modal_Check = true;
@@ -232,4 +270,10 @@ export default {
 </script>
 <style scoped>
 @import url("@/css/client/feed/uploadFeed.css");
+.big-ctlbtn {
+  width: 75px;
+  height: 42px;
+  font-size: 1rem;
+  font-weight: 500;
+}
 </style>

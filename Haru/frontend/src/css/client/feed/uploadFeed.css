@@ -69,6 +69,12 @@
   line-height: 40px;
 }
 
+.hashtag-area-two {
+  line-height: 40px;
+  width: fit-content;
+  display: inline-block;
+}
+
 .hashtag {
   background-color: #fff;
   display: inline-block;
@@ -87,6 +93,41 @@
 
 .hashtag:hover {
   background-color: #ffeee7;
+}
+
+/* 직접 입력하기 input */
+.hashtag:focus {
+  outline: 0;
+}
+
+/* 직접 입력하기 영역 */
+.write-down-hash-area {
+  display: inline-block;
+}
+
+/* # 아이콘 */
+.hash-icon {
+  color: #ff6600;
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  z-index: 5;
+}
+
+/* 해시태그 직접 입력 */
+.writeHash {
+  width: 140px;
+  padding-left: 25px;
+  text-align: center;
+}
+
+/* 해시태그 추가 버튼 영역 */
+.add-hashtag-area {
+  display: inline-block;
+}
+
+/* 추가 버튼 */
+.add-hashtag-btn {
 }
 
 .recommend-modal-open-btn {
