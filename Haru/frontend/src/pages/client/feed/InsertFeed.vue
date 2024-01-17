@@ -253,7 +253,7 @@ export default {
       if (this.writeHashtag.length < 5) {
         this.writeHashtag.length = this.writeHashtag.length + 1;
       } else {
-        alert("5개까지만 입력 가능");
+        alert("해시태그는 5개 이하로 입력 가능합니다.");
       }
     },
 
@@ -275,5 +275,6 @@ export default {
   height: 42px;
   font-size: 1rem;
   font-weight: 500;
+  margin-top: 5px;
 }
 </style>
