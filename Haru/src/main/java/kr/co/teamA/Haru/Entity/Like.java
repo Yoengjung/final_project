@@ -1,7 +1,5 @@
 package kr.co.teamA.Haru.Entity;
 
-import java.util.List;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

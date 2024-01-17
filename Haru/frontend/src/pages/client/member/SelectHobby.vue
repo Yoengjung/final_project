@@ -152,7 +152,7 @@
         </div>
       </div>
       <div class="hobby-setting-container">
-        <button id="bobby-setting-btn" class="big-ctlbtn select-btn">
+        <button id="hobby-setting-btn" @click="hobbySet" class="big-ctlbtn select-btn">
           설정 완료
         </button>
       </div>
@@ -160,10 +160,14 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+import { ref, onMounted } from "vue";
+import { jwtDecode } from "jwt-decode";
 export default {
   name: "SelectHobby",
   data() {
     return {
+      formData : new FormData(),
       selectedActivity: [],
       selectedCulture: [],
       selectedHobby: [],
@@ -298,6 +302,7 @@ export default {
       } else {
         this.selectedActivity.push(index);
       }
+      console.log(this.selectedActivity)
     },
     selectCulture(index) {
       const selectedIndex = this.selectedCulture.indexOf(index);
@@ -347,6 +352,78 @@ export default {
         this.selectedShopping.push(index);
       }
     },
+    hobbySet() {
+      this.formData.append("id", this.data.id)
+
+      const selectedList = []
+
+      for(const i of this.selectedActivity) {
+        selectedList.push(this.activity[i].name)
+      }
+      for(const i of this.selectedCulture) {
+        selectedList.push(this.culture[i].name)
+      }
+      for(const i of this.selectedHobby) {
+        selectedList.push(this.hobby[i].name)
+      }
+      for(const i of this.selectedTravel) {
+        selectedList.push(this.travel[i].name)
+      }
+      for(const i of this.selectedFood) {
+        selectedList.push(this.food[i].name)
+      }
+      for(const i of this.selectedSelfDevelopment) {
+        selectedList.push(this.selfDevelopment[i].name)
+      }
+      for(const i of this.selectedShopping) {
+        selectedList.push(this.shopping[i].name)
+      }
+
+      console.log(selectedList)
+
+      this.formData.append("hobbyList", selectedList)
+      axios
+        .post(`http://${process.env.VUE_APP_BACK_END_URL}/setHobby`, this.formData)
+        .then((res) => {
+          console.log(res)
+          window.location.href = "/MyPage";
+        });
+    },
+  },
+  setup() {
+    const isLoggedIn = ref(false); // Use ref to create reactive isLoggedIn
+    const data = ref([]); // Use ref to create reactive data
+
+    const getToken = () => {
+      const token = localStorage.getItem("jwtToken");
+      isLoggedIn.value = token ? true : false;
+    };
+
+    const logout = () => {
+      axios
+        .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
+        .then((res) => {
+          if (res.data == "Logout") {
+            localStorage.removeItem("jwtToken");
+            window.location.href = "/login";
+          }
+        });
+    };
+
+    const decodeToken = (token) => {
+      if (token == null) return false;
+      const decoded = jwtDecode(token);
+      data.value = decoded; // Use data.value to set the value of the ref
+      return decoded;
+    };
+
+    onMounted(() => {
+      getToken();
+      const token = localStorage.getItem("jwtToken");
+      decodeToken(token);
+    });
+
+    return { logout, data }; // Return data in the setup function
   },
 };
 </script>

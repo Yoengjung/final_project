@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Entity
 @NoArgsConstructor
@@ -24,5 +22,5 @@ public class SubCategory {
     @JoinColumn(name = "mainCategory", referencedColumnName = "mainCategory")
     private MainCategory mainCategory;
 
-    private Long placeIsOutDoor;
+    private Long placeIsOutdoor;
 }
