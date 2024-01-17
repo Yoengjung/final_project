@@ -1,6 +1,6 @@
 package kr.co.teamA.Haru.Controller;
 
-import kr.co.teamA.Haru.security.User;
+import kr.co.teamA.Haru.Entity.Member;
 import kr.co.teamA.Haru.security.dto.AuthenticationRequest;
 import kr.co.teamA.Haru.security.dto.AuthenticationResponse;
 import kr.co.teamA.Haru.security.filter.JwtTokenProvider;
@@ -47,7 +47,7 @@ public class AuthController {
     @Value("${profile-img-path}")
     private String imageDirctory;
 
-    private User user;
+    private Member Member;
 
     @GetMapping("/{userId}/userIdCheck")
     public ResponseEntity<?> duplicationUserIdCheck(@PathVariable String userId) {
@@ -125,9 +125,9 @@ public class AuthController {
 
             // JwtTokenProvider를 사용하여 JWT 토큰을 생성
 
-            User user = new User();
-            user.setUserId(authenticationRequest.getId());
-            String jwt = jwtTokenProvider.createToken(authentication, user);
+            Member member = new Member();
+            member.setUserId(authenticationRequest.getId());
+            String jwt = jwtTokenProvider.createToken(authentication);
             System.out.print("jwt =>"+jwt);
             return ResponseEntity.ok(new AuthenticationResponse(jwt));
         } catch

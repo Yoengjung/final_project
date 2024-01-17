@@ -26,9 +26,10 @@
                   <td
                     v-for="childIndex in index"
                     :key="childIndex"
+                    @click="dayClick(i, childIndex)"
                     :class="{
                       'cal-set-today': isToday(childIndex),
-                      'selected-cal-day': isSelected(childIndex),
+                      'selected-cal-day': isSelected(i, childIndex),
                       'calendar-event': isInRecList(childIndex),
                       'prev-next-monthDay': isPrevNextDay(i, childIndex),
                     }"
@@ -62,7 +63,7 @@
         </div>
 
         <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트)myNum -->
-        <div class="tab-content-area" @mouseover="recBtnOff">
+        <div class="tab-content-area">
           <RecommendList
             :RecommendList="RecommendList"
             :isBtnHeartNone="isBtnHeartNone"
@@ -88,10 +89,12 @@ import moment from "moment";
 
 export default {
   data() {
+    const today = moment(); // moment 객체 생성
+    const sDate = [today.year(), today.month(), today.date(), 0]; // 선택한 날짜 정보 (연도, 월, 일, index)
+    const myDate = []; // 현재 화면에 보여지는 날짜 정보
+
     return {
-
       // 달력 외 관련
-
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
       // rDate: "2024-01-05",
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
@@ -200,14 +203,13 @@ export default {
         ],
       },
       // 달력 관련 데이터
-      // today: new Date(),
-      today: moment(), // moment 객체 생성
+      today: today,
+      sDate: sDate,
+      myDate: myDate,
       week: ["일", "월", "화", "수", "목", "금", "토"],
       calendarHeader: "",
-      myYear: 0,
-      myMonth: 0,
-      days: [],
-      isSelectedtoday: false,
+      days: [], // 해당 월의 일 담은 배열
+      isSelectedtoday: false, // 한 번 이라도 선택된게 있는지
     };
   },
   mounted() {
@@ -222,13 +224,17 @@ export default {
     // 달력 만들기----------------------------------
     calendarImplementation: function () {
       this.days = [];
-      this.myYear = this.today.year();
-      this.myMonth = this.today.month();
+      this.myDate[0] = this.today.year();
+      this.myDate[1] = this.today.month();
 
       // 시작 요일 찾기
-      const startDayOfTheMonth = moment([this.myYear, this.myMonth, 1]).day();
+      const startDayOfTheMonth = moment([
+        this.myDate[0],
+        this.myDate[1],
+        1,
+      ]).day();
       // 마지막 날
-      const endDayOfTheMonth = moment([this.myYear, this.myMonth])
+      const endDayOfTheMonth = moment([this.myDate[0], this.myDate[1]])
         .endOf("month")
         .date();
 
@@ -239,7 +245,7 @@ export default {
       );
 
       // 전달의 마지막 날 가져오기
-      var prevMonthofLastDate = moment([this.myYear, this.myMonth])
+      var prevMonthofLastDate = moment([this.myDate[0], this.myDate[1]])
         .subtract(1, "months")
         .endOf("month")
         .date();
@@ -255,7 +261,7 @@ export default {
       for (let i = 0; i < endDayOfTheMonth + startDayOfTheMonth; i += 7) {
         this.days.push(combinedDays.slice(i, i + 7));
       }
-      this.calendarHeader = `${this.myYear}년 ${this.myMonth + 1} 월`;
+      this.calendarHeader = `${this.myDate[0]}년 ${this.myDate[1] + 1} 월`;
       this.addLastWeekEmptyDays();
     },
 
@@ -276,7 +282,6 @@ export default {
 
     // 날짜 변경----------------------------------
     changeMonth: function (val) {
-      // moment 적용한거로 변경
       this.today = moment(this.today).add(val, "months").startOf("month");
       this.calendarImplementation();
     },
@@ -310,33 +315,63 @@ export default {
     isToday(day) {
       // moment 생성 -> 날짜 라이브러리
       const moment = require("moment");
-      // 오늘 날짜
-      const todayy = moment();
+      var today = moment();
       // 오늘 날짜에 해당하면 클래스 표시 위해 format
-      var indexDay = moment([this.myYear, this.myMonth, day]).format(
+      var indexDay = moment([this.myDate[0], this.myDate[1], day]).format(
         "YYYY-MM-DD"
       );
 
-      return indexDay === todayy.format("YYYY-MM-DD");
+      return indexDay == today.format("YYYY-MM-DD");
     },
 
-    isSelected(day) {
-      // 화면 최초 진입 시 오늘 날짜면 표시
-      // 한번 움직였으면 상태값 바꾸고 클릭한 곳에 동그라미 표시하고
-      // 데이터 불러오기
-      return this.isToday(day) && !this.isSelectedtoday;
+    isSelected(i, day) {
+      var sdate = moment([this.sDate[0], this.sDate[1], this.sDate[2]]).format(
+        "YYYY-MM-DD"
+      );
+      var nowdate = moment([this.myDate[0], this.myDate[1], day]).format(
+        "YYYY-MM-DD"
+      );
+      // 화면 최초 진입 시 오늘 날짜면 오늘 날짜에 표시
+      if (this.isToday(day) && sdate) {
+        return true;
+      } else if (sdate == nowdate && i == this.sDate[3]) {
+        return true;
+      }
+      return false;
+    },
+
+    // 한번 움직였으면 상태값 바꾸고 클릭한 곳에 동그라미 표시
+    // 데이터 불러오기
+    dayClick(i, day) {
+      if (i == 0 && day > 6) {
+        // 이전 달 클릭 시
+        this.changeMonth(-1);
+
+        this.sDate = [
+          this.myDate[0],
+          this.myDate[1],
+          day,
+          this.days.length - 1,
+        ];
+      } else if (i == this.days.length - 1 && day < 7) {
+        // 다음 달 클릭 시
+        this.changeMonth(1);
+        this.sDate = [this.myDate[0], this.myDate[1], day, 0];
+      } else {
+        this.sDate = [this.myDate[0], this.myDate[1], day, i];
+      }
     },
 
     // 받아온 추천 리스트에 rDate를 화면에 점으로 표시하기----------------------------------
     isInRecList(day) {
       const rdates = this.RecommendList.map((item) => item.rdate);
-      var indexDay = moment([this.myYear, this.myMonth, day]).format(
+      var indexDay = moment([this.myDate[0], this.myDate[1], day]).format(
         "YYYY-MM-DD"
       );
       return rdates.includes(indexDay);
     },
 
-    // 이전달, 다음달 날짜면 회색 처리 / 선택 못하게 일단 막아두기
+    // 이전달, 다음달 날짜면 회색 처리
     isPrevNextDay(i, index) {
       return (
         (i == 0 && index > this.days[i][this.days[i].length - 1]) ||

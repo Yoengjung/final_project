@@ -25,6 +25,9 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
+    public MemberDTO getMemberByUserId(String userId) {
+        return memberRepository.findMemberByUserId(userId);
+    }
     // public int checkDuplicateUserId(String userId) {
     // Optional checkUserId = memberRepository.findUserIdById(userId);
     // return checkUserId != null ? 1 : 0;

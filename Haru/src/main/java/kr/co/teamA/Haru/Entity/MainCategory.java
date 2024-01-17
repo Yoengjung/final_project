@@ -17,12 +17,7 @@ public class MainCategory {
     @Column(length = 255, nullable = false)
     private String mainCategory;
 
-    @Column(nullable = false)
     private Long placeStressGrade;
 
-    @Column(nullable = false)
     private Long placeSeasonInformation;
-
-
-
 }

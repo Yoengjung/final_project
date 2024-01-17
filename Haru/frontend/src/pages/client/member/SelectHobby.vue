@@ -152,7 +152,11 @@
         </div>
       </div>
       <div class="hobby-setting-container">
-        <button id="hobby-setting-btn" @click="hobbySet" class="big-ctlbtn select-btn">
+        <button
+          id="hobby-setting-btn"
+          @click="hobbySet"
+          class="big-ctlbtn select-btn"
+        >
           설정 완료
         </button>
       </div>
@@ -167,7 +171,6 @@ export default {
   name: "SelectHobby",
   data() {
     return {
-      formData : new FormData(),
       selectedActivity: [],
       selectedCulture: [],
       selectedHobby: [],
@@ -296,13 +299,14 @@ export default {
       this.$emit("bgImage", newImage);
     },
     selectActivity(index) {
+      this.printSelect();
       const selectedIndex = this.selectedActivity.indexOf(index);
       if (selectedIndex > -1) {
         this.selectedActivity.splice(selectedIndex, 1);
       } else {
         this.selectedActivity.push(index);
       }
-      console.log(this.selectedActivity)
+      console.log(this.selectedActivity);
     },
     selectCulture(index) {
       const selectedIndex = this.selectedCulture.indexOf(index);
@@ -353,39 +357,42 @@ export default {
       }
     },
     hobbySet() {
-      this.formData.append("id", this.data.id)
+      this.formData.append("id", this.data.id);
 
-      const selectedList = []
+      const selectedList = [];
 
-      for(const i of this.selectedActivity) {
-        selectedList.push(this.activity[i].name)
+      for (const i of this.selectedActivity) {
+        selectedList.push(this.activity[i].name);
       }
-      for(const i of this.selectedCulture) {
-        selectedList.push(this.culture[i].name)
+      for (const i of this.selectedCulture) {
+        selectedList.push(this.culture[i].name);
       }
-      for(const i of this.selectedHobby) {
-        selectedList.push(this.hobby[i].name)
+      for (const i of this.selectedHobby) {
+        selectedList.push(this.hobby[i].name);
       }
-      for(const i of this.selectedTravel) {
-        selectedList.push(this.travel[i].name)
+      for (const i of this.selectedTravel) {
+        selectedList.push(this.travel[i].name);
       }
-      for(const i of this.selectedFood) {
-        selectedList.push(this.food[i].name)
+      for (const i of this.selectedFood) {
+        selectedList.push(this.food[i].name);
       }
-      for(const i of this.selectedSelfDevelopment) {
-        selectedList.push(this.selfDevelopment[i].name)
+      for (const i of this.selectedSelfDevelopment) {
+        selectedList.push(this.selfDevelopment[i].name);
       }
-      for(const i of this.selectedShopping) {
-        selectedList.push(this.shopping[i].name)
+      for (const i of this.selectedShopping) {
+        selectedList.push(this.shopping[i].name);
       }
 
-      console.log(selectedList)
+      console.log(selectedList);
 
-      this.formData.append("hobbyList", selectedList)
+      this.formData.append("hobbyList", selectedList);
       axios
-        .post(`http://${process.env.VUE_APP_BACK_END_URL}/setHobby`, this.formData)
+        .post(
+          `http://${process.env.VUE_APP_BACK_END_URL}/setHobby`,
+          this.formData
+        )
         .then((res) => {
-          console.log(res)
+          console.log(res);
           window.location.href = "/MyPage";
         });
     },

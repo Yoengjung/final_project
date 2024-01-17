@@ -19,7 +19,7 @@
 
 /* 비밀번호 입력란 */
 .userConfirm-box input {
-  width: 95%;
+  width: 100%;
   background-color: white;
   border: none;
   border-radius: 50px;
