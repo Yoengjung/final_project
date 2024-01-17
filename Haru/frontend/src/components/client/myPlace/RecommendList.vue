@@ -57,6 +57,7 @@
                 class="recCheckbox"
                 :id="'recCheckbox' + idx + '-' + i"
                 name="recRadio"
+                @click="sendRecList(item)"
               />
               <label :for="'recCheckbox' + idx + '-' + i"></label>
             </div>
@@ -103,6 +104,10 @@ export default {
     },
     gotoWriteFeed() {
       this.$router.push("/insertFeed");
+    },
+    // 선택한 항목 부모에게 전달
+    sendRecList(recItem) {
+      this.$emit("send-rec-List", recItem);
     },
   },
 };
