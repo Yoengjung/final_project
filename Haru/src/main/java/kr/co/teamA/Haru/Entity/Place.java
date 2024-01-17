@@ -26,13 +26,13 @@ public class Place {
     private String placeAddress;
 
     @ManyToOne
-    @JoinColumn(name = "subCategoryId")
+    @JoinColumn(name = "subCategory")
     private SubCategory subCategory;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = 1000)
     private String placeImg;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = 500, nullable = false)
     private String placeLink;
 
     @Column(nullable = false)

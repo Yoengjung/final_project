@@ -3,6 +3,8 @@ package kr.co.teamA.Haru.Controller.member;
 import kr.co.teamA.Haru.DTO.MemberDTO;
 import kr.co.teamA.Haru.Service.member.EmailSenderService;
 import kr.co.teamA.Haru.Service.member.MemberService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.FileOutputStream;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class MemberController {
@@ -37,7 +41,7 @@ public class MemberController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> handleFileUpload(@ModelAttribute MemberDTO memberDTO,
-                                              @RequestParam("files") List<MultipartFile> files) {
+            @RequestParam("files") List<MultipartFile> files) {
 
         String imgName = null;
         for (MultipartFile multipartFile : files) {
@@ -54,9 +58,8 @@ public class MemberController {
         return ResponseEntity.ok().build();
     }
 
-
     private String getExtension(String fileName) {
         return fileName.substring(fileName.lastIndexOf("."));
     }
-}
 
+}

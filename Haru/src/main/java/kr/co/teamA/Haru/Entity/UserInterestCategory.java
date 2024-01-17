@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Entity
 @NoArgsConstructor
@@ -22,10 +20,10 @@ public class UserInterestCategory {
     private Long interestCategoryNum;
 
     @ManyToOne
-    @JoinColumn(name = "userId") // 적절한 컬럼 이름으로 변경
-    private Member members;
+    @JoinColumn(name = "userId")
+    private Member userId;
 
     @ManyToOne
-    @JoinColumn(name = "mainCategory") // 적절한 컬럼 이름으로 변경
-    private MainCategory mainCategoryList;
+    @JoinColumn(name = "mainCategory")
+    private MainCategory mainCategory;
 }
