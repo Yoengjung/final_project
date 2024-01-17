@@ -183,7 +183,12 @@ export default {
   },
   methods: {
     getMyRecPlace(sdate) {
-      console.log(sdate);
+      // console.log(sdate)
+      var startMonth = moment([sdate[0], sdate[1], 1]).format("YYYY-MM-DD");
+      var endMonth = moment([sdate[0], sdate[1]+1, 1]).format("YYYY-MM-DD");
+      console.log(`${startMonth}, ${endMonth}`);
+
+
     },
 
     // 달력 만들기----------------------------------
