@@ -1,5 +1,11 @@
 <template>
   <div class="container1">
+    <!-- 프로필 사진 업데이트 모달 창 -->
+    <UpdateProfileImgModal
+      :mStatus="profileModalStatus"
+      @modalClose="closeModal"
+    />
+
     <!-- 컨텐츠 -->
     <div class="mypage-box">
       <!-- title -->
@@ -9,7 +15,11 @@
       <div class="mypage-two-box">
         <div class="mypage-left-box">
           <ul>
-            <li>
+            <li id="profileArea">
+              <div class="profileImgBg cursor-p" @click="openModal">
+                <img src="@/img/FaceRegistration/camera.png" alt="" />
+                <p>프로필 수정</p>
+              </div>
               <img src="@/assets/bgImage/type3.png" class="profileImg" />
             </li>
             <li>
@@ -149,6 +159,7 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { jwtDecode } from "jwt-decode";
+import UpdateProfileImgModal from "@/components/client/member/UpdateProfileImgModal.vue";
 
 export default {
   name: "MyPage",
@@ -156,17 +167,28 @@ export default {
     return {
       isLoggedIn: false,
       AccessToken: "",
+      profileModalStatus: false,
     };
   },
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
   },
+  components: {
+    UpdateProfileImgModal,
+  },
   methods: {
     // 해당 화면 Background 이미지 설정
     bgImage() {
       var newImage = "type1";
       this.$emit("bgImage", newImage);
+    },
+    openModal() {
+      this.profileModalStatus = true;
+    },
+
+    closeModal() {
+      this.profileModalStatus = false;
     },
   },
   setup() {
