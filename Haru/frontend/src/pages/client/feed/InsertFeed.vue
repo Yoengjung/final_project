@@ -75,15 +75,15 @@
           <div class="hashtag-area-two">
             <div
               class="write-down-hash-area"
-              v-for="(whIdx, wHash) in writeHashtag"
+              v-for="(wHash, whIdx) in writeHashtag"
               :key="whIdx"
             >
               <span class="hash-icon">#</span>
               <input
                 type="text"
                 class="hashtag writeHash"
-                placeholder="직접 입력하기"
-                :key="wHash"
+                placeholder="직접 입력"
+                :value="wHash"
                 :ref="'writeHashtagInput' + whIdx"
               />
             </div>
@@ -123,8 +123,6 @@ export default {
   name: "InsertFeed",
   data() {
     return {
-      isLoggedIn: false,
-      AccessToken: "",
       uid: "abc",
       hashtag: [
         "고기",
@@ -221,22 +219,11 @@ export default {
   },
   created() {
     this.bgImage();
-    this.getToken();
   },
   methods: {
     bgImage() {
       var newImage = "type4";
       this.$emit("bgImage", newImage);
-    },
-    getToken() {
-      this.AccessToken = localStorage.getItem("jwtToken");
-      console.log(this.AccessToken);
-      if (this.AccessToken != null) {
-        this.isLoggedIn = true;
-      } else {
-        this.isLoggedIn = false;
-        this.$router.push("/login");
-      }
     },
     toggleActive(index) {
       const indexOfTag = this.activeTags.indexOf(index);
@@ -255,7 +242,20 @@ export default {
       };
     },
     // 해시태그 직접 입력
-    addHashTag() {},
+    addHashTag() {
+      // 기존에 입력 값 배열에 넣기
+      for (var i = 0; i < this.writeHashtag.length; i++) {
+        var refName = "writeHashtagInput" + i;
+        this.writeHashtag[i] = this.$refs[refName][0].value;
+      }
+
+      // 배열의 길이가 5개 이하면 입력하는 항목란 추가
+      if (this.writeHashtag.length < 5) {
+        this.writeHashtag.length = this.writeHashtag.length + 1;
+      } else {
+        alert("5개까지만 입력 가능");
+      }
+    },
 
     openModal() {
       this.modal_Check = true;

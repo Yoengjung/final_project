@@ -47,15 +47,16 @@
               <img class="cursor-p" src="@/img/Feed/heart.png" id="heart" />
             </div>
 
-            <!-- 체크박스 -> 추천리스트 선택 -->
+            <!-- 라디오 버튼 -> 추천리스트 선택 -->
             <div
               class="rlist-checkbox"
               :class="{ recBtnDisplayNone: isBtnHeartNone === false }"
             >
               <input
-                type="checkbox"
+                type="radio"
                 class="recCheckbox"
                 :id="'recCheckbox' + idx + '-' + i"
+                name="recRadio"
               />
               <label :for="'recCheckbox' + idx + '-' + i"></label>
             </div>
