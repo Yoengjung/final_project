@@ -22,6 +22,10 @@ public class Answer {
     private Long answerNum;
 
     @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    private Member userId;
+
+    @OneToOne
     @JoinColumn(name = "qnaNum", referencedColumnName = "qnaNum")
     private QnA qnaNum;
 

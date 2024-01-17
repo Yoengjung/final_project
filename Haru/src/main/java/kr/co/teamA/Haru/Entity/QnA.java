@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 
 
 @Data
@@ -25,7 +26,7 @@ public class QnA {
 
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId")
-    private Member member;
+    private Member userId;
 
     @Column(length = 100, nullable = false)
     private String qnaCategory;
@@ -41,5 +42,6 @@ public class QnA {
 
     @Column(nullable = false)
     private Date qnaCdate;
+
 
 }
