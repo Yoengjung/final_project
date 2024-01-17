@@ -4,42 +4,39 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import jakarta.servlet.http.HttpServletRequest;
-import kr.co.teamA.Haru.DTO.MemberDTO;
+import kr.co.teamA.Haru.Entity.Member;
 import kr.co.teamA.Haru.Repository.MemberRepository;
-import kr.co.teamA.Haru.security.User;
-import kr.co.teamA.Haru.security.repo.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Component
 @Slf4j
 public class JwtTokenProvider {
     Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
-    private UserRepository userRepository;
-
-    User user = new User();
 
     //인증된 사용자에 대한 JWT를 생성을 하고
-    public String createToken(Authentication authentication, User user) {
-        User userDetails = (User) authentication.getPrincipal();
+    public String createToken(Authentication authentication) {
+        System.out.println("createToken--------------------------");
+        Member userDetails = (Member) authentication.getPrincipal();
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + 3600000);
 
         Map<String, Object> claims = new HashMap<>();
         System.out.println("userDetails.getUsername() =>"+userDetails.getUserId());
-        System.out.println("userDetails.getAuthorities() =>"+ user.getUserId());
+        System.out.println("userDetails.getAuthorities() =>"+ userDetails.getUserId());
         claims.put("username", userDetails.getName());
         claims.put("id", userDetails.getUserId());
         claims.put("nickname", userDetails.getNickname());
+
+        System.out.println("key =>"+key);
 
         return Jwts.builder()
                 .setClaims(claims)
@@ -51,7 +48,7 @@ public class JwtTokenProvider {
 
 
     public String resolveToken(HttpServletRequest request) {
-        System.out.println("resolveToken");
+        System.out.println("resolveToken--------------------------");
         System.out.println("request.getHeader(\"Authorization\") =>"+request.getHeader("Authorization"));
         String bearerToken = request.getHeader("Authorization");
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
@@ -62,7 +59,6 @@ public class JwtTokenProvider {
 
 
     public boolean validateToken(String token) {
-
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
@@ -81,14 +77,15 @@ public class JwtTokenProvider {
         return false;
     }
 
-    public String getUsername(String token) {
+    public String getUserId(String token) {
+        System.out.println("getUserId : " + token);
 
-        return Jwts.parserBuilder()
+        Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
+                .getBody();
+        return claims.get("id").toString();
     }
 }
 

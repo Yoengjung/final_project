@@ -11,23 +11,24 @@
           v-for="(item, idx) in myFaboritePlace"
           :key="idx"
         >
-          <div class="'food-img">
+          {{ item }}
+          <!-- <div class="'food-img">
             <img class="heart-img" src="@/img/Total_stress/img/image 47.png" />
-            <img :src="item.image" alt="" class="place-card" />
+            <img :src="item.place_img" alt="" class="place-card" />
           </div>
           <div class="food-desc">
             <div class="food-desc-box">
               <div class="food-title">
-                <h4>{{ item.stname }}</h4>
+                <h4>{{ item }}</h4>
               </div>
               <div class="hash-tag">
-                <span class="review-score">★ {{ item.score }}</span>
+                <span class="review-score">★ {{ item.place_score }}</span>
               </div>
               <div class="food-detail">
-                <span class="food-address">주소: {{ item.address }}</span>
+                <span class="food-address">주소: {{ item.place_address }}</span>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -35,96 +36,84 @@
 </template>
 
 <script>
+import axios from "axios";
+import { ref, onMounted } from "vue";
+import { jwtDecode } from "jwt-decode";
+
 export default {
   data() {
     return {
       isLoggedIn: false,
       AccessToken: "",
-      myFaboritePlace: [
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: 4.32,
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: "별점 없음",
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: 4.32,
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: "별점 없음",
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: 4.32,
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: 4.32,
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: 4.32,
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: 4.32,
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-        {
-          image: require("@/img/Total_stress/food/buger.jpg"),
-          stname: "버거킹",
-          score: 4.32,
-          address:
-            "주소: 부산광역시 강서구 녹산산단382로14번가길 10~29번지(송정동)",
-        },
-      ],
     };
   },
   created() {
     this.bgImage();
-    this.getToken();
   },
+  setup() {
+    const isLoggedIn = ref(false);
+    const data = ref([]);
+    const myFaboritePlace = ref({});
+
+    const getToken = () => {
+      const token = localStorage.getItem("jwtToken");
+      isLoggedIn.value = token ? true : false;
+    };
+
+    const logout = () => {
+      axios
+        .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
+        .then((res) => {
+          if (res.data == "Logout") {
+            localStorage.removeItem("jwtToken");
+            window.location.href = "/login";
+          }
+        });
+    };
+
+    const decodeToken = (token) => {
+      if (token == null) return false;
+      const decoded = jwtDecode(token);
+      data.value = decoded; // Use data.value to set the value of the ref
+      return decoded;
+    };
+
+    onMounted(() => {
+      getToken();
+      const token = localStorage.getItem("jwtToken");
+      decodeToken(token);
+      getData();
+    });
+    const getData = () => {
+      const token = localStorage.getItem("jwtToken");
+      axios
+        .post(
+          `http://${process.env.VUE_APP_BACK_END_URL}/wishList/getMyFavoritePlace`,
+          data.value,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          // 요청 성공 시 처리 로직
+          myFaboritePlace.value = res.data.place;
+        })
+        .catch((error) => {
+          // 요청 실패 시 처리 로직
+          console.error(error);
+        });
+    };
+
+    return { logout, data, getData, myFaboritePlace }; // Return data in the setup function
+  },
+
   methods: {
     bgImage() {
       var newImage = "type5";
       this.$emit("bgImage", newImage);
-    },
-    getToken() {
-      this.AccessToken = localStorage.getItem("jwtToken");
-      console.log(this.AccessToken);
-      if (this.AccessToken != null) {
-        this.isLoggedIn = true;
-      } else {
-        this.isLoggedIn = false;
-        this.$router.push("/login");
-      }
     },
   },
 };

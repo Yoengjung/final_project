@@ -22,10 +22,9 @@ public class MemberService{
         this.memberRepository = memberRepository;
     }
 
-//    public int checkDuplicateUserId(String userId) {
-//        Optional checkUserId = memberRepository.findUserIdById(userId);
-//        return checkUserId != null ? 1 : 0;
-//    }
+    public MemberDTO getMemberByUserId(String userId) {
+        return memberRepository.findMemberByUserId(userId);
+    }
 
     public Member create(MemberDTO dto) {
         LocalDateTime now = LocalDateTime.now();

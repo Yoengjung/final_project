@@ -292,6 +292,7 @@ export default {
       this.$emit("bgImage", newImage);
     },
     selectActivity(index) {
+      this.printSelect();
       const selectedIndex = this.selectedActivity.indexOf(index);
       if (selectedIndex > -1) {
         this.selectedActivity.splice(selectedIndex, 1);
@@ -346,6 +347,9 @@ export default {
       } else {
         this.selectedShopping.push(index);
       }
+    },
+    printSelect() {
+      console.log(this.selectedActivity);
     },
   },
 };

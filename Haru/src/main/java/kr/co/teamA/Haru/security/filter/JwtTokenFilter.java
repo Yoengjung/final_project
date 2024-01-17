@@ -29,16 +29,20 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
 
         String token = jwtTokenProvider.resolveToken(request);
-        System.out.println("token =>"+token);
+        System.out.println("token doFilterInternal =>"+token);
         if (token != null && jwtTokenProvider.validateToken(token)) {
+            System.out.println("test ----------------------");
+
             UserDetails userDetails = userDetailsService.loadUserByUsername(
-                    jwtTokenProvider.getUsername(token));
+                    jwtTokenProvider.getUserId(token));
+            System.out.println("userDetails => "+userDetails);
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                     userDetails, null, userDetails.getAuthorities());
+            System.out.println("authentication => "+authentication);
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
-
+        System.out.println("test _______________");
         filterChain.doFilter(request, response);
     }
 }
