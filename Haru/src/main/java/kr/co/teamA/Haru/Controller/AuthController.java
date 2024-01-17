@@ -6,9 +6,12 @@ import kr.co.teamA.Haru.security.dto.AuthenticationResponse;
 import kr.co.teamA.Haru.security.filter.JwtTokenProvider;
 import kr.co.teamA.Haru.DTO.EmailCheckDTO;
 import kr.co.teamA.Haru.DTO.MemberDTO;
+import kr.co.teamA.Haru.Entity.QnA;
 import kr.co.teamA.Haru.Repository.MemberRepository;
 import kr.co.teamA.Haru.Service.member.EmailSenderService;
 import kr.co.teamA.Haru.Service.member.MemberService;
+import kr.co.teamA.Haru.Service.qna.QnAService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -116,9 +119,9 @@ public class AuthController {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getId(),
-                            authenticationRequest.getPwd())
-            );
-//            System.out.println("jwtTokenProvider =>"+jwtTokenProvider.createToken(authentication));
+                            authenticationRequest.getPwd()));
+            // System.out.println("jwtTokenProvider
+            // =>"+jwtTokenProvider.createToken(authentication));
 
             // 인증 성공 시, SecurityContextHolder에 인증 정보를 설정한다.
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -128,16 +131,13 @@ public class AuthController {
             User user = new User();
             user.setUserId(authenticationRequest.getId());
             String jwt = jwtTokenProvider.createToken(authentication, user);
-            System.out.print("jwt =>"+jwt);
+            System.out.print("jwt =>" + jwt);
             return ResponseEntity.ok(new AuthenticationResponse(jwt));
-        } catch
-        (Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.ok(0);
         }
 
     }
-
-
 
     @GetMapping("/logout")
     public ResponseEntity<?> logoutUser() {
@@ -146,7 +146,6 @@ public class AuthController {
         SecurityContextHolder.clearContext();
         return ResponseEntity.ok("Logout");
     }
-
 
     private String getExtension(String fileName) {
         return fileName.substring(fileName.lastIndexOf("."));

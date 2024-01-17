@@ -34,10 +34,11 @@
             }"
           >
             <!-- category 가 공지사항인게 먼저 정렬된 데이터 받아야됨 -->
-            <td class="qna-tr">{{ item.no }}</td>
-            <td class="qna-tr">{{ item.category }}</td>
+            <td class="qna-tr">{{ item.qnanum }}</td>
+            <td class="qna-tr">{{ item.qna_category
+ }}</td>
             <td>
-              <a href="/DetailQnA">{{ item.title }}</a
+              <a href="/DetailQnA">{{ item.qna_title }}</a
               ><span
                 class="qna-badge"
                 :class="{
@@ -47,8 +48,8 @@
                 >{{ item.progress }}</span
               >
             </td>
-            <td class="qna-tr">{{ item.writer }}</td>
-            <td class="qna-tr">{{ item.date }}</td>
+            <td class="qna-tr">{{ item.user_id.name }}</td>
+            <td class="qna-tr">{{ item.qna_cdate }}</td>
           </tr>
         </tbody>
       </table>
@@ -110,139 +111,14 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
       currentPage: 1,
       pageSize: 10,
-
-      AllQna: [
-        {
-          no: 4,
-          category: "공지사항",
-          title: "배송 문의 드립니다",
-          writer: "관리자",
-          date: "2020-11-12",
-        },
-        {
-          no: 3,
-          category: "공지사항",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          writer: "관리자",
-          date: "2017-11-22",
-        },
-        {
-          no: 2,
-          category: "공지사항",
-          title: "배송 문의 드립니다",
-          writer: "관리자",
-          date: "2020-11-12",
-        },
-        {
-          no: 1,
-          category: "공지사항",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          writer: "관리자",
-          date: "2017-11-22",
-        },
-        {
-          no: 16,
-          category: "이용문의",
-          title: "배송 문의 드립니다",
-          writer: "고구마",
-          progress: "미답변",
-          date: "2020-11-12",
-        },
-        {
-          no: 15,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          writer: "고구마",
-          progress: "미답변",
-          date: "2017-11-22",
-        },
-        {
-          no: 14,
-          category: "이용문의",
-          title: "배송 문의 드립니다",
-          writer: "고구마",
-          progress: "미답변",
-          date: "2020-11-12",
-        },
-        {
-          no: 13,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          writer: "고구마",
-          progress: "미답변",
-          date: "2017-11-22",
-        },
-        {
-          no: 12,
-          category: "이용문의",
-          title: "배송 문의 드립니다",
-          writer: "고구마",
-          progress: "완료",
-          date: "2020-11-12",
-        },
-        {
-          no: 11,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          writer: "고구마",
-          progress: "완료",
-          date: "2017-11-22",
-        },
-        {
-          no: 10,
-          category: "이용문의",
-          title: "배송 문의 드립니다",
-          writer: "고구마",
-          progress: "완료",
-          date: "2020-11-12",
-        },
-        {
-          no: 9,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          writer: "고구마",
-          progress: "완료",
-          date: "2017-11-22",
-        },
-        {
-          no: 8,
-          category: "이용문의",
-          title: "배송 문의 드립니다",
-          writer: "고구마",
-          progress: "완료",
-          date: "2020-11-12",
-        },
-        {
-          no: 7,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          writer: "고구마",
-          progress: "완료",
-          date: "2017-11-22",
-        },
-        {
-          no: 6,
-          category: "이용문의",
-          title: "배송 문의 드립니다",
-          writer: "고구마",
-          progress: "완료",
-          date: "2020-11-12",
-        },
-        {
-          no: 5,
-          category: "이용문의",
-          title: "부적절한 블라블라 내용 삭제 요청",
-          writer: "고구마",
-          progress: "완료",
-          date: "2017-11-22",
-        },
-        // ... more items
-      ],
+      AllQna: [],
     };
   },
   computed: {
@@ -257,6 +133,7 @@ export default {
   },
   created() {
     this.$emit("bgImage", "type3");
+    this.getData();
   },
   methods: {
     toggle(index) {
@@ -267,8 +144,7 @@ export default {
       if (page >= 1 && page <= this.pageCount) {
         this.currentPage = page; // 현재 페이지 상태를 업데이트
 
-        // 부모 컴포넌트에 'update:currentPage' 이벤트를 방출하여
-        // v-model이나 .sync modifier를 사용하여 바인딩된 값을 업데이트
+        
         this.$emit("update:currentPage", page);
       }
     },
@@ -291,6 +167,13 @@ export default {
       console.log("글쓰기 페이지로 이동");
       this.$router.push({ name: "WriteQnA" });
     },
+    getData() {
+      axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/testQuestionList`).then((res) => {
+        this.AllQna = res.data
+       console.log(this.AllQna)
+      }
+      )
+    }
   },
 };
 </script>

@@ -8,13 +8,15 @@
             <label for="qna-title">카테고리 선택</label>
           </div>
 
+
           <!-- 카테고리 선택 -->
-          <select class="input-select" v-model="selectCategory">
+          <select class="input-select" v-model="selectCategory" id="input-select">
             <option value="usage">이용문의</option>
             <!-- [공지사항은 관리자만 입력할 수 있도록] => v-if="mid.slide(5) === 'admin'" -->
             <option value="notice">공지사항</option>
           </select>
         </div>
+
 
         <!-- 제목 -->
         <div class="info-input-container">
@@ -46,28 +48,62 @@
           ></textarea>
         </div>
 
+   <!-- 작성자 -->
+        <input
+          type="hidden"
+          name="qna-author"
+          id="qna-author"
+          :value="authorId"
+        />
+
         <div class="qna-btn-group">
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
             취소
           </button>
-          <button class="big-ctlbtn insert-btn" type="submit">등록</button>
+          <button class="big-ctlbtn insert-btn" type="button" @click="submitQnA">등록</button>
         </div>
       </form>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "WriteQnA",
   data() {
     return {
-      selectCategory: "usage", // default - 이용문의
+      selectCategory: "usage", // 기본값 - 이용문의
+      qnaData: {
+        qnaCategory: "usage",
+        qnaTitle: "",
+        qnaContent: "",
+        
+      },
+      formData: new FormData
     };
   },
   methods: {
     cancel() {
-      // this.$router.push("/QnA");
       this.$router.go(-1); // 뒤로가기
+    },
+    submitQnA() {
+      this.formData.append("qnaTitle", document.getElementById("qna-title").value)
+      this.formData.append("qnaCategory", document.getElementById("input-select").value)
+      this.formData.append("qnaContent", document.getElementById("qna-content").value)
+      
+      console.log(this.qnaData);
+      // 서버로 데이터 전송
+      axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/QuestionAdd`, this.formData)
+        .then((res) => {
+          this.qnaData = res.data;
+          console.log(this.qnaData);
+
+          // 등록이 완료되면 뒤로 가기
+          
+        })
+        .catch(error => {
+          console.error('Q&A 등록 중 오류 발생:', error);
+        });
     },
   },
   created() {
@@ -75,6 +111,8 @@ export default {
   },
 };
 </script>
+
+
 <style scoped>
 @import url("@/css/client/qna/qnaForm.css");
 </style>

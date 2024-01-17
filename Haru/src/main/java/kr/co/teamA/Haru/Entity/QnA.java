@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
-
 @Data
 @Entity
 @NoArgsConstructor
@@ -22,10 +21,9 @@ public class QnA {
     @SequenceGenerator(name = "QNA_SEQ", sequenceName = "QNA_SEQ", allocationSize = 1)
     private Long QNANUM;
 
-
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId")
-    private Member member;
+    private Member userId;
 
     @Column(length = 100, nullable = false)
     private String qnaCategory;
@@ -36,9 +34,8 @@ public class QnA {
     @Column(length = 500, nullable = false)
     private String qnaContent;
 
-    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(nullable = false, columnDefinition = "VARCHAR2(255) default '0'")
     private String qnaState;
-
     @Column(nullable = false)
     private Date qnaCdate;
 
