@@ -1,6 +1,6 @@
 package kr.co.teamA.Haru.Service.myPlace;
 
-import kr.co.teamA.Haru.Entity.PlaceRecommendList;
+import kr.co.teamA.Haru.DTO.ShowMyRecommendPlaceDTO;
 import kr.co.teamA.Haru.Repository.PlaceRecommendListRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +14,9 @@ import java.util.List;
 public class PlaceRecommendListService {
 
     @Autowired
-    private final PlaceRecommendListRepository placeRecommendList;
+    private PlaceRecommendListRepository placeRecommendList;
 
-    public List<PlaceRecommendList> getRecommendList(String userId, Date startDate, Date endDate) {
-        return placeRecommendList.findByUserIdAndPlaceCdateBetween(userId, startDate, endDate);
+    public List<ShowMyRecommendPlaceDTO> getRecommendList(String userId, Date startDate, Date endDate) {
+        return placeRecommendList.findAllTwo(userId, startDate, endDate);
     }
-
-//    public WishList<WishListDTO> getWishListData(String userId) {
-//        return wishListRepository.findByUserId(userId);
-//    }
 }

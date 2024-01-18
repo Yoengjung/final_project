@@ -182,13 +182,24 @@ export default {
     return { logout, data }; // Return data in the setup function
   },
   methods: {
-    getMyRecPlace(sdate) {
-      // console.log(sdate)
-      var startMonth = moment([sdate[0], sdate[1], 1]).format("YYYY-MM-DD");
-      var endMonth = moment([sdate[0], sdate[1]+1, 1]).format("YYYY-MM-DD");
-      console.log(`${startMonth}, ${endMonth}`);
+    // 추천리스트, 추천받은 날짜, 일기 ... 가져오기----------------------------------------------------------------
+    getMyRecPlace() {
+      var startSdate = moment([this.myDate[0], this.myDate[1], 1]).format("YYYY-MM-DD");
+      var endSdate = moment([this.myDate[0], this.myDate[1]+1, 1]).format("YYYY-MM-DD");
+      // console.log(`${startSdate}, ${endSdate}`);
 
-
+      axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/getRecommendPlace`, {
+        params: {
+          userId: this.data.id,
+          startDate: startSdate,
+          endDate: endSdate
+        }
+      })
+          .then(res => {
+            this.RecommendList = res.data;
+            // console.log(this.RecommendList);
+          })
+          .catch(error => {console.error('error! ' + error)});
     },
 
     // 달력 만들기----------------------------------
@@ -233,6 +244,7 @@ export default {
       }
       this.calendarHeader = `${this.myDate[0]}년 ${this.myDate[1] + 1} 월`;
       this.addLastWeekEmptyDays();
+      this.getMyRecPlace(); // 달력에 event 작은 점 표시 -> 데이터가 있으면 표시
     },
 
     // 막주 날짜 채우기----------------------------------
@@ -334,7 +346,10 @@ export default {
 
     // 받아온 추천 리스트에 rDate를 화면에 점으로 표시하기----------------------------------
     isInRecList(day) {
-      const rdates = this.RecommendList.map((item) => item.rdate);
+      const rdates = this.RecommendList.map(item => {
+        // console.log('cdate!! : ' + moment(item.place_cdate).format("YYYY-MM-DD"));
+        return moment(item.place_cdate).format("YYYY-MM-DD");
+      });
       var indexDay = moment([this.myDate[0], this.myDate[1], day]).format(
         "YYYY-MM-DD"
       );
