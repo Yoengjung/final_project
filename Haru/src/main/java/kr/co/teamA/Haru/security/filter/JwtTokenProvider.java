@@ -50,9 +50,9 @@ public class JwtTokenProvider {
     }
 
 
-    public String resolveToken(HttpServletRequest request) {
-        System.out.println("resolveToken");
-        System.out.println("request.getHeader(\"Authorization\") =>"+request.getHeader("Authorization"));
+    public String   resolveToken(HttpServletRequest request) {
+        //System.out.println("resolveToken");
+        //System.out.println("request.getHeader(\"Authorization\") =>"+request.getHeader("Authorization"));
         String bearerToken = request.getHeader("Authorization");
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);

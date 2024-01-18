@@ -49,6 +49,13 @@ public class AuthController {
 
     private User user;
 
+
+    @GetMapping("/indexv")
+    public String defindex(){
+        System.out.println("Test Index");
+        return "index.html";
+    }
+
     @GetMapping("/{userId}/userIdCheck")
     public ResponseEntity<?> duplicationUserIdCheck(@PathVariable String userId) {
         Optional dto = memberRepository.findUserIdById(userId);
@@ -150,5 +157,10 @@ public class AuthController {
 
     private String getExtension(String fileName) {
         return fileName.substring(fileName.lastIndexOf("."));
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<?> test() {
+        return ResponseEntity.ok("접근이 됨을 확인합니다.");
     }
 }
