@@ -86,7 +86,7 @@ public class QnAController {
         // System.out.println(qnAId);
         // return "hello";
         QnA oq = qnAService.getQnAById(qnAId);
-        System.out.println(oq.isPresent());
+        // system.out.println(oq.isPresent());
         QnA q = oq.get();
         Answer ans = new Answer();
         ans.setAnswerContent();

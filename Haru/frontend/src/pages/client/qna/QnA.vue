@@ -2,17 +2,16 @@
   <div class="container1">
     <div class="qna-container">
       <div class="faq-container">
-        <h2 class="faq-title">Q&A 페이지</h2>
+        <h2 class="faq-title">FAQ</h2>
       </div>
       <div class="nav-bar">
         <!-- exact-active-class : Vue Router에서 사용되는 속성 -->
         <!-- router-link가 현재 활성화된(exact match) 상태일 때 적용할 클래스를 지정하는 데 사용 -->
         <router-link to="/QnA" class="nav-item" exact-active-class="active"
-          >Q&A</router-link
-        >
-        <router-link to="/myQnA" class="nav-item" exact-active-class="active"
+          >자주 묻는 질문</router-link>
+        <!-- <router-link to="/myQnA" class="nav-item" exact-active-class="active"
           >나의 질문 사항</router-link
-        >
+        > -->
         <!-- ... 기타 링크 ... -->
       </div>
       <table class="qna-table">
@@ -34,7 +33,7 @@
             }"
           >
             <!-- category 가 공지사항인게 먼저 정렬된 데이터 받아야됨 -->
-            <td class="qna-tr">{{ item.qnanum }}</td>
+            <td class="qna-tr" >{{ item.qnanum }}</td>
             <td class="qna-tr">{{ item.qna_category
  }}</td>
             <td>
