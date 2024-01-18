@@ -50,6 +50,7 @@
           <div
             class="tab-btn-left cursor-p"
             :class="{ 'tab-btn-active': isTabRecList === true }"
+            @click="changeTab('recommend')"
           >
             추천 리스트
           </div>
@@ -86,6 +87,9 @@
 import RecommendList from "@/components/client/myPlace/RecommendList.vue";
 import MyDiaryList from "@/components/client/myPlace/MyDiaryList.vue";
 import moment from "moment";
+import {onMounted, ref} from "vue";
+import axios from "axios";
+import {jwtDecode} from "jwt-decode";
 
 export default {
   data() {
@@ -96,89 +100,9 @@ export default {
     return {
       // 달력 외 관련
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
-      // rDate: "2024-01-05",
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
       isTabRecList: true, // 추천 리스트 탭 활성화
-      RecommendList: [
-        // 추천 받았던 리스트 (날짜별)
-        {
-          rdate: "2024-01-15",
-          recList: [
-            {
-              storeName: "신논현역 딸부자네 불백",
-              stAddress: "서울시 강남구 꼬마빌딩 1층",
-              img: require("@/img/Feed/bul.png"),
-              link: "#",
-              hashtag: ["푸드", "맛집", "고기", "돼지고기", "갈매기살"],
-              heartOnOff: "on",
-            },
-            {
-              storeName: "신논현역 버거킹",
-              stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("@/img/Feed/bul.png"),
-              link: "#",
-              hashtag: ["패스트푸드", "맛집", "와퍼"],
-              heartOnOff: "off",
-            },
-            {
-              storeName: "신논현역 버거킹",
-              stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("@/img/Feed/bul.png"),
-              link: "#",
-              hashtag: ["패스트푸드", "맛집", "와퍼"],
-              heartOnOff: "off",
-            },
-          ],
-        },
-        {
-          rdate: "2024-01-10",
-          recList: [
-            {
-              storeName: "신논현역 와플대학",
-              stAddress: "서울시 강남구 꼬마빌딩 3층",
-              img: require("@/img/Feed/bul.png"),
-              link: "#",
-              hashtag: [
-                "카페",
-                "맛집",
-                "와플",
-                "애플시나몬",
-                "레몬에이드",
-                "레몬에이드",
-                "레몬에이드",
-              ],
-              heartOnOff: "on",
-            },
-            {
-              storeName: "신논현역 딸부자네 불백",
-              stAddress: "서울시 강남구 꼬마빌딩 1층",
-              img: require("@/img/Feed/bul.png"),
-              link: "#",
-              hashtag: [
-                "푸드",
-                "맛집",
-                "고기",
-                "돼지고기",
-                "갈매기살",
-                "갈매기살",
-              ],
-              heartOnOff: "on",
-            },
-          ],
-        },
-        {
-          rdate: "2024-01-07",
-          recList: [
-            {
-              storeName: "신논현역 버거킹",
-              stAddress: "서울시 강남구 꼬마빌딩 2층",
-              img: require("@/img/Feed/bul.png"),
-              hashtag: ["패스트푸드", "맛집", "와퍼"],
-              heartOnOff: "off",
-            },
-          ],
-        },
-      ],
+      RecommendList: [],
       // 일기 리스트
       diaryList: {
         rdate: "2024년 01월 10일(수)",
@@ -214,13 +138,59 @@ export default {
   },
   mounted() {
     this.calendarImplementation();
+    this.getMyRecPlace(this.sDate);
   },
   created() {
     // 페이지가 로드될 때 초기 이미지 설정
     this.bgImage();
     this.getToken();
   },
+  setup() {
+    const isLoggedIn = ref(false);
+    const data = ref([]);
+
+    const getToken = () => {
+      const token = localStorage.getItem("jwtToken");
+      isLoggedIn.value = token ? true : false;
+    };
+
+    const logout = () => {
+      axios
+          .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
+          .then((res) => {
+            if (res.data == "Logout") {
+              localStorage.removeItem("jwtToken");
+              window.location.href = "/login";
+            }
+          });
+    };
+
+    const decodeToken = (token) => {
+      if (token == null) return false;
+      const decoded = jwtDecode(token);
+      data.value = decoded; // Use data.value to set the value of the ref
+      return decoded;
+    };
+
+    onMounted(() => {
+      getToken();
+      const token = localStorage.getItem("jwtToken");
+      decodeToken(token);
+    });
+
+
+    return { logout, data }; // Return data in the setup function
+  },
   methods: {
+    getMyRecPlace(sdate) {
+      // console.log(sdate)
+      var startMonth = moment([sdate[0], sdate[1], 1]).format("YYYY-MM-DD");
+      var endMonth = moment([sdate[0], sdate[1]+1, 1]).format("YYYY-MM-DD");
+      console.log(`${startMonth}, ${endMonth}`);
+
+
+    },
+
     // 달력 만들기----------------------------------
     calendarImplementation: function () {
       this.days = [];
