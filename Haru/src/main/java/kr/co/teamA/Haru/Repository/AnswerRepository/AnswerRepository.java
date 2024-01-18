@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
-    // 특정 QnA에 대한 모든 답변 가져오기
-    List<Answer> findByQnaNum(QnA qna);
-
     // 특정 사용자의 모든 답변 가져오기
     List<Answer> findByUserId(Member userId);
 
@@ -22,6 +19,6 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
     // 답변 내용에 특정 키워드가 포함된 답변 가져오기
     List<Answer> findByAnswerContentContaining(String contentKeyword);
 
-    List<Answer> findByQnANum_QnaNum(Long qnaNum);
+    List<Answer> findByQnaNum_QNANUM(Long qnaNum);
 
 }

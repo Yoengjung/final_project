@@ -66,6 +66,20 @@
           ></textarea>
         </div>
 
+         <!-- 답변을 달 수 있는 곳 (관리자만) -->
+        <div class="info-input-container" v-if="isAdminUser()">
+          <div class="qna-label-area">
+            <label for="qna-answer">관리자 전용 답변</label>
+          </div>
+          <textarea
+            class="input-text"
+            id="qna-answer"
+            cols="88"
+            rows="10"
+            v-model="adminanswer.qna_answer"
+          ></textarea>
+        </div>
+
         <div class="qna-btn-group">
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
             목록으로
@@ -86,7 +100,7 @@
           >
             수정
           </button>
-          <button class="big-ctlbtn delete-btn" type="button">삭제</button>
+           <button class="big-ctlbtn delete-btn" type="button" @click="deleteQnA">삭제</button>
         </div>
       </form>
     </div>
@@ -94,11 +108,12 @@
 </template>
 <script>
 import axios from "axios";
-
+import { jwtDecode } from "jwt-decode";
 export default {
   name: "DetailQnA",
   data() {
     return {
+      
       myQnA: {
         qna_category: "",
         qna_title: "",
@@ -147,11 +162,35 @@ export default {
     },
     isAdminUser() {
       // qna_category가 'admin'인 경우에만 답변 달기 버튼을 표시
-      return this.myQnA.qna_category === 'admin'; 
+       const token = localStorage.getItem("jwtToken");
+
+        if (token) {
+        const decodedToken = jwtDecode(token);
+        const username = decodedToken.id;
+        
+      return username === "admin";
+      }
     },
-    answerQnA() {
-      // 답변 달기 로직 추가
-    },
+   async answerQnA() {
+  const qnAId = this.$route.params.qnAId;
+  const qna_answer = this.adminanswer.qna_answer;
+  console.log(qna_answer);
+  // 서버에 답변 저장 API 호출
+  axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/answerQnA/${qnAId}`, {
+     qna_answer: qna_answer 
+  })
+  .then(res => {
+    // 서버 응답 출력
+    console.log("서버 응답:", res);
+
+    // 답변이 성공적으로 저장되면 화면을 갱신하거나 다른 동작을 수행할 수 있습니다.
+    // 이 예제에서는 데이터를 다시 불러오도록 fetchData 메서드를 호출합니다.
+    this.fetchData();
+  })
+  .catch(error => {
+    console.error("답변 저dgd장 실패", error);
+  });
+},
     async fetchAnswerContent(qnAId) {
   try {
     const response = await axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/testQuestionList/${qnAId}`);
@@ -161,7 +200,25 @@ export default {
   } catch (error) {
     console.error("Error fetching answer content", error);
   }
-}
+},
+  async deleteQnA() {
+      try {
+        const qnAId = this.$route.params.qnAId;
+
+        // QnA 삭제 API 호출
+        await axios.delete(`http://${process.env.VUE_APP_BACK_END_URL}/deleteQnA/${qnAId}`);
+
+        console.log("Q&A 삭제 성공");
+
+        // 삭제 성공 시 QnA 목록 페이지로 이동
+        this.$router.push({ name: "QnA" });
+      } catch (error) {
+        console.error("Q&A 삭제 실패", error);
+      }
+    },
+
+
+
   },
   created() {
     this.$emit("bgImage", "type3");

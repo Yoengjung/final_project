@@ -30,7 +30,7 @@ public class QnAService {
     }
 
     // QnA ID로 QnA 정보 가져오기
-    public QnA getQnAById(Long id) {
+    public Optional<QnA> getQnAById(Long id) {
         System.out.println(id + "ㅎㅎ");
         return qnARepository.findById(id).orElse(null);
     }

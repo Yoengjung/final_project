@@ -146,6 +146,7 @@ const routes = [
     name: "DetailQnA",
     component: DetailQnA,
   },
+  
 ];
 
 const router = createRouter({
