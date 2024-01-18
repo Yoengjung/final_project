@@ -13,7 +13,7 @@
               class="input-text"
               type="text"
               id="qna-category"
-              :value="myQnA.category === 'usage' ? '이용문의' : '공지사항'"
+              :value="myQnA.qna_category === 'usage' ? '이용문의' : '공지사항'"
               readonly
             />
           </div>
@@ -30,7 +30,7 @@
               type="text"
               name="qna-title"
               id="qna-title"
-              :value="myQnA.title"
+              :value="myQnA.qna_title"
               readonly
             />
           </div>
@@ -46,7 +46,7 @@
             id="qna-content"
             cols="88"
             rows="10"
-            v-model="myQnA.contents"
+            v-model="myQnA.qna_content"
             readonly
           ></textarea>
         </div>
@@ -61,7 +61,7 @@
             id="qna-content"
             cols="88"
             rows="10"
-            v-model="myQnA.answer"
+            v-model="adminanswer.qna_answer"
             readonly
           ></textarea>
         </div>
@@ -69,6 +69,14 @@
         <div class="qna-btn-group">
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
             목록으로
+          </button>
+          <button
+            v-if="isAdminUser()"
+            class="big-ctlbtn answer-btn"
+            type="button"
+            @click="answerQnA"
+          >
+            답변 달기
           </button>
           <!-- 답변이 된 경우 '수정', '삭제'는 불가 -->
           <button
@@ -85,32 +93,83 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
-  name: "WriteQnA",
+  name: "DetailQnA",
   data() {
     return {
       myQnA: {
-        category: "usage",
-        title: "어떻게 스트레스 분석이 이렇게 잘맞는건가요?!?!",
-        contents: "너무 잘맞아요!",
-        answer: "많은 이용 부탁드립니다!",
+        qna_category: "",
+        qna_title: "",
+        qna_content: "",
+      },
+      adminanswer: {
+        qna_answer: "", // 답변 내용 추가
       },
     };
   },
   methods: {
+    async fetchData() {
+      try {
+        const qnAId = this.$route.params.qnAId;
+        console.log(qnAId);
+        const response = await axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/testQuestionList/${qnAId}`);
+        console.log(response.data);
+
+        // 데이터 구조가 일치하는지 확인
+        if (response.data && response.data.qna_category) {
+          this.myQnA = {
+            qna_category: response.data.qna_category,
+            qna_title: response.data.qna_title,
+            qna_content: response.data.qna_content,
+          };
+          console.log("Fetched QnA data:", this.myQnA);
+
+          // 답변 내용 가져오기
+          this.fetchAnswerContent(qnAId);
+        } else {
+          console.error("Invalid QnA data structure");
+        }
+      } catch (error) {
+        console.error("Error fetching QnA data", error);
+      }
+    },
     cancel() {
-      this.$router.go(-1); // 뒤로가기
+      this.$router.go(-1);
     },
     qnaUpdate() {
-      this.$router.push("/UpdateQnA");
+      if (this.myQnA.id) {
+        this.$router.push({ name: "UpdateQnA", params: { id: this.myQnA.id } });
+      } else {
+        console.error("Invalid QnA ID");
+      }
     },
+    isAdminUser() {
+      // qna_category가 'admin'인 경우에만 답변 달기 버튼을 표시
+      return this.myQnA.qna_category === 'admin'; 
+    },
+    answerQnA() {
+      // 답변 달기 로직 추가
+    },
+    async fetchAnswerContent(qnAId) {
+  try {
+    const response = await axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/testQuestionList/${qnAId}`);
+    // response.data에 서버에서 받아온 답변 내용이 들어있음
+    this.adminanswer.qna_answer = response.data.content; // content 속성 가져오기
+    console.log(response.data.content);
+  } catch (error) {
+    console.error("Error fetching answer content", error);
+  }
+}
   },
   created() {
     this.$emit("bgImage", "type3");
-    this.selectCategory = this.myQnA.category;
+    this.fetchData();
   },
 };
 </script>
+
 <style scoped>
 @import url("@/css/client/qna/qnaForm.css");
 .qna-btn-group > .update-btn {

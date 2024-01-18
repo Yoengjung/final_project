@@ -8,7 +8,6 @@
             <label for="qna-title">카테고리 선택</label>
           </div>
 
-
           <!-- 카테고리 선택 -->
           <select class="input-select" v-model="selectCategory" id="input-select">
             <option value="usage">이용문의</option>
@@ -16,7 +15,6 @@
             <option value="notice">공지사항</option>
           </select>
         </div>
-
 
         <!-- 제목 -->
         <div class="info-input-container">
@@ -47,14 +45,7 @@
             placeholder="Q&A 내용을 작성하세요."
           ></textarea>
         </div>
-
-   <!-- 작성자 -->
-        <input
-          type="hidden"
-          name="qna-author"
-          id="qna-author"
-          :value="authorId"
-        />
+          <input type="hidden" v-model="qnaData.userNickname" />
 
         <div class="qna-btn-group">
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
@@ -66,8 +57,12 @@
     </div>
   </div>
 </template>
+
 <script>
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+
+
 export default {
   name: "WriteQnA",
   data() {
@@ -77,9 +72,8 @@ export default {
         qnaCategory: "usage",
         qnaTitle: "",
         qnaContent: "",
-        
+         userNickname: "",
       },
-      formData: new FormData
     };
   },
   methods: {
@@ -87,21 +81,32 @@ export default {
       this.$router.go(-1); // 뒤로가기
     },
     submitQnA() {
-      this.formData.append("qnaTitle", document.getElementById("qna-title").value)
-      this.formData.append("qnaCategory", document.getElementById("input-select").value)
-      this.formData.append("qnaContent", document.getElementById("qna-content").value)
-      
+      this.qnaData.qnaTitle = document.getElementById("qna-title").value;
+      this.qnaData.qnaCategory = document.getElementById("input-select").value;
+      this.qnaData.qnaContent = document.getElementById("qna-content").value;
+
+  
+       const token = localStorage.getItem("jwtToken");
+
+        if (token) {
+        const decodedToken = jwtDecode(token);
+        const userNickname = decodedToken.nickname;
+        this.qnaData.userNickname = userNickname;
+      }
       console.log(this.qnaData);
+
       // 서버로 데이터 전송
-      axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/QuestionAdd`, this.formData)
+      axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/QuestionAdd`, {
+  params: this.qnaData
+})
         .then((res) => {
           this.qnaData = res.data;
           console.log(this.qnaData);
 
           // 등록이 완료되면 뒤로 가기
-          
+           this.$router.go(-1);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Q&A 등록 중 오류 발생:', error);
         });
     },
@@ -111,7 +116,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 @import url("@/css/client/qna/qnaForm.css");

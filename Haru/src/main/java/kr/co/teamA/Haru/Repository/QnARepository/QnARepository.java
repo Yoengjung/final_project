@@ -1,7 +1,7 @@
 package kr.co.teamA.Haru.Repository.QnARepository;
 
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import kr.co.teamA.Haru.Entity.Member;
@@ -19,4 +19,6 @@ public interface QnARepository extends JpaRepository<QnA, Long> {
 
     // 특정 사용자의 특정 카테고리의 QnA 가져오기
     List<QnA> findByUserIdAndQnaCategory(Member userId, String qnaCategory);
+
+    Optional<QnA> findById(Long id);
 }

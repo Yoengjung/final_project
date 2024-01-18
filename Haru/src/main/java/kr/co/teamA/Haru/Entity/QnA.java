@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -36,7 +36,6 @@ public class QnA {
 
     @Column(nullable = false, columnDefinition = "VARCHAR2(255) default '0'")
     private String qnaState;
-    @Column(nullable = false)
-    private Date qnaCdate;
 
+    private LocalDateTime qnaCdate;
 }

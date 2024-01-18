@@ -38,8 +38,15 @@
             <td class="qna-tr">{{ item.qna_category
  }}</td>
             <td>
-              <a href="/DetailQnA">{{ item.qna_title }}</a
-              ><span
+                <router-link
+            :to="{ name: 'DetailQnA', params: { qnAId: item.qnanum } }"
+            class="nav-item"
+            exact-active-class="active"
+            @click="onTitleClick(item.qnanum)"
+          >
+            {{ item.qna_title }}
+          </router-link
+          ><span
                 class="qna-badge"
                 :class="{
                   notAnswered: item.progress === '미답변',
@@ -133,28 +140,20 @@ export default {
   },
   created() {
     this.$emit("bgImage", "type3");
-    this.getData();
+    this.fetchData(); // 수정된 부분
   },
   methods: {
-    toggle(index) {
-      this.faqs[index].open = !this.faqs[index].open;
-    },
     setCurrentPage(page) {
-      // 페이지 번호가 유효한 범위 내에 있는지 확인
       if (page >= 1 && page <= this.pageCount) {
-        this.currentPage = page; // 현재 페이지 상태를 업데이트
-
-        
+        this.currentPage = page;
         this.$emit("update:currentPage", page);
       }
     },
-    // '이전' 버튼을 클릭했을 때의 로직
     goToPreviousPage() {
       if (this.currentPage > 1) {
         this.setCurrentPage(this.currentPage - 1);
       }
     },
-    // '다음' 버튼을 클릭했을 때의 로직
     goToNextPage() {
       if (this.currentPage < this.pageCount) {
         this.setCurrentPage(this.currentPage + 1);
@@ -167,13 +166,19 @@ export default {
       console.log("글쓰기 페이지로 이동");
       this.$router.push({ name: "WriteQnA" });
     },
-    getData() {
-      axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/testQuestionList`).then((res) => {
-        this.AllQna = res.data
-       console.log(this.AllQna)
-      }
-      )
-    }
+    fetchData() {
+      axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/testQuestionList`)
+        .then((res) => {
+          this.AllQna = res.data || []; // 수정된 부분
+          console.log(this.AllQna);
+        })
+        .catch((error) => {
+          console.error("Error fetching QnA data", error);
+        });
+    },
+     onTitleClick(qnanum) {
+      console.log("클릭된 제목의 qnanum:", qnanum);
+    },
   },
 };
 </script>

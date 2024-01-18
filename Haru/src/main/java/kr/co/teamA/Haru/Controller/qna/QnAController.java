@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import kr.co.teamA.Haru.Entity.Member;
 import kr.co.teamA.Haru.Entity.QnA;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
+
 public class QnAController {
 
     // @Autowired
@@ -32,13 +35,28 @@ public class QnAController {
         return all;
     }
 
-    @PostMapping("/QuestionAdd")
-    public void addQuestion(@RequestParam("qnaCategory") String qnaCategory, @RequestParam("qnaTitle") String qnaTitle,
-            @RequestParam("qnaContent") String qnaContent) {
-        System.out.println(qnaTitle);
+    @GetMapping("/QuestionAdd")
+    public void addQuestion(@RequestParam("qnaCategory") String qnaCategory,
+            @RequestParam("qnaTitle") String qnaTitle,
+            @RequestParam("qnaContent") String qnaContent,
+            @RequestParam("userNickname") String userNickname) {
+        System.out.println("요청이 수신되었습니다:");
+        System.out.println("qnaCategory: " + qnaCategory);
+        System.out.println("qnaTitle: " + qnaTitle);
+        System.out.println("qnaContent: " + qnaContent);
+        System.out.println("userNickname: " + userNickname);
+        qnAService.createQnA(qnaCategory, qnaTitle, qnaContent, userNickname);
+    }
 
-        qnAService.createQnA(qnaCategory, qnaTitle, qnaContent);
-
+    @GetMapping("/testQuestionList/{qnAId}")
+    public ResponseEntity<QnA> viewDetail(@PathVariable Long qnAId) {
+        System.out.println("현재 페이지의 프라이머리 키는 " + qnAId);
+        QnA qnA = qnAService.getQnAById(qnAId);
+        if (qnA != null) {
+            return new ResponseEntity<>(qnA, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }

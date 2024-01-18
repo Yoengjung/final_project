@@ -1,8 +1,10 @@
 package kr.co.teamA.Haru.Service.answer;
 
 import kr.co.teamA.Haru.Entity.Answer;
+import kr.co.teamA.Haru.Entity.QnA;
 import kr.co.teamA.Haru.Repository.AnswerRepository.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,9 @@ public class AnswerService {
         return answerRepository.findAll();
     }
 
-    public Optional<Answer> getAnswerById(Long id) {
-        return answerRepository.findById(id);
+    public Answer getAnswerById(Long qnAId) {
+        Optional<Answer> optionalAnswer = answerRepository.findById(qnAId);
+        return optionalAnswer.orElse(null);
     }
 
     public void createAnswer(Answer answer) {
@@ -37,4 +40,5 @@ public class AnswerService {
     public void deleteAnswer(Long id) {
         answerRepository.deleteById(id);
     }
+
 }

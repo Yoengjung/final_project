@@ -29,11 +29,11 @@ public class Answer {
     private String answerContent;
 
     @Column(nullable = false)
-    private Date answerCdate;
+    private Date answerDate;
 
     @ManyToOne
-    @JoinColumn(name = "adminId", referencedColumnName = "adminId")
-    private ADMIN adminId;
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    private Member userId;
 
     @Column(length = 500, nullable = false)
     private String qnaContent;
