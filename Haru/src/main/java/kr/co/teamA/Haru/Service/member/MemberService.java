@@ -1,10 +1,8 @@
 package kr.co.teamA.Haru.Service.member;
 
-import kr.co.teamA.Haru.DTO.HobbyDTO;
+import kr.co.teamA.Haru.DTO.FindUserIdDTO;
 import kr.co.teamA.Haru.DTO.MemberDTO;
-import kr.co.teamA.Haru.Entity.MainCategory;
 import kr.co.teamA.Haru.Entity.Member;
-import kr.co.teamA.Haru.Entity.UserInterestCategory;
 import kr.co.teamA.Haru.Repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,6 +52,11 @@ public class MemberService {
     public int checkDuplicateNickname(String nickname) {
         Optional checkNickname = memberRepository.findNicknameByNickname(nickname);
         return checkNickname != null ? 1 : 0;
+    }
+
+    public int checkFinduserId(FindUserIdDTO dto) {
+        Optional checkFindUserId = memberRepository.findUserIdByEmailAndName(dto.getEmail(), dto.getUserName());
+        return checkFindUserId != null ? 1 : 0;
     }
 
 }

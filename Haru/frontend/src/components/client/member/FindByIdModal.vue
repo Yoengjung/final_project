@@ -45,11 +45,7 @@
                 id="email"
                 placeholder="이메일 입력"
               />
-              <button
-                class="input-in-btn"
-                id="email-ckeck"
-                @click.prevent="submit"
-              >
+              <button class="input-in-btn" id="email-ckeck" @click="findById">
                 인증
               </button>
               <div class="error-msg-area">
@@ -77,7 +73,7 @@
           </div>
 
           <div class="btn-area">
-            <button class="big-ctlbtn insert-btn" @click="findIdToggleModal">
+            <button class="big-ctlbtn insert-btn" @click="submit">
               아이디 찾기
             </button>
           </div>
@@ -87,13 +83,60 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   name: "FindByIdModal",
   data() {
-    return {};
+    return {
+      formData: new FormData(),
+    };
   },
   props: {
     modalOpen: Boolean,
+  },
+  methods: {
+    findById(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      this.formData.append("username", name);
+      this.formData.append("email", email);
+
+      axios
+        .post(
+          `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/findById`,
+          this.formData,
+          {
+            headers: {
+              "Content-Type": "application/json", // 요청의 미디어 타입
+              Accept: "application/json", // 서버에서 지원하는 미디어 타입
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data == 1) {
+            alert("이메일로 아이디를 전송하였습니다.");
+          } else {
+            alert("이메일을 다시 확인해주세요.");
+          }
+        });
+    },
+    submit() {
+      const code = document.getElementById("emailCheck").value;
+      this.formData.append("code", code);
+      axios.post(
+        `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/findById/certification`,
+        this.formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+    },
   },
 };
 </script>

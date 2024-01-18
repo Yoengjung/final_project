@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface WishListRepository extends JpaRepository<WishList, Long> {
 
-    @Query("SELECT w FROM WishList w WHERE w.member.userId = :userId")
-    List<WishListDTO> findByUserId(@Param("userId") String userId);
+    @Query("SELECT p.placeImg, p.placeLink, p.placeName, p.placeScore, p.placeAddress FROM Place p JOIN WishList w ON p.placeNum = w.place.placeNum WHERE w.member.userId = :userId")
+    List<Object[]> findPlaceAndWishListByUserId(@Param("userId") String userId);
 }

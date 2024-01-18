@@ -1,5 +1,6 @@
 package kr.co.teamA.Haru.Controller;
 
+import kr.co.teamA.Haru.DTO.FindUserIdDTO;
 import kr.co.teamA.Haru.Entity.Member;
 import kr.co.teamA.Haru.security.dto.AuthenticationRequest;
 import kr.co.teamA.Haru.security.dto.AuthenticationResponse;
@@ -90,6 +91,17 @@ public class AuthController {
         }
     }
 
+    @PostMapping("/findById/certification")
+    public ResponseEntity<?> findByIdCertification(@RequestBody EmailCheckDTO dto) {
+        boolean result = emailSenderService.isVerify(dto.getEmail(), dto.getCode());
+        if (result == true) {
+            memberRepository.findMemberByuserId(dto.getEmail());
+            return ResponseEntity.ok(1);
+        } else {
+            return ResponseEntity.ok(0);
+        }
+    }
+
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@ModelAttribute MemberDTO dto, @RequestPart("files") List<MultipartFile> files) {
         String imgName = null;
@@ -145,6 +157,21 @@ public class AuthController {
         // 서버 측에서는 SecurityContextHolder의 컨텍스트를 클리어 해야 한다.
         SecurityContextHolder.clearContext();
         return ResponseEntity.ok("Logout");
+    }
+
+    @PostMapping("/findById")
+    public ResponseEntity<?> findById(@RequestBody FindUserIdDTO dto) {
+        System.out.println(dto.getEmail());
+
+        int check = memberService.checkFinduserId(dto);
+
+        if (check == 1) {
+            System.out.println("check" + check);
+            emailSenderService.sendFindByIdEmail(dto.getEmail());
+            return ResponseEntity.ok(1);
+        } else {
+            return ResponseEntity.ok(0);
+        }
     }
 
 
