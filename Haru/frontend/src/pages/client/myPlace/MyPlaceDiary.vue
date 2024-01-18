@@ -30,7 +30,7 @@
                     :class="{
                       'cal-set-today': isToday(childIndex),
                       'selected-cal-day': isSelected(i, childIndex),
-                      'calendar-event': isInRecList(childIndex),
+                      'calendar-event': isInRecList(i, childIndex),
                       'prev-next-monthDay': isPrevNextDay(i, childIndex),
                     }"
                   >
@@ -184,8 +184,17 @@ export default {
   methods: {
     // 추천리스트, 추천받은 날짜, 일기 ... 가져오기----------------------------------------------------------------
     getMyRecPlace() {
-      var startSdate = moment([this.myDate[0], this.myDate[1], 1]).format("YYYY-MM-DD");
-      var endSdate = moment([this.myDate[0], this.myDate[1]+1, 1]).format("YYYY-MM-DD");
+      // 달력의 첫번째 표시 날짜와 마지막 표시 날짜 가져오기
+      var startSdate = moment([this.myDate[0], this.myDate[1], this.days[0][0]]);
+      var endSdate = moment([this.myDate[0], this.myDate[1], this.days[this.days.length-1][6]]);
+
+      // 전달, 다음달 처리
+      if (this.days[0][0] > 1) {
+        startSdate = startSdate.subtract(1,'months').format("YYYY-MM-DD");
+      }
+      if (this.days[this.days.length-1][6] < 7) {
+        endSdate = endSdate.add(1,'months').format("YYYY-MM-DD");
+      }
       // console.log(`${startSdate}, ${endSdate}`);
 
       axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/getRecommendPlace`, {
@@ -345,14 +354,27 @@ export default {
     },
 
     // 받아온 추천 리스트에 rDate를 화면에 점으로 표시하기----------------------------------
-    isInRecList(day) {
+    isInRecList(idx, day) {
+      // console.log(idx + ' / ' + day);
+      // 가져온 데이터
       const rdates = this.RecommendList.map(item => {
-        // console.log('cdate!! : ' + moment(item.place_cdate).format("YYYY-MM-DD"));
+        // console.log('rDate!! : ' + moment(item.place_cdate).format("YYYY-MM-DD"));
         return moment(item.place_cdate).format("YYYY-MM-DD");
       });
-      var indexDay = moment([this.myDate[0], this.myDate[1], day]).format(
-        "YYYY-MM-DD"
-      );
+
+      // 달력에 표시된 각각 날짜
+      var indexDay = moment([this.myDate[0], this.myDate[1], day]);
+
+      // 전달, 다음달 날짜 처리
+      if (idx == 0 && day > 6) {
+        indexDay = indexDay.subtract(1, 'months');
+      } else if (idx == this.days.length-1 && day < 7) {
+        indexDay = indexDay.add(1, 'months');
+      }
+
+      indexDay = indexDay.format("YYYY-MM-DD")
+
+      // console.log('indexDay : ' + indexDay);
       return rdates.includes(indexDay);
     },
 
