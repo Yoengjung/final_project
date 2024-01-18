@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface PlaceRecommendListRepository extends JpaRepository<PlaceRecommendList, Long> {
 
-//    List<PlaceRecommendList> findByUserIdAndPlaceCdateBetween(String userId, Date startDate, Date endDate);
+    List<PlaceRecommendList> findByUserIdAndPlaceCdateBetween(String userId, Date startDate, Date endDate);
 
 }
