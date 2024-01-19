@@ -64,7 +64,7 @@ public class FeedService {
         return feedList;
     }
 
-    public void addFeedComment(int feedNum, String userId, String feedCommentContent) {
+    public List<FeedComment> addFeedComment(int feedNum, String userId, String feedCommentContent) {
         Feed feed = feedRepository.findByFeedNum(feedNum);
         Member member = memberRepository.findMemberByuserId(userId);
         FeedComment feedComment = FeedComment.builder()
@@ -73,9 +73,13 @@ public class FeedService {
                 .feedCommentContent(feedCommentContent)
                 .build();
         feedCommentRepository.save(feedComment);
+
+        List<FeedComment> feedCommentList = feedCommentRepository.findByFeedNum_FeedNum((long) feedNum);
+
+        return feedCommentList;
     }
 
-    public void modifyFeedLike(int feedNum, String userId) {
+    public int modifyFeedLike(int feedNum, String userId) {
         Feed feed = feedRepository.findByFeedNum(feedNum);
         Member member = memberRepository.findMemberByuserId(userId);
         if (feedLikeRepository.countByFeedNum_FeedNumAndFeedLikeBy_UserId(feedNum, userId) == 0) {
@@ -87,6 +91,9 @@ public class FeedService {
         } else {
             feedLikeRepository.deleteByFeedNum_FeedNumAndFeedLikeBy_UserId(feedNum, userId);
         }
+
+        int likes = feedLikeRepository.countByFeedNum_FeedNumAndFeedLikeBy_UserId(feedNum, userId);
+        return likes;
     }
 
 }

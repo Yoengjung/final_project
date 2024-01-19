@@ -1,6 +1,6 @@
 <template>
 	<div class="container1">
-		<FeedDetail v-if="modal_Check" @close-modal="closeModal" :cardList="cardList" :userData="userData" @getFeedList="getFeedList" :idx="idx"/>
+		<FeedDetail v-if="modal_Check" @close-modal="closeModal" @openModal="openModal" :cardList="cardList" :userData="userData" @getFeedList="getFeedList" :index="index" />
 		<div class="feed-card-area" id="card-area">
 			<!-- 해시태그 검색 -->
 			<form action="" id="search-form">
@@ -92,7 +92,7 @@ export default {
 			card: null,
 			modal_Check: false,
 			userData: null,
-			idx: 0,
+			index: 0,
 		};
 	},
 	created() {
@@ -107,12 +107,11 @@ export default {
 			var newImage = "type4";
 			this.$emit("bgImage", newImage);
 		},
-		getFeedList() {
+		async getFeedList() {
 			this.cardList = [];
-			axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/feedList`).then((res) => {
-				console.log(res);
+			await axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/feedList`).then((res) => {
 				const data = res.data;
-				const index = 0;
+				var index = 0;
 				for (const feed in data.feed) {
 					const feedNum = data.feed[feed].feed_num;
 					const images = function (data) {
@@ -124,16 +123,12 @@ export default {
 						}
 						return images;
 					};
-					const comments = function (data) {
-						const comments = [];
-						for (const comment of data.feedComment) {
-							if (comment.feed_num.feed_num === feedNum) {
-								comments.push(comment.feed_comment_content);
-							}
+					const comments = [];
+					for (const comment of data.feedComment) {
+						if (comment.feed_num.feed_num === feedNum) {
+							comments.push(comment);
 						}
-						return comments;
-					};
-
+					}
 					const cardList = {
 						profileImage: require("@/img/Feed/no_profile.png"), //data.feed[index].member.profile_img,
 						uid: data.feed[index].member.user_id,
@@ -144,19 +139,21 @@ export default {
 						content: data.feed[index].feed_content,
 						likes: data.feedLike[index],
 						rDate: data.feed[index].feed_cdate.substring(0, 16),
-						comments: comments(data).length,
-						feedComments: data.feedComment,
+						comments: comments.length,
+						feedComments: comments,
 						recommend: data.feed[index].place_num,
 						feedNum: data.feed[index].feed_num,
 					};
 					this.cardList.push(cardList);
+					index++;
 				}
+				console.log(data);
 			});
 		},
-		openModal(idx) {
+		openModal(card, idx) {
 			this.modal_Check = !this.modal_Check;
 			this.userData = this.data;
-			this.idx = idx;
+			this.index = idx;
 		},
 		closeModal() {
 			this.modal_Check = false;

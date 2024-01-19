@@ -71,7 +71,7 @@
 								</div>
 								<div class="comment">
 									<img src="@/img/Feed/comment.png" id="comment" />
-									<span>{{ card.comments }}</span>
+									<span :key="commentload">{{ card.comments }}</span>
 								</div>
 							</div>
 
@@ -99,8 +99,8 @@
 						</div>
 
 						<!-- 댓글 창 -->
-						<div class="modal-comment-bg">
-							<div class="comment-area1" :key="commentload">
+						<div class="modal-comment-bg" :key="commentload">
+							<div class="comment-area1">
 								<div class="modal-comment" v-for="(com, i) in comments" :key="i">
 									<div class="m-profile">
 										<a href="#"><img class="m-profile-img" :src="com.profileImage" /></a>
@@ -144,7 +144,7 @@
 import axios from "axios";
 export default {
 	name: "feedDetail",
-	props: ["cardList", "userData", "idx"],
+	props: ["cardList", "userData", "index"],
 	data() {
 		return {
 			commentload: 0,
@@ -152,12 +152,13 @@ export default {
 			comments: [],
 			recommend: {},
 			formData: new FormData(),
-			
+			card: {},
 		};
 	},
 	methods: {
 		getComments() {
-			const card = this.cardList[this.idx];
+			const card = this.cardList[this.index];
+			this.card = card;
 			this.comments = [];
 			this.recommend = {};
 			console.log(card);
@@ -183,36 +184,65 @@ export default {
 				this.comments.push(commentMap);
 			}
 			this.recommend = {
-			name: card.recommend.place_name,
-			img: card.recommend.place_img,
-			hashtag: card.recommend.place_score,
-			url: card.recommend.place_link,
-			address: card.recommend.place_address,
-		};
+				name: card.recommend.place_name,
+				img: card.recommend.place_img,
+				hashtag: card.recommend.place_score,
+				url: card.recommend.place_link,
+				address: card.recommend.place_address,
+			};
 		},
-		sendComment() {
+		async sendComment() {
 			this.formData = new FormData();
 			this.formData.append("feedNum", this.card.feedNum);
 			this.formData.append("feedCommentContent", document.getElementById("commentText").value);
 			this.formData.append("userId", this.userData.id);
 			console.log(this.formData);
-			axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/addFeedComment`, this.formData).then(() => {
-				console.log("addComment");
+			axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/addFeedComment`, this.formData).then((res) => {
+				console.log("addFeedComment");
 				this.$emit("getFeedList");
-				this.getComments();
+				console.log("갱신된 댓글", res);
+				this.comments = [];
+				for (const comment of res.data) {
+					const date = new Date(comment.feed_cdate);
+
+					const year = date.getFullYear().toString().slice(2);
+					const month = (date.getMonth() + 1).toString().padStart(2, "0");
+					const day = date.getDate().toString().padStart(2, "0");
+					const hours = date.getHours().toString().padStart(2, "0");
+					const minutes = date.getMinutes().toString().padStart(2, "0");
+
+					const formattedDateString = `${year}-${month}-${day} ${hours}시${minutes}분`;
+
+					const commentMap = {
+						// profileImage: require("@/img/Feed/" + card.feedComments[comment].member.profile_img),
+						profileImage: require("@/img/Feed/no_profile.png"),
+						uid: comment.user_id.user_id,
+						nickname: comment.user_id.nickname,
+						cDate: formattedDateString,
+						comment: comment.feed_comment_content,
+					};
+					this.comments.push(commentMap);
+					this.card.comments = res.data.length;
+				}
+				console.log("댓글 추가");
+				document.getElementById("commentText").value = "";
+				this.commentload += 1;
 			});
-			this.commentload += 1;
 		},
-		sendLike() {
+		async sendLike() {
 			this.formData = new FormData();
 			this.formData.append("feedNum", this.card.feedNum);
 			this.formData.append("userId", this.userData.id);
-			axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/modifyFeedLike`, this.formData).then(() => {
-				console.log("modifyLike");
+			await axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/modifyFeedLike`, this.formData).then((res) => {
+				console.log("modifyFeedLike");
 				this.$emit("getFeedList");
-				this.getComments();
+				console.log("before", this.card.likes);
+				console.log(res);
+				this.card.likes = res.data;
+				console.log("after", this.card.likes);
+				console.log("좋아요 갱신");
+				this.likeload += 1;
 			});
-			this.likeload += 1;
 		},
 	},
 	created() {
