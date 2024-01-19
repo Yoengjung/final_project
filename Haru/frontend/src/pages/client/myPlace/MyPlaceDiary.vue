@@ -112,28 +112,7 @@ export default {
       RecPlace: [], // 추천리스트로 넘길 데이터 담는 배열
       sendSelectedDate: "", // 추천리스트로 넘길 날짜
       // 일기 리스트
-      diaryList: {
-        rdate: "2024년 01월 10일(수)",
-        dList: [
-          {
-            diaryNum: 0,
-            diaryName: "오늘 와룡산 갔다오고 나서(1)",
-            dContents:
-              "오늘은 크리스마스, 하얀 눈이 내리는 마법 같은 날이었다. 아침에 눈을 뜨자 창밖으로 내리쏟는 눈을 보며 설렘을 감추지 못했다. 따뜻한 코코아 한 잔을 손에 쥐고, 창가에 앉아 눈 내리는 거리를 바라봤다.오늘은 크리스마스, 하얀 눈이 내리는 마법 같은 날이었다. 아침에 눈을 뜨자 창밖으로 내리쏟는 눈을 보며 설렘을 감추지 못했다.",
-          },
-          {
-            diaryNum: 1,
-            diaryName: "오늘 와룡산 갔다오고 나서(2)",
-            dContents:
-              "따뜻한 코코아 한 잔을 손에 쥐고, 창가에 앉아 눈 내리는 거리를 바라봤다. 점심 식사, 우리가 나눈 웃음과 이야기들이 마음을 더욱 풍성하게 만들어주었다. 선물 교환은 언제나 즐거움의 정점을 찍는다. 서로의 마음을 담은 선물을 주고받으며, 그 속에 담긴 사랑과 감사의 마음을 느낄 수 있었다. 저녁이 되어, 가족들과 함께 크리스마스 영화를 보며 하루를 마무리했다.모든 순간이 따뜻하고, 평화롭고, 기쁨 가득했다. 오늘 하루가 주는 작은 기적들에 감사하며, 내일을 기대한다.",
-          },
-          {
-            diaryNum: 2,
-            diaryName: "강남에 맛집 탐방 후기",
-            dContents: "강남에 맛집 닭도리탕타앝수육",
-          },
-        ],
-      },
+      diaryList: [],
       // 달력 관련 데이터
       today: today,
       sDate: sDate,
@@ -211,8 +190,9 @@ export default {
         enddate: endSdate
       })
       .then(res => {
-        this.RecommendList = res.data;
-        // console.log(this.RecommendList);
+        console.log(res.data);
+        this.RecommendList = res.data.rec_list;
+        this.diaryList = res.data.diary_list;
       })
       .catch(error => {console.error('error! ' + error)});
     },

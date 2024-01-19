@@ -20,8 +20,6 @@ public class PlaceRecommendListController {
     
     @PostMapping("/getRecommendList")
     public RecommendItemsDTO GetRecommendList(@RequestBody GetRecommendList getRecommendListDto) {
-//        System.out.println(getRecommendListDto.toString());
-        System.out.println(placeRecommendListService.getRecommendList(getRecommendListDto));
         return placeRecommendListService.getRecommendList(getRecommendListDto);
     }
 }
