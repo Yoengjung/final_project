@@ -12,6 +12,10 @@ public class AnswerService {
     @Autowired
     private AnswerRepository answerRepository;
 
+    public Answer addAnswer(Answer answer) {
+        return answerRepository.save(answer);
+    }
+
     public List<Answer> getAllAnswers() {
         return answerRepository.findAll();
     }

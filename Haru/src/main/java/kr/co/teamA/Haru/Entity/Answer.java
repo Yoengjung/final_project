@@ -20,10 +20,6 @@ public class Answer {
     @SequenceGenerator(name = "ANSWER_SEQ", sequenceName = "ANSWER_SEQ_SEQ", allocationSize = 1)
     private Long answerNum;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "qnaNum", referencedColumnName = "qnaNum")
-    private QnA qnaNum;
-
     @Column(length = 500, nullable = false)
     private String answerContent;
 
