@@ -205,7 +205,7 @@ export default {
       }
       // console.log(`${startSdate}, ${endSdate}`);
 
-      axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/getRecommendPlace`, {
+      axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/getRecommendList`, {
         userid: this.data.id,
         startdate: startSdate,
         enddate: endSdate

@@ -1,6 +1,7 @@
 package kr.co.teamA.Haru.Controller.myPlace;
 
 import kr.co.teamA.Haru.DTO.GetRecommendList;
+import kr.co.teamA.Haru.DTO.RecommendItemsDTO;
 import kr.co.teamA.Haru.DTO.ShowMyRecommendPlaceDTO;
 import kr.co.teamA.Haru.Service.myPlace.PlaceRecommendListService;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,10 @@ public class PlaceRecommendListController {
         this.placeRecommendListService = placeRecommendListService;
     }
     
-    @PostMapping("/getRecommendPlace")
-    public List<ShowMyRecommendPlaceDTO> placeRecGet(@RequestBody GetRecommendList getRecommendListDto) {
-        System.out.println(getRecommendListDto.toString());
-        List<ShowMyRecommendPlaceDTO> placeList = placeRecommendListService.getRecommendList(getRecommendListDto);
-        return placeList;
+    @PostMapping("/getRecommendList")
+    public RecommendItemsDTO GetRecommendList(@RequestBody GetRecommendList getRecommendListDto) {
+//        System.out.println(getRecommendListDto.toString());
+        System.out.println(placeRecommendListService.getRecommendList(getRecommendListDto));
+        return placeRecommendListService.getRecommendList(getRecommendListDto);
     }
 }
