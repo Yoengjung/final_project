@@ -32,4 +32,6 @@ public class PlaceRecommendListController {
         List<ShowMyRecommendPlaceDTO> placeList = placeRecommendListService.getRecommendList(userId, startDate, endDate);
         return placeList;
     }
+
+    
 }

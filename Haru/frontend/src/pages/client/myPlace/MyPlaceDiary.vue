@@ -67,7 +67,7 @@
           </div>
         </div>
 
-        <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트)myNum --><!--            :rDate=""-->
+        <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트) -->
         <div class="tab-content-area">
           <RecommendList
             :RecPlace="RecPlace"
