@@ -171,7 +171,7 @@ export default {
   name: "SelectHobby",
   data() {
     return {
-      formData: new FormData(),
+      formData: new FormData,
       selectedActivity: [],
       selectedCulture: [],
       selectedHobby: [],
@@ -300,7 +300,6 @@ export default {
       this.$emit("bgImage", newImage);
     },
     selectActivity(index) {
-      this.printSelect();
       const selectedIndex = this.selectedActivity.indexOf(index);
       if (selectedIndex > -1) {
         this.selectedActivity.splice(selectedIndex, 1);
@@ -385,12 +384,21 @@ export default {
       }
 
       console.log(selectedList);
-
+      const token = localStorage.getItem("jwtToken");
+      const data = ref([]);
+      
       this.formData.append("hobbyList", selectedList);
       axios
         .post(
           `http://${process.env.VUE_APP_BACK_END_URL}/setHobby`,
-          this.formData
+          this.formData,
+          data.value,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
         )
         .then((res) => {
           console.log(res);

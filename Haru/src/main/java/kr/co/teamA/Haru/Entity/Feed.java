@@ -33,7 +33,7 @@ public class Feed {
 
     @ManyToOne
     @JoinColumn(name = "placeNum")
-    private Place place;
+    private Place placeNum;
 
     @Column(length = 500, nullable = false)
     private String feedContent;
@@ -44,6 +44,4 @@ public class Feed {
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private String feedCdate;
 
-    @Column(length = 255)
-    private String feedHashTag;
 }
