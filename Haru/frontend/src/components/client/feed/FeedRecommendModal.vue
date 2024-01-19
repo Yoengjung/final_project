@@ -42,14 +42,9 @@
                         <!-- 가게 주소 -->
                         <p class="stAddress">{{ recItemInfo.stAddress }}</p>
                       </div>
-                      <!-- 해시태그 -->
-                      <p class="rlist-rec-hash-area">
-                        <span
-                          class="rlist-rec-hash cursor-p"
-                          v-for="(hash, hidx) in recItemInfo.hashtag"
-                          :key="hidx"
-                          >#{{ hash }}</span
-                        >
+                      <!-- 별점 -->
+                      <p class="rlist-score-area">
+                        <span class="rlist-score">★ {{ item.place_score / 10 }}</span>
                       </p>
                     </div>
                   </div>

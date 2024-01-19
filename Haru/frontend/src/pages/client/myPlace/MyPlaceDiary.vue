@@ -21,6 +21,10 @@
                 </tr>
               </thead>
 
+<!--              'cal-set-today': isToday(childIndex),   ==>   오늘 날짜면 background-color 주기     -->
+<!--              'selected-cal-day': isSelected(i, childIndex),   ==>   선택이 됐으면 border 색상 주기     -->
+<!--              'calendar-event': isInRecList(i, childIndex),   ==>   추천된 기록이 있으면 작은 점으로 표시     -->
+<!--              'prev-next-monthDay': isPrevNextDay(i, childIndex),   ==>   전달, 다음달 날짜는 흐리게 표시     -->
               <tbody>
                 <tr v-for="(index, i) in days" :key="i">
                   <td
@@ -63,12 +67,14 @@
           </div>
         </div>
 
-        <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트)myNum -->
+        <!-- 컴포넌트로 토글되는 영역 (추천리스트, 일기 리스트)myNum --><!--            :rDate=""-->
         <div class="tab-content-area">
           <RecommendList
-            :RecommendList="RecommendList"
+            :RecPlace="RecPlace"
+            :sendSelectedDate="sendSelectedDate"
             :isBtnHeartNone="isBtnHeartNone"
             class="rlist-container"
+
             v-if="isTabRecList === true"
             ref="recList"
           />
@@ -102,7 +108,9 @@ export default {
       activeTab: "recommend", // 기본값으로 추천 리스트를 활성화
       isBtnHeartNone: false, // 하트버튼이 안보여야되는지
       isTabRecList: true, // 추천 리스트 탭 활성화
-      RecommendList: [],
+      RecommendList: [], // controller 에서 넘어온 월별 추천리스트 + 일기 data
+      RecPlace: [], // 추천리스트로 넘길 데이터 담는 배열
+      sendSelectedDate: "", // 추천리스트로 넘길 날짜
       // 일기 리스트
       diaryList: {
         rdate: "2024년 01월 10일(수)",
@@ -314,16 +322,21 @@ export default {
 
       return indexDay == today.format("YYYY-MM-DD");
     },
-
+    // 선택됐는지 확인해서 css 적용
     isSelected(i, day) {
+      // 선택한 날짜
       var sdate = moment([this.sDate[0], this.sDate[1], this.sDate[2]]).format(
         "YYYY-MM-DD"
       );
+
+      // 하루하루 각각
       var nowdate = moment([this.myDate[0], this.myDate[1], day]).format(
         "YYYY-MM-DD"
       );
+      // console.log('sdate : ' + sdate + " / nowdate : " + nowdate);
+
       // 화면 최초 진입 시 오늘 날짜면 오늘 날짜에 표시
-      if (this.isToday(day) && sdate) {
+      if (this.isToday(day) && sdate && !this.isSelectedtoday) {
         return true;
       } else if (sdate == nowdate && i == this.sDate[3]) {
         return true;
@@ -331,9 +344,11 @@ export default {
       return false;
     },
 
-    // 한번 움직였으면 상태값 바꾸고 클릭한 곳에 동그라미 표시
-    // 데이터 불러오기
+    // 날짜 클릭했을 때---------------------------------------------------------------------------------
     dayClick(i, day) {
+      // 한 번 클릭된 이후엔 오늘 날짜 자동으로 선택 안되게
+      if (this.isSelectedtoday == false) this.isSelectedtoday = !this.isSelectedtoday;
+
       if (i == 0 && day > 6) {
         // 이전 달 클릭 시
         this.changeMonth(-1);
@@ -351,6 +366,27 @@ export default {
       } else {
         this.sDate = [this.myDate[0], this.myDate[1], day, i];
       }
+
+      // 선택한 일자에 해당하는 추천리스트 목록 담는 배열
+      this.RecPlace = []; // 배열 초기화
+
+      // 데이터 가져오기
+      this.RecommendList.map(item => {
+        // 가져온 데이터
+        const placeCdate = moment(item.place_cdate).format('YYYY-MM-DD');
+        // 선택한 날짜
+        var selectedDate = moment([this.sDate[0], this.sDate[1], day]).format("YYYY-MM-DD");
+        // console.log(placeCdate + " / selectedDate : " + selectedDate);
+
+        // 날짜가 같은거만 리스트로 출력
+        // if (placeCdate.includes(selectedDate)) {
+        if (placeCdate == selectedDate) {
+          // console.log(item.place);
+          this.RecPlace.push(item.place);
+        }
+      });
+      this.sendSelectedDate = moment([this.sDate[0], this.sDate[1], this.sDate[2]]).format("MM월 DD일");
+      console.log(this.RecPlace);
     },
 
     // 받아온 추천 리스트에 rDate를 화면에 점으로 표시하기----------------------------------
@@ -371,9 +407,7 @@ export default {
       } else if (idx == this.days.length-1 && day < 7) {
         indexDay = indexDay.add(1, 'months');
       }
-
       indexDay = indexDay.format("YYYY-MM-DD")
-
       // console.log('indexDay : ' + indexDay);
       return rdates.includes(indexDay);
     },
