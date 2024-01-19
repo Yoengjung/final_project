@@ -79,10 +79,11 @@
             </div>
             <div class="input-area">
               <input
-                  class="input-text"
-                  type="text"
-                  id="findMyId"
-                  readonly
+                class="input-text"
+                type="text"
+                id="findMyId"
+                :value="this.findUserId"
+                readonly
               />
             </div>
             <div class="error-msg-area">
@@ -108,6 +109,7 @@ export default {
   data() {
     return {
       formData: new FormData(),
+      findUserId: "",
     };
   },
   props: {
@@ -141,19 +143,29 @@ export default {
           }
         });
     },
-    submit() {
+    submit(event) {
+      event.preventDefault();
       const code = document.getElementById("emailCheck").value;
       this.formData.append("code", code);
-      axios.post(
-        `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/findById/certification`,
-        this.formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
+      axios
+        .post(
+          `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/findById/certification`,
+          this.formData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data != 0) {
+            alert("인증되었습니다.");
+            this.findUserId = res.data;
+          } else {
+            alert("인증번호를 다시 확인해주세요.");
+          }
+        });
     },
   },
 };
@@ -166,7 +178,8 @@ export default {
   width: fit-content;
   margin: 0 auto;
 }
-#findMyIdLabel, #findMyId {
+#findMyIdLabel,
+#findMyId {
   color: #f39f7e;
 }
 </style>

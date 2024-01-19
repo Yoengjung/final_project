@@ -21,15 +21,15 @@ public class Alarm {
     @SequenceGenerator(name = "ALARM_SEQ", sequenceName = "ALARM_SEQ", allocationSize = 1)
     private Long alarmType;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "qnaNum", referencedColumnName = "qnaNum")
     private QnA qna;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private Member member;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "commentNum", referencedColumnName = "commentNum")
     private FeedComment feedComment;
 

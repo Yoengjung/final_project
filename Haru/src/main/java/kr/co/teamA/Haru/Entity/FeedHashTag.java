@@ -21,7 +21,7 @@ public class FeedHashTag {
 
     private String feedHashTag;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "feedNum")
     private Feed feed_num;
 }

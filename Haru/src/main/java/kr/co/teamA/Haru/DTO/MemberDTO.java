@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Builder
 @AllArgsConstructor
 public class MemberDTO {
-    private String userId;
+    private String id;
     private String pwd;
     private String nickname;
     private String name;

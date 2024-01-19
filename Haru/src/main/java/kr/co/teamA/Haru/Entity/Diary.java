@@ -21,7 +21,7 @@ public class Diary {
     @SequenceGenerator(name = "Diary_SEQ", sequenceName = "Diary_SEQ", allocationSize = 1)
     private Long diaryNum;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private Member member;
 

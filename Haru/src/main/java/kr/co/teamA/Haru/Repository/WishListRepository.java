@@ -1,7 +1,6 @@
 package kr.co.teamA.Haru.Repository;
 
 import io.lettuce.core.dynamic.annotation.Param;
-import kr.co.teamA.Haru.DTO.WishListDTO;
 import kr.co.teamA.Haru.Entity.WishList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

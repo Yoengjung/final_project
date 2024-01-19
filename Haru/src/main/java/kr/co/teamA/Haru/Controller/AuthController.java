@@ -1,17 +1,16 @@
 package kr.co.teamA.Haru.Controller;
 
-import kr.co.teamA.Haru.DTO.FindUserIdDTO;
+import kr.co.teamA.Haru.DTO.*;
 import kr.co.teamA.Haru.Entity.Member;
 import kr.co.teamA.Haru.security.dto.AuthenticationRequest;
 import kr.co.teamA.Haru.security.dto.AuthenticationResponse;
 import kr.co.teamA.Haru.security.filter.JwtTokenProvider;
-import kr.co.teamA.Haru.DTO.EmailCheckDTO;
-import kr.co.teamA.Haru.DTO.MemberDTO;
 import kr.co.teamA.Haru.Repository.MemberRepository;
 import kr.co.teamA.Haru.Service.member.EmailSenderService;
 import kr.co.teamA.Haru.Service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -91,16 +90,6 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/findById/certification")
-    public ResponseEntity<?> findByIdCertification(@RequestBody EmailCheckDTO dto) {
-        boolean result = emailSenderService.isVerify(dto.getEmail(), dto.getCode());
-        if (result == true) {
-            memberRepository.findMemberByuserId(dto.getEmail());
-            return ResponseEntity.ok(1);
-        } else {
-            return ResponseEntity.ok(0);
-        }
-    }
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@ModelAttribute MemberDTO dto, @RequestPart("files") List<MultipartFile> files) {
@@ -121,6 +110,13 @@ public class AuthController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/updateMyInfo")
+    public ResponseEntity<?> updateMyInfo(@RequestBody MemberDTO dto) {
+        System.out.println(dto.getEmail());
+        memberService.updateMyInfo(dto);
+        return ResponseEntity.ok(1);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(
             @RequestBody AuthenticationRequest authenticationRequest) {
@@ -130,12 +126,9 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getId(),
                             authenticationRequest.getPwd())
             );
-//            System.out.println("jwtTokenProvider =>"+jwtTokenProvider.createToken(authentication));
 
             // 인증 성공 시, SecurityContextHolder에 인증 정보를 설정한다.
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
-            // JwtTokenProvider를 사용하여 JWT 토큰을 생성
 
             Member member = new Member();
             member.setUserId(authenticationRequest.getId());
@@ -148,8 +141,6 @@ public class AuthController {
         }
 
     }
-
-
 
     @GetMapping("/logout")
     public ResponseEntity<?> logoutUser() {
@@ -174,6 +165,41 @@ public class AuthController {
         }
     }
 
+    @PostMapping("findByPwd")
+    public ResponseEntity<?> findByPwd(@RequestBody FindUserPwdDTO dto) {
+        System.out.println(dto.getEmail());
+
+        int check = memberService.checkFindUserPwd(dto);
+
+        if (check == 1) {
+            System.out.println("check" + check);
+            emailSenderService.sendFindByIdEmail(dto.getEmail());
+            return ResponseEntity.ok(1);
+        } else {
+            return ResponseEntity.ok(0);
+        }
+    }
+
+    @PostMapping("/findById/certification")
+    public ResponseEntity<?> findByIdCertification(@RequestBody EmailCheckDTO dto) {
+        boolean result = emailSenderService.isVerify(dto.getEmail(), dto.getCode());
+        if (result == true) {
+            String userId = memberRepository.findByMemberId(dto.getEmail());
+            System.out.println(userId);
+            return ResponseEntity.ok(userId);
+        } else {
+            return ResponseEntity.ok(0);
+        }
+    }
+
+    @PostMapping("resetPwd")
+    public ResponseEntity<?> resetPwd(@RequestBody ResetPwdDTO dto) {
+        System.out.println(dto);
+        System.out.println(dto.getId());
+        System.out.println(dto.getPwd());
+        memberService.updatePassword(dto);
+        return ResponseEntity.ok(1);
+    }
 
     private String getExtension(String fileName) {
         return fileName.substring(fileName.lastIndexOf("."));
