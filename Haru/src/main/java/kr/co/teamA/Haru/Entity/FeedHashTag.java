@@ -23,5 +23,5 @@ public class FeedHashTag {
 
     @ManyToOne
     @JoinColumn(name = "feedNum")
-    private Feed feed_num;
+    private Feed feedNum;
 }
