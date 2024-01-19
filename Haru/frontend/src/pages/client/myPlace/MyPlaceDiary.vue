@@ -205,18 +205,16 @@ export default {
       }
       // console.log(`${startSdate}, ${endSdate}`);
 
-      axios.get(`http://${process.env.VUE_APP_BACK_END_URL}/getRecommendPlace`, {
-        params: {
-          userId: this.data.id,
-          startDate: startSdate,
-          endDate: endSdate
-        }
+      axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/getRecommendPlace`, {
+        userid: this.data.id,
+        startdate: startSdate,
+        enddate: endSdate
       })
-          .then(res => {
-            this.RecommendList = res.data;
-            // console.log(this.RecommendList);
-          })
-          .catch(error => {console.error('error! ' + error)});
+      .then(res => {
+        this.RecommendList = res.data;
+        // console.log(this.RecommendList);
+      })
+      .catch(error => {console.error('error! ' + error)});
     },
 
     // 달력 만들기----------------------------------
