@@ -79,6 +79,7 @@
             수정
           </button>
           <button class="big-ctlbtn delete-btn" type="button">삭제</button>
+          <button class="big-ctlbtn delete-btn" type="button" v-if="isAdmin">답글 달기</button>
         </div>
       </form>
     </div>
@@ -95,6 +96,7 @@ export default {
         contents: "너무 잘맞아요!",
         answer: "많은 이용 부탁드립니다!",
       },
+      isAdmin: false, // 관리자 여부를 표시하는 속성
     };
   },
   methods: {
@@ -108,6 +110,19 @@ export default {
   created() {
     this.$emit("bgImage", "type3");
     this.selectCategory = this.myQnA.category;
+    this.checkAdmin(); // 생성될 때 관리자 여부를 확인 
+  },
+  methods:{
+    checkAdmin(){
+      // Vuex 스토어에서 사용자 권한 상태를 가져옴
+      this.isAdmin = this.$store.state.user.isAdmin;
+    },
+  }
+  ,mounted() {
+
+    if(data.id === 'Admin'){
+      this.isAdmin = true;
+    }
   },
 };
 </script>

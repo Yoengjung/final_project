@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -38,7 +41,10 @@ public class Question {
     @Column(length = 50)
     private String qwriter;
 
-
+    @CreationTimestamp
     private LocalDateTime qdate;
+
+    @OneToMany(mappedBy = "question")
+    private Set<Answer> answers = new HashSet<>();
 
 }

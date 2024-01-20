@@ -2,35 +2,42 @@ package kr.co.teamA.Haru.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@Table(name = "ANSWER")
+@Table(name = "answer")
 public class Answer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ANSWER_SEQ_SEQ")
-    @SequenceGenerator(name = "ANSWER_SEQ", sequenceName = "ANSWER_SEQ_SEQ", allocationSize = 1)
-    private Long answerNum;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "answer_seq")
+    @SequenceGenerator(sequenceName = "answer_seq",name = "answer_seq",allocationSize = 1)
+    private Integer anum;
 
-    @Column(length = 500, nullable = false)
-    private String answerContent;
+    @Column(length = 50)
+    private String acategroy;
 
-    @Column(nullable = false)
-    private Date answerCdate;
+    @Column(length = 200)
+    private String atitle;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "adminId", referencedColumnName = "adminId")
-    private ADMIN adminId;
+    @Column(columnDefinition = "CLOB")
+    private String acontent;
 
-    @Column(length = 500, nullable = false)
-    private String qnaContent;
+    @Column(length = 50)
+    private String awriter;
+
+    @CreationTimestamp
+    private LocalDateTime adate;
+
+    @ManyToOne
+    @JoinColumn(name="question_id")
+    private Question question;
 
 }

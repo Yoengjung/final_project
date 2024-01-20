@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/answer")
+@RequestMapping("/ans")
 public class AnswerController {
     @Autowired
     private AnswerService answerService;
 
     @PostMapping(value ="/ansAdd", produces = "application/json;charset=UTF-8")
     public void answerAdd(@RequestBody Answer answer){
-        System.out.println(answer.getAnswerNum());
-        System.out.println(answer.getAnswerContent());
+        System.out.println(answer.getAwriter());
+        System.out.println(answer.getAcontent());
         answerService.addAnswer(answer);
     }
 
