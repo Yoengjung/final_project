@@ -13,8 +13,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from tensorflow.keras.models import load_model
-from tensorflow.keras.utils import custom_object_scope
+from keras.models import load_model
+from keras.utils import custom_object_scope
 from tensorflow_addons.optimizers import RectifiedAdam
 from tqdm import tqdm
 from transformers import BertTokenizer

@@ -11,7 +11,7 @@ import text.views
 # Create your views here.
 @csrf_exempt
 def getStress1(request):
-    img = request.FILES['img']
+    img = request.FILES['faceImage']
     print(img)
     try:
         face_dict = face.views.getFaceStress(img)
@@ -63,7 +63,7 @@ def getStress1(request):
         confidence = max_item['confidence']
         print(f'{label} {confidence}[{second_item["confidence"]}]')
 
-    with open('face/img' + img.name, 'wb') as f:  # 입력받은 이미지를 저장
+    with open('face/img/' + img.name, 'wb') as f:  # 입력받은 이미지를 저장
         for chunk in img.chunks():
             f.write(chunk)
 
@@ -78,8 +78,10 @@ def getStress2(request):  # 일기를 분석하여 일기 스트레스 수치 �
     time.sleep(3)
     face_stress = float(request.POST['face_score'])
     print(face_stress)
-    diary_text = request.POST.get('text', '')  # 텍스트 데이터 받기
+    diary_text = request.POST['text']  # 텍스트 데이터 받기
     print(diary_text)
+    slider_stress = int(request.POST['mood']) * 20
+    userId = request.POST['memberId']
 
 
         # predict_load_data 함수를 사용하여 감정 분석을 수행하고, 결과를 diary_stress_results에 저장합니다.
@@ -91,7 +93,6 @@ def getStress2(request):  # 일기를 분석하여 일기 스트레스 수치 �
 
     print(diary_stress)
     diary_stress = int(diary_stress)
-    slider_stress = np.random.randint(0, 5) * 25
     print(face_stress, diary_stress, slider_stress)
     total_stress = round((face_stress * 0.3 + diary_stress * 0.6 + slider_stress * 0.1) / 10, 2)
     print(total_stress)

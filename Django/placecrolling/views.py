@@ -4,7 +4,6 @@ from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.by import By
 import time
 from selenium.webdriver.common.keys import Keys
-from bs4 import BeautifulSoup
 from tqdm.auto import tqdm
 import pandas as pd
 from selenium.webdriver.support import expected_conditions as EC

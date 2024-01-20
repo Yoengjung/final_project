@@ -2,11 +2,9 @@ import pickle
 import re
 import pandas as pd
 from konlpy.tag import Okt
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.models import load_model
-from keybert import KeyBERT
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import load_model
 from kiwipiepy import Kiwi
-from transformers import BertModel
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
