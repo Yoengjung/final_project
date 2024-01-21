@@ -184,11 +184,12 @@ export default {
     const email = ref("");
     const name = ref("");
 
+    // 토큰 가져오기
     const getToken = () => {
       const token = localStorage.getItem("jwtToken");
       isLoggedIn.value = token ? true : false;
     };
-
+    // 로그아웃 메서드
     const logout = () => {
       axios
         .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
@@ -199,7 +200,7 @@ export default {
           }
         });
     };
-
+    // 토큰 디코딩
     const decodeToken = (token) => {
       if (token == null) return false;
       const decoded = jwtDecode(token);
@@ -213,7 +214,7 @@ export default {
       decodeToken(token);
       getUserData();
     });
-
+    // 유저 정보 가져오기
     const getUserData = () => {
       const userIdData = {
         id: data.value.id,
@@ -247,6 +248,7 @@ export default {
       var newImage = "type1";
       this.$emit("bgImage", newImage);
     },
+    // 토큰 가져오기
     getToken() {
       this.AccessToken = localStorage.getItem("jwtToken");
       console.log(this.AccessToken);
@@ -257,6 +259,7 @@ export default {
         this.$router.push("/login");
       }
     },
+    // 닉네임 중복확인
     nicknameCheck() {
       const nickname = document.getElementById("nickname").value;
 
@@ -276,7 +279,7 @@ export default {
       } else {
         document.getElementById("nicknameCheck-msg").style.display = "none";
       }
-
+      // 닉네임 중복확인 API 호출
       axios
         .get(
           `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/${nickname}/nicknameCheck`
@@ -301,7 +304,7 @@ export default {
           return false;
         });
     },
-
+    // 이메일 중복확인 및 인증번호 발송
     emailCheck() {
       const email = document.getElementById("email").value;
       axios
@@ -331,23 +334,31 @@ export default {
     handleEnter(event) {
       event.preventDefault();
     },
+
+    // 내 정보 수정
     submit() {
+      // FormData에 값 초기화
       this.formData.delete("nickname", "");
       this.formData.delete("email", "");
       this.formData.delete("name", "");
 
+      // 값 가져오기
       const userId = document.getElementById("userId-v").value;
       const nickname = document.getElementById("nickname").value;
       const email = document.getElementById("email").value;
       const name = document.getElementById("name").value;
 
+      // FormData에 값 추가
       this.formData.append("id", userId);
       this.formData.append("nickname", nickname);
       this.formData.append("email", email);
       this.formData.append("name", name);
+
+      // 정규식
       var nicknameRegex = /^[a-zA-Z0-9ㄱ-ㅎ가-힣]+$/;
       var emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,5}$/;
 
+      // 값 유효성 검사
       if (nickname === "") {
         document.getElementById("nicknameCheck-msg").innerHTML =
           "닉네임은 필수 입력 사항입니다.";
@@ -392,6 +403,7 @@ export default {
       } else if (this.nicknameCheckBoolean === true) {
         document.getElementById("nicknameCheck-msg").style.display = "none";
       }
+      // 인증코드 확인 메서드 호출
       axios
         .post(
           `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/emailCheck/certification`,
@@ -407,6 +419,7 @@ export default {
               "인증번호가 일치합니다.";
             document.getElementById("Code-msg").style.color = "green";
             document.getElementById("Code-msg").style.display = "block";
+            // 내 정보 수정 API 호출
             axios
               .post(
                 `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/updateMyInfo`,
@@ -434,6 +447,7 @@ export default {
           }
         });
     },
+    // 뒤로가기
     backbtn() {
       this.$router.push("/Mypage");
     },

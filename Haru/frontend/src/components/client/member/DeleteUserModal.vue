@@ -67,7 +67,7 @@ export default {
     userId: String,
   },
   methods: {
-    // 탈퇴하기
+    // 탈퇴하기 메소드
     deleteUser() {
       const userId = document.getElementById("delete-id").value;
       if (userId == this.userId) {

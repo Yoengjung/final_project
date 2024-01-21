@@ -52,15 +52,18 @@ export default {
       var newImage = "type1";
       this.$emit("bgImage", newImage);
     },
+    // localStorage에 userId가 있는지 확인
     checkTokenUserId() {
       if (localStorage.getItem("userId") === null) {
         this.$router.push("/login");
       }
     },
 
+    // 회원정보 수정 화면으로 이동
     userConfirmBtn() {
       this.$router.push("/updateMyInfo");
     },
+    // 비밀번호 재설정
     resetPwd() {
       const pwd = document.getElementById("password").value;
       const pwdCheck = document.getElementById("password-check").value;
@@ -87,15 +90,16 @@ export default {
           "none";
       }
 
+      // FormData에 값 초기화
       this.formData = new FormData();
 
       const userId = localStorage.getItem("userId");
 
+      // FormData에 값 추가
       this.formData.append("id", userId);
       this.formData.append("pwd", pwd);
 
-      console.log(this.formData.get("userId"));
-
+      // 비밀번호 재설정 API 호출
       axios
         .post(
           `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/resetPwd`,

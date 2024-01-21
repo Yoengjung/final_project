@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+// 비밀번호 재설정을 위한 DTO
 public class ResetPwdDTO {
     private String id;
     private String pwd;

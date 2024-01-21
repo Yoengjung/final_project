@@ -7,7 +7,6 @@ import kr.co.teamA.Haru.Entity.MainCategory;
 
 @Repository
 public interface MainCategoryRepository extends JpaRepository<MainCategory, String> {
-
     MainCategory findByMainCategory(String mainCategory);
 
 }

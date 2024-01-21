@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+// 회원 정보를 위한 DTO
 public class MemberDTO {
     private String id;
     private String pwd;

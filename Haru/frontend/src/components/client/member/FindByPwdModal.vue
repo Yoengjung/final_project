@@ -110,6 +110,7 @@ export default {
     modalOpen: Boolean,
   },
   methods: {
+    // 아이디 찾기 메소드
     findByPwd(event) {
       event.preventDefault();
       if (document.getElementById("id").value == "") {
@@ -128,25 +129,27 @@ export default {
         event.stopPropagation();
         return;
       }
-
-      this.formData = new FormData();
-
+      // 이름, 이메일, 유저 아이디 값 가져오기
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const userId = document.getElementById("id").value;
 
+      this.formData = new FormData();
+
+      // FormData에 값 추가
       this.formData.append("userId", userId);
       this.formData.append("username", name);
       this.formData.append("email", email);
 
+      // 이메일 인증 메서드
       axios
         .post(
           `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/findByPwd`,
           this.formData,
           {
             headers: {
-              "Content-Type": "application/json", // 요청의 미디어 타입
-              Accept: "application/json", // 서버에서 지원하는 미디어 타입
+              "Content-Type": "application/json",
+              Accept: "application/json",
             },
           }
         )
@@ -159,6 +162,8 @@ export default {
           }
         });
     },
+
+    // 인증번호 확인 메소드
     submit(event) {
       event.preventDefault();
       if (document.getElementById("id").value == "") {

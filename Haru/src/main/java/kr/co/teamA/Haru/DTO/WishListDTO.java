@@ -9,12 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+// 위시리스트를 위한 DTO
 public class WishListDTO {
     private String userId;
     private Place place;
-
-    public WishListDTO(String userId, Place place) {
-        this.userId = userId;
-        this.place = place;
-    }
 }

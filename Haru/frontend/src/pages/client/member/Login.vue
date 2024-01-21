@@ -120,6 +120,8 @@ export default {
       console.log("비밀번호 찾기 모달");
       this.isPwdModalOpen = !this.isPwdModalOpen;
     },
+
+    // 로그인 메소드
     loginSubmit() {
       axios
         .post(

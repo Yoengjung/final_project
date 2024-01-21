@@ -18,13 +18,11 @@ public class WishListController {
     @Autowired
     private final WishListService wishListService;
 
+    // 찜하기
     @PostMapping("/getMyFavoritePlace")
     public Object[] getMyFavoritePlace(@RequestBody Map<String ,String> data) {
         String userId = data.get("id");
-        System.out.println(userId);
-
         wishListService.getWishListData(userId);
-        System.out.println(wishListService.getWishListData(userId));
 
         return wishListService.getWishListData(userId);
     }

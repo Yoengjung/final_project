@@ -55,12 +55,12 @@ export default {
     const data = ref([]);
     const myFaboritePlace = ref({});
     const placeData = ref([]);
-
+    // 토큰 가져오기
     const getToken = () => {
       const token = localStorage.getItem("jwtToken");
       isLoggedIn.value = token ? true : false;
     };
-
+    // 로그아웃 메서드
     const logout = () => {
       axios
         .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
@@ -71,7 +71,7 @@ export default {
           }
         });
     };
-
+    //  토큰 디코딩
     const decodeToken = (token) => {
       if (token == null) return false;
       const decoded = jwtDecode(token);
@@ -85,6 +85,8 @@ export default {
       decodeToken(token);
       getData();
     });
+
+    // 찜한 장소 가져오기
     const getData = () => {
       const token = localStorage.getItem("jwtToken");
       axios
@@ -111,7 +113,7 @@ export default {
         });
     };
 
-    return { logout, data, getData, placeData }; // Return data in the setup function
+    return { logout, data, getData, placeData };
   },
 
   methods: {
@@ -119,6 +121,7 @@ export default {
       var newImage = "type5";
       this.$emit("bgImage", newImage);
     },
+    //  토큰 가져오기
     getToken() {
       this.AccessToken = localStorage.getItem("jwtToken");
       console.log(this.AccessToken);

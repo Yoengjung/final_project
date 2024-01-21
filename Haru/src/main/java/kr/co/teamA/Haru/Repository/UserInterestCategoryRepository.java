@@ -16,6 +16,8 @@ public interface UserInterestCategoryRepository extends JpaRepository<UserIntere
     UserInterestCategory findByUserIdAndMainCategory(@Param("userId") String userId,
             @Param("mainCategory") String mainCategory);
 
+
+    // 유저 아이디로 관심 카테고리 삭제
     @Transactional
     @Modifying
     @Query("delete from UserInterestCategory uic where uic.userId.userId = :userId")

@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+// 장소 추천을 위한 DTO
 public class PlaceRecommendListDTO {
     private Long recommendNum;
     private Place place;

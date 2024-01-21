@@ -14,6 +14,8 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
+
+    // 개인 정보 수정 시 비밀번호 확인
     @PostMapping("/userConfirm")
     public int userConfirm(@RequestBody Map<String, String> userData) {
         System.out.println(userData.get("userId"));
@@ -23,6 +25,7 @@ public class MemberController {
         return check;
     }
 
+    // 개인 정보 수정
     @PostMapping("/userData")
     public UserInfoDTO getUserData(@RequestBody Map<String, String> userData) {
         System.out.println(userData.get("id"));
@@ -30,6 +33,7 @@ public class MemberController {
         return memberDTO;
     }
 
+    // 개인 정보 삭제
     @DeleteMapping("/delete/{userId}")
     public int deleteMember(@PathVariable String userId) {
         System.out.println(userId);

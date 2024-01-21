@@ -25,20 +25,24 @@ import java.util.List;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-    // JWT 토큰을 검증하는 필터
 
+    // 로컬에서 실행시 포트번호
     @Value("${server-port-local-url}")
     private String serverPortLocalUrl;
 
+    // 서버에서 실행시 포트번호
     @Value("${server-port-url}")
     private String serverPortUrl;
 
+    // JWT 토큰 필터
     @Autowired
     private JwtTokenFilter jwtAuthenticationFilter;
 
+    // 유저 정보
     @Autowired
     private UserDetailsService userDetailsService;
 
+    // 유저 정보를 가져오는 메소드
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -47,17 +51,20 @@ public class SecurityConfig {
         return provider;
     }
 
+    // 비밀번호 암호화
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // 토큰 인증 매니저
     @Bean
     AuthenticationManager authenticationManager(
             AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    // 보안 필터 체인
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -73,6 +80,7 @@ public class SecurityConfig {
                 .logout((logout) -> logout.disable());
         return http.build();
     }
+    // CORS 설정
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();

@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+// 비밀번호 재설정을 위한 DTO
 public class FindUserPwdDTO {
     private String userId;
     private String userName;

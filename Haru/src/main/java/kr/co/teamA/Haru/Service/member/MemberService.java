@@ -40,7 +40,6 @@ public class MemberService {
     public Member create(MemberDTO dto) {
         LocalDateTime now = LocalDateTime.now();
         String encoderPassword = passwordEncoder.encode(dto.getPwd());
-        System.out.println("encodeing" + encoderPassword);
         System.out.println(dto.getId());
         Member entity = Member.builder()
                 .userId(dto.getId())

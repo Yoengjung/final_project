@@ -87,9 +87,9 @@
 import RecommendList from "@/components/client/myPlace/RecommendList.vue";
 import MyDiaryList from "@/components/client/myPlace/MyDiaryList.vue";
 import moment from "moment";
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import axios from "axios";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 export default {
   data() {
@@ -156,19 +156,19 @@ export default {
 
     const logout = () => {
       axios
-          .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
-          .then((res) => {
-            if (res.data == "Logout") {
-              localStorage.removeItem("jwtToken");
-              window.location.href = "/login";
-            }
-          });
+        .get(`http://${process.env.VUE_APP_BACK_END_URL}/api/auth/logout`)
+        .then((res) => {
+          if (res.data == "Logout") {
+            localStorage.removeItem("jwtToken");
+            window.location.href = "/login";
+          }
+        });
     };
 
     const decodeToken = (token) => {
       if (token == null) return false;
       const decoded = jwtDecode(token);
-      data.value = decoded; // Use data.value to set the value of the ref
+      data.value = decoded;
       return decoded;
     };
 
@@ -178,17 +178,14 @@ export default {
       decodeToken(token);
     });
 
-
-    return { logout, data }; // Return data in the setup function
+    return { logout, data };
   },
   methods: {
     getMyRecPlace(sdate) {
       // console.log(sdate)
       var startMonth = moment([sdate[0], sdate[1], 1]).format("YYYY-MM-DD");
-      var endMonth = moment([sdate[0], sdate[1]+1, 1]).format("YYYY-MM-DD");
+      var endMonth = moment([sdate[0], sdate[1] + 1, 1]).format("YYYY-MM-DD");
       console.log(`${startMonth}, ${endMonth}`);
-
-
     },
 
     // 달력 만들기----------------------------------
