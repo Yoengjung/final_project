@@ -21,7 +21,7 @@ public class Answer {
     @SequenceGenerator(name = "ANSWER_SEQ", sequenceName = "ANSWER_SEQ_SEQ", allocationSize = 1)
     private Long answerNum;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "qnaNum", referencedColumnName = "qnaNum")
     private QnA qnaNum;
 
@@ -31,7 +31,7 @@ public class Answer {
     @Column(nullable = false)
     private Date answerCdate;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "adminId", referencedColumnName = "adminId")
     private ADMIN adminId;
 

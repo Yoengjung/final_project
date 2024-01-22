@@ -91,13 +91,13 @@ export default {
       const pwd = document.getElementById("password").value;
 
       const data = {
-        userId: this.data.id,
-        password: pwd,
+        id: this.data.id,
+        pwd: pwd,
       };
       // 비밀번호 확인 API 호출
       axios
         .post(
-          `http://${process.env.VUE_APP_BACK_END_URL}/member/userConfirm`,
+          `http://${process.env.VUE_APP_BACK_END_URL}/api/auth/login`,
           data,
           {
             headers: {
@@ -108,7 +108,7 @@ export default {
         )
         .then((res) => {
           console.log(res);
-          if (res.data === 1) {
+          if (res.data != 0) {
             this.$router.push("/updateMyInfo");
           } else {
             alert("비밀번호가 일치하지 않습니다.");

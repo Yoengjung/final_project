@@ -713,10 +713,8 @@ export default {
         document.getElementById("pwdCheck-msg").style.display = "block";
         document.getElementById("pwd_chk").focus();
       } else if (nicknameRegex.test(nickname) === false) {
-        alert("닉네임은 한글, 영문 대소문자, 숫자만 사용 가능합니다.");
         document.getElementById("nickname").focus();
       } else if (emailRegex.test(email) === false) {
-        alert("이메일 형식이 올바르지 않습니다.");
         document.getElementById("email").focus();
       } else if (this.idCheckBoolean === false) {
         document.getElementById("idCheck-msg").innerText =
@@ -758,7 +756,6 @@ export default {
                 }
               )
               .then((res) => {
-                alert(res);
                 if (res.status == 200) {
                   alert("회원가입이 완료되었습니다.");
                   this.$router.push("/Login");

@@ -25,7 +25,7 @@ public class Place {
     @Column(length = 255, nullable = false)
     private String placeAddress;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "subCategory")
     private SubCategory subCategory;
 

@@ -76,9 +76,10 @@ export default {
             `http://${process.env.VUE_APP_BACK_END_URL}/member/delete/${userId}`
           )
           .then((res) => {
-            if (res == 1) {
+            console.log(res);
+            if (res.data == 1) {
               localStorage.removeItem("jwtToken");
-              window.location.href = "/login";
+              this.$router.push("/login");
             }
           });
       } else {

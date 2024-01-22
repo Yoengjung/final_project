@@ -83,6 +83,7 @@ public class MemberService {
     public int deleteMember(String userId) {
         Member member = memberRepository.findMemberByuserId(userId);
         memberRepository.delete(member);
+        System.out.println("delete member");
         return 1;
     }
 }

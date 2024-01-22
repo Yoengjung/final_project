@@ -18,7 +18,7 @@ public class SubCategory {
     @Column(length = 255, nullable = false)
     private String subCategory;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mainCategory", referencedColumnName = "mainCategory")
     private MainCategory mainCategory;
 

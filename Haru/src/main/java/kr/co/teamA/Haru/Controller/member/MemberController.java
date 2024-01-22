@@ -1,6 +1,5 @@
 package kr.co.teamA.Haru.Controller.member;
 
-import kr.co.teamA.Haru.DTO.MemberDTO;
 import kr.co.teamA.Haru.DTO.UserInfoDTO;
 import kr.co.teamA.Haru.Service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,7 @@ public class MemberController {
     public int userConfirm(@RequestBody Map<String, String> userData) {
         System.out.println(userData.get("userId"));
         System.out.println(userData.get("password"));
+
 
         int check = memberService.checkPassword(userData.get("userId"), userData.get("password"));
         return check;

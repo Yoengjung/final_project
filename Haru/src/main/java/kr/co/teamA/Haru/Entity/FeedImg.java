@@ -19,7 +19,7 @@ public class FeedImg {
     @SequenceGenerator(name = "FEEDIMG_SEQ_", sequenceName = "FEEDIMG_SEQ_", allocationSize = 1)
     private Long feedImgNum;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "feedNum")
     private Feed feed;
 

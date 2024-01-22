@@ -127,6 +127,9 @@ public class AuthController {
     public ResponseEntity<?> authenticateUser(
             @RequestBody AuthenticationRequest authenticationRequest) {
 
+        System.out.println("login " + authenticationRequest.getId());
+        System.out.println("password : "  + authenticationRequest.getPwd());
+
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getId(),
