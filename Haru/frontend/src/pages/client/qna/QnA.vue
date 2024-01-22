@@ -110,13 +110,15 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       currentPage: 1,
       pageSize: 10,
-
-      AllQna: [
+      AllQna: [], // 초기 AllQna를 빈 배열로 설정
+     /* AllQna: [
         {
           no: 4,
           category: "공지사항",
@@ -242,9 +244,10 @@ export default {
           date: "2017-11-22",
         },
         // ... more items
-      ],
+      ],*/
     };
   },
+
   computed: {
     paginatedQnA() {
       const start = (this.currentPage - 1) * this.pageSize;
@@ -255,10 +258,21 @@ export default {
       return Math.ceil(this.AllQna.length / this.pageSize);
     },
   },
-  created() {
+  async  created() {
+    this.fetchData();
     this.$emit("bgImage", "type3");
   },
   methods: {
+       async fetchData() {
+        try {
+          const response = await axios.get('http://192.168.0.74/Haru/qna/questionList2');
+          this.AllQna = response.data; // 서버에서 받은 데이터로 AllQna 업데이트
+          console.log("======================");
+          console.log(this.AllQna);
+        } catch (error) {
+          console.error('데이터를 가져오는데 실패했습니다:', error);
+        }
+      },
     toggle(index) {
       this.faqs[index].open = !this.faqs[index].open;
     },

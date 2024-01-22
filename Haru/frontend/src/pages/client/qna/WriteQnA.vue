@@ -22,7 +22,7 @@
             <label for="qna-title">제목</label>
           </div>
           <div class="input-area">
-            <input
+            <input v-model="qnatitle"
               class="input-text"
               type="text"
               name="qna-title"
@@ -37,7 +37,7 @@
           <div class="qna-label-area">
             <label for="qna-content">내용</label>
           </div>
-          <textarea
+          <textarea  v-model="qnacontent"
             class="input-text"
             id="qna-content"
             cols="88"
@@ -50,13 +50,14 @@
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
             취소
           </button>
-          <button class="big-ctlbtn insert-btn" type="submit">등록</button>
+          <button class="big-ctlbtn insert-btn" type="button" @click="qnaSave">등록</button>
         </div>
       </form>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "WriteQnA",
   data() {
@@ -69,6 +70,28 @@ export default {
       // this.$router.push("/QnA");
       this.$router.go(-1); // 뒤로가기
     },
+    // qnasave
+    qnaSave(){
+        //alert("selectCategory:"+this.selectCategory);
+        //alert("qnatitle:"+this.qnatitle);
+        let formQuery = {
+                "qcategroy":this.selectCategory,
+                "qtitle":this.qnatitle,
+                "qwriter":"테스형",
+                "qcontent":this.qnacontent
+        };
+
+        axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/qna/qnaAdd`,formQuery)
+        .then((res) => {
+            console.log(res.data);
+            alert("글 등록 테스트");
+        })
+        .catch((err) => {
+             if (err.message.indexOf('Network Error') > -1) {
+                          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+               }
+        })
+    }
   },
   created() {
     this.$emit("bgImage", "type3");

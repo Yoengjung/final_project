@@ -58,7 +58,8 @@ public class SecurityConfig {
                 .formLogin((login) -> login.disable())
                 .httpBasic((basic) -> basic.disable())
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/","/index.html","/static/**","/css/**","/js/**").permitAll()
+                        .requestMatchers("/","/index.html","/static/**","/css/**","/js/**","/media/**","/img/**","/fonts/**").permitAll()
+                        .requestMatchers("/qna/**").permitAll()
                         .requestMatchers("/api/auth/**","/api/auth2/**").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class)
@@ -66,12 +67,13 @@ public class SecurityConfig {
                 .logout((logout) -> logout.disable());
         return http.build();
     }
-
+//http://192.168.0.74:3000/Haru/
+    //http://3.35.230.229/
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000/","http://43.203.170.126:3000"));
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000/","http://192.168.0.74:3000"));
         corsConfiguration.setAllowedMethods(List.of("GET","POST","PUT","DELETE","PATCH","OPTIONS"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
