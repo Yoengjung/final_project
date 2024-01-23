@@ -16,7 +16,7 @@ public class AnswerService {
          answerRepository.save(answer);
     }
 
-    /*public List<Answer> getAllAnswers() {
+    public List<Answer> getAllAnswers() {
         return answerRepository.findAll();
-    }*/
+    }
 }

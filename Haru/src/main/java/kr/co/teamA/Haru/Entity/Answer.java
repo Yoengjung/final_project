@@ -1,43 +1,26 @@
 package kr.co.teamA.Haru.Entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Data
-@Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Table(name = "answer")
+@Entity
+@Table(name="answer")
 public class Answer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "answer_seq")
     @SequenceGenerator(sequenceName = "answer_seq",name = "answer_seq",allocationSize = 1)
-    private Integer anum;
-
-    @Column(length = 50)
-    private String acategroy;
-
-    @Column(length = 200)
-    private String atitle;
+    private Integer asnum;
 
     @Column(columnDefinition = "CLOB")
-    private String acontent;
+    private String content;
 
-    @Column(length = 50)
-    private String awriter;
-
-    @CreationTimestamp
-    private LocalDateTime adate;
+    private LocalDateTime createDate;
 
     @ManyToOne
-    @JoinColumn(name="question_id")
     private Question question;
-
 }

@@ -2,21 +2,18 @@
   <div class="container1">
     <div class="qna-write-container">
       <form class="qna-write-form" autocomplete="off">
-        <h2>Q&A 상세보기</h2>
-        <!-- 카테고리 -->
+        <h2>Q&A 등록</h2>
         <div class="info-input-container">
           <div class="qna-label-area">
-            <label for="qna-category">카테고리</label>
+            <label for="qna-title">카테고리 선택</label>
           </div>
-          <div class="input-area">
-            <input
-              class="input-text"
-              type="text"
-              id="qna-category"
-              :value="myQnA.category === 'usage' ? '이용문의' : '공지사항'"
-              readonly
-            />
-          </div>
+
+          <!-- 카테고리 선택 -->
+          <select class="input-select" v-model="selectCategory">
+            <option value="usage">이용문의</option>
+            <!-- [공지사항은 관리자만 입력할 수 있도록] => v-if="mid.slide(5) === 'admin'" -->
+            <option value="notice">공지사항</option>
+          </select>
         </div>
 
         <!-- 제목 -->
@@ -25,13 +22,12 @@
             <label for="qna-title">제목</label>
           </div>
           <div class="input-area">
-            <input
+            <input v-model="qnatitle"
               class="input-text"
               type="text"
               name="qna-title"
               id="qna-title"
-              :value="myQnA.title"
-              readonly
+              placeholder="Q&A 제목을 입력해주세요."
             />
           </div>
         </div>
@@ -41,94 +37,67 @@
           <div class="qna-label-area">
             <label for="qna-content">내용</label>
           </div>
-          <textarea
+          <textarea  v-model="qnacontent"
             class="input-text"
             id="qna-content"
             cols="88"
             rows="10"
-            v-model="myQnA.contents"
-            readonly
-          ></textarea>
-        </div>
-
-        <!-- 답변 내용 -->
-        <div class="info-input-container">
-          <div class="qna-label-area">
-            <label for="qna-content" id="answered">답변</label>
-          </div>
-          <textarea
-            class="input-text"
-            id="qna-content"
-            cols="88"
-            rows="10"
-            v-model="myQnA.answer"
-            readonly
+            placeholder="Q&A 내용을 작성하세요."
           ></textarea>
         </div>
 
         <div class="qna-btn-group">
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
-            목록으로
+            취소
           </button>
-          <!-- 답변이 된 경우 '수정', '삭제'는 불가 -->
-          <button
-            class="big-ctlbtn update-btn"
-            type="button"
-            @click="qnaUpdate"
-          >
-            수정
-          </button>
-          <button class="big-ctlbtn delete-btn" type="button">삭제</button>
-          <button class="big-ctlbtn delete-btn" type="button" v-if="isAdmin">답글 달기</button>
+          <button class="big-ctlbtn insert-btn" type="button" @click="qnaSave">등록</button>
         </div>
       </form>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "WriteQnA",
   data() {
     return {
-      myQnA: {
-        category: "usage",
-        title: "어떻게 스트레스 분석이 이렇게 잘맞는건가요?!?!",
-        contents: "너무 잘맞아요!",
-        answer: "많은 이용 부탁드립니다!",
-      },
-      isAdmin: false, // 관리자 여부를 표시하는 속성
+      selectCategory: "usage", // default - 이용문의
     };
   },
   methods: {
     cancel() {
+      // this.$router.push("/QnA");
       this.$router.go(-1); // 뒤로가기
     },
-    qnaUpdate() {
-      this.$router.push("/UpdateQnA");
-    },
+    // qnasave
+    qnaSave(){
+        //alert("selectCategory:"+this.selectCategory);
+        //alert("qnatitle:"+this.qnatitle);
+        let formQuery = {
+                "qcategroy":this.selectCategory,
+                "qtitle":this.qnatitle,
+                "qwriter":"테스형",
+                "qcontent":this.qnacontent
+        };
+
+        axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/qna/qnaAdd`,formQuery)
+        .then((res) => {
+            console.log(res.data);
+            alert("글 등록 테스트");
+        })
+        .catch((err) => {
+             if (err.message.indexOf('Network Error') > -1) {
+                          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+               }
+        })
+    }
   },
   created() {
     this.$emit("bgImage", "type3");
-    this.selectCategory = this.myQnA.category;
-    this.checkAdmin(); // 생성될 때 관리자 여부를 확인 
-  },
-  methods:{
-    checkAdmin(){
-      // Vuex 스토어에서 사용자 권한 상태를 가져옴
-      this.isAdmin = this.$store.state.user.isAdmin;
-    },
-  }
-  ,mounted() {
-
-    if(data.id === 'Admin'){
-      this.isAdmin = true;
-    }
   },
 };
 </script>
 <style scoped>
 @import url("@/css/client/qna/qnaForm.css");
-.qna-btn-group > .update-btn {
-  margin-right: 20px;
-}
 </style>

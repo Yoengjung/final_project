@@ -18,8 +18,8 @@ public class AnswerController {
 
     @PostMapping(value ="/ansAdd", produces = "application/json;charset=UTF-8")
     public void answerAdd(@RequestBody Answer answer){
-        System.out.println(answer.getAwriter());
-        System.out.println(answer.getAcontent());
+        System.out.println(answer.getQuestion());
+        System.out.println(answer.getContent());
         answerService.addAnswer(answer);
     }
 

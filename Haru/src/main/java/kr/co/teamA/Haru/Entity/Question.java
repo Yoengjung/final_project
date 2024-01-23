@@ -1,20 +1,18 @@
 package kr.co.teamA.Haru.Entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
+import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "question")
+@Builder
 public class Question {
     /*
     번호 qnum
@@ -41,10 +39,12 @@ public class Question {
     @Column(length = 50)
     private String qwriter;
 
-    @CreationTimestamp
+
+    private String statue;
+
     private LocalDateTime qdate;
 
-    @OneToMany(mappedBy = "question")
-    private Set<Answer> answers = new HashSet<>();
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private List<Answer> answerList;
 
 }
