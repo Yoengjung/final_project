@@ -24,4 +24,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
     @Query("SELECT new kr.co.teamA.Haru.DTO.NicknameDTO(m.nickname) FROM Member m WHERE m.nickname = :nickname")
     Optional findNicknameByNickname(@Param("nickname") String nickname);
 
+
+
 }

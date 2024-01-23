@@ -27,8 +27,9 @@
               type="text"
               @keydown.enter.prevent="handleEnter"
               id="userId"
-              placeholder="아이디 입력"
+              placeholder="아이디 입력2"
               v-model="userId"
+
             />
             <button class="input-in-btn" id="id-check" @click="idCheck">
               중복확인
@@ -53,6 +54,7 @@
               id="pwd"
               placeholder="영문 대문자와 숫자, 특수문자를 포함한 8자리 이상"
               v-model="pwd"
+
             />
           </div>
           <div class="error-msg-area">
@@ -282,10 +284,10 @@ export default {
   name: "SignUp",
   data() {
     return {
-      userId: "",
-      pwd: "",
-      pwd_chk: "",
-      nickname: "",
+      userId: "xman",
+      pwd: "Xman12!!!!!",
+      pwd_chk: "Xman12!!!!!",
+      nickname: "xman",
       email: "",
       name: "",
       profile: "",

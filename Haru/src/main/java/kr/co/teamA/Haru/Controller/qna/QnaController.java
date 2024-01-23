@@ -74,4 +74,25 @@ public class QnaController {
         }
         return maps;
     }
+
+    @GetMapping("/questionDetails")
+    public Map<String,String> listQuestionAnsDetils(int qnum,String status) {
+        List<Question> questionsWithAnswers = questionService.getQuestionsWithAnswers(qnum, status);
+        Map<String,String> map = new HashMap<>();
+        for(Question e : questionsWithAnswers) {
+            System.out.println(e.getQtitle());
+            if(status.equals("Y")) {
+                System.out.println(e.getAnswerList().get(0).getContent());
+                map.put("answercontent",e.getAnswerList().get(0).getContent());
+            }
+            System.out.println("============================");
+            map.put("no",String.valueOf(e.getQnum()));
+            map.put("category",e.getQcategroy());
+            map.put("qcontent",e.getQcontent());
+            map.put("title",e.getQtitle());
+            map.put("writer",e.getQwriter());
+
+        }
+        return  map;
+    }
 }

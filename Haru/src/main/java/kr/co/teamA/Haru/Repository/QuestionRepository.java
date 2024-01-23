@@ -8,4 +8,8 @@ import java.util.List;
 public interface QuestionRepository extends JpaRepository<Question,Integer> {
 
     List<Question> findByOrderByQnumDesc();
+
+
+    // Question의 qnum과 statue 값을 사용하여 Answer2를 조인
+    List<Question> findByQnumAndStatue(Integer qnum, String statue);
 }

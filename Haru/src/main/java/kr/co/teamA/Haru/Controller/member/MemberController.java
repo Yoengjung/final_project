@@ -48,6 +48,8 @@ public class MemberController {
             } catch (Exception e) {
                 throw new RuntimeException("Fail to upload files.");
             }
+            System.out.println("filePath=======================");
+            System.out.println(filePath);
         }
         memberDTO.setProfileImg(imgName);
         memberService.create(memberDTO);
