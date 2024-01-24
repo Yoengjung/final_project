@@ -90,7 +90,6 @@ public class QnaController {
             if (status.equals("Y") && !e.getAnswerList().isEmpty()) {
                 map.put("answercontent", e.getAnswerList().get(0).getContent());
             }
-
             LocalDateTime dateTime = e.getQdate();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             String formattedDate = dateTime.format(formatter);

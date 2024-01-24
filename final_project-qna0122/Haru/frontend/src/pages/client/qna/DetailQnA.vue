@@ -1,5 +1,5 @@
 <template>
-  <div class="container1">
+  <div class="container1" v-if="qnaDetail">
     <div class="qna-write-container">
       <form class="qna-write-form" autocomplete="off">
         <h2>Q&A 상세보기</h2>
@@ -13,7 +13,7 @@
               class="input-text"
               type="text"
               id="qna-category"
-              :value="myQnA.category === 'usage' ? '이용문의' : '공지사항'"
+              :value="qnaDetail.category === 'usage' ? '이용문의' : '공지사항'"
               readonly
             />
           </div>
@@ -30,7 +30,7 @@
               type="text"
               name="qna-title"
               id="qna-title"
-              :value="myQnA.title"
+              :value="qnaDetail.title"
               readonly
             />
           </div>
@@ -46,22 +46,22 @@
             id="qna-content"
             cols="88"
             rows="10"
-            v-model="myQnA.contents"
+            :value="qnaDetail.content"
             readonly
           ></textarea>
         </div>
 
         <!-- 답변 내용 -->
-        <div class="info-input-container">
+        <div class="info-input-container" v-if="qnaDetail.answer">
           <div class="qna-label-area">
-            <label for="qna-content" id="answered">답변</label>
+            <label for="qna-answer">답변</label>
           </div>
           <textarea
             class="input-text"
-            id="qna-content"
+            id="qna-answer"
             cols="88"
             rows="10"
-            v-model="myQnA.answer"
+            :value="qnaDetail.answer"
             readonly
           ></textarea>
         </div>
@@ -70,51 +70,71 @@
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
             목록으로
           </button>
-          <!-- 답변이 된 경우 '수정', '삭제'는 불가 -->
           <button
             class="big-ctlbtn update-btn"
             type="button"
             @click="qnaUpdate"
+            v-if="!qnaDetail.answer"
           >
             수정
           </button>
-          <button class="big-ctlbtn delete-btn" type="button">삭제</button>
+          <button class="big-ctlbtn delete-btn" type="button" v-if="!qnaDetail.answer">삭제</button>
         </div>
       </form>
     </div>
   </div>
+  <div v-else>
+    <p>Loading...</p>
+  </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
-  name: "DetailQnA",
+  name: "WriteQnA",
   data() {
     return {
-      qnaDetail: {
-        qnum: null,
+      myQnA: {
         category: "",
         title: "",
         content: "",
-        answer: null,
+        answer: "",
       },
     };
   },
   methods: {
-    fetchQnADetails() {
-      // 서버로부터 Q&A 상세 데이터를 가져오는 로직
-      // 예시: this.qnaDetail = fetchFromServer();
-    },
     cancel() {
       this.$router.go(-1); // 뒤로가기
     },
     qnaUpdate() {
       this.$router.push("/UpdateQnA");
     },
-  },
-  created() {
-    this.fetchQnADetails(); // 컴포넌트 생성 시 데이터 로드
-    this.$emit("bgImage", "type3");
-  },
-};
+    fetchQnADetails() {
+      const qnum = this.$route.query.qnum;
+      const status = this.$route.query.status;
+
+    axios.get(`http://192.168.0.224/Haru/qna/questionDetails`, {
+      params: { qnum, status }
+    })
+    .then(response => {
+      const data = response.data;
+      this.myQnA = {
+        category: data.category,
+        title: data.title,
+        contents: data.qcontent,
+        answer: data.answercontent,
+      };
+    })
+      .catch(error => {
+        console.error("Error fetching QnA details:", error);
+      });
+    }
+  },         
+    created() {
+      this.$emit("bgImage", "type3");
+      this.fetchQnADetails(); // 컴포넌트 생성 시 데이터 로드
+    },
+  };
 </script>
 <style scoped>
 @import url("@/css/client/qna/qnaForm.css");

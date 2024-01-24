@@ -9,7 +9,7 @@
           </div>
 
           <!-- 카테고리 선택 -->
-          <select class="input-select" v-model="selectCategory">
+          <select class="input-select" v-model="selectQcategroy">
             <option value="usage">이용문의</option>
             <!-- [공지사항은 관리자만 입력할 수 있도록] => v-if="mid.slide(5) === 'admin'" -->
             <option value="notice">공지사항</option>
@@ -63,6 +63,8 @@ export default {
   data() {
     return {
       selectCategory: "usage", // default - 이용문의
+      qnatitle: "", // 제목을 위한 데이터 속성
+      qnacontent: "", // 내용을 위한 데이터 속성
     };
   },
   methods: {
@@ -72,11 +74,14 @@ export default {
     },
     // qnasave
     qnaSave(){
-        //alert("selectCategory:"+this.selectCategory);
-        //alert("qnatitle:"+this.qnatitle);
+      if (!this.qnatitle || !this.qnacontent) {
+        alert("제목과 내용을 모두 입력해주세요.");
+        return;
+    }
+
         let formQuery = {
-                "qcategroy":this.selectCategory,
-                "qtitle":this.qnatitle,
+                "qcategroy":this.selectQcategroy,
+                "qtitle":this.qnaQtitle,
                 "qwriter":"테스형",
                 "qcontent":this.qnacontent
         };
@@ -84,7 +89,8 @@ export default {
         axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/qna/qnaAdd`,formQuery)
         .then((res) => {
             console.log(res.data);
-            alert("글 등록 테스트");
+            alert("글이 성공적으로 등록되었습니다.");
+            this.$router.push("/QnA") // 성공 후 리디렉션
         })
         .catch((err) => {
              if (err.message.indexOf('Network Error') > -1) {

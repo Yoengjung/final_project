@@ -37,15 +37,14 @@
             <td class="qna-tr">{{ item.no }}</td>
             <td class="qna-tr">{{ item.category }}</td>
             <td>
-              <a href="/DetailQnA">{{ item.title }}</a
-              ><span
-                class="qna-badge"
-                :class="{
-                  notAnswered: item.progress === '미답변',
-                  answered: item.progress === '완료',
-                }"
-                >{{ item.progress }}</span
-              >
+              <a href="'/DetailQnA?qnum=${item.no}&status=${item.progress ==='완료' ? 'Y':'N'}'">{{item.title}}</a>
+              <span
+                    class="qna-badge"
+                    :class="{
+                      notAnswered: item.progress === '미답변',
+                      answered: item.progress === '완료',
+                    }"
+                    >{{ item.progress }}</span>
             </td>
             <td class="qna-tr">{{ item.writer }}</td>
             <td class="qna-tr">{{ item.date }}</td>
@@ -247,7 +246,6 @@ export default {
       ],*/
     };
   },
-
   computed: {
     paginatedQnA() {
       const start = (this.currentPage - 1) * this.pageSize;
@@ -265,7 +263,7 @@ export default {
   methods: {
        async fetchData() {
         try {
-          const response = await axios.get('http://192.168.0.74/Haru/qna/questionList2');
+          const response = await axios.get('http://192.168.0.224/Haru/qna/questionList2');
           this.AllQna = response.data; // 서버에서 받은 데이터로 AllQna 업데이트
           console.log("======================");
           console.log(this.AllQna);
@@ -302,8 +300,12 @@ export default {
       console.log("검색 내용:", this.searchQuery);
     },
     onWrite() {
-      console.log("글쓰기 페이지로 이동");
-      this.$router.push({ name: "WriteQnA" });
+      this.$router.push({ name: "WriteQnA" }).then(()=>{
+        this.fetchData();   // 데이터 다시 불러오기
+      });
+    },
+    postWriteSuccess(){
+        this.fetchData();
     },
   },
 };

@@ -66,6 +66,7 @@ export default {
   data() {
     return {
       myQnA: {
+        id: null, 
         category: "usage",
         title: "어떻게 스트레스 분석이 이렇게 잘맞는건가요?!?!",
         contents: "너무 잘맞아요!",
@@ -77,15 +78,21 @@ export default {
       this.$router.go(-1); // 뒤로가기
     },
     submitQnA(){
-      axios.post('/api/qnaAdd', {
-        category: this.selectCategory,
-        title: this.myQnA.title,
-        contents: this.myQnA.contents
-      })
-      .then(response =>{
-        console.log(response);
+        // 유효성 검사
+        if (!this.myQnA.title || !this.myQnA.contents) {
+           alert("제목과 내용을 모두 입력해주세요.");
+           return;
+        }
+      // 수정 요청 전송
+      axios.put('/api/qnaUpdate/' + this.myQnA.id, this.myQnA)
+      .then(() =>{
+      //성공 피드백
+        alert("게시글이 수정되었습니다.");
+        this.$router.push('/qna'); // 예: Q&A 목록 페이지로 이동
       })
       .catch(error =>{
+      // 에러 처리
+        alert("게시글 수정에 실패했습니다.");
         console.error(error);
       });
     }

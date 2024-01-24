@@ -142,7 +142,7 @@ const routes = [
     component: UpdateQnA,
   },
   {
-    path: "/DetailQnA",
+    path: "/DetailQnA/:qnum",
     name: "DetailQnA",
     component: DetailQnA,
   },
