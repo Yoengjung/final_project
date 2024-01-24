@@ -1,5 +1,6 @@
 package kr.co.teamA.Haru.Controller.qna;
 
+import kr.co.teamA.Haru.Entity.Answer;
 import kr.co.teamA.Haru.Entity.Answer2;
 import kr.co.teamA.Haru.Entity.Question;
 import kr.co.teamA.Haru.Service.QuestionService;
@@ -74,25 +75,33 @@ public class QnaController {
         }
         return maps;
     }
-
     @GetMapping("/questionDetails")
-    public Map<String,String> listQuestionAnsDetils(int qnum,String status) {
-        List<Question> questionsWithAnswers = questionService.getQuestionsWithAnswers(qnum, status);
-        Map<String,String> map = new HashMap<>();
-        for(Question e : questionsWithAnswers) {
-            System.out.println(e.getQtitle());
-            if(status.equals("Y")) {
-                System.out.println(e.getAnswerList().get(0).getContent());
-                map.put("answercontent",e.getAnswerList().get(0).getContent());
-            }
-            System.out.println("============================");
-            map.put("no",String.valueOf(e.getQnum()));
-            map.put("category",e.getQcategroy());
-            map.put("qcontent",e.getQcontent());
-            map.put("title",e.getQtitle());
-            map.put("writer",e.getQwriter());
+    public Map<String, String> listQuestionAnsDetils(int qnum, String status) {
+        Optional<Question> questionOptional = questionService.getQuestionWithStatus(qnum, status);
+        Map<String, String> map = new HashMap<>();
 
+        if (questionOptional.isPresent()) {
+            Question question = questionOptional.get();
+            System.out.println(question.getQtitle());
+
+            map.put("no", String.valueOf(question.getQnum()));
+            map.put("category", question.getQcategroy());
+            map.put("qcontent", question.getQcontent());
+            map.put("title", question.getQtitle());
+            map.put("writer", question.getQwriter());
+
+            if (status.equals("Y") && question.getAnswerList() != null && !question.getAnswerList().isEmpty()) {
+                Answer2 answer = question.getAnswerList().get(0); // 가장 첫 번째 답변을 가져옴
+                System.out.println(answer.getContent());
+                map.put("answercontent", answer.getContent());
+            }
+
+            System.out.println("============================");
+        } else {
+            // 질문이 존재하지 않는 경우에 대한 처리를 여기에 추가할 수 있습니다.
+            System.out.println("Question not found for qnum: " + qnum);
         }
-        return  map;
+        return map;
     }
+
 }

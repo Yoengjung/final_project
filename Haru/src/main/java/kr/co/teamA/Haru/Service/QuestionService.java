@@ -52,8 +52,9 @@ public class QuestionService {
         return questionRepository.findByOrderByQnumDesc();
     }
 
-    public List<Question> getQuestionsWithAnswers(Integer qnum, String statue) {
-        return questionRepository.findByQnumAndStatue(qnum, statue);
+    public Optional<Question> getQuestionWithStatus(Integer qnum, String status) {
+        return questionRepository.findByQnumAndStatue(qnum, status);
     }
+
 
 }
