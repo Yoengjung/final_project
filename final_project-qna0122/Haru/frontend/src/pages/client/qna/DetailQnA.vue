@@ -86,18 +86,23 @@
 </template>
 <script>
 export default {
-  name: "WriteQnA",
+  name: "DetailQnA",
   data() {
     return {
-      myQnA: {
-        category: "usage",
-        title: "어떻게 스트레스 분석이 이렇게 잘맞는건가요?!?!",
-        contents: "너무 잘맞아요!",
-        answer: "많은 이용 부탁드립니다!",
+      qnaDetail: {
+        qnum: null,
+        category: "",
+        title: "",
+        content: "",
+        answer: null,
       },
     };
   },
   methods: {
+    fetchQnADetails() {
+      // 서버로부터 Q&A 상세 데이터를 가져오는 로직
+      // 예시: this.qnaDetail = fetchFromServer();
+    },
     cancel() {
       this.$router.go(-1); // 뒤로가기
     },
@@ -106,8 +111,8 @@ export default {
     },
   },
   created() {
+    this.fetchQnADetails(); // 컴포넌트 생성 시 데이터 로드
     this.$emit("bgImage", "type3");
-    this.selectCategory = this.myQnA.category;
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="container1">
-    <div class="qna-write-container">
+    <div class="qna-write-container" @submit.prevent="submitQnA">
       <form class="qna-write-form" autocomplete="off">
         <h2>Q&A 수정</h2>
         <div class="info-input-container">
@@ -59,6 +59,8 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   name: "WriteQnA",
   data() {
@@ -74,6 +76,19 @@ export default {
     cancel() {
       this.$router.go(-1); // 뒤로가기
     },
+    submitQnA(){
+      axios.post('/api/qnaAdd', {
+        category: this.selectCategory,
+        title: this.myQnA.title,
+        contents: this.myQnA.contents
+      })
+      .then(response =>{
+        console.log(response);
+      })
+      .catch(error =>{
+        console.error(error);
+      });
+    }
   },
   created() {
     this.$emit("bgImage", "type3");
