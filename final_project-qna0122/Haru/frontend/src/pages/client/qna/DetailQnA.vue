@@ -91,10 +91,10 @@
 import axios from 'axios';
 
 export default {
-  name: "WriteQnA",
+  name: "DetailQnA",
   data() {
     return {
-      myQnA: {
+      qnaDetail: {
         category: "",
         title: "",
         content: "",
@@ -107,7 +107,12 @@ export default {
       this.$router.go(-1); // 뒤로가기
     },
     qnaUpdate() {
-      this.$router.push("/UpdateQnA");
+      this.$router.push({
+        name: "UpdateQnA",
+        params: {
+          qnum: this.qnaDetail.qnum
+        }
+      });
     },
     fetchQnADetails() {
       const qnum = this.$route.query.qnum;
@@ -118,7 +123,7 @@ export default {
     })
     .then(response => {
       const data = response.data;
-      this.myQnA = {
+      this.qnaDetail = {
         category: data.category,
         title: data.title,
         contents: data.qcontent,

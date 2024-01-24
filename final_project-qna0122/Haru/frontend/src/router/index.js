@@ -140,11 +140,13 @@ const routes = [
     path: "/UpdateQnA",
     name: "UpdateQnA",
     component: UpdateQnA,
+    props: true
   },
   {
-    path: "/DetailQnA/:qnum",
+    path: "/DetailQnA",
     name: "DetailQnA",
     component: DetailQnA,
+    props: route => ({ qnum: route.query.qnum, status: route.query.status })
   },
 ];
 

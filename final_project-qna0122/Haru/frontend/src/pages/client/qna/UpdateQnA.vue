@@ -3,7 +3,7 @@
     <div class="qna-write-container" @submit.prevent="submitQnA">
       <form class="qna-write-form" autocomplete="off">
         <h2>Q&A 수정</h2>
-        <div class="info-input-container">
+        <div class="info-input-container"> 
           <div class="qna-label-area">
             <label for="qna-title">카테고리 선택</label>
           </div>
@@ -89,19 +89,38 @@ export default {
       //성공 피드백
         alert("게시글이 수정되었습니다.");
         this.$router.push('/qna'); // 예: Q&A 목록 페이지로 이동
+        this.updateQnA();
       })
       .catch(error =>{
       // 에러 처리
         alert("게시글 수정에 실패했습니다.");
         console.error(error);
       });
-    }
+    },
+    updateQnA() {
+    axios
+      .post('/api/updateQnA', {
+        qnum: this.qnaDetail.qnum,
+        title: this.qnaDetail.title,
+        content: this.qnaDetail.content,
+        // 기타 필요한 데이터...
+      })
+      .then((response) => {
+        // 성공적으로 업데이트 되었을 때의 처리
+        console.log(response.data);
+        // 사용자를 QnA 목록 페이지로 리다이렉트하거나 성공 메시지를 표시할 수 있습니다.
+      })
+      .catch((error) => {
+        // 오류 처리
+        console.error("Error updating QnA:", error);
+      });
   },
   created() {
     this.$emit("bgImage", "type3");
     this.selectCategory = this.myQnA.category;
   },
-};
+},
+}
 </script>
 <style scoped>
 @import url("@/css/client/qna/qnaForm.css");

@@ -27,17 +27,15 @@
         </thead>
         <tbody>
           <tr
-            v-for="item in paginatedQnA"
-            :key="item.no"
-            :class="{
-              noticeTR: item.category === '공지사항',
-            }"
+            v-for="item in paginatedQnA" :key="item.no" :class="{ noticeTR: item.category === '공지사항' }"
           >
             <!-- category 가 공지사항인게 먼저 정렬된 데이터 받아야됨 -->
             <td class="qna-tr">{{ item.no }}</td>
             <td class="qna-tr">{{ item.category }}</td>
             <td>
-              <a href="'/DetailQnA?qnum=${item.no}&status=${item.progress ==='완료' ? 'Y':'N'}'">{{item.title}}</a>
+              <router-link :to="{ name: 'DetailQnA', query: { qnum: item.no, status: item.progress === '완료' ? 'Y' : 'N' } }">
+                {{ item.title }}
+              </router-link>
               <span
                     class="qna-badge"
                     :class="{
