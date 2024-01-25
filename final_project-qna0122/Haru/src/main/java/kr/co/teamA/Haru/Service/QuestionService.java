@@ -55,5 +55,12 @@ public class QuestionService {
     public Optional<Question> getQuestionWithAnswer(Integer qnum, String statue) {
         return questionRepository.findByQnumAndStatue(qnum, statue);
     }
-
+    public void updateQuestion(Question question){
+        question.setQdate(LocalDateTime.now());
+        questionRepository.save(question);
+    }
+    @Transactional
+    public void deleteQuestion(Integer qnum) {
+        questionRepository.deleteById(qnum);
+    }
 }

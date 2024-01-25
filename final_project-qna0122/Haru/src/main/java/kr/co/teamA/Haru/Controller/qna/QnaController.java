@@ -4,6 +4,7 @@ import kr.co.teamA.Haru.Entity.Answer2;
 import kr.co.teamA.Haru.Entity.Question;
 import kr.co.teamA.Haru.Service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -28,6 +29,15 @@ public class QnaController {
         questionService.answerAdd(map);
 
     }
+
+    @PatchMapping(value = "/qnaUpdate",produces = "application/json;charset=UTF-8")
+    public void questionUpdate(@RequestBody Question question){
+        System.out.println("qnum:"+question.getQnum());
+        System.out.println("Update:"+question.getQcontent());
+        System.out.println("Update:"+question.getQtitle());
+        questionService.updateQuestion(question);
+    }
+
  //   @GetMapping("/ansAdd")
 //    public void answerAdd(){
 //        Optional<Question> oq = questionRepository.findById(2);
@@ -63,7 +73,6 @@ public class QnaController {
             }else{
                 map.put("progress","미답변");
             }
-            
 
             LocalDateTime dateTime = LocalDateTime.parse(String.valueOf(e.getQdate()));
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -98,5 +107,10 @@ public class QnaController {
             map.put("message", "해당하는 질문이 없습니다.");
         }
         return map;
+    }
+    @DeleteMapping("/questionDelete")
+    public ResponseEntity<?> deleteQuestion(@PathVariable Integer qnum){
+        questionService.deleteQuestion(qnum);
+        return ResponseEntity.ok().build();
     }
 }

@@ -13,4 +13,6 @@ public interface QuestionRepository extends JpaRepository<Question,Integer> {
 
     // Question의 qnum과 statue 값을 사용하여 Answer2를 조인
     Optional<Question> findByQnumAndStatue(Integer qnum, String statue);
+
+
 }

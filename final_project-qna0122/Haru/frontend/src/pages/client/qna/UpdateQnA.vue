@@ -3,11 +3,11 @@
     <div class="qna-write-container" @submit.prevent="submitQnA">
       <form class="qna-write-form" autocomplete="off">
         <h2>Q&A 수정</h2>
+        <input type="hidden" v-model="myQnA.id" />
         <div class="info-input-container"> 
           <div class="qna-label-area">
             <label for="qna-title">카테고리 선택</label>
           </div>
-
           <!-- 카테고리 선택 -->
           <select class="input-select" v-model="selectCategory">
             <option value="usage">이용문의</option>
@@ -28,7 +28,7 @@
               name="qna-title"
               id="qna-title"
               placeholder="Q&A 제목을 입력해주세요."
-              :value="myQnA.title"
+              v-model="myQnA.title"
             />
           </div>
         </div>
@@ -53,6 +53,7 @@
             취소
           </button>
           <button class="big-ctlbtn update-btn" type="submit">수정완료</button>
+          
         </div>
       </form>
     </div>
@@ -67,70 +68,35 @@ export default {
     return {
       myQnA: {
         id: '', 
-        category: "usage",
-        title: "어떻게 스트레스 분석이 이렇게 잘맞는건가요?!?!",
-        contents: "너무 잘맞아요!",
+        category: 'usage',
+        title: '',
+        contents: '',
       },
+      selectCategory: 'usage', // 초기값을 설정해줍니다.
     };
   },
-  methods: {
-    cancel() {
-      this.$router.go(-1); // 뒤로가기
-    },
-    submitQnA(){
-        // 유효성 검사
-        if (!this.myQnA.title || !this.myQnA.contents) {
-           alert("제목과 내용을 모두 입력해주세요.");
-           return;
-        }
-        if (!this.myQnA.id) {
-          alert("수정할 게시글의 ID가 설정되지 않았습니다.");
-          return;
-        }
-      // 수정 요청 전송
-      axios.put('/api/qnaUpdate/' + this.myQnA.id, this.myQnA,{
-        title: this.myQnA.title,
-        contents: this.myQnA.contents,
-        category: this.myQnA.category
-      })
-      .then(() =>{
-      //성공 피드백
-        alert("게시글이 수정되었습니다.");
-        this.$router.push('/qna'); // 예: Q&A 목록 페이지로 이동
-        this.updateQnA();
-      })
-      .catch(error =>{
-      // 에러 처리
-        alert("게시글 수정에 실패했습니다:" + error.message);
-        console.error(error);
-      });
-    },
-    updateQnA() {
-    axios
-      .post('/api/updateQnA', {
-        qnum: this.qnaDetail.qnum,
-        title: this.qnaDetail.title,
-        content: this.qnaDetail.content,
-        // 기타 필요한 데이터...
-      })
-      .then((response) => {
-        // 성공적으로 업데이트 되었을 때의 처리
-        console.log(response.data);
-        // 사용자를 QnA 목록 페이지로 리다이렉트하거나 성공 메시지를 표시할 수 있습니다.
-      })
-      .catch((error) => {
-        // 오류 처리
-        console.error("Error updating QnA:", error);
-      });
+  watch: {
+    selectCategory(newVal) {
+      this.myQnA.category = newVal; // selectCategory가 변경될 때마다 myQnA.category를 업데이트합니다.
+    }
   },
   created() {
-    this.$emit("bgImage", "type3");
-    this.selectCategory = this.myQnA.category;
     this.initializeMyQnA();
   },
   methods: {
-    cancel() {
-      this.$router.go(-1);
+    fetchData(){
+      const qnum = this.$route.query.qnum;
+      if(!qnum) {
+        console.error("게시글 ID가 제공되지 않았습니다.");
+        return;
+      }
+      axios.get('http://192.168.0.224/Haru/qna/${qnum}')
+        .then(response => {
+          this.myQnA = response.data;
+        })
+        .catch(error =>{
+          console.error("게시글을 불러오는중 오류 발생!!!:", error);
+        });
     },
     initializeMyQnA(){
       const qnum = this.$route.query.qnum;
@@ -141,30 +107,32 @@ export default {
       }
     },
     submitQnA(){
-      if(!this.myQnA.title || !this.myQnA.contents){
-        alert("제목과 내용을 모두 입력해주세요.");
-        return;
-      }
-      if (!this.myQnA.id){
-        alert("수정할 게시글의 ID가 설정되지 않았습니다.");
-        return;
-      }
-
-      axios.put('/api/qnaUpdate/${this.myQnA.id}',{
+        // 유효성 검사
+        if (!this.myQnA.title || !this.myQnA.contents) {
+           alert("제목과 내용을 모두 입력해주세요.");
+           return;
+        }
+      // 수정 요청 전송
+      axios.patch(`http://192.168.0.224/Haru/qna/qnaUpdate/${this.myQnA.id}`,{
         title: this.myQnA.title,
         contents: this.myQnA.contents,
         category: this.myQnA.category
       })
-      .then(() => {
+      .then(response =>{
+        console.log(response.data);
+      //성공 피드백
         alert("게시글이 수정되었습니다.");
-        this.$router.push('/qna');
+        this.$router.push('/qna'); // 예: Q&A 목록 페이지로 이동
       })
-      .catch(error => {
-        alert("게시글 수정에 실패했습니다: " + error.message);
+      .catch(error =>{
+      // 에러 처리
+        alert("게시글 수정에 실패했습니다:" + error.message);
         console.error(error);
       });
-    }
-  },
+    },
+    cancel() {
+      this.$router.go(-1); // 뒤로가기
+    },
 },
 }
 </script>
