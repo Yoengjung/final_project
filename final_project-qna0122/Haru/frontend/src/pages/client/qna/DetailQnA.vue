@@ -46,7 +46,7 @@
             id="qna-content"
             cols="88"
             rows="10"
-            :value="qnaDetail.content"
+            :value="qnaDetail.contents"
             readonly
           ></textarea>
         </div>
@@ -109,21 +109,21 @@ export default {
     qnaUpdate() {
       this.$router.push({
         name: "UpdateQnA",
-        params: {
-          qnum: this.qnaDetail.qnum
-        }
+        query: {qnum:this.qnaDetail.qnum}
       });
     },
     fetchQnADetails() {
       const qnum = this.$route.query.qnum;
       const status = this.$route.query.status;
 
-    axios.get(`http://192.168.0.224/Haru/qna/questionDetails`, {
-      params: { qnum, status }
+      return axios.get(`http://192.168.0.224/Haru/qna/questionDetails`, {
+        params: { qnum, status }
     })
     .then(response => {
+      console.log('서버 응답: ', response.data);      // 확인용
       const data = response.data;
       this.qnaDetail = {
+        qnum: data.qnum,
         category: data.category,
         title: data.title,
         contents: data.qcontent,
@@ -133,11 +133,21 @@ export default {
       .catch(error => {
         console.error("Error fetching QnA details:", error);
       });
-    }
+    },
+    initializeMyQnA(){      // 확인용
+      const qnum = this.$route.query.qnum;
+      if (qnum && this.myQnA) {
+        this.myQnA.id = qnum;
+      } else {
+        console.error("QnA ID가 URL에 없거나 myQnA 객체가 초기화되지 않았습니다.");
+      }
+    },
   },         
     created() {
       this.$emit("bgImage", "type3");
-      this.fetchQnADetails(); // 컴포넌트 생성 시 데이터 로드
+      this.fetchQnADetails().then(() => { // 컴포넌트 생성 시 데이터 로드
+        this.initializeMyQnA();   //확인용
+      });
     },
   };
 </script>

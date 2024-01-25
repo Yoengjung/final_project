@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       myQnA: {
-        id: null, 
+        id: '', 
         category: "usage",
         title: "어떻게 스트레스 분석이 이렇게 잘맞는건가요?!?!",
         contents: "너무 잘맞아요!",
@@ -83,8 +83,16 @@ export default {
            alert("제목과 내용을 모두 입력해주세요.");
            return;
         }
+        if (!this.myQnA.id) {
+          alert("수정할 게시글의 ID가 설정되지 않았습니다.");
+          return;
+        }
       // 수정 요청 전송
-      axios.put('/api/qnaUpdate/' + this.myQnA.id, this.myQnA)
+      axios.put('/api/qnaUpdate/' + this.myQnA.id, this.myQnA,{
+        title: this.myQnA.title,
+        contents: this.myQnA.contents,
+        category: this.myQnA.category
+      })
       .then(() =>{
       //성공 피드백
         alert("게시글이 수정되었습니다.");
@@ -93,7 +101,7 @@ export default {
       })
       .catch(error =>{
       // 에러 처리
-        alert("게시글 수정에 실패했습니다.");
+        alert("게시글 수정에 실패했습니다:" + error.message);
         console.error(error);
       });
     },
@@ -118,6 +126,44 @@ export default {
   created() {
     this.$emit("bgImage", "type3");
     this.selectCategory = this.myQnA.category;
+    this.initializeMyQnA();
+  },
+  methods: {
+    cancel() {
+      this.$router.go(-1);
+    },
+    initializeMyQnA(){
+      const qnum = this.$route.query.qnum;
+      if (qnum) {
+        this.myQnA.id = qnum;
+      } else {
+        console.error("게시글 수정을 위한 ID가 없습니다.");
+      }
+    },
+    submitQnA(){
+      if(!this.myQnA.title || !this.myQnA.contents){
+        alert("제목과 내용을 모두 입력해주세요.");
+        return;
+      }
+      if (!this.myQnA.id){
+        alert("수정할 게시글의 ID가 설정되지 않았습니다.");
+        return;
+      }
+
+      axios.put('/api/qnaUpdate/${this.myQnA.id}',{
+        title: this.myQnA.title,
+        contents: this.myQnA.contents,
+        category: this.myQnA.category
+      })
+      .then(() => {
+        alert("게시글이 수정되었습니다.");
+        this.$router.push('/qna');
+      })
+      .catch(error => {
+        alert("게시글 수정에 실패했습니다: " + error.message);
+        console.error(error);
+      });
+    }
   },
 },
 }

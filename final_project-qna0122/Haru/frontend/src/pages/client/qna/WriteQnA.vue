@@ -22,12 +22,13 @@
             <label for="qna-title">제목</label>
           </div>
           <div class="input-area">
-            <input v-model="qnatitle"
+            <input
               class="input-text"
               type="text"
               name="qna-title"
               id="qna-title"
               placeholder="Q&A 제목을 입력해주세요."
+              v-model="qnatitle"
             />
           </div>
         </div>
@@ -44,8 +45,8 @@
             rows="10"
             placeholder="Q&A 내용을 작성하세요."
           ></textarea>
-        </div>
-
+        </div>     
+        <input type="hidden" v-model="qnum"/>       
         <div class="qna-btn-group">
           <button class="big-ctlbtn cancle-btn" type="button" @click="cancel">
             취소
@@ -62,6 +63,7 @@ export default {
   name: "WriteQnA",
   data() {
     return {
+      qnum:'',  //수정기능을 위한 qnum 초기화
       selectCategory: "usage", // default - 이용문의
       qnatitle: "", // 제목을 위한 데이터 속성
       qnacontent: "", // 내용을 위한 데이터 속성
@@ -77,32 +79,47 @@ export default {
       if (!this.qnatitle || !this.qnacontent) {
         alert("제목과 내용을 모두 입력해주세요.");
         return;
-    }
-
+      }
+      if (this.qnum) {
+        axios.put('http://${process.env.VUE_APP_BACK_END_URL}/qna/update/${this.qnum}', {
+          category: this.selectCategory,
+          title: this.qnatitle,
+          content: this.qnacontent
+        })
+        .then(() => {
+          alert("게시글이 수정되었습니다.");
+          this.$router.push("/QnA");
+        })
+        .catch((err) =>{
+          if (err.message.indexOf('Network Error') > -1) {
+            alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.');
+          }
+        });
+      } else {
         let formQuery = {
-                "qcategroy":this.selectQcategroy,
-                "qtitle":this.qnaQtitle,
-                "qwriter":"테스형",
-                "qcontent":this.qnacontent
+          "qcategroy":this.selectQcategroy,
+          "qtitle":this.qnatitle,
+          "qwriter":"테스형",
+          "qcontent":this.qnacontent
         };
-
         axios.post(`http://${process.env.VUE_APP_BACK_END_URL}/qna/qnaAdd`,formQuery)
-        .then((res) => {
-            console.log(res.data);
+        .then((response) => {
+            console.log(response.data);
             alert("글이 성공적으로 등록되었습니다.");
-            this.$router.push("/QnA") // 성공 후 리디렉션
+            this.$router.push("/QnA"); // 성공 후 리디렉션
         })
         .catch((err) => {
              if (err.message.indexOf('Network Error') > -1) {
-                          alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
-               }
-        })
-    }
-  },
-  created() {
-    this.$emit("bgImage", "type3");
-  },
-};
+              alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.');
+             }
+            });
+            }
+           },
+     created() {
+       this.$emit("bgImage", "type3");
+     },
+     },
+  }
 </script>
 <style scoped>
 @import url("@/css/client/qna/qnaForm.css");
